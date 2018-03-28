@@ -29,7 +29,7 @@ class Player: UserProxy {
 	var username: String?
 	
 	// STATUS
-	var status: UserProxyStatus = .playing
+	var status = UserProxyStatus.idle
 	var flair = FlairManager()
 	
 	// ITEMS

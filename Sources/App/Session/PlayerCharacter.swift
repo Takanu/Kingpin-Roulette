@@ -12,6 +12,7 @@ The character types that can be selected, which affect
 how the player is visually represented in-game.
 */
 enum PlayerCharacter: String, CasedEnum {
+	
 	case raccoon = "Raccoon"
 	case dolphin = "Dolphin"
 	case cricket = "Cricket"

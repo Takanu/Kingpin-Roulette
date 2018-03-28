@@ -12,7 +12,7 @@ Defines convenience iteration and string extraction methods for various enumerat
 */
 public protocol CasedEnum : Hashable, CustomStringConvertible {
 	
-	var description: String
+	var description: String { get }
 }
 
 extension CasedEnum {

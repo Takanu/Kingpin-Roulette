@@ -12,7 +12,7 @@ import Pelican
 /**
 Contains the valuables that are primed for theivin' and the currently available roles.
 */
-class Vault {
+class Vault: Route {
 	
 	// STATE
 	/// The roles currently available.
@@ -52,22 +52,50 @@ class Vault {
 	*/
 	func newRequest(viewer: Player) {
 		
+		var generatedCards: [InlineResultArticle] = []
+		
+		if viewer.role?.definition == .kingpin {
+			generatedCards = generateKingpinVaultView()
+		} else {
+			generatedCards = generateVaultView()
+		}
 		
 	}
+	
+	/**
+	Handle text requests to find a valid response.
+	*/
+	override func handle(_ update: Update) -> Bool {
+		
+		// Validate source
+		
+		// Validate against current cards
+		
+		// Find entity that matches generated card signature
+		
+		// Remove viewer powers pre-emptively
+		
+		// Assign role (and valuables if necessary) to user
+		
+		// Trigger a closure?
+		
+		
+	}
+	
 	
 	/**
 	Generates a list of potential selections someone can make while visiting the Vault.
 	
 	- warning: Do not use this for the Kingpin, as this list includes selections for taking certain quantities of Opals.
 	*/
-	func generateVaultView() {
+	func generateVaultView() -> [InlineResultArticle] {
 		
 	}
 	
 	/**
 	Generates a list of the current vault contents for the kingpin to inspect.
 	*/
-	func generateKingpinVaultView() {
+	func generateKingpinVaultView() -> [InlineResultArticle] {
 		
 	}
 	

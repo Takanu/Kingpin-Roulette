@@ -10,6 +10,8 @@ import TrashBoat
 
 struct KingpinRole: ItemRepresentible {
 	
+	var definition: KingpinRoleType
+	
 	var name: String
 	
 	var type: ItemTypeTag = KingpinRoles.type
@@ -17,6 +19,7 @@ struct KingpinRole: ItemRepresentible {
 	var description: String
 	
 	init(role: KingpinRoleType, description: String) {
+		self.role = role
 		self.name = role.rawValue
 		self.description = description
 	}
