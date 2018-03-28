@@ -20,7 +20,7 @@ struct Opal: PointInstance {
 	}
 	
 	init(initialAmount: PointValue) {
-		return
+		self.value = initialAmount
 	}
 	
 	func changeAmount(_ change: PointValue) -> PointReceipt? {

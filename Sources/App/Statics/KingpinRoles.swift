@@ -19,7 +19,7 @@ struct KingpinRoles {
 	
 	
 	static let kingpin = KingpinRole(role: .kingpin,
-																	 description: "Protect your vault and identify the thieves who have stolen your Opals.")
+																	 description: "Protect your vault and identify the thieves who have stolen your Opals.  If they weren't a thief, you lose the game.")
 	
 	static let thief = KingpinRole(role: .thief,
 																 description: "You've stolen some precious Opals, prevent the Kingpin from accusing you.  If he does, you lose your Opals and are out of the game.")

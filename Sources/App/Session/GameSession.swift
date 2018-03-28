@@ -16,7 +16,7 @@ class GameSession: ChatSession {
 	var players: [Player] = []
 	
 	/** The "game inventory", containing the currently available roles and valuables.
-	Only those in possession of the box can see whats inside it. */
+	Only the player currently at the vault can see what's inside it. */
 	var vault = Vault()
 	
 	override func postInit() {

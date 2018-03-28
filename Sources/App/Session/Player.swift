@@ -29,29 +29,29 @@ class Player: UserProxy {
 	var username: String?
 	
 	// STATUS
-	var status: UserProxyStatus
-	var flair: FlairManager
+	var status: UserProxyStatus = .playing
+	var flair = FlairManager()
 	
 	// ITEMS
 	var inventory = Inventory()
 	var points = PointManager()
 	
 	// INLINE CUSTOMISER
-	var playerChoiceList: [InlineResultArticle]
-	var playerBrowseList: [UserProxy]
-	var itemSelect: [ItemTypeTag : [InlineResultArticle]]
-	var inlineResultTransforms: [String : ([InlineResultArticle]) -> ([InlineResultArticle])]
+	var playerChoiceList: [InlineResultArticle] = []
+	var playerBrowseList: [UserProxy] = []
+	var itemSelect: [ItemTypeTag : [InlineResultArticle]] = [:]
+	var inlineResultTransforms: [String : ([InlineResultArticle]) -> ([InlineResultArticle])] = [:]
 	
 	
 	// DESCRIPTION
 	/// Returns the full name that a player is called in the game with full ID embedding.
 	var name: String {
-		return "[\(info.firstName)](tg://user?id=\(tag.id)) the \(char?.rawValue ?? "UNNAMED")"
+		return "[\(firstName)](tg://user?id=\(tag.id)) the \(char?.rawValue ?? "UNNAMED")"
 	}
 	
 	/// Returns the full name of a player without inline embedding.
 	var plainName: String {
-		return "\(info.firstName) the \(char?.rawValue ?? "UNNAMED")"
+		return "\(firstName) the \(char?.rawValue ?? "UNNAMED")"
 	}
 	
 	/// Returns the user as a secret inline symbol, used for group or stealth mentions.
@@ -66,9 +66,29 @@ class Player: UserProxy {
 	/// The role the player is.
 	var role: KingpinRole?
 	
+	/** The vault route, that lets a player either view the vault if they are in front of it or view their
+	current role (if they have selected one).  */
+	var vaultRoute: RouteListen
+	
+	
+	init(session: UserSession) {
+		self.tag = session.tag
+		self.userInfo = session.info
+		
+		self.baseRoute = session.baseRoute
+		self.request = session.requests
+		self.id = session.tag.id
+		self.firstName = session.info.firstName
+		self.lastName = session.info.lastName
+		self.username = session.info.username
+	}
+	
 	
 	func getInlineCard(id: String) -> InlineResultArticle {
-		<#code#>
+		let title = self.plainName
+		let description = "Accuse \(name)."
+		let message = title
+		return InlineResultArticle(id: id, title: title, description: description, contents: message, markup: nil)
 	}
 	
 	func isEqualTo(_ other: UserProxy) -> Bool {

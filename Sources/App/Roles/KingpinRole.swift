@@ -22,7 +22,7 @@ struct KingpinRole: ItemRepresentible {
 	}
 	
 	func getFullName() -> String {
-		<#code#>
+		return name
 	}
 	
 	func getInlineCard() -> InlineResultArticle {
