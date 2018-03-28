@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50B223D1206B4C7E00AA23B5 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B223D0206B4C7E00AA23B5 /* Test.swift */; };
 		OBJ_281 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_287 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Package.swift */; };
 		OBJ_293 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_265 /* Package.swift */; };
@@ -260,7 +259,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50B223D0206B4C7E00AA23B5 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		"Kingpin::App::Product" /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_100 /* GameHighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHighScore.swift; sourceTree = "<group>"; };
 		OBJ_102 /* ChosenInlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenInlineResult.swift; sourceTree = "<group>"; };
@@ -1182,7 +1180,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* main.swift */,
-				50B223D0206B4C7E00AA23B5 /* Test.swift */,
 			);
 			name = App;
 			path = Sources/App;
@@ -1459,7 +1456,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_305 /* main.swift in Sources */,
-				50B223D1206B4C7E00AA23B5 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
