@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Pelican",
+        "repositoryURL": "https://github.com/Takanu/Pelican.git",
+        "state": {
+          "branch": "master",
+          "revision": "324e21eb02e384966f36c3e5effd6dcbc8fbdf6f",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/IBM-Swift/SwiftyJSON.git",
+        "state": {
+          "branch": null,
+          "revision": "7eb6c83f91c519c19e6a507d604c9176d5ae5b15",
+          "version": "17.0.1"
+        }
+      },
+      {
+        "package": "TrashBoat",
+        "repositoryURL": "https://github.com/Takanu/TrashBoat.git",
+        "state": {
+          "branch": "master",
+          "revision": "e5d86869fa00e669819455bf2f3a9ea250b4e99c",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
