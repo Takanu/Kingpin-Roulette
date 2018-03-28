@@ -15,6 +15,12 @@ Contains statics on game pacing, text prompts, item types and more.
 
 struct KingpinDefault {
 	
+	/// The minimum number of players required to start the game.
+	static var minimumPlayers = 6
+	
+	/// The maximum number of players that can play the game.
+	static var maximumPlayers = 12
+	
 	/// The valuable that can be stolen and that the Kingpin needs to retrieve.
 	static var opal = PointType(name: "Opal",
 															pluralisedName: "Opals",
