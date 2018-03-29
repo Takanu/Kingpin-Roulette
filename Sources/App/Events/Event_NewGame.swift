@@ -147,7 +147,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		var newInline: MarkupInline?
 		
 		if reachedPlayerLimit == false {
-			newInline = MarkupInline.init()
+			newInline = MarkupInline()
 			
 			if handle.useTutorial == true {
 				newInline!.addRow(sequence: characterKey)

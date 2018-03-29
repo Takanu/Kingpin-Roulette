@@ -54,4 +54,50 @@ class GameSession: ChatSession {
 		
 	}
 	
+	/**
+	Starts the game sequence.
+	*/
+	func startGame(_ update: Update) -> Bool {
+		
+		// Request players.
+		
+		// See if the game state changes allow us to start the game.
+		
+		return true
+		
+	}
+	
+	/**
+	Starts the scenario (after characters have been selected).
+	*/
+	func startScenario() {
+		
+		// Ask for a kingpin pick
+		
+		// Pass the vault around
+		
+		// INTERROGATE
+		
+	}
+	
+	/**
+	Announces the game results, everyone's roles and resets the game state.
+	*/
+	func finishScenario() {
+		
+	}
+	
+	/**
+	Resolves the handle, passing over any changes made to this session.
+	*/
+	func resolveHandle(_ handle: GameHandle) {
+		
+	}
+	
+	/**
+	Resets all game states.
+	*/
+	func reset() {
+		
+	}
 }
