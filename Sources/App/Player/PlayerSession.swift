@@ -51,6 +51,7 @@ class PlayerSession: UserSession {
 	*/
 	func closeProxy() {
 		self.proxy = nil
+		self.baseRoute[["char_inline"]]?.enabled = true
 	}
 	
 }

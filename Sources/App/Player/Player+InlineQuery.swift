@@ -25,6 +25,7 @@ extension Player {
 																			nextOffset: nil,
 																			switchPM: nil,
 																			switchPMParam: nil)
+			return true
 			
 		}
 		
@@ -33,12 +34,12 @@ extension Player {
 			
 			let card = role!.getInlineCard()
 			
-			request.async.answerInlineQuery(queryID: "1",
+			request.async.answerInlineQuery(queryID: String(update.id),
 																			results: [card],
 																			nextOffset: nil,
 																			switchPM: nil,
 																			switchPMParam: nil)
-			
+			return true
 		}
 		
 		// If nothing above, tell them they have to wait to visit the vault.
@@ -50,7 +51,7 @@ extension Player {
 																		 contents: "<something secret> (⌐■_■)",
 																		 markup: nil)
 			
-			request.async.answerInlineQuery(queryID: "1",
+			request.async.answerInlineQuery(queryID: String(update.id),
 																			results: [card],
 																			nextOffset: nil,
 																			switchPM: nil,

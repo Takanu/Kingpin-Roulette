@@ -25,6 +25,10 @@ class GameSession: ChatSession {
 	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
 	var storedMessages: [String: Message] = [:]
 	
+	// ROUTES
+	/// The player route, allowing another player to choose a player.
+	var playerRoute = PlayerRoute(inlineKey: Player.inlineKey)
+	
 	// SPECIALS
 	/// If true the tutorial has been enabled.
 	private(set) var useTutorial = false
@@ -51,9 +55,14 @@ class GameSession: ChatSession {
 			return true
 		}
 		
-		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass, startTrigger)
+		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass, startTrigger, vault)
+		playerRoute.enabled = false
+		
+		
 		
 		// ANTI-FLOOD
+		
+		
 		
 		// FILTER
 		
@@ -88,12 +97,33 @@ class GameSession: ChatSession {
 			
 			// If yes, start the scenario.
 			self.queue.action(delay: 2.sec, viewTime: 0.sec) {
+				self.populateVault()
 				self.startScenario()
 			}
 			
 		}
 
 		return true
+		
+	}
+	
+	/**
+	Depending on the number of players and game options selected, this will populate the vault with items.
+	*/
+	func populateVault() {
+		
+		if players.count == 0 { return }
+		
+		var itemCollection: [ItemRepresentible] = []
+		itemCollection.append(KingpinRoles.bountyHunter)
+		itemCollection.append(KingpinRoles.henchman)
+		itemCollection.append(KingpinRoles.police)
+		itemCollection.append(KingpinRoles.spy)
+		itemCollection.append(KingpinRoles.thief)
+		itemCollection.append(KingpinRoles.assistant)
+		
+		vault.roles.addItems(itemCollection)
+		vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
 		
 	}
 	
@@ -116,7 +146,7 @@ class GameSession: ChatSession {
 				self.resolveHandle(handle)
 				
 				// INTERROGATE
-				let interrogate = EventContainer<GameHandle>(event: Event_VaultVisit.self)
+				let interrogate = EventContainer<GameHandle>(event: Event_Interrogate.self)
 				interrogate.start(handle: handle, next: self.finishScenario)
 				
 			}
@@ -129,6 +159,7 @@ class GameSession: ChatSession {
 	func finishScenario() {
 		
 	}
+	
 	
 	/**
 	Resolves the handle, passing over any changes made to this session.

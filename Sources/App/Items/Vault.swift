@@ -32,7 +32,7 @@ class Vault: Route {
 	var currentViewer: Player?
 	
 	/// The inline key used to view the vault.  This has to be used in conjunction with a PlayerRoute.
-	static var inlineKey = MarkupInlineKey(fromCallbackData: "View Vault", text: "View Vault")!
+	static var inlineKey = MarkupInlineKey(fromInlineQueryCurrent: "View Vault", text: "View Vault")
 	
 	
 	// ROUTE CONTENTS + CHECKS
@@ -46,31 +46,17 @@ class Vault: Route {
 	init() {
 		
 		super.init(name: "vault_message", action: {P in return true})
-		
-	}
-	
-	/**
-	Clears all current roles and valuables available, and populates the vault with new ones.
-	*/
-	func fillVault(roles: Inventory, valuables: PointManager) {
-		clear()
-		self.roles = roles
-		self.valuables = valuables
 		self.roles.inlineCardTitle = "$name ($count left)"
-	}
-	
-	/**
-	Clears the vault of all roles and valuables.
-	*/
-	func clear() {
-		self.roles.clearAll()
-		//self.valuables
+		self.enabled = false
+		
 	}
 	
 	/**
 	Defines a new player as the viewer of the vault, setting up their routes to be able to see the vault.
 	*/
 	func newRequest(newViewer: Player, next: ((ItemRepresentible) -> ())? ) {
+		
+		resetRequest()
 		
 		// Set the current viewer
 		currentViewer = newViewer
@@ -92,6 +78,7 @@ class Vault: Route {
 		// Set the cards to the Vault and player, and enable routing.
 		currentViewer!.inlineVaultCards = vaultContents.map { $0.card }
 		self.vaultDisplay = vaultContents
+		self.next = next
 		
 		// Enable the route for operation.
 		self.enabled = true
@@ -114,7 +101,7 @@ class Vault: Route {
 			return false
 		}
 		
-		if update.id != currentViewer?.id { return false }
+		if update.from!.tgID != currentViewer?.id { return false }
 		if update.content == "" { return false }
 		
 		// Validate against current cards
@@ -129,34 +116,8 @@ class Vault: Route {
 			// Find entity that matches generated card signature
 			if update.content == content.text {
 				
-				// Remove the item from the valuables or roles list.
-				if let item = roles.removeItem(option.item) {
-					
-					let role = item as! KingpinRole
-					currentViewer!.role = role
-					
-					currentViewer = nil
-					next?(item)
-				}
-				
-				// If it's not a role, convert it to an opal and deduct the amount from the valuables.
-				if option.item.type == KingpinDefault.opalItemTag {
-					
-					let opalsStolen = option.item as! OpalUnit
-					let opalValue = opalsStolen.unit.value.intValue
-					valuables.changeCurrency(opalsStolen.unit.type, change: .int(opalValue * -1))
-						
-					currentViewer!.points.addCurrency(KingpinDefault.opal, initialAmount: opalsStolen.unit.value)
-					currentViewer!.role = KingpinRoles.thief
-					
-					currentViewer = nil
-					next?(opalsStolen)
-					
-				}
-				
-				else {
-					print("\(#line) \(#function) - Item match found, but couldn't be routed.")
-				}
+				next?(option.item)
+				return true
 			}
 		}
 		
@@ -214,7 +175,7 @@ class Vault: Route {
 			let newOpalCard = InlineResultArticle(id: "\(id)",
 																						title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
 																						description: KingpinRoles.thief.description,
-																						contents: "",
+																						contents: "*something secret* (⌐■_■)",
 																						markup: nil)
 			cardSet.append((opalUnit, newOpalCard))
 			id += 1
@@ -270,10 +231,10 @@ class Vault: Route {
 														unitValue: .int(opalCount.intValue))
 		
 		let newOpalCard = InlineResultArticle(id: "\(id)",
-																					title: "\(opalCount) 💎 Opals.",
-			description: KingpinRoles.thief.description,
-			contents: "",
-			markup: nil)
+																					title: "\(opalCount.intValue) 💎 Opals.",
+																					description: "A rare and highly sought after item.",
+																					contents: KingpinDefault.fakeInlineContentMsg,
+																					markup: nil)
 		
 		// Return the new set.
 		cardSet.append((opalUnit, newOpalCard))
@@ -310,10 +271,24 @@ class Vault: Route {
 																					contents: newCode,
 																					markup: nil)
 			
+			
 			results.append((optionItem, newCard))
 		}
 		
 		return results
+	}
+	
+	/**
+	Resets the request, disabling vault view from the player and resetting the Vault state.
+	*/
+	func resetRequest() {
+		
+		currentViewer?.inlineVaultCards = []
+		currentViewer = nil
+		next = nil
+		vaultDisplay = nil
+		
+		self.enabled = false
 	}
 	
 }

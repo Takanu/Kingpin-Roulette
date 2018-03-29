@@ -38,9 +38,9 @@ struct KingpinRole: ItemRepresentible {
   */
 	func getInlineCard() -> InlineResultArticle {
 		return InlineResultArticle(id: "1",
-															 title: "You are the \(name)",
+															 title: "\(name)",
 															 description: description,
-															 contents: "I am mysterious.  (⌐■_■)",
+															 contents: KingpinDefault.fakeInlineContentMsg,
 															 markup: nil)
 	}
 	

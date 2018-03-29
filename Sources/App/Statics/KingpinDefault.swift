@@ -16,13 +16,13 @@ Contains statics on game pacing, text prompts, item types and more.
 struct KingpinDefault {
 	
 	/// The minimum number of players required to start the game.
-	static var minimumPlayers = 1
+	static var minimumPlayers = 2
 	
 	/// The maximum number of players that can play the game.
-	static var maximumPlayers = 12
+	static var maximumPlayers = 15
 	
 	/// The starting length of time available to choose a character.
-	static var charSelectTime = 20.sec
+	static var charSelectTime = 35.sec
 	
 	/// The time left on the character select timer in order to trigger a reminder.
 	static var charSelectWarningTime = 25.sec
@@ -43,4 +43,5 @@ struct KingpinDefault {
 															symbol: "💎",
 															instance: Opal.self)
 	
+	static var fakeInlineContentMsg = "*something secret* (⌐■_■)"
 }

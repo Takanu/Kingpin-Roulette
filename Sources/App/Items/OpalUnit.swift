@@ -47,7 +47,7 @@ struct OpalUnit: ItemRepresentible {
 		return InlineResultArticle(id: "1",
 															 title: "\(unit.value.intValue) 💎 Opals",
 															 description: "A rare stone with enormous financial value.",
-															 contents: "",
+															 contents: KingpinDefault.fakeInlineContentMsg,
 															 markup: nil)
 	}
 	

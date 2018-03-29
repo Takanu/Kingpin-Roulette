@@ -26,8 +26,6 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	/// The message text used for the request
 	let message = """
 	The long lasting ruler of the criminal underworld is dead, and it demands a new *Kingpin*.
-
-	Who wants that promotion?
 	"""
 	
 	/// The players that want to be the Kingpin.
@@ -78,6 +76,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			let alerts = [
 				"I'll put in a few good words for ya.",
 				"You've got charisma, i'm sure you'll get that promotion.",
+				"You've got an IRON FIST, i'm sure you'll get that promotion.",
 				"You should have always been Kingpin, you work so hard!",
 			]
 			
@@ -131,6 +130,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		
 			// Pick a Kingpin and let the players know.
 			handle.kingpin = suitors.popRandom()!
+			handle.kingpin!.role = KingpinRoles.kingpin
 			let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
 			handle.players.remove(at: index)
 		
@@ -149,6 +149,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		else if suitors.count > 1 {
 			
 			handle.kingpin = suitors.popRandom()!
+			handle.kingpin!.role = KingpinRoles.kingpin
 			let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
 			handle.players.remove(at: index)
 			
@@ -167,6 +168,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		else {
 			
 			handle.kingpin = handle.players.popRandom()!
+			handle.kingpin!.role = KingpinRoles.kingpin
 			
 			announcement1 = """
 			With no-one to turn to and no candidates to replace them, the long lost heir to the throne was discovered to be...

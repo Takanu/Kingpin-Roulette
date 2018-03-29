@@ -30,5 +30,5 @@ enum PlayerCharacter: String, CasedEnum {
 		return rawValue
 	}
 	
-	static var inlineKey = MarkupInlineKey(fromInlineQueryCurrent: "char_select", text: "Select Character")
+	static var inlineKey = MarkupInlineKey(fromInlineQueryCurrent: "Characters", text: "Select Character")
 }

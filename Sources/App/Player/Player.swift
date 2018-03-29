@@ -70,9 +70,14 @@ class Player: UserProxy {
 	current role (if they have selected one).  */
 	var vaultRoute: RouteListen!
 	
+	/** The player route, that lets a player select another player.  This is reserved for the Kingpin */
+	var playerRoute: RouteListen!
+	
 	/// The cards routed to the player for viewing when they click on the vault inline key.
 	var inlineVaultCards: [InlineResultArticle] = []
 	
+	/// The inline key that should be used when trying to select a player.
+	static var inlineKey = MarkupInlineKey(fromInlineQueryCurrent: "Players", text: "Interrogate Player")
 	
 	// CALLBACK
 	var session_closeProxy: (() -> ())
@@ -96,6 +101,16 @@ class Player: UserProxy {
 																	type: .inlineQuery,
 																	action: self.inlineVault)
 		
+		self.playerRoute = RouteListen(name: "player_inline",
+																	 pattern: Player.inlineKey.data,
+																	 type: .inlineQuery,
+																	 action: self.inlineVault)
+		
+		self.playerRoute.enabled = false
+		
+		self.baseRoute.addRoutes(vaultRoute)
+		self.baseRoute[["char_inline"]]?.enabled = false
+		
 		
 	}
 	
@@ -104,7 +119,11 @@ class Player: UserProxy {
 		let title = self.plainName
 		let description = "Accuse \(name)."
 		let message = title
-		return InlineResultArticle(id: id, title: title, description: description, contents: message, markup: nil)
+		return InlineResultArticle(id: id,
+															 title: title,
+															 description: description,
+															 contents: message,
+															 markup: nil)
 	}
 	
 	func isEqualTo(_ other: UserProxy) -> Bool {
