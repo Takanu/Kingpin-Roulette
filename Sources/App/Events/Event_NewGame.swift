@@ -105,6 +105,20 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			proxy.status = .joined
 			usedCharacters.append(proxy.char)
 			
+			// Work out how to assign the proxy
+			if handle.testMode == false {
+				if session.proxy == nil {
+					session.proxy = proxy
+				} else {
+					session.testProxies.append(proxy)
+				}
+			}
+			
+			else {
+				session.proxy = proxy
+			}
+			
+			// Update the join message.
 			updateJoinMessage()
 		}
 		
@@ -147,16 +161,18 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		var newInline: MarkupInline?
 		
 		if reachedPlayerLimit == false {
-			newInline = MarkupInline()
+			let tempInline = MarkupInline()
 			
 			if handle.useTutorial == true {
-				newInline!.addRow(sequence: characterKey)
-				newInline!.addRow(sequence: tutorialKeyOff)
+				tempInline.addRow(sequence: characterKey)
+				tempInline.addRow(sequence: tutorialKeyOff)
 				
 			} else {
-				newInline!.addRow(sequence: characterKey)
-				newInline!.addRow(sequence: tutorialKeyOn)
+				tempInline.addRow(sequence: characterKey)
+				tempInline.addRow(sequence: tutorialKeyOn)
 			}
+			
+			newInline = tempInline
 		}
 		
 		// Edit the message
@@ -228,6 +244,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	Ends the character selection phase.
 	*/
 	func endCharacterSelection() {
-		
+		storedMessages.removeAll()
+		self.end(playerTrigger: nil, participants: nil)
 	}
 }

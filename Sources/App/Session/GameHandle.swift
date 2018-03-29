@@ -22,6 +22,9 @@ class GameHandle: Handle {
 	/// The players currently participating in the game.
 	var players: [Player]
 	
+	/// The kingpin.
+	var kingpin: Player?
+	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault
@@ -44,6 +47,7 @@ class GameHandle: Handle {
 		self.records = []
 		
 		self.players = session.players
+		self.kingpin = session.kingpin
 		self.vault = session.vault
 		self.storedMessages = session.storedMessages
 		

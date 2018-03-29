@@ -27,6 +27,9 @@ struct KingpinDefault {
 	/// The time left on the character select timer in order to trigger a reminder.
 	static var charSelectWarningTime = 25.sec
 	
+	/// The time available for deciding if players want to be the Kingpin.
+	static var kingpinSelectTime = 20.sec
+	
 	/// The valuable that can be stolen as an item type.
 	static var opalItemTag = ItemTypeTag(name: "Opal",
 																		symbol: "💎",

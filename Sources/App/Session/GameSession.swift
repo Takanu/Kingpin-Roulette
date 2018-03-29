@@ -15,6 +15,9 @@ class GameSession: ChatSession {
 	/// The players currently participating in the game.
 	var players: [Player] = []
 	
+	/// The kingpin.
+	var kingpin: Player?
+	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
 	var vault = Vault()
@@ -37,6 +40,7 @@ class GameSession: ChatSession {
 		
 		// ROUTES
 		let eventPass = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
+		let startTrigger = RoutePass(name: "start_command", updateTypes: [.message, .callbackQuery, .inlineQuery], action: startGame)
 		
 		// Build the "base" router, used to filter out blank updates.
 		let baseClosure = { (update: Update) -> Bool in
@@ -61,6 +65,9 @@ class GameSession: ChatSession {
 	*/
 	func startGame(_ update: Update) -> Bool {
 		
+		// Disable the start command for now
+		baseRoute[["start_command"]]?.enabled = false
+		
 		// Request players.
 		let handle = GameHandle(session: self)
 		let newGameEvent = EventContainer<GameHandle>(event: Event_NewGame.self)
@@ -81,9 +88,7 @@ class GameSession: ChatSession {
 			}
 			
 		}
-		
-		
-		
+
 		return true
 		
 	}
@@ -113,19 +118,35 @@ class GameSession: ChatSession {
 	*/
 	func resolveHandle(_ handle: GameHandle) {
 		
+		self.players = handle.players
+		self.kingpin = handle.kingpin
+		
+		self.vault = handle.vault
+		self.storedMessages.removeAll()
+		
+		self.useTutorial = handle.useTutorial
+		self.testMode = handle.testMode
+		
 	}
 	
 	/**
 	Resets all game states and removes all proxies from each session.
 	*/
 	func reset() {
+		
+		self.baseRoute.clearAll()
+		self.queue.clear()
+		
 		players.forEach {
 			$0.session_closeProxy()
 		}
 		
 		self.players = []
+		self.kingpin = nil
+		
 		self.vault = Vault()
 		self.storedMessages.removeAll()
+		
 		self.useTutorial = false
 		self.testMode = false
 		

@@ -17,7 +17,7 @@
 		OBJ_320 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_291 /* Package.swift */; };
 		OBJ_326 /* Event_Interrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Event_Interrogate.swift */; };
 		OBJ_327 /* Event_NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Event_NewGame.swift */; };
-		OBJ_328 /* Event_PassTheBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_PassTheBox.swift */; };
+		OBJ_328 /* Event_VaultVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_VaultVisit.swift */; };
 		OBJ_329 /* Opal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Opal.swift */; };
 		OBJ_330 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Vault.swift */; };
 		OBJ_331 /* KingpinRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* KingpinRole.swift */; };
@@ -299,7 +299,7 @@
 		OBJ_116 /* ChatPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPhoto.swift; sourceTree = "<group>"; };
 		OBJ_117 /* FileDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownload.swift; sourceTree = "<group>"; };
 		OBJ_119 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		OBJ_12 /* Event_PassTheBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_PassTheBox.swift; sourceTree = "<group>"; };
+		OBJ_12 /* Event_VaultVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_VaultVisit.swift; sourceTree = "<group>"; };
 		OBJ_120 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		OBJ_121 /* GameHighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHighScore.swift; sourceTree = "<group>"; };
 		OBJ_123 /* ChosenInlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenInlineResult.swift; sourceTree = "<group>"; };
@@ -1336,9 +1336,9 @@
 			children = (
 				OBJ_10 /* Event_Interrogate.swift */,
 				OBJ_11 /* Event_NewGame.swift */,
-				OBJ_12 /* Event_PassTheBox.swift */,
-				5069647D206C92DA00F10C38 /* KingpinEvent.swift */,
+				OBJ_12 /* Event_VaultVisit.swift */,
 				50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */,
+				5069647D206C92DA00F10C38 /* KingpinEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1570,7 +1570,7 @@
 			files = (
 				OBJ_326 /* Event_Interrogate.swift in Sources */,
 				OBJ_327 /* Event_NewGame.swift in Sources */,
-				OBJ_328 /* Event_PassTheBox.swift in Sources */,
+				OBJ_328 /* Event_VaultVisit.swift in Sources */,
 				OBJ_329 /* Opal.swift in Sources */,
 				5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */,
 				OBJ_330 /* Vault.swift in Sources */,
