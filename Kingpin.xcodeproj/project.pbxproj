@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024F649206C1C9A008D1BE3 /* OpalUnit.swift */; };
+		5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069647D206C92DA00F10C38 /* KingpinEvent.swift */; };
 		OBJ_302 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_308 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Package.swift */; };
 		OBJ_314 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_286 /* Package.swift */; };
@@ -276,6 +277,7 @@
 
 /* Begin PBXFileReference section */
 		5024F649206C1C9A008D1BE3 /* OpalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpalUnit.swift; sourceTree = "<group>"; };
+		5069647D206C92DA00F10C38 /* KingpinEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinEvent.swift; sourceTree = "<group>"; };
 		"Kingpin::App::Product" /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Event_Interrogate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_Interrogate.swift; sourceTree = "<group>"; };
 		OBJ_100 /* Request+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Stickers.swift"; sourceTree = "<group>"; };
@@ -1322,6 +1324,7 @@
 				OBJ_10 /* Event_Interrogate.swift */,
 				OBJ_11 /* Event_NewGame.swift */,
 				OBJ_12 /* Event_PassTheBox.swift */,
+				5069647D206C92DA00F10C38 /* KingpinEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1560,6 +1563,7 @@
 				OBJ_331 /* KingpinRole.swift in Sources */,
 				OBJ_332 /* KingpinRoleType.swift in Sources */,
 				OBJ_333 /* GameHandle.swift in Sources */,
+				5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */,
 				OBJ_334 /* GameSession.swift in Sources */,
 				OBJ_335 /* Player+InlineQuery.swift in Sources */,
 				OBJ_336 /* Player.swift in Sources */,

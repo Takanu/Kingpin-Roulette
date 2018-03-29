@@ -26,6 +26,16 @@ class GameHandle: Handle {
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault
 	
+	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
+	var storedMessages: [String: Message]
+	
+	// SPECIALS
+	/// If true the tutorial has been enabled.
+	var useTutorial = false
+	
+	/// If yes, test mode has been intiated which allows you to play as all the roles at once.
+	var testMode: Bool
+	
 	init(session: GameSession) {
 		self.tag = session.tag
 		self.request = session.requests
@@ -35,8 +45,10 @@ class GameHandle: Handle {
 		
 		self.players = session.players
 		self.vault = session.vault
+		self.storedMessages = session.storedMessages
 		
-		
+		self.useTutorial = session.useTutorial
+		self.testMode = session.testMode
 	}
 	
 	
