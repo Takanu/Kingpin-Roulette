@@ -1,17 +1,17 @@
 //
-//  Event_PassTheBox.swift
+//  Event_PickKingpin.swift
 //  App
 //
-//  Created by Ido Constantine on 28/03/2018.
+//  Created by Ido Constantine on 29/03/2018.
 //
 
 import Foundation
 import TrashBoat
 import Pelican
 
-class Event_VaultVisit: KingpinEvent, EventRepresentible {
+class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
-	var eventName: String = "Vault Visit"
+	var eventName: String = "Pick Kingpin"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
 																			 symbol: "👑",
@@ -21,11 +21,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	// Present the dliemna and ask for a player selection
 	override func execute() {
 		
-		// Ask the kingpin to have a look and confirm they have indeed taken a look.
+		// Ask who wants to be the kingpin
 		
-		// Go through each player in the list and let them look and choose.
+		// Mix up the player order (apart from the Kingpin, who always goes first)
 		
-		// Return!
+		// Exit and let the Vault Visit event deal with inline responses.
 		
 	}
 	
