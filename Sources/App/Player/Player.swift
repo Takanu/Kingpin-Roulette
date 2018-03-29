@@ -66,9 +66,6 @@ class Player: UserProxy {
 	/// The role the player is.
 	var role: KingpinRole?
 	
-	/// The route used to select a character.
-	var characterRoute: RouteListen!
-	
 	/** The vault route, that lets a player either view the vault if they are in front of it or view their
 	current role (if they have selected one).  */
 	var vaultRoute: RouteListen!
@@ -93,11 +90,6 @@ class Player: UserProxy {
 		
 		self.char = character
 		self.session_closeProxy = session.closeProxy
-		
-		self.characterRoute = RouteListen(name: "char_inline",
-																			pattern: PlayerCharacter.inlineKey.data,
-																			type: .inlineQuery,
-																			action: self.inlineCharacter)
 		
 		self.vaultRoute = RouteListen(name: "vault_inline",
 																	pattern: Vault.inlineKey.data,

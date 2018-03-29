@@ -20,11 +20,13 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
 	
 	/// The key used to ask players if they want to be the kingpin
-	let kingpinRequestKey = MarkupInlineKey(fromCallbackData: "kingpin_req", text: "Use Tutorial (Currently Off)")!
+	let kingpinRequestKey = MarkupInlineKey(fromCallbackData: "kingpin_req", text: "Nominate Yourself")!
 	
 	/// The message text used for the request
 	let message = """
-	Before we begin, one person must take the role of *Kingpin*.  Who wants that "promotion"?
+	The long lasting ruler of the criminal underworld is dead, and it demands a new *Kingpin*.
+
+	Who wants that promotion?
 	"""
 	
 	/// The players that want to be the Kingpin.
@@ -37,8 +39,13 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		let kingpinRequest = RouteListen(name: "kingpin", pattern: kingpinRequestKey.data, type: .callbackQuery, action: receiveKingpinRequest)
 		baseRoute[["event"]]?.addRoutes(kingpinRequest)
 		
+		// Make the inline key set
+		let inline = MarkupInline(withButtons: kingpinRequestKey)
+		
 		// Ask who wants to be the kingpin
-		storedMessages["kingpin_req"] = request.sync.sendMessage(message, chatID: tag.id)
+		storedMessages["kingpin_req"] = request.sync.sendMessage(message,
+																														 markup: inline,
+																														 chatID: tag.id)
 		
 		// Delay an event to finish the request
 		queue.action(delay: KingpinDefault.kingpinSelectTime, viewTime: 0.sec, action: chooseKingpin)
@@ -77,6 +84,17 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 				newMessage += "\n\(suitor.name)"
 			}
 			
+			let oldMsg = storedMessages["kingpin_req"]!
+			let inline = MarkupInline(withButtons: kingpinRequestKey)
+			
+			request.sync.editMessage(newMessage,
+															 messageID: oldMsg.tgID,
+															 inlineMessageID: nil,
+															 markup: inline,
+															 chatID: tag.id)
+			
+			storedMessages["kingpin_req"]!.text = newMessage
+			
 		}
 		
 		return true
@@ -95,18 +113,61 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 														 markup: nil,
 														 chatID: tag.id)
 		
-		// Pick a Kingpin and let the players know.
-		handle.kingpin = suitors.popRandom()!
-		let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
-		handle.players.remove(at: index)
+		var announcement1 = ""
+		var announcement2 = ""
 		
-		let announcement1 = """
-		After an intense multi-step interview process, the new Kingpin of the criminal underworld is...
-		"""
 		
-		let announcement2 = """
-		...\(handle.kingpin!.name)! 🎉
-		"""
+		// If at least one person nominated themselves, do this
+		if suitors.count == 1 {
+		
+			// Pick a Kingpin and let the players know.
+			handle.kingpin = suitors.popRandom()!
+			let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
+			handle.players.remove(at: index)
+		
+			announcement1 = """
+			Through a series of unfortunate events, only one candidate remained as the new king of the criminal underworld...
+			"""
+		
+			announcement2 = """
+			...\(handle.kingpin!.name)! 🎉
+			"""
+		
+		}
+		
+			
+		// If multiple people wanted the top job
+		else if suitors.count > 1 {
+			
+			handle.kingpin = suitors.popRandom()!
+			let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
+			handle.players.remove(at: index)
+			
+			announcement1 = """
+			After an intense multi-step interview process, the new Kingpin of the criminal underworld is...
+			"""
+			
+			announcement2 = """
+			...\(handle.kingpin!.name)! 🎉
+			"""
+			
+		}
+		
+			
+		// If no-one wanted the job, pick someone at random.
+		else {
+			
+			handle.kingpin = handle.players.popRandom()!
+			
+			announcement1 = """
+			With no-one to turn to and no candidates to replace them, the long lost heir to the throne was discovered to be...
+			"""
+			
+			announcement2 = """
+			...\(handle.kingpin!.name)! 🎉
+			"""
+			
+		}
 		
 		queue.message(delay: 2.sec,
 									viewTime: 4.sec,

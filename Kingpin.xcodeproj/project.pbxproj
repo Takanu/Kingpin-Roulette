@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024F649206C1C9A008D1BE3 /* OpalUnit.swift */; };
+		503FBE9F206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */; };
 		5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069647D206C92DA00F10C38 /* KingpinEvent.swift */; };
 		50A96EEA206CA1EB00B7373C /* PlayerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EE9206CA1EB00B7373C /* PlayerSession.swift */; };
 		50A96EEC206CA8A000B7373C /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */; };
@@ -279,6 +280,7 @@
 
 /* Begin PBXFileReference section */
 		5024F649206C1C9A008D1BE3 /* OpalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpalUnit.swift; sourceTree = "<group>"; };
+		503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerSession+InlineQuery.swift"; sourceTree = "<group>"; };
 		5069647D206C92DA00F10C38 /* KingpinEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinEvent.swift; sourceTree = "<group>"; };
 		50A96EE9206CA1EB00B7373C /* PlayerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSession.swift; sourceTree = "<group>"; };
 		50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_PickKingpin.swift; sourceTree = "<group>"; };
@@ -542,6 +544,8 @@
 		50A96EE8206CA1D100B7373C /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				50A96EE9206CA1EB00B7373C /* PlayerSession.swift */,
+				503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */,
 				OBJ_22 /* Player+InlineQuery.swift */,
 				OBJ_23 /* Player.swift */,
 				OBJ_24 /* PlayerCharacter.swift */,
@@ -772,14 +776,13 @@
 			path = Stickers;
 			sourceTree = "<group>";
 		};
-		OBJ_19 /* Session */ = {
+		OBJ_19 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_20 /* GameHandle.swift */,
 				OBJ_21 /* GameSession.swift */,
-				50A96EE9206CA1EB00B7373C /* PlayerSession.swift */,
 			);
-			path = Session;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		OBJ_195 /* User */ = {
@@ -1289,7 +1292,7 @@
 				OBJ_9 /* Events */,
 				OBJ_13 /* Items */,
 				OBJ_16 /* Roles */,
-				OBJ_19 /* Session */,
+				OBJ_19 /* Game */,
 				OBJ_25 /* Statics */,
 				OBJ_28 /* Utilities */,
 				OBJ_30 /* main.swift */,
@@ -1588,6 +1591,7 @@
 				OBJ_340 /* CasedEnum.swift in Sources */,
 				50A96EEC206CA8A000B7373C /* Event_PickKingpin.swift in Sources */,
 				OBJ_341 /* main.swift in Sources */,
+				503FBE9F206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

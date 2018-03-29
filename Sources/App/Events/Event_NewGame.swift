@@ -29,18 +29,25 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/// The characters that have already been chosen by other players.
 	var usedCharacters: [PlayerCharacter] = []
 	
+	var lastBaseMessage = ""
+	
 	/**
 	Send the initial message and set timers.
 	*/
 	override func execute() {
 		
 		// Set message contents
-		let inline = MarkupInline(withButtons: characterKey, tutorialKeyOff)
+		let inline = MarkupInline()
+		inline.addRow(sequence: characterKey)
+		inline.addRow(sequence: tutorialKeyOff)
 		
 		let message = """
 		You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.
-		You'll need at least two other friends in order to play.
+		This game is for 6-12 players.
 		"""
+		
+		lastBaseMessage = message
+		
 		
 		// Set routes
 		let tutorialToggle = RouteListen(pattern: "tutorial", type: .callbackQuery, action: tutorialSwitch)
@@ -55,27 +62,49 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		storedMessages["current_msg"] = startMsg
 		
 		
-		// Delay the warning message if we can
+		// Insert a warning message if possible
 		let warningDelay = Int(KingpinDefault.charSelectTime.unixTime - 25)
 		
-		_ = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
-			
-			// Build the message
-			var message = "You have 25 seconds left to join.\n\nPlayer List:\n"
-			for player in self.handle.players {
-				message += player.name + "\n"
+		if warningDelay > 40 {
+			_ = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
+				
+				// Build the message
+				var message = "You have 25 seconds left to join.\n\nPlayer List:\n"
+				self.lastBaseMessage = "You have 25 seconds left to join."
+				for player in self.handle.players {
+					message += player.name + "\n"
+				}
+				
+				self.clearInline()
+				
+				// Remove the inline prompt on the old message
+				let msg = self.storedMessages["current_msg"]!
+				self.request.sync.editCaption(messageID: msg.tgID,
+																			caption: msg.caption ?? "",
+																			markup: nil,
+																			chatID: self.tag.id)
+				
+				// Send the new message
+				self.storedMessages["current_msg"] = self.request.sync.sendMessage(message, markup: inline, chatID: self.tag.id)
 			}
 			
-			// Remove the inline prompt on the old message
-			let msg = self.storedMessages["current_msg"]!
-			self.request.sync.editCaption(messageID: msg.tgID,
-																		caption: msg.caption ?? "",
-																		markup: nil,
-																		chatID: self.tag.id)
+			_ = queue.action(delay: KingpinDefault.charSelectWarningTime,
+											 viewTime: 0.sec) {
+												
+				self.endCharacterSelection(clearInline: true)
+			}
 			
-			// Send the new message
-			self.storedMessages["current_msg"] = self.request.sync.sendMessage(message, markup: inline, chatID: self.tag.id)
 		}
+		
+		// If not possible, just delay the ending of this event.
+		else {
+			_ = queue.action(delay: KingpinDefault.charSelectTime,
+											 viewTime: 0.sec) {
+												
+				self.endCharacterSelection(clearInline: true)
+			}
+		}
+		
 	}
 	
 	/**
@@ -104,6 +133,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			
 			proxy.status = .joined
 			usedCharacters.append(proxy.char)
+			handle.players.append(proxy)
 			
 			// Work out how to assign the proxy
 			if handle.testMode == false {
@@ -144,7 +174,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		}
 		
 		// Setup the new message
-		var newMessage = currentMsg.text!
+		var newMessage = lastBaseMessage
 		newMessage += "\n\nPlayer List:"
 		
 		handle.players.forEach {
@@ -165,27 +195,29 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			
 			if handle.useTutorial == true {
 				tempInline.addRow(sequence: characterKey)
-				tempInline.addRow(sequence: tutorialKeyOff)
+				tempInline.addRow(sequence: tutorialKeyOn)
 				
 			} else {
 				tempInline.addRow(sequence: characterKey)
-				tempInline.addRow(sequence: tutorialKeyOn)
+				tempInline.addRow(sequence: tutorialKeyOff)
 			}
 			
 			newInline = tempInline
 		}
 		
 		// Edit the message
-		self.request.sync.editMessage(currentMsg.text ?? "Errr",
+		self.request.sync.editMessage(newMessage,
 																	messageID: currentMsg.tgID,
 																	inlineMessageID: nil,
 																	markup: newInline,
 																	chatID: tag.id)
 		
+		storedMessages["current_msg"]!.text = newMessage
+		
 		
 			
 		if reachedPlayerLimit == true {
-			endCharacterSelection()
+			endCharacterSelection(clearInline: false)
 		}
 		
 	}
@@ -243,8 +275,27 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/**
 	Ends the character selection phase.
 	*/
-	func endCharacterSelection() {
+	func endCharacterSelection(clearInline: Bool) {
+		
+		if clearInline == true {
+			self.clearInline()
+		}
+		
 		storedMessages.removeAll()
 		self.end(playerTrigger: nil, participants: nil)
+	}
+	
+	/**
+	Clears the inline keys of the current message.
+	*/
+	func clearInline() {
+		
+		let currentMsg = storedMessages["current_msg"]!
+		self.request.sync.editMessage(currentMsg.text ?? "Errr",
+																	messageID: currentMsg.tgID,
+																	inlineMessageID: nil,
+																	markup: nil,
+																	chatID: tag.id)
+		
 	}
 }

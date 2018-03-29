@@ -20,9 +20,17 @@ class PlayerSession: UserSession {
 	/// The proxy this player is in control of during a normal game.
 	var proxy: Player?
 	
+	/// The route used to select a character.
+	var characterRoute: RouteListen!
+	
 	override func postInit() {
 
-		/// BASIC ROUTE
+		/// ROUTING
+		self.characterRoute = RouteListen(name: "char_inline",
+																			pattern: PlayerCharacter.inlineKey.data,
+																			type: .inlineQuery,
+																			action: self.inlineCharacter)
+		
 		// Build the "base" router, used to filter out blank updates.
 		let baseClosure = { (update: Update) -> Bool in
 			
@@ -32,8 +40,7 @@ class PlayerSession: UserSession {
 			return true
 		}
 		
-		self.baseRoute = RouteManual(name: "base", handler: baseClosure)
-		
+		self.baseRoute = RouteManual(name: "base", handler: baseClosure, routes: characterRoute)
 		
 		/// ANTI-FLOOD
 		

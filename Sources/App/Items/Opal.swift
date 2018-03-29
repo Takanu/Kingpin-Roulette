@@ -9,7 +9,7 @@ import Foundation
 import TrashBoat
 import Pelican
 
-struct Opal: PointInstance {
+class Opal: PointInstance {
 	
 	// INHERITANCE
 	var value: PointValue
@@ -19,16 +19,38 @@ struct Opal: PointInstance {
 		return "???"
 	}
 	
-	init(initialAmount: PointValue) {
+	required init(initialAmount: PointValue) {
 		self.value = initialAmount
+		self.type = KingpinDefault.opal
 	}
 	
 	func changeAmount(_ change: PointValue) -> PointReceipt? {
-		return
+		
+		let oldValue = value
+		let newValue = value.intValue + change.intValue
+		self.value = .int(max(0, newValue))
+		
+		return PointReceipt(type: type,
+												amountBefore: oldValue,
+												amountAfter: self.value,
+												change: change)
 	}
 	
 	func changeAmount(_ units: PointUnit...) -> PointReceipt? {
-		return
+	
+		let oldValue = value
+		var newValue = value.intValue
+		
+		for unit in units {
+			newValue += unit.value.intValue
+		}
+		
+		self.value = .int(max(0, newValue))
+		
+		return PointReceipt(type: type,
+												amountBefore: oldValue,
+												amountAfter: self.value,
+												change: .int(newValue - oldValue.intValue))
 	}
 	
 	

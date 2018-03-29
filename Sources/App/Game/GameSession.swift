@@ -51,7 +51,7 @@ class GameSession: ChatSession {
 			return true
 		}
 		
-		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass)
+		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass, startTrigger)
 		
 		// ANTI-FLOOD
 		
@@ -77,7 +77,11 @@ class GameSession: ChatSession {
 			self.resolveHandle(handle)
 			
 			// If not, send a message, reset and quit out.
-			if self.players.count <= KingpinDefault.minimumPlayers {
+			if self.players.count < KingpinDefault.minimumPlayers {
+				
+				self.requests.sync.sendMessage("Not enough players, cancelling!",
+																			 chatID: self.tag.id)
+				
 				self.reset()
 				return
 			}
@@ -99,11 +103,24 @@ class GameSession: ChatSession {
 	func startScenario() {
 		
 		// Ask for a kingpin pick
-		
-		// Pass the vault around
-		
-		// INTERROGATE
-		
+		let handle = GameHandle(session: self)
+		let pickKingpin = EventContainer<GameHandle>(event: Event_PickKingpin.self)
+		pickKingpin.start(handle: handle) {
+			
+			self.resolveHandle(handle)
+			
+			// Pass the vault around
+			let vaultVisit = EventContainer<GameHandle>(event: Event_VaultVisit.self)
+			vaultVisit.start(handle: handle) {
+				
+				self.resolveHandle(handle)
+				
+				// INTERROGATE
+				let interrogate = EventContainer<GameHandle>(event: Event_VaultVisit.self)
+				interrogate.start(handle: handle, next: self.finishScenario)
+				
+			}
+		}
 	}
 	
 	/**
