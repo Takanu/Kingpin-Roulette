@@ -77,7 +77,10 @@ class Player: UserProxy {
 	var inlineVaultCards: [InlineResultArticle] = []
 	
 	
-	init(session: UserSession, userInfo: User, character: PlayerCharacter) {
+	// CALLBACK
+	var session_closeProxy: (() -> ())
+	
+	init(session: PlayerSession, userInfo: User, character: PlayerCharacter) {
 		self.tag = session.tag
 		self.userInfo = userInfo
 		
@@ -89,6 +92,7 @@ class Player: UserProxy {
 		self.username = userInfo.username
 		
 		self.char = character
+		self.session_closeProxy = session.closeProxy
 		
 		self.characterRoute = RouteListen(name: "char_inline",
 																			pattern: PlayerCharacter.inlineKey.data,
@@ -99,6 +103,8 @@ class Player: UserProxy {
 																	pattern: Vault.inlineKey.data,
 																	type: .inlineQuery,
 																	action: self.inlineVault)
+		
+		
 	}
 	
 	

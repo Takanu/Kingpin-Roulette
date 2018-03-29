@@ -49,7 +49,9 @@ class GameSession: ChatSession {
 		
 		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass)
 		
+		// ANTI-FLOOD
 		
+		// FILTER
 		
 		
 	}
@@ -60,8 +62,27 @@ class GameSession: ChatSession {
 	func startGame(_ update: Update) -> Bool {
 		
 		// Request players.
+		let handle = GameHandle(session: self)
+		let newGameEvent = EventContainer<GameHandle>(event: Event_NewGame.self)
+		newGameEvent.start(handle: handle) {
+			
+			// See if the game state changes allow us to start the game.
+			self.resolveHandle(handle)
+			
+			// If not, send a message, reset and quit out.
+			if self.players.count <= KingpinDefault.minimumPlayers {
+				self.reset()
+				return
+			}
+			
+			// If yes, start the scenario.
+			self.queue.action(delay: 2.sec, viewTime: 0.sec) {
+				self.startScenario()
+			}
+			
+		}
 		
-		// See if the game state changes allow us to start the game.
+		
 		
 		return true
 		
@@ -95,9 +116,19 @@ class GameSession: ChatSession {
 	}
 	
 	/**
-	Resets all game states.
+	Resets all game states and removes all proxies from each session.
 	*/
 	func reset() {
+		players.forEach {
+			$0.session_closeProxy()
+		}
+		
+		self.players = []
+		self.vault = Vault()
+		self.storedMessages.removeAll()
+		self.useTutorial = false
+		self.testMode = false
+		
 		
 	}
 }

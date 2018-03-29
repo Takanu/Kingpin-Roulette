@@ -39,4 +39,11 @@ class PlayerSession: UserSession {
 		
 	}
 	
+	/**
+	Removes the proxy from the player session.  Used in a proxy callback to avoid the need to store the session.
+	*/
+	func closeProxy() {
+		self.proxy = nil
+	}
+	
 }
