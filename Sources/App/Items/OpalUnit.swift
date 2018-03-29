@@ -12,29 +12,51 @@ import Pelican
 /**
 Defines an Opal unit that can be stored as an item as well as a point modifier.
 */
-
 struct OpalUnit: ItemRepresentible {
 	
+	// CONFORMANCE
 	var name: String
-	
 	var type: ItemTypeTag
-	
 	var description: String
 	
+	// EXTRAS
+	var pluralisedName: String
 	var unit: PointUnit
 	
 	
+	init(name: String, pluralisedName: String, type: ItemTypeTag, description: String, unitValue: PointValue) {
+		self.name = name
+		self.type = type
+		self.description = description
+		
+		self.pluralisedName = pluralisedName
+		self.unit = PointUnit(name: name,
+													pluralisedName: pluralisedName,
+													description: description,
+													type: KingpinDefault.opal,
+													value: unitValue)
+		
+	}
+	
 	
 	func getFullName() -> String {
-		<#code#>
+		return name
 	}
 	
 	func getInlineCard() -> InlineResultArticle {
-		<#code#>
+		return InlineResultArticle(id: "1",
+															 title: "\(unit.value.intValue) 💎 Opals",
+															 description: "A rare stone with enormous financial value.",
+															 contents: "",
+															 markup: nil)
 	}
 	
 	func clone() -> ItemRepresentible {
-		<#code#>
+		return OpalUnit(name: self.name,
+										pluralisedName: self.pluralisedName,
+										type: self.type,
+										description: self.description,
+										unitValue: unit.value)
 	}
 	
 	

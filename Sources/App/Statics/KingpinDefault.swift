@@ -21,10 +21,17 @@ struct KingpinDefault {
 	/// The maximum number of players that can play the game.
 	static var maximumPlayers = 12
 	
+	/// The valuable that can be stolen as an item type.
+	static var opalItemTag = ItemTypeTag(name: "Opal",
+																		symbol: "💎",
+																		pluralisedName: "Opals",
+																		routeName: "Opal",
+																		description: "The valuable that can be stolen and that the Kingpin needs to retrieve.")
+	
 	/// The valuable that can be stolen and that the Kingpin needs to retrieve.
 	static var opal = PointType(name: "Opal",
 															pluralisedName: "Opals",
-															symbol: 💎,
-															instance: Opal)
+															symbol: "💎",
+															instance: Opal.self)
 	
 }

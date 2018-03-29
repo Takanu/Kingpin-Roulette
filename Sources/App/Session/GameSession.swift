@@ -19,6 +19,10 @@ class GameSession: ChatSession {
 	Only the player currently at the vault can see what's inside it. */
 	var vault = Vault()
 	
+	// SPECIALS
+	/// If yes, test mode has been intiated which allows you to play as all the roles at once.
+	private(set) var testMode: Bool = false
+	
 	override func postInit() {
 		
 		

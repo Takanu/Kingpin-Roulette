@@ -66,21 +66,37 @@ class Player: UserProxy {
 	/// The role the player is.
 	var role: KingpinRole?
 	
+	/// The route used to select a character.
+	var characterRoute: RouteListen!
+	
 	/** The vault route, that lets a player either view the vault if they are in front of it or view their
 	current role (if they have selected one).  */
-	var vaultRoute: RouteListen
+	var vaultRoute: RouteListen!
+	
+	/// The cards routed to the player for viewing when they click on the vault inline key.
+	var inlineVaultCards: [InlineResultArticle] = []
 	
 	
-	init(session: UserSession) {
+	init(session: UserSession, userInfo: User) {
 		self.tag = session.tag
-		self.userInfo = session.info
+		self.userInfo = userInfo
 		
 		self.baseRoute = session.baseRoute
 		self.request = session.requests
 		self.id = session.tag.id
-		self.firstName = session.info.firstName
-		self.lastName = session.info.lastName
-		self.username = session.info.username
+		self.firstName = userInfo.firstName
+		self.lastName = userInfo.lastName
+		self.username = userInfo.username
+		
+		self.characterRoute = RouteListen(name: "char_inline",
+																			pattern: PlayerCharacter.inlineKey.data,
+																			type: .inlineQuery,
+																			action: self.inlineCharacter)
+		
+		self.vaultRoute = RouteListen(name: "vault_inline",
+																	pattern: Vault.inlineKey.data,
+																	type: .inlineQuery,
+																	action: self.inlineVault)
 	}
 	
 	
@@ -92,7 +108,12 @@ class Player: UserProxy {
 	}
 	
 	func isEqualTo(_ other: UserProxy) -> Bool {
-		<#code#>
+		if self.tag != other.tag { return false }
+		if self.firstName != other.firstName { return false }
+		if self.lastName != other.lastName { return false }
+		if self.username != other.username { return false }
+		
+		return true
 	}
 	
 	

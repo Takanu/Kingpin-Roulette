@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Pelican
 
 /**
 The character types that can be selected, which affect
@@ -28,4 +29,6 @@ enum PlayerCharacter: String, CasedEnum {
 	var description: String {
 		return rawValue
 	}
+	
+	static var inlineKey = MarkupInlineKey(fromCallbackData: "char_select", text: "Select Character")!
 }
