@@ -22,6 +22,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	/// The key used to ask players if they want to be the kingpin
 	let kingpinRequestKey = MarkupInlineKey(fromCallbackData: "kingpin_req", text: "Nominate Yourself")!
 	
+	
 	/// The message text used for the request
 	let message = """
 	The long lasting ruler of the criminal underworld is dead, and it demands a new *Kingpin*.
@@ -34,6 +35,14 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
 	// Present the dliemna and ask for a player selection
 	override func execute() {
+		
+		// If the tutorial is on, try to build up the scenario a little
+		if handle.useTutorial == true {
+			
+			
+		}
+		
+		
 		
 		// Setup a route for receiving kingpin requests
 		let kingpinRequest = RouteListen(name: "kingpin", pattern: kingpinRequestKey.data, type: .callbackQuery, action: receiveKingpinRequest)

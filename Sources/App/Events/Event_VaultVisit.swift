@@ -18,6 +18,8 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 																			 pluralisedName: "Kingpin Event",
 																			 description: "oh hey, it's an event.")
 	
+	var visitorsLeft: [Player] = []
+	
 	// Present the dliemna and ask for a player selection
 	override func execute() {
 		
@@ -31,11 +33,31 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		handle.players = newPlayerOrder
 		
-		// Ask the kingpin to have a look and confirm they have indeed taken a look.
+		// If the tutorial is on, build up the scenario so people know what to expect.
+		if handle.useTutorial == true {
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	func visitVault() {
+		
+		// If we've been called but no-one is left to visit the vault, exit.
+		if visitorsLeft.count == 0 {
+			concludeVisit()
+		}
 		
 		// Go through each player in the list and let them look and choose.
 		
-		// Return!
+		// If the kingpin is asked to have a look, change the framing of the visit.
+		
+	}
+	
+	func concludeVisit() {
 		
 	}
 }
