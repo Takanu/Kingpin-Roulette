@@ -95,7 +95,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		// INTRO
 		
 		var entrance1 = """
-		The new Kingpin gathers the elite circle and entrusts duties of watching over the Vault in turn.
+		The new Kingpin gathers the elite circle and entrusts duties of watching over the Vault in a specific order.
 
 		👑 \(handle.kingpin!.name) 👑
 		
@@ -140,7 +140,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// If they are the kingpin, just cycle back here after 20 seconds.
 		if vaultVisitor!.role?.definition == .kingpin {
-			handle.vault.newRequest(newViewer: vaultVisitor!, next: nil)
+			handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: true, next: nil)
 			
 			var kingpinVisit1 = ""
 			var kingpinVisit2 = ""
@@ -177,7 +177,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			queue.message(delay: 2.sec,
 										viewTime: 9.sec,
 										message: kingpinVisit2,
-										markup: nil,
+										markup: inlineVault,
 										chatID: tag.id)
 			
 			queue.action(delay: 25.sec,
@@ -192,15 +192,17 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// If not, send a different message with a request callback.
 		else {
-			handle.vault.newRequest(newViewer: vaultVisitor!, next: receiveSelection)
+			handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: true, next: receiveSelection)
 			
 			let otherVisit = """
 			It is \(vaultVisitor!.name)'s turn to watch over the Vault.
 			"""
 			
-			request.async.sendMessage(otherVisit,
-																markup: inlineVault,
-																chatID: tag.id)
+			queue.message(delay: 2.sec,
+										viewTime: 9.sec,
+										message: otherVisit,
+										markup: inlineVault,
+										chatID: tag.id)
 			
 			/// The player has to make a move, do not move on until they have chosen.
 //			queue.action(delay: 30.sec,
@@ -211,12 +213,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Receive a selection a player has made and ask the next player to visit the vault.
 	*/
 	func receiveSelection(item: ItemRepresentible) {
-		
 		
 		// Remove the item from the valuables or roles list.
 		if let item = handle.vault.roles.removeItem(item) {
@@ -243,10 +245,62 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		handle.vault.resetRequest()
 		queue.clear()
+		
+		
+		// If the first visitor is on patrol, they also need to remove an item.
+		
+		if visitorsLeft.count == handle.players.count - 1 {
+			queue.action(delay: 3.sec,
+								 viewTime: 0.sec,
+								 action: removeVaultItem)
+		}
+		
+		// Otherwise they don't!
+			
+		else {
+			queue.action(delay: 3.sec,
+									 viewTime: 0.sec,
+									 action: completeOtherVisit)
+		}
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Requested from the first player, after they pick an item to keep.
+	*/
+	func removeVaultItem() {
+		
+		handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: false, next: receiveRemovalSelection)
+		
+		let otherVisit = """
+		To avoid being identified, they remove something else from the vault
+		"""
+		
+		queue.message(delay: 2.sec,
+									viewTime: 7.sec,
+									message: removeVaultItem,
+									markup: nil,
+									chatID: tag.id)
+		
+	}
+	
+	func receiveRemovalSelection(item: ItemRepresentible) {
+		
+		// Remove the item from the valuables or roles list.
+		if handle.vault.roles.removeItem(item) == nil {
+			
+			let opalsStolen = item as! OpalUnit
+			let opalValue = opalsStolen.unit.value.intValue
+			handle.vault.valuables.changeCurrency(opalsStolen.unit.type, change: .int(opalValue * -1))
+		}
+		
 		queue.action(delay: 3.sec,
 								 viewTime: 0.sec,
 								 action: completeOtherVisit)
+		
 	}
+	
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -279,7 +333,6 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Complete another player's visit.
 	*/

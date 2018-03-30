@@ -60,7 +60,7 @@ class Vault: Route {
 	/**
 	Defines a new player as the viewer of the vault, setting up their routes to be able to see the vault.
 	*/
-	func newRequest(newViewer: Player, next: ((ItemRepresentible) -> ())? ) {
+	func newRequest(newViewer: Player, includeOpals: Bool, next: ((ItemRepresentible) -> ())? ) {
 		
 		resetRequest()
 		
@@ -71,13 +71,13 @@ class Vault: Route {
 		
 		// If this is just for the kingpin, we just need to get some cards and give them to him with no routing.
 		if newViewer.role?.definition == .kingpin {
-			vaultContents = generateKingpinVaultView()
+			vaultContents = generateKingpinVaultView(includeOpals: includeOpals)
 			
 		}
 		
 		// If it's for anyone else, we need to generate a set of cards but also open message routing.
 		else {
-			vaultContents = generateVaultView()
+			vaultContents = generateVaultView(includeOpals: includeOpals)
 			
 		}
 		
@@ -136,7 +136,7 @@ class Vault: Route {
 	
 	- warning: Do not use this for the Kingpin, as this list includes selections for taking certain quantities of Opals.
 	*/
-	func generateVaultView() -> [VaultResult] {
+	func generateVaultView(includeOpals: Bool) -> [VaultResult] {
 		
 		// Create an id counter and result dictionary
 		var id = 1
@@ -156,35 +156,39 @@ class Vault: Route {
 			cardSet.append((roleItems[i], card))
 		}
 		
-		// Generate a list of choices when taking opals.
-		guard let opalCount = valuables[KingpinDefault.opal] else {
-			circuitBreaker("Vault - Opals Couldnt Be Found! D:")
-			return []
-		}
 		
-		let opalMax = max(min(5, opalCount.intValue), 0)
-		for i in 1...opalMax {
+		// Generate a list of choices when taking opals.
+		if includeOpals == true {
 			
-			var name = ""
-			if i > 1 {
-				name = "\(i) Opal"
-			} else {
-				name = "\(i) Opals"
+			guard let opalCount = valuables[KingpinDefault.opal] else {
+				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
+				return []
 			}
 			
-			let opalUnit = OpalUnit(name: name,
-															pluralisedName: name,
-															type: KingpinDefault.opalItemTag,
-															description: name,
-															unitValue: .int(i))
-			
-			let newOpalCard = InlineResultArticle(id: "\(id)",
-																						title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
-																						description: KingpinRoles.thief.description,
-																						contents: "*something secret* (⌐■_■)",
-																						markup: nil)
-			cardSet.append((opalUnit, newOpalCard))
-			id += 1
+			let opalMax = max(min(5, opalCount.intValue), 0)
+			for i in 1...opalMax {
+				
+				var name = ""
+				if i > 1 {
+					name = "\(i) Opal"
+				} else {
+					name = "\(i) Opals"
+				}
+				
+				let opalUnit = OpalUnit(name: name,
+																pluralisedName: name,
+																type: KingpinDefault.opalItemTag,
+																description: name,
+																unitValue: .int(i))
+				
+				let newOpalCard = InlineResultArticle(id: "\(id)",
+					title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
+					description: KingpinRoles.thief.description,
+					contents: "*something secret* (⌐■_■)",
+					markup: nil)
+				cardSet.append((opalUnit, newOpalCard))
+				id += 1
+			}
 		}
 		
 		
@@ -197,7 +201,7 @@ class Vault: Route {
 	/**
 	Generates a simpler list of the current vault contents for the kingpin to inspect.
 	*/
-	func generateKingpinVaultView() -> [VaultResult] {
+	func generateKingpinVaultView(includeOpals: Bool) -> [VaultResult] {
 	
 		// Create an id counter and result dictionary
 		var id = 1
@@ -217,33 +221,39 @@ class Vault: Route {
 			cardSet.append((itemInfo[i], card))
 		}
 		
+		
+		
 		// Generate the total number of opals left as a card.
-		guard let opalCount = valuables[KingpinDefault.opal] else {
-			circuitBreaker("Vault - Opals Couldnt Be Found! D:")
-			return []
+		if includeOpals == true {
+			
+			guard let opalCount = valuables[KingpinDefault.opal] else {
+				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
+				return []
+			}
+			
+			var opalItemName = ""
+			if opalCount.intValue > 1 {
+				opalItemName = "\(opalCount) Opal"
+			} else {
+				opalItemName = "\(opalCount) Opals"
+			}
+			
+			let opalUnit = OpalUnit(name: opalItemName,
+															pluralisedName: opalItemName,
+															type: KingpinDefault.opalItemTag,
+															description: opalItemName,
+															unitValue: .int(opalCount.intValue))
+			
+			let newOpalCard = InlineResultArticle(id: "\(id)",
+				title: "\(opalCount.intValue) 💎 Opals.",
+				description: "A rare and highly sought after item.",
+				contents: KingpinDefault.fakeInlineContentMsg,
+				markup: nil)
+			
+			// Return the new set.
+			cardSet.append((opalUnit, newOpalCard))
 		}
 		
-		var opalItemName = ""
-		if opalCount.intValue > 1 {
-			opalItemName = "\(opalCount) Opal"
-		} else {
-			opalItemName = "\(opalCount) Opals"
-		}
-		
-		let opalUnit = OpalUnit(name: opalItemName,
-														pluralisedName: opalItemName,
-														type: KingpinDefault.opalItemTag,
-														description: opalItemName,
-														unitValue: .int(opalCount.intValue))
-		
-		let newOpalCard = InlineResultArticle(id: "\(id)",
-																					title: "\(opalCount.intValue) 💎 Opals.",
-																					description: "A rare and highly sought after item.",
-																					contents: KingpinDefault.fakeInlineContentMsg,
-																					markup: nil)
-		
-		// Return the new set.
-		cardSet.append((opalUnit, newOpalCard))
 		
 		return cardSet
 		
