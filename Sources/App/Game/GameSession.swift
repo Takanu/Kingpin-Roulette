@@ -11,12 +11,19 @@ import Pelican
 
 class GameSession: ChatSession {
 	
+	
 	// GAME STATE
 	/// The players currently participating in the game.
 	var players: [Player] = []
 	
 	/// The kingpin.
 	var kingpin: Player?
+	
+	/// The number of players that are out.  The key is their current status, so use proper english plz.
+	var eliminatedPlayers: [Player: String] = [:]
+	
+	/// The players that have won the game (obviously wont contain anything until the end).
+	var winningPlayers: [Player] = []
 	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
@@ -202,9 +209,12 @@ class GameSession: ChatSession {
 		
 		self.players = handle.players
 		self.kingpin = handle.kingpin
+		self.eliminatedPlayers = handle.eliminatedPlayers
+		self.winningPlayers	= handle.winningPlayers
 		
 		self.vault = handle.vault
 		self.storedMessages.removeAll()
+		self.storedEvents.removeAll()
 		
 		self.useTutorial = handle.useTutorial
 		self.testMode = handle.testMode
@@ -225,6 +235,8 @@ class GameSession: ChatSession {
 		
 		self.players = []
 		self.kingpin = nil
+		self.eliminatedPlayers = [:]
+		self.winningPlayers = []
 		
 		self.vault.resetRequest()
 		self.storedMessages.removeAll()

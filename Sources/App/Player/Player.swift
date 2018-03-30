@@ -12,7 +12,7 @@ import Pelican
 /**
 Defines a player of Kingpin Roulette.
 */
-class Player: UserProxy {
+class Player: UserProxy, Hashable, Equatable {
 	
 	// SESSION DATA
 	var tag: SessionTag
@@ -41,6 +41,11 @@ class Player: UserProxy {
 	var playerBrowseList: [UserProxy] = []
 	var itemSelect: [ItemTypeTag : [InlineResultArticle]] = [:]
 	var inlineResultTransforms: [String : ([InlineResultArticle]) -> ([InlineResultArticle])] = [:]
+	
+	// HASHABLE
+	public var hashValue: Int {
+		return id.hashValue ^ firstName.hashValue
+	}
 	
 	
 	// DESCRIPTION
@@ -144,5 +149,7 @@ class Player: UserProxy {
 		
 	}
 	
-	
+	static func == (lhs: Player, rhs: Player) -> Bool {
+		return lhs.isEqualTo(rhs)
+	}
 }
