@@ -30,6 +30,15 @@ struct KingpinDefault {
 	/// The time available for deciding if players want to be the Kingpin.
 	static var kingpinSelectTime = 20.sec
 	
+	/// The time alloted for interrogations
+	static var kingpinInterrogationTime = 300.sec
+	
+	/// The time where the first warning will be triggered.
+	static var kingpinInterrogationFirstWarning = 60.sec
+	
+	/// The time where the last warning will be triggered.
+	static var kingpinInterrogationLastWarning = 30.sec
+	
 	/// The valuable that can be stolen as an item type.
 	static var opalItemTag = ItemTypeTag(name: "Opal",
 																		symbol: "💎",

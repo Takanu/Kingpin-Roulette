@@ -80,7 +80,7 @@ class Player: UserProxy {
 	static var inlineKey = MarkupInlineKey(fromInlineQueryCurrent: "Players", text: "Interrogate Player")
 	
 	// CALLBACK
-	var session_closeProxy: (() -> ())
+	fileprivate var session_closeProxy: (() -> ())
 	
 	init(session: PlayerSession, userInfo: User, character: PlayerCharacter) {
 		self.tag = session.tag
@@ -104,11 +104,11 @@ class Player: UserProxy {
 		self.playerRoute = RouteListen(name: "player_inline",
 																	 pattern: Player.inlineKey.data,
 																	 type: .inlineQuery,
-																	 action: self.inlineVault)
+																	 action: self.inlinePlayerChoices)
 		
 		self.playerRoute.enabled = false
 		
-		self.baseRoute.addRoutes(vaultRoute)
+		self.baseRoute.addRoutes(vaultRoute, playerRoute)
 		self.baseRoute[["char_inline"]]?.enabled = false
 		
 		
@@ -135,7 +135,14 @@ class Player: UserProxy {
 		return true
 	}
 	
-	
+	/**
+	Resets all states relating to the owning session's properties and orders the session to drop the proxy.
+	*/
+	func close() {
+		self.baseRoute.removeRoutes(vaultRoute, playerRoute)
+		session_closeProxy()
+		
+	}
 	
 	
 }

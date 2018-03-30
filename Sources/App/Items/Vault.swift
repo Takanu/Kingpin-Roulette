@@ -43,7 +43,13 @@ class Vault: Route {
 	var vaultDisplay: [VaultResult]?
 	
 	
-	init() {
+	// ERROR HANDLING
+	var circuitBreaker: (String) -> ()
+	
+	
+	init(circuitBreaker: @escaping (String) -> ()) {
+		
+		self.circuitBreaker = circuitBreaker
 		
 		super.init(name: "vault_message", action: {P in return true})
 		self.roles.inlineCardTitle = "$name ($count left)"
@@ -109,7 +115,7 @@ class Vault: Route {
 			let card = option.card
 			
 			guard let content = card.content?.base as? InputMessageContent_Text else {
-				print("\(#line) \(#function) - Card content downcast failed during Vault handling.")
+				circuitBreaker("Vault - Card content downcast failed during Vault handling.")
 				return false
 			}
 			
@@ -138,7 +144,7 @@ class Vault: Route {
 		
 		// Get the list of items available from the inventory.
 		guard let roleCards = roles.getInlineCards(forType: KingpinRoles.type) else {
-			print("\(#line) \(#function) - Role Cards Couldnt Be Found! D:")
+			circuitBreaker("Vault - Role Cards Couldnt Be Found! D:")
 			return []
 		}
 		
@@ -152,7 +158,7 @@ class Vault: Route {
 		
 		// Generate a list of choices when taking opals.
 		guard let opalCount = valuables[KingpinDefault.opal] else {
-			print("\(#line) \(#function) - Opals Couldnt Be Found! D:")
+			circuitBreaker("Vault - Opals Couldnt Be Found! D:")
 			return []
 		}
 		
@@ -199,7 +205,7 @@ class Vault: Route {
 		
 		// Get the list of items available from the inventory.
 		guard let roleCards = roles.getInlineCards(forType: KingpinRoles.type) else {
-			print("\(#line) \(#function) - Role Cards Couldnt Be Found! D:")
+			circuitBreaker("Vault - Role Cards Couldnt Be Found! D:")
 			return []
 		}
 		
@@ -213,7 +219,7 @@ class Vault: Route {
 		
 		// Generate the total number of opals left as a card.
 		guard let opalCount = valuables[KingpinDefault.opal] else {
-			print("\(#line) \(#function) - Opals Couldnt Be Found! D:")
+			circuitBreaker("Vault - Opals Couldnt Be Found! D:")
 			return []
 		}
 		

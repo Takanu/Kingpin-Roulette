@@ -20,14 +20,28 @@ class GameSession: ChatSession {
 	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
-	var vault = Vault()
+	var vault: Vault!
 	
+	/// The number of lives/chances the kingpin has.  If they have no lives left, choosing anyone who isnt the player will cause them to lose the game.
+	var kingpinLives = 0
+	
+	
+	// STORAGE
 	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
 	var storedMessages: [String: Message] = [:]
+	
+	/// Schedules events stored on a temporary basis for update purposes.
+	var storedEvents: [String: ScheduleEvent] = [:]
+	
 	
 	// ROUTES
 	/// The player route, allowing another player to choose a player.
 	var playerRoute = PlayerRoute(inlineKey: Player.inlineKey)
+	
+	var eventRoute: RoutePass!
+	
+	var startRoute: RoutePass!
+	
 	
 	// SPECIALS
 	/// If true the tutorial has been enabled.
@@ -37,15 +51,22 @@ class GameSession: ChatSession {
 	private(set) var testMode: Bool = false
 	
 	
+	required init(bot: PelicanBot, tag: SessionTag, update: Update) {
+		
+		super.init(bot: bot, tag: tag, update: update)
+		
+		self.vault = Vault(circuitBreaker: self.circuitBreaker)
+		self.eventRoute = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
+		self.startRoute = RoutePass(name: "start_command", updateTypes: [.message, .callbackQuery, .inlineQuery], action: self.startGame)
+	}
+	
+	
 	/**
 	Initialise routes and any other core game elements before the start of the game.
 	*/
 	override func postInit() {
 		
 		// ROUTES
-		let eventPass = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
-		let startTrigger = RoutePass(name: "start_command", updateTypes: [.message, .callbackQuery, .inlineQuery], action: startGame)
-		
 		// Build the "base" router, used to filter out blank updates.
 		let baseClosure = { (update: Update) -> Bool in
 			
@@ -55,7 +76,7 @@ class GameSession: ChatSession {
 			return true
 		}
 		
-		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: eventPass, startTrigger, vault)
+		baseRoute = RouteManual(name: "base", handler: baseClosure, routes: playerRoute, eventRoute, startRoute, vault)
 		playerRoute.enabled = false
 		
 		
@@ -139,11 +160,24 @@ class GameSession: ChatSession {
 			
 			self.resolveHandle(handle)
 			
+			// FIXME - Ensure the kingpin was chosen.
+			if self.kingpin == nil {
+				self.circuitBreaker(message: "GameSession - A kingpin wasn't selected during the Kingpin phase.")
+			}
+			
+			
 			// Pass the vault around
 			let vaultVisit = EventContainer<GameHandle>(event: Event_VaultVisit.self)
 			vaultVisit.start(handle: handle) {
 				
 				self.resolveHandle(handle)
+				
+				
+				// FIXME - Ensure everyone has a role, or otherwise exit early.
+				if self.players.contains(where: {$0.role == nil }) == true {
+					self.circuitBreaker(message: "GameSession - Not everyone got a role to use")
+				}
+				
 				
 				// INTERROGATE
 				let interrogate = EventContainer<GameHandle>(event: Event_Interrogate.self)
@@ -186,18 +220,46 @@ class GameSession: ChatSession {
 		self.queue.clear()
 		
 		players.forEach {
-			$0.session_closeProxy()
+			$0.close()
 		}
 		
 		self.players = []
 		self.kingpin = nil
 		
-		self.vault = Vault()
+		self.vault.resetRequest()
 		self.storedMessages.removeAll()
+		self.storedEvents.removeAll()
 		
 		self.useTutorial = false
 		self.testMode = false
 		
+		
+	}
+	
+	
+	/**
+	CIRCUIT BREAKER - Ends the game immediately and reports a problem.
+	*/
+	func circuitBreaker(message: String) {
+		
+		baseRoute[["event"]]?.clearAll()
+		queue.clear()
+		
+		let errorMessage = """
+		`OH CRAP AN ERROR OCCURRED`
+		`=========================`
+		\(message)
+		`=========================`
+		
+		`RESETTING GAME`
+		"""
+		
+		queue.message(delay: 2.sec,
+									viewTime: 5.sec,
+									message: errorMessage,
+									chatID: tag.id)
+		
+		reset()
 		
 	}
 }

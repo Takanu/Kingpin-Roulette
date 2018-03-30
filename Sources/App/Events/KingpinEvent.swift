@@ -14,6 +14,10 @@ idk.
 */
 class KingpinEvent: Event<GameHandle> {
 	
+	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
 	var storedMessages: [String: Message] = [:]
+	
+	/// Schedules events stored on a temporary basis for update purposes.
+	var storedEvents: [String: ScheduleEvent] = [:]
 	
 }

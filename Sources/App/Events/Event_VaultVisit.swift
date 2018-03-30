@@ -91,7 +91,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		"""
 		
 		for player in handle.players {
-			entrance1 += "\n\(player.name)"
+			entrance1 += "\n>  \(player.name)"
 		}
 		
 		queue.message(delay: 1.sec,
@@ -143,18 +143,17 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			handle.vault.newRequest(newViewer: vaultVisitor!, next: receiveSelection)
 			
 			let otherVisit = """
-			It is \(vaultVisitor!.name)'s turn to protect the Vault.
-
-			(you have 30 seconds to pick an item from the Vault)
+			It is \(vaultVisitor!.name)'s turn to watch over the Vault.
 			"""
 			
 			request.async.sendMessage(otherVisit,
 																markup: inlineVault,
 																chatID: tag.id)
 			
-			queue.action(delay: 30.sec,
-									 viewTime: 0.sec,
-									 action: completeOtherVisit)
+			/// The player has to make a move, do not move on until they have chosen.
+//			queue.action(delay: 30.sec,
+//									 viewTime: 0.sec,
+//									 action: completeOtherVisit)
 		}
 		
 		
@@ -172,7 +171,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		}
 		
 		// If it's not a role, convert it to an opal and deduct the amount from the valuables.
-		if item.type == KingpinDefault.opalItemTag {
+		else if item.type == KingpinDefault.opalItemTag {
 			
 			let opalsStolen = item as! OpalUnit
 			let opalValue = opalsStolen.unit.value.intValue
@@ -183,7 +182,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		}
 		
 		else {
-			print("\(#line) \(#function) - Item was found, but couldn't be given to the player.")
+			handle.circuitBreaker("Event_VaultVisit - Item was found, but couldn't be given to the player.")
 			return
 		}
 		
@@ -200,7 +199,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		handle.vault.resetRequest()
 		
 		let vaultFinish = """
-		The Kingpin gets a good look at the Vault, and then passes on the responsibility to his most trusted allies.
+		The Kingpin gets a good look at the Vault, and passes on the responsibility to his most trusted allies.
 		"""
 		
 		request.async.sendMessage(vaultFinish,

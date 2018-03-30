@@ -18,6 +18,7 @@ class GameHandle: Handle {
 	var baseRoute: Route
 	var records: [EventRecord]
 	
+	
 	// GAME STATE
 	/// The players currently participating in the game.
 	var players: [Player]
@@ -29,8 +30,22 @@ class GameHandle: Handle {
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault
 	
+	/// The number of lives/chances the kingpin has.  If they have no lives left, choosing anyone who isnt the player will cause them to lose the game.
+	var kingpinLives = 0
+	
+	
+	// STORAGE
 	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
-	var storedMessages: [String: Message]
+	var storedMessages: [String: Message] = [:]
+	
+	/// Schedules events stored on a temporary basis for update purposes.
+	var storedEvents: [String: ScheduleEvent] = [:]
+	
+	
+	// ROUTES
+	/// The player route, allowing another player to choose a player.
+	var playerRoute: PlayerRoute
+	
 	
 	// SPECIALS
 	/// If true the tutorial has been enabled.
@@ -38,6 +53,10 @@ class GameHandle: Handle {
 	
 	/// If yes, test mode has been intiated which allows you to play as all the roles at once.
 	var testMode: Bool
+	
+	
+	// ERROR EXIT
+	private(set) var circuitBreaker: (String) -> ()
 	
 	init(session: GameSession) {
 		self.tag = session.tag
@@ -49,10 +68,13 @@ class GameHandle: Handle {
 		self.players = session.players
 		self.kingpin = session.kingpin
 		self.vault = session.vault
-		self.storedMessages = session.storedMessages
+		
+		self.playerRoute = session.playerRoute
 		
 		self.useTutorial = session.useTutorial
 		self.testMode = session.testMode
+		
+		self.circuitBreaker = session.circuitBreaker
 	}
 	
 	
