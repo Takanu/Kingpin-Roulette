@@ -27,11 +27,17 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	/// The Vault inline key, nicely wrapped into an InlineMarkup type.
 	var inlineVault = MarkupInline(withButtons: Vault.inlineKey)
 	
-	// Present the dliemna and ask for a player selection
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Present the dliemna and ask for a player selection
+	*/
 	override func execute() {
 		
 		/////////////////////
 		// STATE SETUP
+		
 		// Mix up the character order for everyone that isn't the Kingpin.
 		var tempPlayerContainer = handle.players
 		var newPlayerOrder: [Player] = []
@@ -47,34 +53,38 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		visitorsLeft.insert(handle.kingpin!, at: 0)
 		
 		
+		
 		//////////////////////
 		// TUTORIAL
+		
 		// If the tutorial is on, build up the scenario so people know what to expect.
 		if handle.useTutorial == true {
 			let tutorial1 = """
-			
+			With the leadership crisis fixed, the Kingpin's first order of business is deciding who will watch over the Vault.
+
+			The Vault is a main source of the organisation's riches and power, and contains within it a mythical resource known as \(KingpinDefault.opal.pluralisedName).
 			"""
 			
 			let tutorial2 = """
-			The vault is watched over on a regular basis by the Kingpin's most loyal partners in crime.
+			With no-one else to trust, the Kingpin turns to the elite circle they were once a part of to watch over it.
 			"""
 			
 			let tutorial3 = """
-			The Kingpin however is about to find out that their trust was greatly mis-placed.
+			Much like the previous Kingpin however, they are about to find out that their trust was greatly mis-placed.
 			"""
 			
 			queue.message(delay: 1.sec,
-										viewTime: 5.sec,
+										viewTime: 10.sec,
 										message: tutorial1,
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 5.sec,
+										viewTime: 6.sec,
 										message: tutorial2,
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 5.sec,
+										viewTime: 6.sec,
 										message: tutorial3,
 										chatID: tag.id)
 			
@@ -83,8 +93,9 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		//////////////////////
 		// INTRO
+		
 		var entrance1 = """
-		With the new Kingpin established, they gather the most loyal partners in crime to keep watch over the Vault.
+		The new Kingpin gathers the elite circle and entrusts duties of watching over the Vault in turn.
 
 		👑 \(handle.kingpin!.name) 👑
 		
@@ -106,6 +117,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Attempt to visit the vault, selecting the next person on the list of visitors and asking them to make a choice from the vault.
+	*/
 	func visitVault() {
 		
 		
@@ -118,25 +134,61 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		// Go through each player in the list and let them look and choose.
 		vaultVisitor = visitorsLeft.removeFirst()
 		
+		
+		//////////////////////
+		// KINGPIN
+		
 		// If they are the kingpin, just cycle back here after 20 seconds.
 		if vaultVisitor!.role?.definition == .kingpin {
 			handle.vault.newRequest(newViewer: vaultVisitor!, next: nil)
 			
-			let kingpinVisit = """
-			Before leaving the Vault's protection to everyone else, the Kingpin decides to personally make note of the valuables inside.
-
-			(you have 25 seconds to inspect the Vault, memorise everything it contains).
-			"""
+			var kingpinVisit1 = ""
+			var kingpinVisit2 = ""
 			
-			request.async.sendMessage(kingpinVisit,
-																markup: inlineVault,
-																chatID: tag.id)
+			if handle.useTutorial == true {
+				kingpinVisit1 = """
+				Before leaving the Vault's protection to their elite circle, the Kingpin decides to personally make note of the valuables inside.
+
+				The kingpin receives an anonymous tip that the people they trusted have a hidden agenda.
+				"""
+				
+				kingpinVisit2 = """
+				The Kingpin studies this information and the Vault carefully.
+
+				(you have 25 seconds to view this information, remember it!).
+				"""
+				
+				queue.message(delay: 2.sec,
+											viewTime: 7.sec,
+											message: kingpinVisit1,
+											markup: nil,
+											chatID: tag.id)
+			}
+			
+			else {
+				kingpinVisit2 = """
+				The Kingpin receives an anonymous tip that the elite circle has hidden agendas.  They study the information and the vault carefully.
+
+				(you have 25 seconds to view this information, remember it!).
+				"""
+				
+			}
+			
+			queue.message(delay: 2.sec,
+										viewTime: 9.sec,
+										message: kingpinVisit2,
+										markup: nil,
+										chatID: tag.id)
 			
 			queue.action(delay: 25.sec,
 									 viewTime: 0.sec,
 									 action: completeKingpinVisit)
 			
 		}
+			
+			
+		//////////////////////
+		// OTHER PLAYERS
 		
 		// If not, send a different message with a request callback.
 		else {
@@ -159,7 +211,10 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
-	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Receive a selection a player has made and ask the next player to visit the vault.
+	*/
 	func receiveSelection(item: ItemRepresentible) {
 		
 		
@@ -193,13 +248,16 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 								 action: completeOtherVisit)
 	}
 	
-	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Complete the Kingpin's visit.
+	*/
 	func completeKingpinVisit() {
 		self.queue.clear()
 		handle.vault.resetRequest()
 		
 		let vaultFinish = """
-		The Kingpin gets a good look at the Vault, and passes on the responsibility to his most trusted allies.
+		The Kingpin finishes their inspection and passes on the responsibility to their most trusted allies.
 		"""
 		
 		request.async.sendMessage(vaultFinish,
@@ -221,12 +279,16 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Complete another player's visit.
+	*/
 	func completeOtherVisit() {
 		self.queue.clear()
 		handle.vault.resetRequest()
 		
 		let vaultFinish = """
-		\(vaultVisitor!.name) has finished keeping watch of the vault.
+		\(vaultVisitor!.name)'s time to watch the vault is now over.
 		"""
 		
 		request.async.sendMessage(vaultFinish,
@@ -239,6 +301,10 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Conclude the visit and exit.
+	*/
 	func concludeVisit() {
 		
 		queue.action(delay: 5.sec,

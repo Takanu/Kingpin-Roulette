@@ -149,7 +149,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 																				showAlert: true)
 			
 			// Update the message.
-			var newMessage = message
+			var newMessage = kingpinRequestMsg
 			newMessage += "\n\nCandidates:"
 			
 			for suitor in suitors {
