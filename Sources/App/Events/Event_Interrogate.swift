@@ -137,6 +137,12 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Get the Kingpin's choice
 		let result = handle.playerRoute.getResults()
+		
+		if result.count == 0 {
+			handle.circuitBreaker("Event_Interrogate - Expected to receive a player selection, but got nothing")
+			return
+		}
+		
 		if result[0].choice == nil {
 			handle.circuitBreaker("Event_Interrogate - Vault route set, but no options available.")
 			return

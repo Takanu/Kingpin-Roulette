@@ -31,6 +31,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	
 	var lastBaseMessage = ""
 	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Send the initial message and set timers.
 	*/
@@ -42,6 +43,9 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		inline.addRow(sequence: tutorialKeyOff)
 		
 		let message = """
+		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and
+		settle your differences through a deadly interrogation game.
+		
 		You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.
 		This game is for 6-12 players.
 		"""
@@ -107,6 +111,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Handles character selections and player initialisation.
 	*/
@@ -162,6 +168,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		return true
 	}
 	
+	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Updates the latest join prompt with all current characters.
 	*/
@@ -222,6 +230,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Toggle the tutorial.
 	*/

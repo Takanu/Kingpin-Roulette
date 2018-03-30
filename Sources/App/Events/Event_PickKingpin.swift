@@ -24,42 +24,106 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
 	
 	/// The message text used for the request
-	let message = """
+	var kingpinRequestMsg = """
 	The long lasting ruler of the criminal underworld is dead, and it demands a new *Kingpin*.
 	"""
 	
 	/// The players that want to be the Kingpin.
 	var suitors: [Player] = []
 	
-	// Present the dliemna and ask for a player selection
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Present the dliemna and ask for a player selection
+	*/
 	override func execute() {
+		
+		/////////////////
+		// TUTORIAL
 		
 		// If the tutorial is on, try to build up the scenario a little
 		if handle.useTutorial == true {
 			
+			let tutorial1 = """
+			As members of the Kingpin's elite circle, you dominate the criminal underworld of the city and reap the rewards.
+
+			Your unwavering loyalty and success has put you at an elevated status almost on par with the Kingpin, so long as you continue to be valuable.
+			"""
+			
+			let tutorial2 = """
+			Unfortunately, the Kingpin is unaware of two things.
+			"""
+			
+			let tutorial3 = """
+			First, that not everyone here is loyal and that plots to steal from the Kingpin's immense fortunes or bring them to justice are afoot.
+			"""
+			
+			let tutorial4 = """
+			Secondly, that the Kingpin themself would meet an untimely due to forces outside his elite circle.
+			"""
+			
+			kingpinRequestMsg = """
+			To restore order to the organisation, one of you will need to take the Kingpin's place.
+			"""
+			
+			queue.message(delay: 2.sec,
+										viewTime: 9.sec,
+										message: tutorial1,
+										chatID: tag.id)
+			
+			queue.message(delay: 2.sec,
+										viewTime: 5.sec,
+										message: tutorial2,
+										chatID: tag.id)
+			
+			queue.message(delay: 2.sec,
+										viewTime: 7.sec,
+										message: tutorial3,
+										chatID: tag.id)
+			
+			queue.message(delay: 2.sec,
+										viewTime: 6.sec,
+										message: tutorial4,
+										chatID: tag.id)
 			
 		}
 		
 		
 		
-		// Setup a route for receiving kingpin requests
-		let kingpinRequest = RouteListen(name: "kingpin", pattern: kingpinRequestKey.data, type: .callbackQuery, action: receiveKingpinRequest)
-		baseRoute[["event"]]?.addRoutes(kingpinRequest)
 		
-		// Make the inline key set
-		let inline = MarkupInline(withButtons: kingpinRequestKey)
+		/////////////////
+		// SETUP
 		
-		// Ask who wants to be the kingpin
-		storedMessages["kingpin_req"] = request.sync.sendMessage(message,
-																														 markup: inline,
-																														 chatID: tag.id)
+		queue.action(delay: 2.sec, viewTime: 0.sec) {
 		
-		// Delay an event to finish the request
-		queue.action(delay: KingpinDefault.kingpinSelectTime, viewTime: 0.sec, action: chooseKingpin)
-		
+			// Setup a route for receiving kingpin requests
+			let kingpinRequest = RouteListen(name: "kingpin",
+																			 pattern: self.kingpinRequestKey.data,
+																			 type: .callbackQuery,
+																			 action: self.receiveKingpinRequest)
+			
+			self.baseRoute[["event"]]?.addRoutes(kingpinRequest)
+			
+			// Make the inline key set
+			let inline = MarkupInline(withButtons: self.kingpinRequestKey)
+			
+			// Ask who wants to be the kingpin
+			self.storedMessages["kingpin_req"] = self.request.sync.sendMessage(self.kingpinRequestMsg,
+																																				 markup: inline,
+																																				 chatID: self.tag.id)
+			
+			// Delay an event to finish the request
+			self.queue.action(delay: KingpinDefault.kingpinSelectTime,
+												viewTime: 0.sec,
+												action: self.chooseKingpin)
+			
+		}
 		
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Receive a request from someone to become the kingpin.
+	*/
 	func receiveKingpinRequest(_ update: Update) -> Bool {
 		
 		// Validate contents
@@ -108,6 +172,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		return true
 	}
 	
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Finish the candidacy process and select a new Kingpin.
+	*/
 	func chooseKingpin() {
 		
 		// Close the route and remove the inline button
@@ -123,9 +192,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		
 		var announcement1 = ""
 		var announcement2 = ""
+		var firstMessageDelay = 4.sec
 		
 		
-		// If at least one person nominated themselves, do this
+		// ONE PERSON NOMINATION
+		
 		if suitors.count == 1 {
 		
 			// Pick a Kingpin and let the players know.
@@ -135,7 +206,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			handle.players.remove(at: index)
 		
 			announcement1 = """
-			Through a series of unfortunate events, only one candidate remained as the new king of the criminal underworld...
+			Through a series of unfortunate events, only one candidate remains as the new king of the criminal underworld...
 			"""
 		
 			announcement2 = """
@@ -144,8 +215,8 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 		
 		}
 		
+		// MULTIPLE NOMINATIONS
 			
-		// If multiple people wanted the top job
 		else if suitors.count > 1 {
 			
 			handle.kingpin = suitors.popRandom()!
@@ -153,8 +224,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			let index = handle.players.index(where: {$0.id == handle.kingpin!.id})!
 			handle.players.remove(at: index)
 			
+			
+			firstMessageDelay = 6.sec
+			
 			announcement1 = """
-			After an intense multi-step interview process, the new Kingpin of the criminal underworld is...
+			After an intense multi-step interview process by an independent consultation firm, the new Kingpin of the criminal underworld is...
 			"""
 			
 			announcement2 = """
@@ -163,25 +237,29 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			
 		}
 		
+		// NO NOMINATIONS
 			
-		// If no-one wanted the job, pick someone at random.
 		else {
 			
 			handle.kingpin = handle.players.popRandom()!
 			handle.kingpin!.role = KingpinRoles.kingpin
 			
+			firstMessageDelay = 8.sec
+			
 			announcement1 = """
-			With no-one to turn to and no candidates to replace them, the long lost heir to the throne was discovered to be...
+			With no-one to turn to and no candidates to replace them, everyone turns to the Kingpin's bloodline to find the long lost heir to the empire.
+			
+			After a difficult search it is revealed that
 			"""
 			
 			announcement2 = """
-			...\(handle.kingpin!.name)! 🎉
+			...\(handle.kingpin!.name) is the long lost heir! 🎉
 			"""
 			
 		}
 		
 		queue.message(delay: 2.sec,
-									viewTime: 4.sec,
+									viewTime: firstMessageDelay,
 									message: announcement1,
 									chatID: tag.id)
 		
