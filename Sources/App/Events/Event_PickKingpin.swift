@@ -54,11 +54,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial3 = """
-			First, that not everyone here is loyal and that plots to steal from the Kingpin's immense fortunes or bring them to justice are afoot.
+			First, that not everyone here is loyal, and many of you are plotting to steal from the Kingpin's immense fortune or bring them to justice as undercover police.
 			"""
 			
 			let tutorial4 = """
-			Secondly, that the Kingpin themself would meet an untimely due to forces outside his elite circle.
+			Secondly, that the Kingpin themselves would meet an untimely death.
 			"""
 			
 			kingpinRequestMsg = """
@@ -264,7 +264,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 									chatID: tag.id)
 		
 		queue.message(delay: 3.sec,
-									viewTime: 4.sec,
+									viewTime: 5.sec,
 									message: announcement2,
 									chatID: tag.id)
 		

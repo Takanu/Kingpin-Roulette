@@ -47,7 +47,7 @@ class GameSession: ChatSession {
 	
 	var eventRoute: RoutePass!
 	
-	var startRoute: RoutePass!
+	var startRoute: RouteCommand!
 	
 	
 	// SPECIALS
@@ -64,7 +64,7 @@ class GameSession: ChatSession {
 		
 		self.vault = Vault(circuitBreaker: self.circuitBreaker)
 		self.eventRoute = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
-		self.startRoute = RoutePass(name: "start_command", updateTypes: [.message, .callbackQuery, .inlineQuery], action: self.startGame)
+		self.startRoute = RouteCommand(name: "start_command", commands: "start", action: self.startGame)
 	}
 	
 	
@@ -207,7 +207,7 @@ class GameSession: ChatSession {
 		if players.count == 10 {
 			var itemCollection: [ItemRepresentible] = []
 			
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection.append(KingpinRoles.police)
 			itemCollection.append(KingpinRoles.spy)
 			itemCollection.append(KingpinRoles.assistant)
@@ -223,7 +223,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection.append(KingpinRoles.police)
 			itemCollection.append(KingpinRoles.spy)
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			
 			vault.roles.addItems(itemCollection)
 			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
@@ -233,7 +233,7 @@ class GameSession: ChatSession {
 		if players.count == 12 {
 			var itemCollection: [ItemRepresentible] = []
 			
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection.append(KingpinRoles.police)
 			itemCollection.append(KingpinRoles.spy)
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
@@ -289,6 +289,14 @@ class GameSession: ChatSession {
 	Announces the game results, everyone's roles and resets the game state.
 	*/
 	func finishScenario() {
+		queue.clear()
+		
+		// If we have no winners, just reset.
+		if winningPlayers.count == 0 {
+			reset()
+			return
+		}
+		
 		
 		// Build a final game list
 		var finalGameList = """
@@ -375,7 +383,10 @@ class GameSession: ChatSession {
 	*/
 	func reset() {
 		
-		self.baseRoute.clearAll()
+		startRoute.enabled = true
+		eventRoute.enabled = true
+		playerRoute.enabled = false
+		
 		self.queue.clear()
 		
 		players.forEach {

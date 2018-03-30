@@ -164,30 +164,32 @@ class Vault: Route {
 				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
 				return []
 			}
-			
 			let opalMax = max(min(5, opalCount.intValue), 0)
-			for i in 1...opalMax {
-				
-				var name = ""
-				if i > 1 {
-					name = "\(i) Opal"
-				} else {
-					name = "\(i) Opals"
+			
+			if opalMax > 0 {
+				for i in 1...opalMax {
+					
+					var name = ""
+					if i > 1 {
+						name = "\(i) Opal"
+					} else {
+						name = "\(i) Opals"
+					}
+					
+					let opalUnit = OpalUnit(name: name,
+																	pluralisedName: name,
+																	type: KingpinDefault.opalItemTag,
+																	description: name,
+																	unitValue: .int(i))
+					
+					let newOpalCard = InlineResultArticle(id: "\(id)",
+						title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
+						description: KingpinRoles.thief.description,
+						contents: "*something secret* (⌐■_■)",
+						markup: nil)
+					cardSet.append((opalUnit, newOpalCard))
+					id += 1
 				}
-				
-				let opalUnit = OpalUnit(name: name,
-																pluralisedName: name,
-																type: KingpinDefault.opalItemTag,
-																description: name,
-																unitValue: .int(i))
-				
-				let newOpalCard = InlineResultArticle(id: "\(id)",
-					title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
-					description: KingpinRoles.thief.description,
-					contents: "*something secret* (⌐■_■)",
-					markup: nil)
-				cardSet.append((opalUnit, newOpalCard))
-				id += 1
 			}
 		}
 		

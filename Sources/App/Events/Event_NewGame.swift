@@ -43,8 +43,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		inline.addRow(sequence: tutorialKeyOff)
 		
 		let message = """
-		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and
-		settle your differences through a deadly interrogation game.
+		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and settle your differences through a deadly interrogation game.
 		
 		You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.
 		This game is for 6-12 players.

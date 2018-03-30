@@ -23,10 +23,14 @@ struct KingpinRole: ItemRepresentible {
 	/// The basic vanilla description for the role, assumes it is being browsed or potentially selected.
 	var description: String
 	
-	init(role: KingpinRoleType, description: String) {
+	/// The informational description that tries to help players understand what their role is.
+	var roleGoals: String
+	
+	init(role: KingpinRoleType, description: String, roleGoals: String) {
 		self.definition = role
 		self.name = role.rawValue
 		self.description = description
+		self.roleGoals = roleGoals
 	}
 	
 	func getFullName() -> String {
@@ -42,6 +46,17 @@ struct KingpinRole: ItemRepresentible {
 															 description: description,
 															 contents: KingpinDefault.fakeInlineContentMsg,
 															 markup: nil)
+	}
+	
+	/**
+	Return a card that specifically helps the player in the interrogation phase to understand their purpose.
+	*/
+	func getInformationCard() -> InlineResultArticle {
+		return InlineResultArticle(id: "1",
+															 title: "Youre the \(name)",
+			description: roleGoals,
+			contents: KingpinDefault.fakeInlineContentMsg,
+			markup: nil)
 	}
 	
 	func clone() -> ItemRepresentible {

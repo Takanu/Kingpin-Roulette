@@ -34,7 +34,10 @@ struct KingpinDefault {
 	static var kingpinInterrogationTime = 300.sec
 	
 	/// The time where the first warning will be triggered.
-	static var kingpinInterrogationFirstWarning = 60.sec
+	static var kingpinInterrogationFirstWarning = 180.sec
+	
+	/// The time where the second warning will be triggered.
+	static var kingpinInterrogationSecondWarning = 60.sec
 	
 	/// The time where the last warning will be triggered.
 	static var kingpinInterrogationLastWarning = 30.sec

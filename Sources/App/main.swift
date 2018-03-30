@@ -29,7 +29,7 @@ pelican.addBuilder(playerBuilder)
 // Set initial Pelican properties
 pelican.ignoreInitialUpdates = true
 pelican.allowedUpdates = [.message, .callbackQuery, .inlineQuery, .chosenInlineResult]
-PLog.displayLogTypes = [.error, .info]
+PLog.displayLogTypes = [.error]
 
 // START IT UP!
 try pelican.boot()

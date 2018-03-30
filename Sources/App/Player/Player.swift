@@ -122,7 +122,7 @@ class Player: UserProxy, Hashable, Equatable {
 	
 	func getInlineCard(id: String) -> InlineResultArticle {
 		let title = self.plainName
-		let description = "Accuse \(name)."
+		let description = "Accuse \(self.plainName)."
 		let message = title
 		return InlineResultArticle(id: id,
 															 title: title,

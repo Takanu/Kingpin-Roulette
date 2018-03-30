@@ -14,5 +14,6 @@ enum KingpinRoleType: String {
 	case spy = "Spy"
 	case police = "Police"
 	case assistant = "Assistant"
-	case bountyHunter = "Bounty Hunter"
+	case rogue = "Rogue"
+	case accomplice = "Accomplice"
 }

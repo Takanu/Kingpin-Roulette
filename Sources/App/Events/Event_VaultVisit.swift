@@ -66,11 +66,17 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial2 = """
-			With no-one else to trust, the Kingpin turns to the elite circle they were once a part of to watch over it.
+			With no-one else to trust, the Kingpin turns to you to watch over the Vault in order.
 			"""
 			
 			let tutorial3 = """
-			Much like the previous Kingpin however, they are about to find out that their trust was greatly mis-placed.
+			Much like the previous Kingpin however, they are about to find out that their trust was greatly misplaced.
+
+			Almost half of you will choose a *role* that don't involve helping the Kingpin such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop.
+			"""
+			
+			let tutorial4 = """
+			The things you can take from the Vault will be shown when it's your turn to watch over it.
 			"""
 			
 			queue.message(delay: 1.sec,
@@ -84,7 +90,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 6.sec,
+										viewTime: 9.sec,
+										message: tutorial3,
+										chatID: tag.id)
+			
+			queue.message(delay: 5.sec,
+										viewTime: 9.sec,
 										message: tutorial3,
 										chatID: tag.id)
 			
@@ -148,14 +159,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			if handle.useTutorial == true {
 				kingpinVisit1 = """
 				Before leaving the Vault's protection to their elite circle, the Kingpin decides to personally make note of the valuables inside.
-
-				The kingpin receives an anonymous tip that the people they trusted have a hidden agenda.
 				"""
 				
 				kingpinVisit2 = """
 				The Kingpin studies this information and the Vault carefully.
 
-				(you have 25 seconds to view this information, remember it!).
+				(you have 25 seconds to view the available roles and , remember it!).
 				"""
 				
 				queue.message(delay: 2.sec,
@@ -169,7 +178,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 				kingpinVisit2 = """
 				The Kingpin receives an anonymous tip that the elite circle has hidden agendas.  They study the information and the vault carefully.
 
-				(you have 25 seconds to view this information, remember it!).
+				(\(handle.kingpin!.name) has 25 seconds to view this information, remember it!).
 				"""
 				
 			}
@@ -256,8 +265,17 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 								 viewTime: 0.sec,
 								 action: removeVaultItem)
 		}
+			
+		// If there's no leftover items or opals OR the last person is taking their turn, add the associate role.
 		
-		// Otherwise they don't!
+		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]?.intValue ?? 0 == 0)
+			|| visitorsLeft.count == 1 {
+			
+			handle.vault.roles.addItems([KingpinRoles.accomplice])
+			handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: true)
+		}
+		
+		// Complete the visit.
 			
 		else {
 			queue.action(delay: 3.sec,
@@ -276,13 +294,13 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: false, next: receiveRemovalSelection)
 		
 		let otherVisit = """
-		To avoid being identified, they remove something else from the vault
+		To avoid being identified, \(vaultVisitor!.name) removes something else from the vault...
 		"""
 		
 		queue.message(delay: 2.sec,
 									viewTime: 7.sec,
 									message: otherVisit,
-									markup: nil,
+									markup: inlineVault,
 									chatID: tag.id)
 		
 	}
@@ -297,7 +315,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			handle.vault.valuables.changeCurrency(opalsStolen.unit.type, change: .int(opalValue * -1))
 		}
 		
-		queue.action(delay: 3.sec,
+		queue.action(delay: 2.sec,
 								 viewTime: 0.sec,
 								 action: completeOtherVisit)
 		
@@ -329,7 +347,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 		}
 		
-		queue.action(delay: 5.sec,
+		queue.action(delay: 3.sec,
 								 viewTime: 0.sec,
 								 action: visitVault)
 		
@@ -350,7 +368,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 															markup: nil,
 															chatID: tag.id)
 		
-		queue.action(delay: 5.sec,
+		queue.action(delay: 3.sec,
 								 viewTime: 0.sec,
 								 action: visitVault)
 		

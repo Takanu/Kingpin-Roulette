@@ -32,7 +32,7 @@ extension Player {
 		// If we're not, see if we have an active role.  If so, tell them they aren't in front of the vault and what their role and purpose is.
 		if role != nil {
 			
-			let card = role!.getInlineCard()
+			let card = role!.getInformationCard()
 			
 			request.async.answerInlineQuery(queryID: String(update.id),
 																			results: [card],
