@@ -199,6 +199,10 @@ class GameSession: ChatSession {
 	*/
 	func finishScenario() {
 		
+		// Build a final game list
+		var finalGameList = ""
+		 
+		
 	}
 	
 	

@@ -196,6 +196,8 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			let otherVisit = """
 			It is \(vaultVisitor!.name)'s turn to watch over the Vault.
+			
+			(Take an item from the Vault)
 			"""
 			
 			queue.message(delay: 2.sec,
@@ -270,7 +272,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	Requested from the first player, after they pick an item to keep.
 	*/
 	func removeVaultItem() {
-		
+		queue.clear()
 		handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: false, next: receiveRemovalSelection)
 		
 		let otherVisit = """
@@ -279,7 +281,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		queue.message(delay: 2.sec,
 									viewTime: 7.sec,
-									message: removeVaultItem,
+									message: otherVisit,
 									markup: nil,
 									chatID: tag.id)
 		

@@ -23,12 +23,16 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	The Henchman stands up in front of the elites and makes a DECLARATION!
 	"""
 	
+	var playersLeft: [Player] = []
+	
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Start the interrogation proceedings!
 	*/
 	override func execute() {
+		
+		playersLeft = handle.players
 		
 		///////////////////////////
 		// TUTORIAL
@@ -51,7 +55,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// SETUP
 		// Give the kingpin the ability to accuse a player
 		handle.playerRoute.newRequest(selectors: [handle.kingpin!],
-																	targets: handle.players,
+																	targets: playersLeft,
 																	includeSelf: false,
 																	includeNone: false,
 																	next: receivePlayerSelection,
@@ -89,14 +93,20 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		(Kingpin, you have 5 minutes to choose who you think has stolen your Opals)
 
 		(Choose wisely)
+	
+		\(buildPlayerList())
 		"""
 		
 		let reminder2 = """
 		(You have \(Int(KingpinDefault.kingpinInterrogationFirstWarning.rawValue)) seconds left to make a choice)
+		
+		\(buildPlayerList())
 		"""
 		
 		let reminder3 = """
 		(You have \(Int(KingpinDefault.kingpinInterrogationLastWarning.rawValue)) seconds left to make a choice)
+		
+		\(buildPlayerList())
 		"""
 		
 		// Build the inline response.
@@ -134,6 +144,29 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 	}
 
+	/**
+	Builds and returns the player order.
+	*/
+	func buildPlayerList() -> String {
+		
+		var result = """
+		`		VAULT WATCH SCHEDULE		`
+		`===========================`
+		"""
+		
+		for player in handle.players {
+			
+			if playersLeft.contains(player) == true {
+				result += "\(player.name)\n"
+			}
+			
+			else {
+				result += "\(player.name) ☠️\n"
+			}
+		}
+		
+		return result
+	}
 	
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -365,7 +398,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 		/////////
 		// LOSE
-		// If they chose the Henchman, they kill them and retrieve the stolen Opals.
+		// If they chose the Thief, they kill them and retrieve the stolen Opals.
 		case .thief:
 			
 			let resultMsg = """
@@ -378,10 +411,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			// Declare them as dead and remove them from the player pool.
+			// Declare them as dead and remove them from the players left.
 			handle.eliminatedPlayers[kingpinChoice] = "Dead"
-			let index = handle.players.index(of: kingpinChoice)!
-			handle.players.remove(at: index)
+			let index = playersLeft.index(of: kingpinChoice)!
+			playersLeft.remove(at: index)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.retrieveOpals(pick: kingpinChoice) }
 		
@@ -465,9 +498,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 													 message: allThievesDead,
 													 chatID: self.tag.id)
 				
-				self.queue.action(delay: 3.sec, viewTime: 0.sec) {
-					self.end(playerTrigger: nil, participants: nil)
-				}
+				self.queue.action(delay: 3.sec, viewTime: 0.sec, action: kingpinWins)
 			}
 			
 			// Otherwise continue investigating.
@@ -501,10 +532,28 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		let pickRole = pick.role!.definition
 		
 		
+		// Ensure any dead players are removed and added to the status list
+		
+		for deadPerson in handle.players.filter({ playersLeft.contains($0) == false }) {
+			let index = handle.players.index(of: deadPerson)!
+			handle.players.remove(at: index)
+			handle.eliminatedPlayers[deadPerson] = "Dead"
+		}
+		
+		
+		
 		// If the picked player was the spy or police, they immediately win.
 		
 		if pickRole == .police || pickRole == .spy {
 			handle.winningPlayers.append(pick)
+			
+			let copsWin = """
+			! ! ! ! \(pick.name) wins! ! ! ! !
+			"""
+			self.queue.message(delay: 2.sec,
+												 viewTime: 5.sec,
+												 message: copsWin,
+												 chatID: self.tag.id)
 		}
 		
 			
@@ -521,14 +570,182 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			let bestThieves = handle.players.filter( { $0.points[KingpinDefault.opal]!.intValue == mostOpalsStolen } )
 			handle.winningPlayers.append(contentsOf: bestThieves)
+			
+			var thiefWin1 = ""
+			if bestThieves.count == 1 {
+				thiefWin1 = """
+				In the collapse of the great crime empire, one thief managed to escape and live a life of luxury.
+				
+				That thief was...
+				"""
+			} else {
+				thiefWin1 = """
+				In the collapse of the great crime empire, a few thieves managed to escape and live a life of luxury.
+				
+				Those thieves were...
+				"""
+			}
+			
+			let thiefWin2 = """
+			\(Player.getListText(bestThieves)) ! ! ! !
+			"""
+			
+			self.queue.message(delay: 2.sec,
+												 viewTime: 7.sec,
+												 message: thiefWin1,
+												 chatID: self.tag.id)
+			
+			self.queue.message(delay: 2.sec,
+												 viewTime: 5.sec,
+												 message: thiefWin2,
+												 chatID: self.tag.id)
 		}
 		
+		
+		
+		// Find any potential winning assistants.
+		
+		let assistants = findWinningAssistants()
+		if assistants != nil {
+			
+			handle.winningPlayers.append(contentsOf: assistants!)
+			
+			let assistantWin1 = """
+			Someone was secretly helping them!  They were...
+			"""
+			
+			let assistantWin2 = """
+			\(Player.getListText(assistants!)) ! ! ! !
+			"""
+			
+			self.queue.message(delay: 2.sec,
+												 viewTime: 5.sec,
+												 message: assistantWin1,
+												 chatID: self.tag.id)
+			
+			self.queue.message(delay: 2.sec,
+												 viewTime: 5.sec,
+												 message: assistantWin2,
+												 chatID: self.tag.id)
+			
+		}
+		
+		
+		// Before we end it, ensure that all winners are removed from the normal player queue.
+		
+		for winner in handle.winningPlayers {
+			
+			let index = handle.players.index(of: winner)!
+			_ = handle.players.remove(at: index)
+		}
+		
+		
+		// Remove the Kingpin
+		
+		handle.kingpin = nil
+		
+		
+		// Finish the game
+		
+		self.queue.action(delay: 3.sec, viewTime: 0.sec) {
+			self.end(playerTrigger: nil, participants: nil)
+		}
+	}
+	
+	
+	/**
+	If the kingpin wins, process celebrations \o/
+	*/
+	func kingpinWins() {
+		
+		queue.clear()
+		handle.playerRoute.resetRequest()
+		
+		handle.winningPlayers.append(handle.kingpin!)
+		
+		// Ensure any dead players are removed and added to the status list
+		
+		for deadPerson in handle.players.filter({ playersLeft.contains($0) == false }) {
+			let index = handle.players.index(of: deadPerson)!
+			handle.players.remove(at: index)
+			handle.eliminatedPlayers[deadPerson] = "Dead"
+		}
+		
+		
+		// Get a list of the minions and add them to the winning players list.
+		
+		let minions = handle.players.filter({$0.role!.definition == .henchman})
+		handle.winningPlayers.append(contentsOf: minions)
+		
+		
+		// Get a list of the assistants that also won.
+		
+		let assistants = findWinningAssistants() ?? []
+		handle.winningPlayers.append(contentsOf: assistants)
+		
+		
+		// Announce the big win.
+		
+		var crimeWin1 = """
+		While the rest fall silent, the Kingpin and their most loyal followers rejoyce!
+		
+		The minions were \(Player.getListText(minions))! ! ! !
+		"""
+		
+		if assistants.count != nil {
+			thiefWin1 += "\n\nThey were assisted by \(Player.getListText(assistants))! ! ! ! "
+		}
+		
+		self.queue.message(delay: 2.sec,
+											 viewTime: 8.sec,
+											 message: crimeWin1,
+											 chatID: self.tag.id)
+		
+		
+		// Remove the Kingpin from his position now that he's won <3
+		
+		handle.kingpin = nil
+		
+		
+		// Before we end it, ensure that all winners are removed from the normal player queue.
+		
+		for winner in handle.winningPlayers {
+			
+			let index = handle.players.index(of: winner)!
+			_ = handle.players.remove(at: index)
+		}
+		
+		
+		
+		// Finish the game
+		
+		self.queue.action(delay: 3.sec, viewTime: 0.sec) {
+			self.end(playerTrigger: nil, participants: nil)
+		}
+		
+	}
+	
+	/**
+	Try and find some winning assistants.
+	*/
+	func findWinningAssistants() -> [Player]? {
 		// If any assistants are in the game, work out if the player below them won.
+		let assistants = handle.players.filter( {$0.role!.definition == .assistant } )
+		var winningAssistants: [Player] = []
+		for assistant in assistants {
+			let assistIndex = handle.players.index(of: assistant)!
+			let playerBelow = handle.players[assistIndex]
+			
+			if handle.winningPlayers.contains(playerBelow) {
+				winningAssistants.append(assistant)
+			}
+		}
 		
-		
-		
-		self.end(playerTrigger: nil, participants: nil)
-		
+		if winningAssistants.count != nil {
+			return winningAssistants
+		} else {
+			return nil
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
