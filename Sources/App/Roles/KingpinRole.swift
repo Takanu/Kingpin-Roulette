@@ -60,7 +60,7 @@ struct KingpinRole: ItemRepresentible {
 	}
 	
 	func clone() -> ItemRepresentible {
-		return KingpinRole(role: definition, description: description)
+		return KingpinRole(role: definition, description: description, roleGoals: roleGoals)
 	}
 	
 	

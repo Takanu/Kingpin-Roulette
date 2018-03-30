@@ -110,6 +110,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 
 		👑 \(handle.kingpin!.name) 👑
 		
+		**Vault Watch Schedule:**
 		"""
 		
 		for player in handle.players {

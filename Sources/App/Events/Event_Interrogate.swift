@@ -174,6 +174,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		var result = """
 		👑 \(handle.kingpin!.name) 👑
 		
+		**Vault Watch Schedule:**
 		"""
 		
 		for player in handle.players {
@@ -381,7 +382,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		/////////
 		// LOSE
 		// If they chose the Bounty Hunter, they lose a life.
-		case .bountyHunter:
+		case .rogue:
 			
 			// NO LIVES
 			if handle.kingpinLives <= 0 {

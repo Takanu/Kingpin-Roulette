@@ -143,7 +143,7 @@ class GameSession: ChatSession {
 		if players.count < 6 {
 			var itemCollection: [ItemRepresentible] = []
 			
-			itemCollection.append(KingpinRoles.bountyHunter)
+			itemCollection.append(KingpinRoles.rogue)
 			itemCollection.append(KingpinRoles.henchman)
 			itemCollection.append(KingpinRoles.police)
 			itemCollection.append(KingpinRoles.spy)
