@@ -140,18 +140,109 @@ class GameSession: ChatSession {
 	*/
 	func populateVault() {
 		
-		if players.count == 0 { return }
+		if players.count < 6 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection.append(KingpinRoles.bountyHunter)
+			itemCollection.append(KingpinRoles.henchman)
+			itemCollection.append(KingpinRoles.police)
+			itemCollection.append(KingpinRoles.spy)
+			itemCollection.append(KingpinRoles.thief)
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+		}
 		
-		var itemCollection: [ItemRepresentible] = []
-		itemCollection.append(KingpinRoles.bountyHunter)
-		itemCollection.append(KingpinRoles.henchman)
-		itemCollection.append(KingpinRoles.police)
-		itemCollection.append(KingpinRoles.spy)
-		itemCollection.append(KingpinRoles.thief)
-		itemCollection.append(KingpinRoles.assistant)
 		
-		vault.roles.addItems(itemCollection)
-		vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+		if players.count == 6 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+		}
+		
+		
+		if players.count == 7 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+		}
+		
+		
+		if players.count == 8 {
+			var itemCollection: [ItemRepresentible] = []
+			let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy].getRandom!
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(randomArrestRole)
+			itemCollection.append(KingpinRoles.assistant)
+			
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(12))
+		}
+		
+		
+		if players.count == 9 {
+			var itemCollection: [ItemRepresentible] = []
+			let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy].getRandom!
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(randomArrestRole)
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(12))
+		}
+		
+		
+		if players.count == 10 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(KingpinRoles.police)
+			itemCollection.append(KingpinRoles.spy)
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+		}
+		
+		
+		if players.count == 11 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(KingpinRoles.police)
+			itemCollection.append(KingpinRoles.spy)
+			itemCollection.append(KingpinRoles.assistant)
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+		}
+		
+		
+		if players.count == 12 {
+			var itemCollection: [ItemRepresentible] = []
+			
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection.append(KingpinRoles.police)
+			itemCollection.append(KingpinRoles.spy)
+			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
+			
+			vault.roles.addItems(itemCollection)
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+		}
+		
+		
 		
 	}
 	
