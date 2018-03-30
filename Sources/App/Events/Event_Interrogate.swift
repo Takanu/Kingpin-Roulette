@@ -792,11 +792,13 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	Try and find some winning assistants.
 	*/
 	func findWinningAssistants() -> [Player]? {
+		
 		// If any assistants are in the game, work out if the player below them won.
 		let assistants = handle.players.filter( {$0.role!.definition == .assistant } )
 		var winningAssistants: [Player] = []
 		
-		for assistant in assistants {
+		// Used to search for Assistants if a tree-like pattern emerges
+		func searchCompanion(forAssistant assistant: Player) -> Player {
 			let assistIndex = handle.players.index(of: assistant)!
 			
 			var playerBelow: Player
@@ -806,7 +808,26 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				playerBelow = handle.players[assistIndex]
 			}
 			
-			if handle.winningPlayers.contains(playerBelow) {
+			return playerBelow
+		}
+		
+		
+		for assistant in assistants {
+			
+			var playerIn = assistant
+			var playerFound: Player? = nil
+			
+			while playerFound == nil || playerFound?.role?.definition == .assistant {
+				let result = searchCompanion(forAssistant: playerIn)
+				
+				if result.role!.definition == .assistant {
+					playerIn = result
+				} else {
+					playerFound = result
+				}
+			}
+			
+			if handle.winningPlayers.contains(playerFound!) {
 				winningAssistants.append(assistant)
 			}
 		}
