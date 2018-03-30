@@ -200,8 +200,62 @@ class GameSession: ChatSession {
 	func finishScenario() {
 		
 		// Build a final game list
-		var finalGameList = ""
-		 
+		var finalGameList = """
+		WINNERS!
+		===========
+		"""
+		
+		for winner in winningPlayers {
+			finalGameList += "\(winner.name) - \(winner.role!.name)\n"
+		}
+		finalGameList += "\n\n"
+		
+		
+		// Collect all those that got a status
+		var statusCollection: [String: [Player]] = [:]
+		
+		for mysteryPlayer in eliminatedPlayers {
+			
+			if statusCollection[mysteryPlayer.value] != nil {
+				statusCollection[mysteryPlayer.value]!.append(mysteryPlayer.key)
+			}
+			
+			else {
+				statusCollection[mysteryPlayer.value] = [mysteryPlayer.key]
+			}
+		}
+		
+		for status in statusCollection {
+			finalGameList += """
+			
+			\(status.key.uppercased())
+			===========
+			
+			"""
+			
+			for player in status.value {
+				finalGameList += "\(player.name) - \(player.role!.name)\n"
+			}
+		}
+		
+		// Add all those that are... fine here
+		finalGameList += """
+		
+		THE OTHERS
+		===========
+		
+		"""
+		
+		for player in players {
+			finalGameList += "\(player.name) - \(player.role!.name)\n"
+		}
+		
+		queue.message(delay: 1.sec,
+									viewTime: 5.sec,
+									message: finalGameList,
+									chatID: tag.id)
+		
+		queue.action(delay: 2.sec, viewTime: 0.sec, action: reset)
 		
 	}
 	

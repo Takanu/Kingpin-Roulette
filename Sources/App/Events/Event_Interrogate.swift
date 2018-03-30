@@ -93,7 +93,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		(Kingpin, you have 5 minutes to choose who you think has stolen your Opals)
 
 		(Choose wisely)
-	
+		
 		\(buildPlayerList())
 		"""
 		
@@ -498,7 +498,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 													 message: allThievesDead,
 													 chatID: self.tag.id)
 				
-				self.queue.action(delay: 3.sec, viewTime: 0.sec, action: kingpinWins)
+				self.queue.action(delay: 3.sec, viewTime: 0.sec, action: self.kingpinWins)
 			}
 			
 			// Otherwise continue investigating.
@@ -692,8 +692,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		The minions were \(Player.getListText(minions))! ! ! !
 		"""
 		
-		if assistants.count != nil {
-			thiefWin1 += "\n\nThey were assisted by \(Player.getListText(assistants))! ! ! ! "
+		if assistants.count != 0 {
+			crimeWin1 += "\n\nThey were assisted by \(Player.getListText(assistants))! ! ! ! "
 		}
 		
 		self.queue.message(delay: 2.sec,
