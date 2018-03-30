@@ -88,7 +88,9 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 																			chatID: self.tag.id)
 				
 				// Send the new message
-				self.storedMessages["current_msg"] = self.request.sync.sendMessage(message, markup: inline, chatID: self.tag.id)
+				self.storedMessages["current_msg"] = self.request.sync.sendMessage(message,
+																																					 markup: inline,
+																																					 chatID: self.tag.id)
 			}
 			
 			_ = queue.action(delay: KingpinDefault.charSelectWarningTime,

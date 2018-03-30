@@ -19,10 +19,10 @@ struct KingpinDefault {
 	static var minimumPlayers = 6
 	
 	/// The maximum number of players that can play the game.
-	static var maximumPlayers = 15
+	static var maximumPlayers = 12
 	
 	/// The starting length of time available to choose a character.
-	static var charSelectTime = 120.sec
+	static var charSelectTime = 150.sec
 	
 	/// The time left on the character select timer in order to trigger a reminder.
 	static var charSelectWarningTime = 25.sec

@@ -285,7 +285,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				let status = useLife()
 				
 				let resultMsg = """
-				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift as an apologise.
+				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
 
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
@@ -360,13 +360,13 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
 				
-				// SAFE
+			// SAFE
 			else {
 				
 				let status = useLife()
 				
 				let resultMsg = """
-				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift as an apologise.
+				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
 				
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
@@ -408,7 +408,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				let status = useLife()
 				
 				let resultMsg = """
-				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift as an apologise.
+				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
 				
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
@@ -450,7 +450,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				let status = useLife()
 				
 				let resultMsg = """
-				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift as an apologise.
+				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
 				
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
@@ -847,7 +847,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.clear()
 		
 		let nobodyWins1 = """
-		The kingpin suddenly clutches their chest before collapsing across the table
+		The kingpin suddenly clutches their chest before collapsing across the table.
 		
 		The Kingpin falls and the empire is in ruin.
 		"""
