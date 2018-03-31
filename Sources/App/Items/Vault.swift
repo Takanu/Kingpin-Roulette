@@ -164,7 +164,9 @@ class Vault: Route {
 				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
 				return []
 			}
-			let opalMax = max(min(5, opalCount.intValue), 0)
+			
+			// Work out what the maximum number of opals the player can pick is.
+			let opalMax = max(min(KingpinDefault.maxOpalTheft, opalCount.intValue), 0)
 			
 			if opalMax > 0 {
 				for i in 1...opalMax {

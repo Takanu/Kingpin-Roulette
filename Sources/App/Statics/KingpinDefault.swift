@@ -15,6 +15,11 @@ Contains statics on game pacing, text prompts, item types and more.
 
 struct KingpinDefault {
 	
+	/// The version number of the App
+	static var versionNumber = 1
+	
+	
+	// GAME START
 	/// The minimum number of players required to start the game.
 	static var minimumPlayers = 6
 	
@@ -27,9 +32,18 @@ struct KingpinDefault {
 	/// The time left on the character select timer in order to trigger a reminder.
 	static var charSelectWarningTime = 25.sec
 	
+	
+	// KINGPIN SELECTION
 	/// The time available for deciding if players want to be the Kingpin.
 	static var kingpinSelectTime = 25.sec
 	
+	
+	// VAULT VISIT
+	/// The maximum number of opals anyone can steal when visiting the vault.
+	static var maxOpalTheft = 15
+	
+	
+	// INTERROGATION TIME
 	/// The time alloted for interrogations
 	static var kingpinInterrogationTime = 300.sec
 	
@@ -42,6 +56,8 @@ struct KingpinDefault {
 	/// The time where the last warning will be triggered.
 	static var kingpinInterrogationLastWarning = 30.sec
 	
+	
+	// ITEMS
 	/// The valuable that can be stolen as an item type.
 	static var opalItemTag = ItemTypeTag(name: "Opal",
 																		symbol: "💎",

@@ -134,9 +134,29 @@ class GameSession: ChatSession {
 	*/
 	func populateVault() {
 		
-		if players.count < 6 {
-			var itemCollection: [ItemRepresentible] = []
+		
+		var itemCollection: [ItemRepresentible] = []
+		let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy]
+		
+		
+		// RANDOMISE OPALS
+		
+		func randomiseOpals(_ range: ClosedRange<Int>) -> Int {
 			
+			var possibilities: [Int] = []
+			let start = range.lowerBound
+			let diff = range.upperBound - start
+			for i in 0...diff {
+				possibilities.append(start + i)
+			}
+			
+			return possibilities.getRandom!
+		}
+		
+		
+		// BUILD VAULT
+		
+		if players.count < 6 {
 			itemCollection.append(KingpinRoles.rogue)
 			itemCollection.append(KingpinRoles.henchman)
 			itemCollection.append(KingpinRoles.police)
@@ -145,95 +165,78 @@ class GameSession: ChatSession {
 			itemCollection.append(KingpinRoles.assistant)
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
 		}
 		
 		
 		if players.count == 6 {
-			var itemCollection: [ItemRepresentible] = []
-			
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.assistant]
+			itemCollection += [randomArrestRole.getRandom!]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
 		}
 		
 		
 		if players.count == 7 {
-			var itemCollection: [ItemRepresentible] = []
-			
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.assistant]
+			itemCollection += [randomArrestRole.getRandom!]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(10))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
 		}
 		
 		
 		if players.count == 8 {
-			var itemCollection: [ItemRepresentible] = []
-			let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy].getRandom!
-			
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(randomArrestRole)
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.assistant]
+			itemCollection += [randomArrestRole.getRandom!]
 			
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(12))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
 		}
 		
 		
 		if players.count == 9 {
-			var itemCollection: [ItemRepresentible] = []
-			let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy].getRandom!
-			
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(randomArrestRole)
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.assistant]
+			itemCollection += [randomArrestRole.getRandom!]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(12))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(13...17)) )
 		}
 		
 		
 		if players.count == 10 {
-			var itemCollection: [ItemRepresentible] = []
-			
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(KingpinRoles.police)
-			itemCollection.append(KingpinRoles.spy)
-			itemCollection.append(KingpinRoles.assistant)
+			itemCollection += [KingpinRoles.assistant]
+			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(13...17)) )
 		}
 		
 		
 		if players.count == 11 {
-			var itemCollection: [ItemRepresentible] = []
-			
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(KingpinRoles.police)
-			itemCollection.append(KingpinRoles.spy)
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
+			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(14...17)) )
 		}
 		
 		
 		if players.count == 12 {
-			var itemCollection: [ItemRepresentible] = []
-			
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
-			itemCollection.append(KingpinRoles.police)
-			itemCollection.append(KingpinRoles.spy)
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
+			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
 			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(15))
+			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(15...18)) )
 		}
 		
 		
@@ -336,16 +339,41 @@ class GameSession: ChatSession {
 			"""
 			
 			for player in status.value {
-				finalGameList += "\(player.name) - \(player.role!.name)\n"
+				finalGameList += "\(player.name) - \(player.role!.name)"
+				
+				if player.role?.definition == .thief {
+					let stolenOpals = player.points[KingpinDefault.opal]?.intValue ?? 0
+					finalGameList += " (Stole \(stolenOpals))"
+				}
+				
+				finalGameList += "\n"
 			}
 			
 			finalGameList += "\n"
 		}
 		
 		
+		let creditsMsg = """
+		**Kingpin Roulette**
+		Version \(KingpinDefault.versionNumber)
+		
+		**Designed and developed by @takanu.**
+		**Based on the game Mafia De Cuba, designed by Philippe des Pallières and Loïc Lamy.**
+		
+		Thanks for trying out the game!
+		For feedback and further updates check out @takanubox or the @KingpinRoulette group.
+		You can also send me a private message at @takanu.
+		"""
+		
+		
+		queue.message(delay: 1.sec,
+									viewTime: 9.sec,
+									message: finalGameList,
+									chatID: tag.id)
+		
 		queue.message(delay: 1.sec,
 									viewTime: 5.sec,
-									message: finalGameList,
+									message: creditsMsg,
 									chatID: tag.id)
 		
 		queue.action(delay: 2.sec, viewTime: 0.sec, action: reset)
