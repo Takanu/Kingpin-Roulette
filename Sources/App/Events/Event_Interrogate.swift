@@ -63,6 +63,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 									message: interrogate2,
 									chatID: tag.id)
 		
+		// Build the vault once more for the Kingpin.
+		handle.vault.newRequest(newViewer: handle.kingpin!, includeOpals: true, next: nil)
+		
 		
 		// Request a player selection.
 		queue.action(delay: 3.sec, viewTime: 0.sec, action: requestPlayer)
@@ -125,7 +128,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Build the inline response.
 		let inline = MarkupInline()
-		let vaultKey = MarkupInlineKey(fromInlineQueryCurrent: Vault.inlineKey.data, text: "Check Your Role")
+		let vaultKey = MarkupInlineKey(fromInlineQueryCurrent: Vault.inlineKey.data, text: "Check Role/View Vauly")
 		inline.addRow(sequence: vaultKey)
 		inline.addRow(sequence: Player.inlineKey)
 		
@@ -611,7 +614,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// If not, find all the thieves and see who got the most Opals, then set them as the winner
 			
 		else {
-			let thieves = handle.players.filter( {$0.role!.definition == .thief } )
+			let thieves = handle.players.filter( {
+				$0.role!.definition == .thief &&
+					$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+			} )
 			
 			var mostOpalsStolen = 0
 			thieves.forEach { thief in
@@ -619,7 +625,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				if mostOpalsStolen < opals { mostOpalsStolen = opals }
 			}
 			
-			let bestThieves = handle.players.filter( { $0.points[KingpinDefault.opal]?.intValue ?? 0 == mostOpalsStolen } )
+			let bestThieves = thieves.filter( { $0.points[KingpinDefault.opal]?.intValue ?? 0 == mostOpalsStolen } )
 			bestThieves.forEach {
 				$0.flair.addFlair(KingpinFlair.winner)
 			}
@@ -658,10 +664,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Find any potential winning assistants and accomplices
 		
-		let accomplices = handle.players.filter({$0.role!.definition == .accomplice})
-		accomplices.forEach {
-			$0.flair.addFlair(KingpinFlair.winner)
-		}
+		let accomplices = handle.players.filter( {
+			$0.role!.definition == .accomplice &&
+				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+		} )
 		
 		var assistants = findWinningAssistants() ?? []
 		assistants += accomplices
@@ -688,12 +694,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 		}
 		
-		print("Finishing winner stuff.")
-		
-		
-		// Remove the Kingpin
-		
-		handle.kingpin = nil
 		
 		print("Completing game")
 		
@@ -719,7 +719,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Get a list of the minions and add them to the winning players list.
 		
-		let minions = handle.players.filter({$0.role!.definition == .henchman})
+		let minions = handle.players.filter({
+			$0.role!.definition == .henchman &&
+				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+		})
+		
 		minions.forEach {
 			$0.flair.addFlair(KingpinFlair.winner)
 		}
@@ -762,7 +766,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	func findWinningAssistants() -> [Player]? {
 		
 		// If any assistants are in the game, work out if the player below them won.
-		let assistants = handle.players.filter( {$0.role!.definition == .assistant } )
+		let assistants = handle.players.filter( {
+			$0.role!.definition == .assistant &&
+				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+		} )
+		
 		var winningAssistants: [Player] = []
 		
 		// Used to search for Assistants if a tree-like pattern emerges

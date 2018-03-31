@@ -463,7 +463,7 @@ class GameSession: ChatSession {
 									message: errorMessage,
 									chatID: tag.id)
 		
-		reset()
+		queue.action(delay: 3.sec, viewTime: 0.sec, action: reset)
 		
 	}
 }

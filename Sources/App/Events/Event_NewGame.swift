@@ -367,12 +367,10 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 																																self.endCharacterSelection(clearInline: true)
 			}
 			
-			
 			// NEW MESSAGE
 			
 			var newMessage = """
-			~ ~ T I M E   E X T E N D E D ! ~ ~
-			You now have \(timeLeft) seconds left.
+			*~T I M E   E X T E N D E D !~*
 			"""
 			
 			newMessage += getPlayerList()
@@ -397,7 +395,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		*Use* /extend *if you need more time.*
 		"""
 		
-		lastBaseMessage = message
+		lastBaseMessage = ""
 		
 		// Clear the inline of the previous message.
 		self.clearPreviousInlineKeys()

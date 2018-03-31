@@ -7,270 +7,270 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024F649206C1C9A008D1BE3 /* OpalUnit.swift */; };
-		503FBE9F206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */; };
-		5058D466206F54E500A5AB61 /* KingpinFlair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058D465206F54E500A5AB61 /* KingpinFlair.swift */; };
-		5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069647D206C92DA00F10C38 /* KingpinEvent.swift */; };
-		50A96EEA206CA1EB00B7373C /* PlayerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EE9206CA1EB00B7373C /* PlayerSession.swift */; };
-		50A96EEC206CA8A000B7373C /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */; };
-		OBJ_302 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_308 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Package.swift */; };
-		OBJ_314 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_286 /* Package.swift */; };
-		OBJ_320 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_291 /* Package.swift */; };
-		OBJ_326 /* Event_Interrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Event_Interrogate.swift */; };
-		OBJ_327 /* Event_NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Event_NewGame.swift */; };
-		OBJ_328 /* Event_VaultVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_VaultVisit.swift */; };
-		OBJ_329 /* Opal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Opal.swift */; };
-		OBJ_330 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* Vault.swift */; };
-		OBJ_331 /* KingpinRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* KingpinRole.swift */; };
-		OBJ_332 /* KingpinRoleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* KingpinRoleType.swift */; };
-		OBJ_333 /* GameHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* GameHandle.swift */; };
-		OBJ_334 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* GameSession.swift */; };
-		OBJ_335 /* Player+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* Player+InlineQuery.swift */; };
-		OBJ_336 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Player.swift */; };
-		OBJ_337 /* PlayerCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* PlayerCharacter.swift */; };
-		OBJ_338 /* KingpinDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* KingpinDefault.swift */; };
-		OBJ_339 /* KingpinRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* KingpinRoles.swift */; };
-		OBJ_340 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* CasedEnum.swift */; };
-		OBJ_341 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* main.swift */; };
-		OBJ_343 /* TrashBoat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "TrashBoat::TrashBoat::Product" /* TrashBoat.framework */; };
-		OBJ_344 /* Pelican.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Pelican::Pelican::Product" /* Pelican.framework */; };
-		OBJ_345 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
-		OBJ_356 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* Dice.swift */; };
-		OBJ_357 /* DiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* DiceItem.swift */; };
-		OBJ_358 /* DiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* DiceType.swift */; };
-		OBJ_359 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* Event.swift */; };
-		OBJ_360 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* EventContainer.swift */; };
-		OBJ_361 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* EventRecord.swift */; };
-		OBJ_362 /* EventRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* EventRepresentible.swift */; };
-		OBJ_363 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* EventType.swift */; };
-		OBJ_364 /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* Flair.swift */; };
-		OBJ_365 /* FlairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* FlairManager.swift */; };
-		OBJ_366 /* FlairRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* FlairRepresentible.swift */; };
-		OBJ_367 /* FlairResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* FlairResponse.swift */; };
-		OBJ_368 /* FlairStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* FlairStack.swift */; };
-		OBJ_369 /* GenBump.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* GenBump.swift */; };
-		OBJ_370 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* Generator.swift */; };
-		OBJ_371 /* GeneratorOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_55 /* GeneratorOption.swift */; };
-		OBJ_372 /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* Handle.swift */; };
-		OBJ_373 /* Inventory+Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* Inventory+Stats.swift */; };
-		OBJ_374 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* Inventory.swift */; };
-		OBJ_375 /* InventoryStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_61 /* InventoryStack.swift */; };
-		OBJ_376 /* ItemInfoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* ItemInfoTag.swift */; };
-		OBJ_377 /* ItemRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* ItemRepresentible.swift */; };
-		OBJ_378 /* ItemTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* ItemTypeTag.swift */; };
-		OBJ_379 /* Array+UserProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Array+UserProxy.swift */; };
-		OBJ_380 /* UserProxy+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_67 /* UserProxy+InlineQuery.swift */; };
-		OBJ_381 /* UserProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* UserProxy.swift */; };
-		OBJ_382 /* UserProxyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* UserProxyStatus.swift */; };
-		OBJ_383 /* PointInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* PointInstance.swift */; };
-		OBJ_384 /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* PointManager.swift */; };
-		OBJ_385 /* PointReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* PointReceipt.swift */; };
-		OBJ_386 /* PointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_74 /* PointType.swift */; };
-		OBJ_387 /* PointUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* PointUnit.swift */; };
-		OBJ_388 /* PointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* PointValue.swift */; };
-		OBJ_389 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Reward.swift */; };
-		OBJ_390 /* ItemRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* ItemRoute.swift */; };
-		OBJ_391 /* PlayerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* PlayerRoute.swift */; };
-		OBJ_392 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* Array+Random.swift */; };
-		OBJ_393 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* CasedEnum.swift */; };
-		OBJ_394 /* CwlRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* CwlRandom.swift */; };
-		OBJ_395 /* StringRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_86 /* StringRepresentible.swift */; };
-		OBJ_397 /* Pelican.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Pelican::Pelican::Product" /* Pelican.framework */; };
-		OBJ_398 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
-		OBJ_405 /* Codable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Codable+String.swift */; };
-		OBJ_406 /* Request+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* Request+Admin.swift */; };
-		OBJ_407 /* Request+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* Request+Answer.swift */; };
-		OBJ_408 /* Request+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* Request+Basic.swift */; };
-		OBJ_409 /* Request+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* Request+Chat.swift */; };
-		OBJ_410 /* Request+EditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_97 /* Request+EditMessage.swift */; };
-		OBJ_411 /* Request+Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_98 /* Request+Game.swift */; };
-		OBJ_412 /* Request+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_99 /* Request+Payments.swift */; };
-		OBJ_413 /* Request+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_100 /* Request+Stickers.swift */; };
-		OBJ_414 /* TelegramRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* TelegramRequest.swift */; };
-		OBJ_415 /* TelegramResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* TelegramResponse.swift */; };
-		OBJ_416 /* TelegramResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* TelegramResponseError.swift */; };
-		OBJ_417 /* InputMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* InputMedia.swift */; };
-		OBJ_418 /* InputMediaPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* InputMediaPhoto.swift */; };
-		OBJ_419 /* InputMediaVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* InputMediaVideo.swift */; };
-		OBJ_420 /* CallbackQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_111 /* CallbackQuery.swift */; };
-		OBJ_421 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* Chat.swift */; };
-		OBJ_422 /* ChatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_114 /* ChatAction.swift */; };
-		OBJ_423 /* ChatMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_115 /* ChatMember.swift */; };
-		OBJ_424 /* ChatPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* ChatPhoto.swift */; };
-		OBJ_425 /* FileDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* FileDownload.swift */; };
-		OBJ_426 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_119 /* Animation.swift */; };
-		OBJ_427 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* Game.swift */; };
-		OBJ_428 /* GameHighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_121 /* GameHighScore.swift */; };
-		OBJ_429 /* ChosenInlineResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* ChosenInlineResult.swift */; };
-		OBJ_430 /* InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* InlineQuery.swift */; };
-		OBJ_431 /* InlineResultArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* InlineResultArticle.swift */; };
-		OBJ_432 /* InlineResultAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_127 /* InlineResultAudio.swift */; };
-		OBJ_433 /* InlineResultContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* InlineResultContact.swift */; };
-		OBJ_434 /* InlineResultDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* InlineResultDocument.swift */; };
-		OBJ_435 /* InlineResultGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* InlineResultGame.swift */; };
-		OBJ_436 /* InlineResultGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_131 /* InlineResultGif.swift */; };
-		OBJ_437 /* InlineResultLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* InlineResultLocation.swift */; };
-		OBJ_438 /* InlineResultMpeg4Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* InlineResultMpeg4Gif.swift */; };
-		OBJ_439 /* InlineResultPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_134 /* InlineResultPhoto.swift */; };
-		OBJ_440 /* InlineResultSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* InlineResultSticker.swift */; };
-		OBJ_441 /* InlineResultVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* InlineResultVenue.swift */; };
-		OBJ_442 /* InlineResultVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* InlineResultVideo.swift */; };
-		OBJ_443 /* InlineResultVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* InlineResultVoice.swift */; };
-		OBJ_444 /* InlineResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* InlineResult.swift */; };
-		OBJ_445 /* InlineResultAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* InlineResultAny.swift */; };
-		OBJ_446 /* InlineResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* InlineResultType.swift */; };
-		OBJ_447 /* InputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* InputMessageContent.swift */; };
-		OBJ_448 /* InputMessageContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_144 /* InputMessageContentType.swift */; };
-		OBJ_449 /* InputMessageContent_Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_145 /* InputMessageContent_Any.swift */; };
-		OBJ_450 /* InputMessageContent_Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* InputMessageContent_Contact.swift */; };
-		OBJ_451 /* InputMessageContent_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* InputMessageContent_Location.swift */; };
-		OBJ_452 /* InputMessageContent_Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* InputMessageContent_Text.swift */; };
-		OBJ_453 /* InputMessageContent_Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* InputMessageContent_Venue.swift */; };
-		OBJ_454 /* ForceReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_151 /* ForceReply.swift */; };
-		OBJ_455 /* InlineKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_153 /* InlineKey.swift */; };
-		OBJ_456 /* InlineKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* InlineKeyType.swift */; };
-		OBJ_457 /* InlineKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_155 /* InlineKeyboard.swift */; };
-		OBJ_458 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_157 /* Keyboard.swift */; };
-		OBJ_459 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_158 /* KeyboardKey.swift */; };
-		OBJ_460 /* KeyboardRemove.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_159 /* KeyboardRemove.swift */; };
-		OBJ_461 /* MarkupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_160 /* MarkupType.swift */; };
-		OBJ_462 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_162 /* Audio.swift */; };
-		OBJ_463 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_163 /* Contact.swift */; };
-		OBJ_464 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_164 /* Document.swift */; };
-		OBJ_465 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_165 /* Location.swift */; };
-		OBJ_466 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_166 /* Photo.swift */; };
-		OBJ_467 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* Venue.swift */; };
-		OBJ_468 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_168 /* Video.swift */; };
-		OBJ_469 /* VideoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* VideoNote.swift */; };
-		OBJ_470 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* Voice.swift */; };
-		OBJ_471 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_172 /* Message.swift */; };
-		OBJ_472 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_173 /* MessageEntity.swift */; };
-		OBJ_473 /* MessageParseMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_174 /* MessageParseMode.swift */; };
-		OBJ_474 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_175 /* MessageType.swift */; };
-		OBJ_475 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_177 /* Invoice.swift */; };
-		OBJ_476 /* LabeledPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_178 /* LabeledPrice.swift */; };
-		OBJ_477 /* OrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_179 /* OrderInfo.swift */; };
-		OBJ_478 /* PreCheckoutQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_180 /* PreCheckoutQuery.swift */; };
-		OBJ_479 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_181 /* ShippingAddress.swift */; };
-		OBJ_480 /* ShippingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_182 /* ShippingOption.swift */; };
-		OBJ_481 /* ShippingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* ShippingQuery.swift */; };
-		OBJ_482 /* SuccessfulPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* SuccessfulPayment.swift */; };
-		OBJ_483 /* MaskPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* MaskPosition.swift */; };
-		OBJ_484 /* MaskPositionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* MaskPositionPoint.swift */; };
-		OBJ_485 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* Sticker.swift */; };
-		OBJ_486 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_189 /* StickerSet.swift */; };
-		OBJ_487 /* Type+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_190 /* Type+Custom.swift */; };
-		OBJ_488 /* Type+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_191 /* Type+Error.swift */; };
-		OBJ_489 /* Type+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_192 /* Type+Extensions.swift */; };
-		OBJ_490 /* Type+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_193 /* Type+Protocols.swift */; };
-		OBJ_491 /* Type+Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_194 /* Type+Standard.swift */; };
-		OBJ_492 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_196 /* User.swift */; };
-		OBJ_493 /* UserProfilePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_197 /* UserProfilePhotos.swift */; };
-		OBJ_494 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_199 /* Status.swift */; };
-		OBJ_495 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_200 /* Version.swift */; };
-		OBJ_496 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_203 /* Builder.swift */; };
-		OBJ_497 /* BuilderCollision.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_204 /* BuilderCollision.swift */; };
-		OBJ_498 /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_205 /* Spawn.swift */; };
-		OBJ_499 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_207 /* Client.swift */; };
-		OBJ_500 /* ClientConnection+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_208 /* ClientConnection+Error.swift */; };
-		OBJ_501 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_209 /* ClientConnection.swift */; };
-		OBJ_502 /* Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_210 /* Portal.swift */; };
-		OBJ_503 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_211 /* Result.swift */; };
-		OBJ_504 /* Cache+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_213 /* Cache+Error.swift */; };
-		OBJ_505 /* CacheFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_214 /* CacheFile.swift */; };
-		OBJ_506 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_215 /* CacheManager.swift */; };
-		OBJ_507 /* Log+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_217 /* Log+Debug.swift */; };
-		OBJ_508 /* Log+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_218 /* Log+Enum.swift */; };
-		OBJ_509 /* Log+Prints.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_219 /* Log+Prints.swift */; };
-		OBJ_510 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_220 /* Log.swift */; };
-		OBJ_511 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_221 /* LogLevel.swift */; };
-		OBJ_512 /* Moderator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* Moderator.swift */; };
-		OBJ_513 /* Pelican+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_224 /* Pelican+Delegates.swift */; };
-		OBJ_514 /* Pelican+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_225 /* Pelican+Errors.swift */; };
-		OBJ_515 /* Pelican+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_226 /* Pelican+Files.swift */; };
-		OBJ_516 /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_227 /* Pelican.swift */; };
-		OBJ_517 /* LoopQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_229 /* LoopQueue.swift */; };
-		OBJ_518 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_231 /* Duration.swift */; };
-		OBJ_519 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_232 /* Schedule.swift */; };
-		OBJ_520 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_234 /* Update.swift */; };
-		OBJ_521 /* UpdateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_235 /* UpdateType.swift */; };
-		OBJ_522 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_238 /* Session.swift */; };
-		OBJ_523 /* SessionIDType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_239 /* SessionIDType.swift */; };
-		OBJ_524 /* SessionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_240 /* SessionTag.swift */; };
-		OBJ_525 /* Async+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_244 /* Async+Admin.swift */; };
-		OBJ_526 /* Async+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_245 /* Async+Answer.swift */; };
-		OBJ_527 /* Async+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_246 /* Async+Basic.swift */; };
-		OBJ_528 /* Async+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_247 /* Async+Stickers.swift */; };
-		OBJ_529 /* SessionRequestAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_248 /* SessionRequestAsync.swift */; };
-		OBJ_530 /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_249 /* SessionRequest.swift */; };
-		OBJ_531 /* SessionRequestSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_251 /* SessionRequestSync.swift */; };
-		OBJ_532 /* Sync+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_252 /* Sync+Admin.swift */; };
-		OBJ_533 /* Sync+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_253 /* Sync+Answer.swift */; };
-		OBJ_534 /* Sync+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_254 /* Sync+Basic.swift */; };
-		OBJ_535 /* Sync+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_255 /* Sync+Edit.swift */; };
-		OBJ_536 /* Sync+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_256 /* Sync+Payments.swift */; };
-		OBJ_537 /* Sync+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_257 /* Sync+Stickers.swift */; };
-		OBJ_538 /* SessionDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_259 /* SessionDispatchQueue.swift */; };
-		OBJ_539 /* SessionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_261 /* SessionEvent.swift */; };
-		OBJ_540 /* UpdateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_263 /* UpdateFilter.swift */; };
-		OBJ_541 /* SessionModerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_265 /* SessionModerator.swift */; };
-		OBJ_542 /* FloodMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_267 /* FloodMonitor.swift */; };
-		OBJ_543 /* TimeoutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_268 /* TimeoutMonitor.swift */; };
-		OBJ_544 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_270 /* Route.swift */; };
-		OBJ_545 /* RouteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_272 /* RouteCommand.swift */; };
-		OBJ_546 /* RouteListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_273 /* RouteListen.swift */; };
-		OBJ_547 /* RouteManual.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_274 /* RouteManual.swift */; };
-		OBJ_548 /* RoutePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_275 /* RoutePass.swift */; };
-		OBJ_549 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_277 /* Queue.swift */; };
-		OBJ_550 /* ChatSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_279 /* ChatSession.swift */; };
-		OBJ_551 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_280 /* UserSession.swift */; };
-		OBJ_552 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_282 /* CasedEnum.swift */; };
-		OBJ_553 /* CwlRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_283 /* CwlRandom.swift */; };
-		OBJ_554 /* SynchronisedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_284 /* SynchronisedArray.swift */; };
-		OBJ_555 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_285 /* Utilities.swift */; };
-		OBJ_557 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
-		OBJ_563 /* LclJSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_289 /* LclJSONSerialization.swift */; };
-		OBJ_564 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_290 /* SwiftyJSON.swift */; };
+		OBJ_311 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_317 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_96 /* Package.swift */; };
+		OBJ_323 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_295 /* Package.swift */; };
+		OBJ_329 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_300 /* Package.swift */; };
+		OBJ_335 /* Event_Interrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Event_Interrogate.swift */; };
+		OBJ_336 /* Event_NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Event_NewGame.swift */; };
+		OBJ_337 /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_PickKingpin.swift */; };
+		OBJ_338 /* Event_VaultVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* Event_VaultVisit.swift */; };
+		OBJ_339 /* KingpinEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* KingpinEvent.swift */; };
+		OBJ_340 /* GameHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* GameHandle.swift */; };
+		OBJ_341 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* GameSession.swift */; };
+		OBJ_342 /* Opal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* Opal.swift */; };
+		OBJ_343 /* OpalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* OpalUnit.swift */; };
+		OBJ_344 /* Vault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* Vault.swift */; };
+		OBJ_345 /* Player+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Player+InlineQuery.swift */; };
+		OBJ_346 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Player.swift */; };
+		OBJ_347 /* PlayerCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* PlayerCharacter.swift */; };
+		OBJ_348 /* PlayerSession+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* PlayerSession+InlineQuery.swift */; };
+		OBJ_349 /* PlayerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* PlayerSession.swift */; };
+		OBJ_350 /* KingpinRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* KingpinRole.swift */; };
+		OBJ_351 /* KingpinRoleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* KingpinRoleType.swift */; };
+		OBJ_352 /* KingpinDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* KingpinDefault.swift */; };
+		OBJ_353 /* KingpinFlair.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* KingpinFlair.swift */; };
+		OBJ_354 /* KingpinRoles.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* KingpinRoles.swift */; };
+		OBJ_355 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* CasedEnum.swift */; };
+		OBJ_356 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* main.swift */; };
+		OBJ_358 /* TrashBoat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "TrashBoat::TrashBoat::Product" /* TrashBoat.framework */; };
+		OBJ_359 /* Pelican.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Pelican::Pelican::Product" /* Pelican.framework */; };
+		OBJ_360 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
+		OBJ_371 /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* Dice.swift */; };
+		OBJ_372 /* DiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* DiceItem.swift */; };
+		OBJ_373 /* DiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* DiceType.swift */; };
+		OBJ_374 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* Event.swift */; };
+		OBJ_375 /* EventContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* EventContainer.swift */; };
+		OBJ_376 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_52 /* EventRecord.swift */; };
+		OBJ_377 /* EventRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* EventRepresentible.swift */; };
+		OBJ_378 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_54 /* EventType.swift */; };
+		OBJ_379 /* Flair.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_56 /* Flair.swift */; };
+		OBJ_380 /* FlairManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_57 /* FlairManager.swift */; };
+		OBJ_381 /* FlairRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_58 /* FlairRepresentible.swift */; };
+		OBJ_382 /* FlairResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_59 /* FlairResponse.swift */; };
+		OBJ_383 /* FlairStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_60 /* FlairStack.swift */; };
+		OBJ_384 /* GenBump.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_62 /* GenBump.swift */; };
+		OBJ_385 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_63 /* Generator.swift */; };
+		OBJ_386 /* GeneratorOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_64 /* GeneratorOption.swift */; };
+		OBJ_387 /* Handle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_66 /* Handle.swift */; };
+		OBJ_388 /* Inventory+Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_68 /* Inventory+Stats.swift */; };
+		OBJ_389 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_69 /* Inventory.swift */; };
+		OBJ_390 /* InventoryStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_70 /* InventoryStack.swift */; };
+		OBJ_391 /* ItemInfoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_71 /* ItemInfoTag.swift */; };
+		OBJ_392 /* ItemRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_72 /* ItemRepresentible.swift */; };
+		OBJ_393 /* ItemTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_73 /* ItemTypeTag.swift */; };
+		OBJ_394 /* Array+UserProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_75 /* Array+UserProxy.swift */; };
+		OBJ_395 /* UserProxy+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_76 /* UserProxy+InlineQuery.swift */; };
+		OBJ_396 /* UserProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_77 /* UserProxy.swift */; };
+		OBJ_397 /* UserProxyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* UserProxyStatus.swift */; };
+		OBJ_398 /* PointInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* PointInstance.swift */; };
+		OBJ_399 /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_81 /* PointManager.swift */; };
+		OBJ_400 /* PointReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_82 /* PointReceipt.swift */; };
+		OBJ_401 /* PointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_83 /* PointType.swift */; };
+		OBJ_402 /* PointUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_84 /* PointUnit.swift */; };
+		OBJ_403 /* PointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_85 /* PointValue.swift */; };
+		OBJ_404 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_87 /* Reward.swift */; };
+		OBJ_405 /* ItemRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_89 /* ItemRoute.swift */; };
+		OBJ_406 /* PlayerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_90 /* PlayerRoute.swift */; };
+		OBJ_407 /* Array+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_92 /* Array+Random.swift */; };
+		OBJ_408 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_93 /* CasedEnum.swift */; };
+		OBJ_409 /* CwlRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_94 /* CwlRandom.swift */; };
+		OBJ_410 /* StringRepresentible.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_95 /* StringRepresentible.swift */; };
+		OBJ_412 /* Pelican.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Pelican::Pelican::Product" /* Pelican.framework */; };
+		OBJ_413 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
+		OBJ_420 /* Codable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_101 /* Codable+String.swift */; };
+		OBJ_421 /* Request+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_102 /* Request+Admin.swift */; };
+		OBJ_422 /* Request+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_103 /* Request+Answer.swift */; };
+		OBJ_423 /* Request+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_104 /* Request+Basic.swift */; };
+		OBJ_424 /* Request+Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_105 /* Request+Chat.swift */; };
+		OBJ_425 /* Request+EditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_106 /* Request+EditMessage.swift */; };
+		OBJ_426 /* Request+Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_107 /* Request+Game.swift */; };
+		OBJ_427 /* Request+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_108 /* Request+Payments.swift */; };
+		OBJ_428 /* Request+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_109 /* Request+Stickers.swift */; };
+		OBJ_429 /* TelegramRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_110 /* TelegramRequest.swift */; };
+		OBJ_430 /* TelegramResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_112 /* TelegramResponse.swift */; };
+		OBJ_431 /* TelegramResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_113 /* TelegramResponseError.swift */; };
+		OBJ_432 /* InputMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_116 /* InputMedia.swift */; };
+		OBJ_433 /* InputMediaPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_117 /* InputMediaPhoto.swift */; };
+		OBJ_434 /* InputMediaVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_118 /* InputMediaVideo.swift */; };
+		OBJ_435 /* CallbackQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_120 /* CallbackQuery.swift */; };
+		OBJ_436 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_122 /* Chat.swift */; };
+		OBJ_437 /* ChatAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_123 /* ChatAction.swift */; };
+		OBJ_438 /* ChatMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_124 /* ChatMember.swift */; };
+		OBJ_439 /* ChatPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_125 /* ChatPhoto.swift */; };
+		OBJ_440 /* FileDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_126 /* FileDownload.swift */; };
+		OBJ_441 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_128 /* Animation.swift */; };
+		OBJ_442 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_129 /* Game.swift */; };
+		OBJ_443 /* GameHighScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_130 /* GameHighScore.swift */; };
+		OBJ_444 /* ChosenInlineResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_132 /* ChosenInlineResult.swift */; };
+		OBJ_445 /* InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_133 /* InlineQuery.swift */; };
+		OBJ_446 /* InlineResultArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_135 /* InlineResultArticle.swift */; };
+		OBJ_447 /* InlineResultAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_136 /* InlineResultAudio.swift */; };
+		OBJ_448 /* InlineResultContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_137 /* InlineResultContact.swift */; };
+		OBJ_449 /* InlineResultDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_138 /* InlineResultDocument.swift */; };
+		OBJ_450 /* InlineResultGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_139 /* InlineResultGame.swift */; };
+		OBJ_451 /* InlineResultGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_140 /* InlineResultGif.swift */; };
+		OBJ_452 /* InlineResultLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_141 /* InlineResultLocation.swift */; };
+		OBJ_453 /* InlineResultMpeg4Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_142 /* InlineResultMpeg4Gif.swift */; };
+		OBJ_454 /* InlineResultPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_143 /* InlineResultPhoto.swift */; };
+		OBJ_455 /* InlineResultSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_144 /* InlineResultSticker.swift */; };
+		OBJ_456 /* InlineResultVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_145 /* InlineResultVenue.swift */; };
+		OBJ_457 /* InlineResultVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_146 /* InlineResultVideo.swift */; };
+		OBJ_458 /* InlineResultVoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_147 /* InlineResultVoice.swift */; };
+		OBJ_459 /* InlineResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_148 /* InlineResult.swift */; };
+		OBJ_460 /* InlineResultAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_149 /* InlineResultAny.swift */; };
+		OBJ_461 /* InlineResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_150 /* InlineResultType.swift */; };
+		OBJ_462 /* InputMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_152 /* InputMessageContent.swift */; };
+		OBJ_463 /* InputMessageContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_153 /* InputMessageContentType.swift */; };
+		OBJ_464 /* InputMessageContent_Any.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_154 /* InputMessageContent_Any.swift */; };
+		OBJ_465 /* InputMessageContent_Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_155 /* InputMessageContent_Contact.swift */; };
+		OBJ_466 /* InputMessageContent_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_156 /* InputMessageContent_Location.swift */; };
+		OBJ_467 /* InputMessageContent_Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_157 /* InputMessageContent_Text.swift */; };
+		OBJ_468 /* InputMessageContent_Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_158 /* InputMessageContent_Venue.swift */; };
+		OBJ_469 /* ForceReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_160 /* ForceReply.swift */; };
+		OBJ_470 /* InlineKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_162 /* InlineKey.swift */; };
+		OBJ_471 /* InlineKeyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_163 /* InlineKeyType.swift */; };
+		OBJ_472 /* InlineKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_164 /* InlineKeyboard.swift */; };
+		OBJ_473 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_166 /* Keyboard.swift */; };
+		OBJ_474 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_167 /* KeyboardKey.swift */; };
+		OBJ_475 /* KeyboardRemove.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_168 /* KeyboardRemove.swift */; };
+		OBJ_476 /* MarkupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_169 /* MarkupType.swift */; };
+		OBJ_477 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_171 /* Audio.swift */; };
+		OBJ_478 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_172 /* Contact.swift */; };
+		OBJ_479 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_173 /* Document.swift */; };
+		OBJ_480 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_174 /* Location.swift */; };
+		OBJ_481 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_175 /* Photo.swift */; };
+		OBJ_482 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_176 /* Venue.swift */; };
+		OBJ_483 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_177 /* Video.swift */; };
+		OBJ_484 /* VideoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_178 /* VideoNote.swift */; };
+		OBJ_485 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_179 /* Voice.swift */; };
+		OBJ_486 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_181 /* Message.swift */; };
+		OBJ_487 /* MessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_182 /* MessageEntity.swift */; };
+		OBJ_488 /* MessageParseMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_183 /* MessageParseMode.swift */; };
+		OBJ_489 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_184 /* MessageType.swift */; };
+		OBJ_490 /* Invoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_186 /* Invoice.swift */; };
+		OBJ_491 /* LabeledPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_187 /* LabeledPrice.swift */; };
+		OBJ_492 /* OrderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_188 /* OrderInfo.swift */; };
+		OBJ_493 /* PreCheckoutQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_189 /* PreCheckoutQuery.swift */; };
+		OBJ_494 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_190 /* ShippingAddress.swift */; };
+		OBJ_495 /* ShippingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_191 /* ShippingOption.swift */; };
+		OBJ_496 /* ShippingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_192 /* ShippingQuery.swift */; };
+		OBJ_497 /* SuccessfulPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_193 /* SuccessfulPayment.swift */; };
+		OBJ_498 /* MaskPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_195 /* MaskPosition.swift */; };
+		OBJ_499 /* MaskPositionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_196 /* MaskPositionPoint.swift */; };
+		OBJ_500 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_197 /* Sticker.swift */; };
+		OBJ_501 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_198 /* StickerSet.swift */; };
+		OBJ_502 /* Type+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_199 /* Type+Custom.swift */; };
+		OBJ_503 /* Type+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_200 /* Type+Error.swift */; };
+		OBJ_504 /* Type+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_201 /* Type+Extensions.swift */; };
+		OBJ_505 /* Type+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_202 /* Type+Protocols.swift */; };
+		OBJ_506 /* Type+Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_203 /* Type+Standard.swift */; };
+		OBJ_507 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_205 /* User.swift */; };
+		OBJ_508 /* UserProfilePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_206 /* UserProfilePhotos.swift */; };
+		OBJ_509 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_208 /* Status.swift */; };
+		OBJ_510 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_209 /* Version.swift */; };
+		OBJ_511 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_212 /* Builder.swift */; };
+		OBJ_512 /* BuilderCollision.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_213 /* BuilderCollision.swift */; };
+		OBJ_513 /* Spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_214 /* Spawn.swift */; };
+		OBJ_514 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_216 /* Client.swift */; };
+		OBJ_515 /* ClientConnection+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_217 /* ClientConnection+Error.swift */; };
+		OBJ_516 /* ClientConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_218 /* ClientConnection.swift */; };
+		OBJ_517 /* Portal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_219 /* Portal.swift */; };
+		OBJ_518 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_220 /* Result.swift */; };
+		OBJ_519 /* Cache+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_222 /* Cache+Error.swift */; };
+		OBJ_520 /* CacheFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_223 /* CacheFile.swift */; };
+		OBJ_521 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_224 /* CacheManager.swift */; };
+		OBJ_522 /* Log+Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_226 /* Log+Debug.swift */; };
+		OBJ_523 /* Log+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_227 /* Log+Enum.swift */; };
+		OBJ_524 /* Log+Prints.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_228 /* Log+Prints.swift */; };
+		OBJ_525 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_229 /* Log.swift */; };
+		OBJ_526 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_230 /* LogLevel.swift */; };
+		OBJ_527 /* Moderator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_232 /* Moderator.swift */; };
+		OBJ_528 /* Pelican+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_233 /* Pelican+Delegates.swift */; };
+		OBJ_529 /* Pelican+Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_234 /* Pelican+Errors.swift */; };
+		OBJ_530 /* Pelican+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_235 /* Pelican+Files.swift */; };
+		OBJ_531 /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_236 /* Pelican.swift */; };
+		OBJ_532 /* LoopQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_238 /* LoopQueue.swift */; };
+		OBJ_533 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_240 /* Duration.swift */; };
+		OBJ_534 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_241 /* Schedule.swift */; };
+		OBJ_535 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_243 /* Update.swift */; };
+		OBJ_536 /* UpdateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_244 /* UpdateType.swift */; };
+		OBJ_537 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_247 /* Session.swift */; };
+		OBJ_538 /* SessionIDType.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_248 /* SessionIDType.swift */; };
+		OBJ_539 /* SessionTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_249 /* SessionTag.swift */; };
+		OBJ_540 /* Async+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_253 /* Async+Admin.swift */; };
+		OBJ_541 /* Async+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_254 /* Async+Answer.swift */; };
+		OBJ_542 /* Async+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_255 /* Async+Basic.swift */; };
+		OBJ_543 /* Async+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_256 /* Async+Stickers.swift */; };
+		OBJ_544 /* SessionRequestAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_257 /* SessionRequestAsync.swift */; };
+		OBJ_545 /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_258 /* SessionRequest.swift */; };
+		OBJ_546 /* SessionRequestSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_260 /* SessionRequestSync.swift */; };
+		OBJ_547 /* Sync+Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_261 /* Sync+Admin.swift */; };
+		OBJ_548 /* Sync+Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_262 /* Sync+Answer.swift */; };
+		OBJ_549 /* Sync+Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_263 /* Sync+Basic.swift */; };
+		OBJ_550 /* Sync+Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_264 /* Sync+Edit.swift */; };
+		OBJ_551 /* Sync+Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_265 /* Sync+Payments.swift */; };
+		OBJ_552 /* Sync+Stickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_266 /* Sync+Stickers.swift */; };
+		OBJ_553 /* SessionDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_268 /* SessionDispatchQueue.swift */; };
+		OBJ_554 /* SessionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_270 /* SessionEvent.swift */; };
+		OBJ_555 /* UpdateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_272 /* UpdateFilter.swift */; };
+		OBJ_556 /* SessionModerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_274 /* SessionModerator.swift */; };
+		OBJ_557 /* FloodMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_276 /* FloodMonitor.swift */; };
+		OBJ_558 /* TimeoutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_277 /* TimeoutMonitor.swift */; };
+		OBJ_559 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_279 /* Route.swift */; };
+		OBJ_560 /* RouteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_281 /* RouteCommand.swift */; };
+		OBJ_561 /* RouteListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_282 /* RouteListen.swift */; };
+		OBJ_562 /* RouteManual.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_283 /* RouteManual.swift */; };
+		OBJ_563 /* RoutePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_284 /* RoutePass.swift */; };
+		OBJ_564 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_286 /* Queue.swift */; };
+		OBJ_565 /* ChatSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_288 /* ChatSession.swift */; };
+		OBJ_566 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_289 /* UserSession.swift */; };
+		OBJ_567 /* CasedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_291 /* CasedEnum.swift */; };
+		OBJ_568 /* CwlRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_292 /* CwlRandom.swift */; };
+		OBJ_569 /* SynchronisedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_293 /* SynchronisedArray.swift */; };
+		OBJ_570 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_294 /* Utilities.swift */; };
+		OBJ_572 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */; };
+		OBJ_578 /* LclJSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_298 /* LclJSONSerialization.swift */; };
+		OBJ_579 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_299 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50AA26A6206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090D5207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "TrashBoat::TrashBoat";
 			remoteInfo = TrashBoat;
 		};
-		50AA26A7206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090D6207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Pelican::Pelican";
 			remoteInfo = Pelican;
 		};
-		50AA26A8206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090D7207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "SwiftyJSON::SwiftyJSON";
 			remoteInfo = SwiftyJSON;
 		};
-		50AA26A9206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090D8207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "SwiftyJSON::SwiftyJSON";
 			remoteInfo = SwiftyJSON;
 		};
-		50AA26AA206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090D9207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "Pelican::Pelican";
 			remoteInfo = Pelican;
 		};
-		50AA26AB206BFFEE00D3A218 /* PBXContainerItemProxy */ = {
+		50D090DA207027D30013FEE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
@@ -280,260 +280,262 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5024F649206C1C9A008D1BE3 /* OpalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpalUnit.swift; sourceTree = "<group>"; };
-		503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerSession+InlineQuery.swift"; sourceTree = "<group>"; };
-		5058D465206F54E500A5AB61 /* KingpinFlair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinFlair.swift; sourceTree = "<group>"; };
-		5069647D206C92DA00F10C38 /* KingpinEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinEvent.swift; sourceTree = "<group>"; };
-		50A96EE9206CA1EB00B7373C /* PlayerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSession.swift; sourceTree = "<group>"; };
-		50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_PickKingpin.swift; sourceTree = "<group>"; };
 		"Kingpin::App::Product" /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Event_Interrogate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_Interrogate.swift; sourceTree = "<group>"; };
-		OBJ_100 /* Request+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Stickers.swift"; sourceTree = "<group>"; };
-		OBJ_101 /* TelegramRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramRequest.swift; sourceTree = "<group>"; };
-		OBJ_103 /* TelegramResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramResponse.swift; sourceTree = "<group>"; };
-		OBJ_104 /* TelegramResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramResponseError.swift; sourceTree = "<group>"; };
-		OBJ_107 /* InputMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMedia.swift; sourceTree = "<group>"; };
-		OBJ_108 /* InputMediaPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMediaPhoto.swift; sourceTree = "<group>"; };
-		OBJ_109 /* InputMediaVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMediaVideo.swift; sourceTree = "<group>"; };
+		OBJ_101 /* Codable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+String.swift"; sourceTree = "<group>"; };
+		OBJ_102 /* Request+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Admin.swift"; sourceTree = "<group>"; };
+		OBJ_103 /* Request+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Answer.swift"; sourceTree = "<group>"; };
+		OBJ_104 /* Request+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Basic.swift"; sourceTree = "<group>"; };
+		OBJ_105 /* Request+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Chat.swift"; sourceTree = "<group>"; };
+		OBJ_106 /* Request+EditMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+EditMessage.swift"; sourceTree = "<group>"; };
+		OBJ_107 /* Request+Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Game.swift"; sourceTree = "<group>"; };
+		OBJ_108 /* Request+Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Payments.swift"; sourceTree = "<group>"; };
+		OBJ_109 /* Request+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Stickers.swift"; sourceTree = "<group>"; };
 		OBJ_11 /* Event_NewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_NewGame.swift; sourceTree = "<group>"; };
-		OBJ_111 /* CallbackQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackQuery.swift; sourceTree = "<group>"; };
-		OBJ_113 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		OBJ_114 /* ChatAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAction.swift; sourceTree = "<group>"; };
-		OBJ_115 /* ChatMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMember.swift; sourceTree = "<group>"; };
-		OBJ_116 /* ChatPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPhoto.swift; sourceTree = "<group>"; };
-		OBJ_117 /* FileDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownload.swift; sourceTree = "<group>"; };
-		OBJ_119 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		OBJ_12 /* Event_VaultVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_VaultVisit.swift; sourceTree = "<group>"; };
-		OBJ_120 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		OBJ_121 /* GameHighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHighScore.swift; sourceTree = "<group>"; };
-		OBJ_123 /* ChosenInlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenInlineResult.swift; sourceTree = "<group>"; };
-		OBJ_124 /* InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineQuery.swift; sourceTree = "<group>"; };
-		OBJ_126 /* InlineResultArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultArticle.swift; sourceTree = "<group>"; };
-		OBJ_127 /* InlineResultAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultAudio.swift; sourceTree = "<group>"; };
-		OBJ_128 /* InlineResultContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultContact.swift; sourceTree = "<group>"; };
-		OBJ_129 /* InlineResultDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultDocument.swift; sourceTree = "<group>"; };
-		OBJ_130 /* InlineResultGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultGame.swift; sourceTree = "<group>"; };
-		OBJ_131 /* InlineResultGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultGif.swift; sourceTree = "<group>"; };
-		OBJ_132 /* InlineResultLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultLocation.swift; sourceTree = "<group>"; };
-		OBJ_133 /* InlineResultMpeg4Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultMpeg4Gif.swift; sourceTree = "<group>"; };
-		OBJ_134 /* InlineResultPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultPhoto.swift; sourceTree = "<group>"; };
-		OBJ_135 /* InlineResultSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultSticker.swift; sourceTree = "<group>"; };
-		OBJ_136 /* InlineResultVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVenue.swift; sourceTree = "<group>"; };
-		OBJ_137 /* InlineResultVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVideo.swift; sourceTree = "<group>"; };
-		OBJ_138 /* InlineResultVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVoice.swift; sourceTree = "<group>"; };
-		OBJ_139 /* InlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResult.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Opal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opal.swift; sourceTree = "<group>"; };
-		OBJ_140 /* InlineResultAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultAny.swift; sourceTree = "<group>"; };
-		OBJ_141 /* InlineResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultType.swift; sourceTree = "<group>"; };
-		OBJ_143 /* InputMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent.swift; sourceTree = "<group>"; };
-		OBJ_144 /* InputMessageContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContentType.swift; sourceTree = "<group>"; };
-		OBJ_145 /* InputMessageContent_Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Any.swift; sourceTree = "<group>"; };
-		OBJ_146 /* InputMessageContent_Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Contact.swift; sourceTree = "<group>"; };
-		OBJ_147 /* InputMessageContent_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Location.swift; sourceTree = "<group>"; };
-		OBJ_148 /* InputMessageContent_Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Text.swift; sourceTree = "<group>"; };
-		OBJ_149 /* InputMessageContent_Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Venue.swift; sourceTree = "<group>"; };
-		OBJ_15 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
-		OBJ_151 /* ForceReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceReply.swift; sourceTree = "<group>"; };
-		OBJ_153 /* InlineKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKey.swift; sourceTree = "<group>"; };
-		OBJ_154 /* InlineKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKeyType.swift; sourceTree = "<group>"; };
-		OBJ_155 /* InlineKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKeyboard.swift; sourceTree = "<group>"; };
-		OBJ_157 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		OBJ_158 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
-		OBJ_159 /* KeyboardRemove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRemove.swift; sourceTree = "<group>"; };
-		OBJ_160 /* MarkupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupType.swift; sourceTree = "<group>"; };
-		OBJ_162 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
-		OBJ_163 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		OBJ_164 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		OBJ_165 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		OBJ_166 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		OBJ_167 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
-		OBJ_168 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		OBJ_169 /* VideoNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoNote.swift; sourceTree = "<group>"; };
-		OBJ_17 /* KingpinRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRole.swift; sourceTree = "<group>"; };
-		OBJ_170 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
-		OBJ_172 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		OBJ_173 /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
-		OBJ_174 /* MessageParseMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParseMode.swift; sourceTree = "<group>"; };
-		OBJ_175 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
-		OBJ_177 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
-		OBJ_178 /* LabeledPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledPrice.swift; sourceTree = "<group>"; };
-		OBJ_179 /* OrderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfo.swift; sourceTree = "<group>"; };
-		OBJ_18 /* KingpinRoleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRoleType.swift; sourceTree = "<group>"; };
-		OBJ_180 /* PreCheckoutQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreCheckoutQuery.swift; sourceTree = "<group>"; };
-		OBJ_181 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
-		OBJ_182 /* ShippingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingOption.swift; sourceTree = "<group>"; };
-		OBJ_183 /* ShippingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingQuery.swift; sourceTree = "<group>"; };
-		OBJ_184 /* SuccessfulPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulPayment.swift; sourceTree = "<group>"; };
-		OBJ_186 /* MaskPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPosition.swift; sourceTree = "<group>"; };
-		OBJ_187 /* MaskPositionPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPositionPoint.swift; sourceTree = "<group>"; };
-		OBJ_188 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
-		OBJ_189 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
-		OBJ_190 /* Type+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Custom.swift"; sourceTree = "<group>"; };
-		OBJ_191 /* Type+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Error.swift"; sourceTree = "<group>"; };
-		OBJ_192 /* Type+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Extensions.swift"; sourceTree = "<group>"; };
-		OBJ_193 /* Type+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Protocols.swift"; sourceTree = "<group>"; };
-		OBJ_194 /* Type+Standard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Standard.swift"; sourceTree = "<group>"; };
-		OBJ_196 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		OBJ_197 /* UserProfilePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotos.swift; sourceTree = "<group>"; };
-		OBJ_199 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		OBJ_20 /* GameHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHandle.swift; sourceTree = "<group>"; };
-		OBJ_200 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		OBJ_203 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
-		OBJ_204 /* BuilderCollision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderCollision.swift; sourceTree = "<group>"; };
-		OBJ_205 /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
-		OBJ_207 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		OBJ_208 /* ClientConnection+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClientConnection+Error.swift"; sourceTree = "<group>"; };
-		OBJ_209 /* ClientConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
-		OBJ_21 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
-		OBJ_210 /* Portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portal.swift; sourceTree = "<group>"; };
-		OBJ_211 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		OBJ_213 /* Cache+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache+Error.swift"; sourceTree = "<group>"; };
-		OBJ_214 /* CacheFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFile.swift; sourceTree = "<group>"; };
-		OBJ_215 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		OBJ_217 /* Log+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Debug.swift"; sourceTree = "<group>"; };
-		OBJ_218 /* Log+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Enum.swift"; sourceTree = "<group>"; };
-		OBJ_219 /* Log+Prints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Prints.swift"; sourceTree = "<group>"; };
-		OBJ_22 /* Player+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+InlineQuery.swift"; sourceTree = "<group>"; };
-		OBJ_220 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		OBJ_221 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
-		OBJ_223 /* Moderator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moderator.swift; sourceTree = "<group>"; };
-		OBJ_224 /* Pelican+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Delegates.swift"; sourceTree = "<group>"; };
-		OBJ_225 /* Pelican+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Errors.swift"; sourceTree = "<group>"; };
-		OBJ_226 /* Pelican+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Files.swift"; sourceTree = "<group>"; };
-		OBJ_227 /* Pelican.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelican.swift; sourceTree = "<group>"; };
-		OBJ_229 /* LoopQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopQueue.swift; sourceTree = "<group>"; };
-		OBJ_23 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		OBJ_231 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		OBJ_232 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		OBJ_234 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
-		OBJ_235 /* UpdateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateType.swift; sourceTree = "<group>"; };
-		OBJ_238 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		OBJ_239 /* SessionIDType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIDType.swift; sourceTree = "<group>"; };
-		OBJ_24 /* PlayerCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCharacter.swift; sourceTree = "<group>"; };
-		OBJ_240 /* SessionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTag.swift; sourceTree = "<group>"; };
-		OBJ_244 /* Async+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Admin.swift"; sourceTree = "<group>"; };
-		OBJ_245 /* Async+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Answer.swift"; sourceTree = "<group>"; };
-		OBJ_246 /* Async+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Basic.swift"; sourceTree = "<group>"; };
-		OBJ_247 /* Async+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Stickers.swift"; sourceTree = "<group>"; };
-		OBJ_248 /* SessionRequestAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestAsync.swift; sourceTree = "<group>"; };
-		OBJ_249 /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
-		OBJ_251 /* SessionRequestSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestSync.swift; sourceTree = "<group>"; };
-		OBJ_252 /* Sync+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Admin.swift"; sourceTree = "<group>"; };
-		OBJ_253 /* Sync+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Answer.swift"; sourceTree = "<group>"; };
-		OBJ_254 /* Sync+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Basic.swift"; sourceTree = "<group>"; };
-		OBJ_255 /* Sync+Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Edit.swift"; sourceTree = "<group>"; };
-		OBJ_256 /* Sync+Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Payments.swift"; sourceTree = "<group>"; };
-		OBJ_257 /* Sync+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Stickers.swift"; sourceTree = "<group>"; };
-		OBJ_259 /* SessionDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDispatchQueue.swift; sourceTree = "<group>"; };
-		OBJ_26 /* KingpinDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinDefault.swift; sourceTree = "<group>"; };
-		OBJ_261 /* SessionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEvent.swift; sourceTree = "<group>"; };
-		OBJ_263 /* UpdateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFilter.swift; sourceTree = "<group>"; };
-		OBJ_265 /* SessionModerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModerator.swift; sourceTree = "<group>"; };
-		OBJ_267 /* FloodMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodMonitor.swift; sourceTree = "<group>"; };
-		OBJ_268 /* TimeoutMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutMonitor.swift; sourceTree = "<group>"; };
-		OBJ_27 /* KingpinRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRoles.swift; sourceTree = "<group>"; };
-		OBJ_270 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		OBJ_272 /* RouteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCommand.swift; sourceTree = "<group>"; };
-		OBJ_273 /* RouteListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListen.swift; sourceTree = "<group>"; };
-		OBJ_274 /* RouteManual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManual.swift; sourceTree = "<group>"; };
-		OBJ_275 /* RoutePass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePass.swift; sourceTree = "<group>"; };
-		OBJ_277 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		OBJ_279 /* ChatSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSession.swift; sourceTree = "<group>"; };
-		OBJ_280 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
-		OBJ_282 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
-		OBJ_283 /* CwlRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlRandom.swift; sourceTree = "<group>"; };
-		OBJ_284 /* SynchronisedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronisedArray.swift; sourceTree = "<group>"; };
-		OBJ_285 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		OBJ_286 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/Pelican.git-5255499054090348273/Package.swift"; sourceTree = "<group>"; };
-		OBJ_289 /* LclJSONSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LclJSONSerialization.swift; sourceTree = "<group>"; };
-		OBJ_29 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
-		OBJ_290 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		OBJ_291 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/SwiftyJSON.git--6955445084174387031/Package.swift"; sourceTree = "<group>"; };
-		OBJ_30 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_37 /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
-		OBJ_38 /* DiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceItem.swift; sourceTree = "<group>"; };
-		OBJ_39 /* DiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceType.swift; sourceTree = "<group>"; };
-		OBJ_41 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		OBJ_42 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
-		OBJ_43 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
-		OBJ_44 /* EventRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentible.swift; sourceTree = "<group>"; };
-		OBJ_45 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
-		OBJ_47 /* Flair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flair.swift; sourceTree = "<group>"; };
-		OBJ_48 /* FlairManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairManager.swift; sourceTree = "<group>"; };
-		OBJ_49 /* FlairRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairRepresentible.swift; sourceTree = "<group>"; };
-		OBJ_50 /* FlairResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairResponse.swift; sourceTree = "<group>"; };
-		OBJ_51 /* FlairStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairStack.swift; sourceTree = "<group>"; };
-		OBJ_53 /* GenBump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenBump.swift; sourceTree = "<group>"; };
-		OBJ_54 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
-		OBJ_55 /* GeneratorOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorOption.swift; sourceTree = "<group>"; };
-		OBJ_57 /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
-		OBJ_59 /* Inventory+Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+Stats.swift"; sourceTree = "<group>"; };
+		OBJ_110 /* TelegramRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramRequest.swift; sourceTree = "<group>"; };
+		OBJ_112 /* TelegramResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramResponse.swift; sourceTree = "<group>"; };
+		OBJ_113 /* TelegramResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramResponseError.swift; sourceTree = "<group>"; };
+		OBJ_116 /* InputMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMedia.swift; sourceTree = "<group>"; };
+		OBJ_117 /* InputMediaPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMediaPhoto.swift; sourceTree = "<group>"; };
+		OBJ_118 /* InputMediaVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMediaVideo.swift; sourceTree = "<group>"; };
+		OBJ_12 /* Event_PickKingpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_PickKingpin.swift; sourceTree = "<group>"; };
+		OBJ_120 /* CallbackQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackQuery.swift; sourceTree = "<group>"; };
+		OBJ_122 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		OBJ_123 /* ChatAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAction.swift; sourceTree = "<group>"; };
+		OBJ_124 /* ChatMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMember.swift; sourceTree = "<group>"; };
+		OBJ_125 /* ChatPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPhoto.swift; sourceTree = "<group>"; };
+		OBJ_126 /* FileDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownload.swift; sourceTree = "<group>"; };
+		OBJ_128 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		OBJ_129 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		OBJ_13 /* Event_VaultVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_VaultVisit.swift; sourceTree = "<group>"; };
+		OBJ_130 /* GameHighScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHighScore.swift; sourceTree = "<group>"; };
+		OBJ_132 /* ChosenInlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenInlineResult.swift; sourceTree = "<group>"; };
+		OBJ_133 /* InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineQuery.swift; sourceTree = "<group>"; };
+		OBJ_135 /* InlineResultArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultArticle.swift; sourceTree = "<group>"; };
+		OBJ_136 /* InlineResultAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultAudio.swift; sourceTree = "<group>"; };
+		OBJ_137 /* InlineResultContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultContact.swift; sourceTree = "<group>"; };
+		OBJ_138 /* InlineResultDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultDocument.swift; sourceTree = "<group>"; };
+		OBJ_139 /* InlineResultGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultGame.swift; sourceTree = "<group>"; };
+		OBJ_14 /* KingpinEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinEvent.swift; sourceTree = "<group>"; };
+		OBJ_140 /* InlineResultGif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultGif.swift; sourceTree = "<group>"; };
+		OBJ_141 /* InlineResultLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultLocation.swift; sourceTree = "<group>"; };
+		OBJ_142 /* InlineResultMpeg4Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultMpeg4Gif.swift; sourceTree = "<group>"; };
+		OBJ_143 /* InlineResultPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultPhoto.swift; sourceTree = "<group>"; };
+		OBJ_144 /* InlineResultSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultSticker.swift; sourceTree = "<group>"; };
+		OBJ_145 /* InlineResultVenue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVenue.swift; sourceTree = "<group>"; };
+		OBJ_146 /* InlineResultVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVideo.swift; sourceTree = "<group>"; };
+		OBJ_147 /* InlineResultVoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultVoice.swift; sourceTree = "<group>"; };
+		OBJ_148 /* InlineResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResult.swift; sourceTree = "<group>"; };
+		OBJ_149 /* InlineResultAny.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultAny.swift; sourceTree = "<group>"; };
+		OBJ_150 /* InlineResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineResultType.swift; sourceTree = "<group>"; };
+		OBJ_152 /* InputMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent.swift; sourceTree = "<group>"; };
+		OBJ_153 /* InputMessageContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContentType.swift; sourceTree = "<group>"; };
+		OBJ_154 /* InputMessageContent_Any.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Any.swift; sourceTree = "<group>"; };
+		OBJ_155 /* InputMessageContent_Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Contact.swift; sourceTree = "<group>"; };
+		OBJ_156 /* InputMessageContent_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Location.swift; sourceTree = "<group>"; };
+		OBJ_157 /* InputMessageContent_Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Text.swift; sourceTree = "<group>"; };
+		OBJ_158 /* InputMessageContent_Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMessageContent_Venue.swift; sourceTree = "<group>"; };
+		OBJ_16 /* GameHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHandle.swift; sourceTree = "<group>"; };
+		OBJ_160 /* ForceReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceReply.swift; sourceTree = "<group>"; };
+		OBJ_162 /* InlineKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKey.swift; sourceTree = "<group>"; };
+		OBJ_163 /* InlineKeyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKeyType.swift; sourceTree = "<group>"; };
+		OBJ_164 /* InlineKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineKeyboard.swift; sourceTree = "<group>"; };
+		OBJ_166 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		OBJ_167 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
+		OBJ_168 /* KeyboardRemove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardRemove.swift; sourceTree = "<group>"; };
+		OBJ_169 /* MarkupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkupType.swift; sourceTree = "<group>"; };
+		OBJ_17 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		OBJ_171 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		OBJ_172 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		OBJ_173 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		OBJ_174 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		OBJ_175 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		OBJ_176 /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		OBJ_177 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		OBJ_178 /* VideoNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoNote.swift; sourceTree = "<group>"; };
+		OBJ_179 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
+		OBJ_181 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		OBJ_182 /* MessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEntity.swift; sourceTree = "<group>"; };
+		OBJ_183 /* MessageParseMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParseMode.swift; sourceTree = "<group>"; };
+		OBJ_184 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		OBJ_186 /* Invoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invoice.swift; sourceTree = "<group>"; };
+		OBJ_187 /* LabeledPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledPrice.swift; sourceTree = "<group>"; };
+		OBJ_188 /* OrderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfo.swift; sourceTree = "<group>"; };
+		OBJ_189 /* PreCheckoutQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreCheckoutQuery.swift; sourceTree = "<group>"; };
+		OBJ_19 /* Opal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opal.swift; sourceTree = "<group>"; };
+		OBJ_190 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
+		OBJ_191 /* ShippingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingOption.swift; sourceTree = "<group>"; };
+		OBJ_192 /* ShippingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingQuery.swift; sourceTree = "<group>"; };
+		OBJ_193 /* SuccessfulPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessfulPayment.swift; sourceTree = "<group>"; };
+		OBJ_195 /* MaskPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPosition.swift; sourceTree = "<group>"; };
+		OBJ_196 /* MaskPositionPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPositionPoint.swift; sourceTree = "<group>"; };
+		OBJ_197 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		OBJ_198 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
+		OBJ_199 /* Type+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Custom.swift"; sourceTree = "<group>"; };
+		OBJ_20 /* OpalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpalUnit.swift; sourceTree = "<group>"; };
+		OBJ_200 /* Type+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Error.swift"; sourceTree = "<group>"; };
+		OBJ_201 /* Type+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Extensions.swift"; sourceTree = "<group>"; };
+		OBJ_202 /* Type+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Protocols.swift"; sourceTree = "<group>"; };
+		OBJ_203 /* Type+Standard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Type+Standard.swift"; sourceTree = "<group>"; };
+		OBJ_205 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		OBJ_206 /* UserProfilePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotos.swift; sourceTree = "<group>"; };
+		OBJ_208 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		OBJ_209 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		OBJ_21 /* Vault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vault.swift; sourceTree = "<group>"; };
+		OBJ_212 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		OBJ_213 /* BuilderCollision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderCollision.swift; sourceTree = "<group>"; };
+		OBJ_214 /* Spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawn.swift; sourceTree = "<group>"; };
+		OBJ_216 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		OBJ_217 /* ClientConnection+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClientConnection+Error.swift"; sourceTree = "<group>"; };
+		OBJ_218 /* ClientConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientConnection.swift; sourceTree = "<group>"; };
+		OBJ_219 /* Portal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portal.swift; sourceTree = "<group>"; };
+		OBJ_220 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		OBJ_222 /* Cache+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cache+Error.swift"; sourceTree = "<group>"; };
+		OBJ_223 /* CacheFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFile.swift; sourceTree = "<group>"; };
+		OBJ_224 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		OBJ_226 /* Log+Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Debug.swift"; sourceTree = "<group>"; };
+		OBJ_227 /* Log+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Enum.swift"; sourceTree = "<group>"; };
+		OBJ_228 /* Log+Prints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Prints.swift"; sourceTree = "<group>"; };
+		OBJ_229 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		OBJ_23 /* Player+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+InlineQuery.swift"; sourceTree = "<group>"; };
+		OBJ_230 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		OBJ_232 /* Moderator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moderator.swift; sourceTree = "<group>"; };
+		OBJ_233 /* Pelican+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Delegates.swift"; sourceTree = "<group>"; };
+		OBJ_234 /* Pelican+Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Errors.swift"; sourceTree = "<group>"; };
+		OBJ_235 /* Pelican+Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pelican+Files.swift"; sourceTree = "<group>"; };
+		OBJ_236 /* Pelican.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelican.swift; sourceTree = "<group>"; };
+		OBJ_238 /* LoopQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopQueue.swift; sourceTree = "<group>"; };
+		OBJ_24 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		OBJ_240 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		OBJ_241 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		OBJ_243 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
+		OBJ_244 /* UpdateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateType.swift; sourceTree = "<group>"; };
+		OBJ_247 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		OBJ_248 /* SessionIDType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionIDType.swift; sourceTree = "<group>"; };
+		OBJ_249 /* SessionTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTag.swift; sourceTree = "<group>"; };
+		OBJ_25 /* PlayerCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCharacter.swift; sourceTree = "<group>"; };
+		OBJ_253 /* Async+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Admin.swift"; sourceTree = "<group>"; };
+		OBJ_254 /* Async+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Answer.swift"; sourceTree = "<group>"; };
+		OBJ_255 /* Async+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Basic.swift"; sourceTree = "<group>"; };
+		OBJ_256 /* Async+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Async+Stickers.swift"; sourceTree = "<group>"; };
+		OBJ_257 /* SessionRequestAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestAsync.swift; sourceTree = "<group>"; };
+		OBJ_258 /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
+		OBJ_26 /* PlayerSession+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerSession+InlineQuery.swift"; sourceTree = "<group>"; };
+		OBJ_260 /* SessionRequestSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequestSync.swift; sourceTree = "<group>"; };
+		OBJ_261 /* Sync+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Admin.swift"; sourceTree = "<group>"; };
+		OBJ_262 /* Sync+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Answer.swift"; sourceTree = "<group>"; };
+		OBJ_263 /* Sync+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Basic.swift"; sourceTree = "<group>"; };
+		OBJ_264 /* Sync+Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Edit.swift"; sourceTree = "<group>"; };
+		OBJ_265 /* Sync+Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Payments.swift"; sourceTree = "<group>"; };
+		OBJ_266 /* Sync+Stickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sync+Stickers.swift"; sourceTree = "<group>"; };
+		OBJ_268 /* SessionDispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDispatchQueue.swift; sourceTree = "<group>"; };
+		OBJ_27 /* PlayerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSession.swift; sourceTree = "<group>"; };
+		OBJ_270 /* SessionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEvent.swift; sourceTree = "<group>"; };
+		OBJ_272 /* UpdateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFilter.swift; sourceTree = "<group>"; };
+		OBJ_274 /* SessionModerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModerator.swift; sourceTree = "<group>"; };
+		OBJ_276 /* FloodMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodMonitor.swift; sourceTree = "<group>"; };
+		OBJ_277 /* TimeoutMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeoutMonitor.swift; sourceTree = "<group>"; };
+		OBJ_279 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		OBJ_281 /* RouteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCommand.swift; sourceTree = "<group>"; };
+		OBJ_282 /* RouteListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListen.swift; sourceTree = "<group>"; };
+		OBJ_283 /* RouteManual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManual.swift; sourceTree = "<group>"; };
+		OBJ_284 /* RoutePass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePass.swift; sourceTree = "<group>"; };
+		OBJ_286 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		OBJ_288 /* ChatSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSession.swift; sourceTree = "<group>"; };
+		OBJ_289 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		OBJ_29 /* KingpinRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRole.swift; sourceTree = "<group>"; };
+		OBJ_291 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
+		OBJ_292 /* CwlRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlRandom.swift; sourceTree = "<group>"; };
+		OBJ_293 /* SynchronisedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronisedArray.swift; sourceTree = "<group>"; };
+		OBJ_294 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		OBJ_295 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/Pelican.git-5255499054090348273/Package.swift"; sourceTree = "<group>"; };
+		OBJ_298 /* LclJSONSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LclJSONSerialization.swift; sourceTree = "<group>"; };
+		OBJ_299 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		OBJ_30 /* KingpinRoleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRoleType.swift; sourceTree = "<group>"; };
+		OBJ_300 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/SwiftyJSON.git--6955445084174387031/Package.swift"; sourceTree = "<group>"; };
+		OBJ_32 /* KingpinDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinDefault.swift; sourceTree = "<group>"; };
+		OBJ_33 /* KingpinFlair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinFlair.swift; sourceTree = "<group>"; };
+		OBJ_34 /* KingpinRoles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinRoles.swift; sourceTree = "<group>"; };
+		OBJ_36 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
+		OBJ_37 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		OBJ_39 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = SOURCE_ROOT; };
+		OBJ_40 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
+		OBJ_46 /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
+		OBJ_47 /* DiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceItem.swift; sourceTree = "<group>"; };
+		OBJ_48 /* DiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceType.swift; sourceTree = "<group>"; };
+		OBJ_50 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		OBJ_51 /* EventContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContainer.swift; sourceTree = "<group>"; };
+		OBJ_52 /* EventRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
+		OBJ_53 /* EventRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepresentible.swift; sourceTree = "<group>"; };
+		OBJ_54 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		OBJ_56 /* Flair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flair.swift; sourceTree = "<group>"; };
+		OBJ_57 /* FlairManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairManager.swift; sourceTree = "<group>"; };
+		OBJ_58 /* FlairRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairRepresentible.swift; sourceTree = "<group>"; };
+		OBJ_59 /* FlairResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairResponse.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_60 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		OBJ_61 /* InventoryStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryStack.swift; sourceTree = "<group>"; };
-		OBJ_62 /* ItemInfoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoTag.swift; sourceTree = "<group>"; };
-		OBJ_63 /* ItemRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepresentible.swift; sourceTree = "<group>"; };
-		OBJ_64 /* ItemTypeTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeTag.swift; sourceTree = "<group>"; };
-		OBJ_66 /* Array+UserProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UserProxy.swift"; sourceTree = "<group>"; };
-		OBJ_67 /* UserProxy+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProxy+InlineQuery.swift"; sourceTree = "<group>"; };
-		OBJ_68 /* UserProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProxy.swift; sourceTree = "<group>"; };
-		OBJ_69 /* UserProxyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProxyStatus.swift; sourceTree = "<group>"; };
-		OBJ_71 /* PointInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInstance.swift; sourceTree = "<group>"; };
-		OBJ_72 /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
-		OBJ_73 /* PointReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointReceipt.swift; sourceTree = "<group>"; };
-		OBJ_74 /* PointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointType.swift; sourceTree = "<group>"; };
-		OBJ_75 /* PointUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointUnit.swift; sourceTree = "<group>"; };
-		OBJ_76 /* PointValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointValue.swift; sourceTree = "<group>"; };
-		OBJ_78 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
-		OBJ_80 /* ItemRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRoute.swift; sourceTree = "<group>"; };
-		OBJ_81 /* PlayerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRoute.swift; sourceTree = "<group>"; };
-		OBJ_83 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
-		OBJ_84 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
-		OBJ_85 /* CwlRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlRandom.swift; sourceTree = "<group>"; };
-		OBJ_86 /* StringRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentible.swift; sourceTree = "<group>"; };
-		OBJ_87 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/TrashBoat.git--3955929466252045377/Package.swift"; sourceTree = "<group>"; };
-		OBJ_92 /* Codable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+String.swift"; sourceTree = "<group>"; };
-		OBJ_93 /* Request+Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Admin.swift"; sourceTree = "<group>"; };
-		OBJ_94 /* Request+Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Answer.swift"; sourceTree = "<group>"; };
-		OBJ_95 /* Request+Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Basic.swift"; sourceTree = "<group>"; };
-		OBJ_96 /* Request+Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Chat.swift"; sourceTree = "<group>"; };
-		OBJ_97 /* Request+EditMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+EditMessage.swift"; sourceTree = "<group>"; };
-		OBJ_98 /* Request+Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Game.swift"; sourceTree = "<group>"; };
-		OBJ_99 /* Request+Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Request+Payments.swift"; sourceTree = "<group>"; };
+		OBJ_60 /* FlairStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairStack.swift; sourceTree = "<group>"; };
+		OBJ_62 /* GenBump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenBump.swift; sourceTree = "<group>"; };
+		OBJ_63 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		OBJ_64 /* GeneratorOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorOption.swift; sourceTree = "<group>"; };
+		OBJ_66 /* Handle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handle.swift; sourceTree = "<group>"; };
+		OBJ_68 /* Inventory+Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+Stats.swift"; sourceTree = "<group>"; };
+		OBJ_69 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		OBJ_70 /* InventoryStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryStack.swift; sourceTree = "<group>"; };
+		OBJ_71 /* ItemInfoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoTag.swift; sourceTree = "<group>"; };
+		OBJ_72 /* ItemRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepresentible.swift; sourceTree = "<group>"; };
+		OBJ_73 /* ItemTypeTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypeTag.swift; sourceTree = "<group>"; };
+		OBJ_75 /* Array+UserProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UserProxy.swift"; sourceTree = "<group>"; };
+		OBJ_76 /* UserProxy+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProxy+InlineQuery.swift"; sourceTree = "<group>"; };
+		OBJ_77 /* UserProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProxy.swift; sourceTree = "<group>"; };
+		OBJ_78 /* UserProxyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProxyStatus.swift; sourceTree = "<group>"; };
+		OBJ_80 /* PointInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInstance.swift; sourceTree = "<group>"; };
+		OBJ_81 /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
+		OBJ_82 /* PointReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointReceipt.swift; sourceTree = "<group>"; };
+		OBJ_83 /* PointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointType.swift; sourceTree = "<group>"; };
+		OBJ_84 /* PointUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointUnit.swift; sourceTree = "<group>"; };
+		OBJ_85 /* PointValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointValue.swift; sourceTree = "<group>"; };
+		OBJ_87 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		OBJ_89 /* ItemRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRoute.swift; sourceTree = "<group>"; };
+		OBJ_90 /* PlayerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRoute.swift; sourceTree = "<group>"; };
+		OBJ_92 /* Array+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Random.swift"; sourceTree = "<group>"; };
+		OBJ_93 /* CasedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasedEnum.swift; sourceTree = "<group>"; };
+		OBJ_94 /* CwlRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlRandom.swift; sourceTree = "<group>"; };
+		OBJ_95 /* StringRepresentible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRepresentible.swift; sourceTree = "<group>"; };
+		OBJ_96 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/ido/Activities/Collection/2019-03  Kingpin Roulette/kingpin/.build/checkouts/TrashBoat.git--3955929466252045377/Package.swift"; sourceTree = "<group>"; };
 		"Pelican::Pelican::Product" /* Pelican.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pelican.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"SwiftyJSON::SwiftyJSON::Product" /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"TrashBoat::TrashBoat::Product" /* TrashBoat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TrashBoat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_342 /* Frameworks */ = {
+		OBJ_357 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_343 /* TrashBoat.framework in Frameworks */,
-				OBJ_344 /* Pelican.framework in Frameworks */,
-				OBJ_345 /* SwiftyJSON.framework in Frameworks */,
+				OBJ_358 /* TrashBoat.framework in Frameworks */,
+				OBJ_359 /* Pelican.framework in Frameworks */,
+				OBJ_360 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_396 /* Frameworks */ = {
+		OBJ_411 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_397 /* Pelican.framework in Frameworks */,
-				OBJ_398 /* SwiftyJSON.framework in Frameworks */,
+				OBJ_412 /* Pelican.framework in Frameworks */,
+				OBJ_413 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_556 /* Frameworks */ = {
+		OBJ_571 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_557 /* SwiftyJSON.framework in Frameworks */,
+				OBJ_572 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_565 /* Frameworks */ = {
+		OBJ_580 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
@@ -543,563 +545,562 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50A96EE8206CA1D100B7373C /* Player */ = {
+		OBJ_100 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				50A96EE9206CA1EB00B7373C /* PlayerSession.swift */,
-				503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */,
-				OBJ_22 /* Player+InlineQuery.swift */,
-				OBJ_23 /* Player.swift */,
-				OBJ_24 /* PlayerCharacter.swift */,
+				OBJ_101 /* Codable+String.swift */,
+				OBJ_102 /* Request+Admin.swift */,
+				OBJ_103 /* Request+Answer.swift */,
+				OBJ_104 /* Request+Basic.swift */,
+				OBJ_105 /* Request+Chat.swift */,
+				OBJ_106 /* Request+EditMessage.swift */,
+				OBJ_107 /* Request+Game.swift */,
+				OBJ_108 /* Request+Payments.swift */,
+				OBJ_109 /* Request+Stickers.swift */,
+				OBJ_110 /* TelegramRequest.swift */,
 			);
-			path = Player;
+			path = Request;
 			sourceTree = "<group>";
 		};
-		OBJ_102 /* Response */ = {
+		OBJ_111 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_103 /* TelegramResponse.swift */,
-				OBJ_104 /* TelegramResponseError.swift */,
+				OBJ_112 /* TelegramResponse.swift */,
+				OBJ_113 /* TelegramResponseError.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
 		};
-		OBJ_105 /* Types */ = {
+		OBJ_114 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_106 /* Albums */,
-				OBJ_110 /* Callback */,
-				OBJ_112 /* Chat */,
-				OBJ_117 /* FileDownload.swift */,
-				OBJ_118 /* Game */,
-				OBJ_122 /* Inline */,
-				OBJ_150 /* Markup */,
-				OBJ_161 /* Message Content */,
-				OBJ_171 /* Message */,
-				OBJ_176 /* Payments */,
-				OBJ_185 /* Stickers */,
-				OBJ_190 /* Type+Custom.swift */,
-				OBJ_191 /* Type+Error.swift */,
-				OBJ_192 /* Type+Extensions.swift */,
-				OBJ_193 /* Type+Protocols.swift */,
-				OBJ_194 /* Type+Standard.swift */,
-				OBJ_195 /* User */,
+				OBJ_115 /* Albums */,
+				OBJ_119 /* Callback */,
+				OBJ_121 /* Chat */,
+				OBJ_126 /* FileDownload.swift */,
+				OBJ_127 /* Game */,
+				OBJ_131 /* Inline */,
+				OBJ_159 /* Markup */,
+				OBJ_170 /* Message Content */,
+				OBJ_180 /* Message */,
+				OBJ_185 /* Payments */,
+				OBJ_194 /* Stickers */,
+				OBJ_199 /* Type+Custom.swift */,
+				OBJ_200 /* Type+Error.swift */,
+				OBJ_201 /* Type+Extensions.swift */,
+				OBJ_202 /* Type+Protocols.swift */,
+				OBJ_203 /* Type+Standard.swift */,
+				OBJ_204 /* User */,
 			);
 			path = Types;
 			sourceTree = "<group>";
 		};
-		OBJ_106 /* Albums */ = {
+		OBJ_115 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_107 /* InputMedia.swift */,
-				OBJ_108 /* InputMediaPhoto.swift */,
-				OBJ_109 /* InputMediaVideo.swift */,
+				OBJ_116 /* InputMedia.swift */,
+				OBJ_117 /* InputMediaPhoto.swift */,
+				OBJ_118 /* InputMediaVideo.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
 		};
-		OBJ_110 /* Callback */ = {
+		OBJ_119 /* Callback */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_111 /* CallbackQuery.swift */,
+				OBJ_120 /* CallbackQuery.swift */,
 			);
 			path = Callback;
 			sourceTree = "<group>";
 		};
-		OBJ_112 /* Chat */ = {
+		OBJ_121 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_113 /* Chat.swift */,
-				OBJ_114 /* ChatAction.swift */,
-				OBJ_115 /* ChatMember.swift */,
-				OBJ_116 /* ChatPhoto.swift */,
+				OBJ_122 /* Chat.swift */,
+				OBJ_123 /* ChatAction.swift */,
+				OBJ_124 /* ChatMember.swift */,
+				OBJ_125 /* ChatPhoto.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		OBJ_118 /* Game */ = {
+		OBJ_127 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_119 /* Animation.swift */,
-				OBJ_120 /* Game.swift */,
-				OBJ_121 /* GameHighScore.swift */,
+				OBJ_128 /* Animation.swift */,
+				OBJ_129 /* Game.swift */,
+				OBJ_130 /* GameHighScore.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		OBJ_122 /* Inline */ = {
+		OBJ_131 /* Inline */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_123 /* ChosenInlineResult.swift */,
-				OBJ_124 /* InlineQuery.swift */,
-				OBJ_125 /* InlineQueryResult */,
-				OBJ_139 /* InlineResult.swift */,
-				OBJ_140 /* InlineResultAny.swift */,
-				OBJ_141 /* InlineResultType.swift */,
-				OBJ_142 /* InputMessageContent */,
+				OBJ_132 /* ChosenInlineResult.swift */,
+				OBJ_133 /* InlineQuery.swift */,
+				OBJ_134 /* InlineQueryResult */,
+				OBJ_148 /* InlineResult.swift */,
+				OBJ_149 /* InlineResultAny.swift */,
+				OBJ_150 /* InlineResultType.swift */,
+				OBJ_151 /* InputMessageContent */,
 			);
 			path = Inline;
 			sourceTree = "<group>";
 		};
-		OBJ_125 /* InlineQueryResult */ = {
+		OBJ_134 /* InlineQueryResult */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_126 /* InlineResultArticle.swift */,
-				OBJ_127 /* InlineResultAudio.swift */,
-				OBJ_128 /* InlineResultContact.swift */,
-				OBJ_129 /* InlineResultDocument.swift */,
-				OBJ_130 /* InlineResultGame.swift */,
-				OBJ_131 /* InlineResultGif.swift */,
-				OBJ_132 /* InlineResultLocation.swift */,
-				OBJ_133 /* InlineResultMpeg4Gif.swift */,
-				OBJ_134 /* InlineResultPhoto.swift */,
-				OBJ_135 /* InlineResultSticker.swift */,
-				OBJ_136 /* InlineResultVenue.swift */,
-				OBJ_137 /* InlineResultVideo.swift */,
-				OBJ_138 /* InlineResultVoice.swift */,
+				OBJ_135 /* InlineResultArticle.swift */,
+				OBJ_136 /* InlineResultAudio.swift */,
+				OBJ_137 /* InlineResultContact.swift */,
+				OBJ_138 /* InlineResultDocument.swift */,
+				OBJ_139 /* InlineResultGame.swift */,
+				OBJ_140 /* InlineResultGif.swift */,
+				OBJ_141 /* InlineResultLocation.swift */,
+				OBJ_142 /* InlineResultMpeg4Gif.swift */,
+				OBJ_143 /* InlineResultPhoto.swift */,
+				OBJ_144 /* InlineResultSticker.swift */,
+				OBJ_145 /* InlineResultVenue.swift */,
+				OBJ_146 /* InlineResultVideo.swift */,
+				OBJ_147 /* InlineResultVoice.swift */,
 			);
 			path = InlineQueryResult;
 			sourceTree = "<group>";
 		};
-		OBJ_13 /* Items */ = {
+		OBJ_15 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* Opal.swift */,
-				OBJ_15 /* Vault.swift */,
-				5024F649206C1C9A008D1BE3 /* OpalUnit.swift */,
-			);
-			path = Items;
-			sourceTree = "<group>";
-		};
-		OBJ_142 /* InputMessageContent */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_143 /* InputMessageContent.swift */,
-				OBJ_144 /* InputMessageContentType.swift */,
-				OBJ_145 /* InputMessageContent_Any.swift */,
-				OBJ_146 /* InputMessageContent_Contact.swift */,
-				OBJ_147 /* InputMessageContent_Location.swift */,
-				OBJ_148 /* InputMessageContent_Text.swift */,
-				OBJ_149 /* InputMessageContent_Venue.swift */,
-			);
-			path = InputMessageContent;
-			sourceTree = "<group>";
-		};
-		OBJ_150 /* Markup */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_151 /* ForceReply.swift */,
-				OBJ_152 /* Inline */,
-				OBJ_156 /* Keyboard */,
-				OBJ_160 /* MarkupType.swift */,
-			);
-			path = Markup;
-			sourceTree = "<group>";
-		};
-		OBJ_152 /* Inline */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_153 /* InlineKey.swift */,
-				OBJ_154 /* InlineKeyType.swift */,
-				OBJ_155 /* InlineKeyboard.swift */,
-			);
-			path = Inline;
-			sourceTree = "<group>";
-		};
-		OBJ_156 /* Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_157 /* Keyboard.swift */,
-				OBJ_158 /* KeyboardKey.swift */,
-				OBJ_159 /* KeyboardRemove.swift */,
-			);
-			path = Keyboard;
-			sourceTree = "<group>";
-		};
-		OBJ_16 /* Roles */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_17 /* KingpinRole.swift */,
-				OBJ_18 /* KingpinRoleType.swift */,
-			);
-			path = Roles;
-			sourceTree = "<group>";
-		};
-		OBJ_161 /* Message Content */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_162 /* Audio.swift */,
-				OBJ_163 /* Contact.swift */,
-				OBJ_164 /* Document.swift */,
-				OBJ_165 /* Location.swift */,
-				OBJ_166 /* Photo.swift */,
-				OBJ_167 /* Venue.swift */,
-				OBJ_168 /* Video.swift */,
-				OBJ_169 /* VideoNote.swift */,
-				OBJ_170 /* Voice.swift */,
-			);
-			path = "Message Content";
-			sourceTree = "<group>";
-		};
-		OBJ_171 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_172 /* Message.swift */,
-				OBJ_173 /* MessageEntity.swift */,
-				OBJ_174 /* MessageParseMode.swift */,
-				OBJ_175 /* MessageType.swift */,
-			);
-			path = Message;
-			sourceTree = "<group>";
-		};
-		OBJ_176 /* Payments */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_177 /* Invoice.swift */,
-				OBJ_178 /* LabeledPrice.swift */,
-				OBJ_179 /* OrderInfo.swift */,
-				OBJ_180 /* PreCheckoutQuery.swift */,
-				OBJ_181 /* ShippingAddress.swift */,
-				OBJ_182 /* ShippingOption.swift */,
-				OBJ_183 /* ShippingQuery.swift */,
-				OBJ_184 /* SuccessfulPayment.swift */,
-			);
-			path = Payments;
-			sourceTree = "<group>";
-		};
-		OBJ_185 /* Stickers */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_186 /* MaskPosition.swift */,
-				OBJ_187 /* MaskPositionPoint.swift */,
-				OBJ_188 /* Sticker.swift */,
-				OBJ_189 /* StickerSet.swift */,
-			);
-			path = Stickers;
-			sourceTree = "<group>";
-		};
-		OBJ_19 /* Game */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_20 /* GameHandle.swift */,
-				OBJ_21 /* GameSession.swift */,
+				OBJ_16 /* GameHandle.swift */,
+				OBJ_17 /* GameSession.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
 		};
-		OBJ_195 /* User */ = {
+		OBJ_151 /* InputMessageContent */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_196 /* User.swift */,
-				OBJ_197 /* UserProfilePhotos.swift */,
+				OBJ_152 /* InputMessageContent.swift */,
+				OBJ_153 /* InputMessageContentType.swift */,
+				OBJ_154 /* InputMessageContent_Any.swift */,
+				OBJ_155 /* InputMessageContent_Contact.swift */,
+				OBJ_156 /* InputMessageContent_Location.swift */,
+				OBJ_157 /* InputMessageContent_Text.swift */,
+				OBJ_158 /* InputMessageContent_Venue.swift */,
+			);
+			path = InputMessageContent;
+			sourceTree = "<group>";
+		};
+		OBJ_159 /* Markup */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_160 /* ForceReply.swift */,
+				OBJ_161 /* Inline */,
+				OBJ_165 /* Keyboard */,
+				OBJ_169 /* MarkupType.swift */,
+			);
+			path = Markup;
+			sourceTree = "<group>";
+		};
+		OBJ_161 /* Inline */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_162 /* InlineKey.swift */,
+				OBJ_163 /* InlineKeyType.swift */,
+				OBJ_164 /* InlineKeyboard.swift */,
+			);
+			path = Inline;
+			sourceTree = "<group>";
+		};
+		OBJ_165 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_166 /* Keyboard.swift */,
+				OBJ_167 /* KeyboardKey.swift */,
+				OBJ_168 /* KeyboardRemove.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		OBJ_170 /* Message Content */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_171 /* Audio.swift */,
+				OBJ_172 /* Contact.swift */,
+				OBJ_173 /* Document.swift */,
+				OBJ_174 /* Location.swift */,
+				OBJ_175 /* Photo.swift */,
+				OBJ_176 /* Venue.swift */,
+				OBJ_177 /* Video.swift */,
+				OBJ_178 /* VideoNote.swift */,
+				OBJ_179 /* Voice.swift */,
+			);
+			path = "Message Content";
+			sourceTree = "<group>";
+		};
+		OBJ_18 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_19 /* Opal.swift */,
+				OBJ_20 /* OpalUnit.swift */,
+				OBJ_21 /* Vault.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		OBJ_180 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_181 /* Message.swift */,
+				OBJ_182 /* MessageEntity.swift */,
+				OBJ_183 /* MessageParseMode.swift */,
+				OBJ_184 /* MessageType.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		OBJ_185 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_186 /* Invoice.swift */,
+				OBJ_187 /* LabeledPrice.swift */,
+				OBJ_188 /* OrderInfo.swift */,
+				OBJ_189 /* PreCheckoutQuery.swift */,
+				OBJ_190 /* ShippingAddress.swift */,
+				OBJ_191 /* ShippingOption.swift */,
+				OBJ_192 /* ShippingQuery.swift */,
+				OBJ_193 /* SuccessfulPayment.swift */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
+		OBJ_194 /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_195 /* MaskPosition.swift */,
+				OBJ_196 /* MaskPositionPoint.swift */,
+				OBJ_197 /* Sticker.swift */,
+				OBJ_198 /* StickerSet.swift */,
+			);
+			path = Stickers;
+			sourceTree = "<group>";
+		};
+		OBJ_204 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_205 /* User.swift */,
+				OBJ_206 /* UserProfilePhotos.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
 		};
-		OBJ_198 /* HTTP */ = {
+		OBJ_207 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_199 /* Status.swift */,
-				OBJ_200 /* Version.swift */,
+				OBJ_208 /* Status.swift */,
+				OBJ_209 /* Version.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
 		};
-		OBJ_201 /* Pelican */ = {
+		OBJ_210 /* Pelican */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_202 /* Builder */,
-				OBJ_206 /* Client */,
-				OBJ_212 /* Files */,
-				OBJ_216 /* Log */,
-				OBJ_222 /* Moderator */,
-				OBJ_224 /* Pelican+Delegates.swift */,
-				OBJ_225 /* Pelican+Errors.swift */,
-				OBJ_226 /* Pelican+Files.swift */,
-				OBJ_227 /* Pelican.swift */,
-				OBJ_228 /* Queues */,
-				OBJ_230 /* Schedule */,
-				OBJ_233 /* Update */,
+				OBJ_211 /* Builder */,
+				OBJ_215 /* Client */,
+				OBJ_221 /* Files */,
+				OBJ_225 /* Log */,
+				OBJ_231 /* Moderator */,
+				OBJ_233 /* Pelican+Delegates.swift */,
+				OBJ_234 /* Pelican+Errors.swift */,
+				OBJ_235 /* Pelican+Files.swift */,
+				OBJ_236 /* Pelican.swift */,
+				OBJ_237 /* Queues */,
+				OBJ_239 /* Schedule */,
+				OBJ_242 /* Update */,
 			);
 			path = Pelican;
 			sourceTree = "<group>";
 		};
-		OBJ_202 /* Builder */ = {
+		OBJ_211 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_203 /* Builder.swift */,
-				OBJ_204 /* BuilderCollision.swift */,
-				OBJ_205 /* Spawn.swift */,
+				OBJ_212 /* Builder.swift */,
+				OBJ_213 /* BuilderCollision.swift */,
+				OBJ_214 /* Spawn.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
 		};
-		OBJ_206 /* Client */ = {
+		OBJ_215 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_207 /* Client.swift */,
-				OBJ_208 /* ClientConnection+Error.swift */,
-				OBJ_209 /* ClientConnection.swift */,
-				OBJ_210 /* Portal.swift */,
-				OBJ_211 /* Result.swift */,
+				OBJ_216 /* Client.swift */,
+				OBJ_217 /* ClientConnection+Error.swift */,
+				OBJ_218 /* ClientConnection.swift */,
+				OBJ_219 /* Portal.swift */,
+				OBJ_220 /* Result.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
 		};
-		OBJ_212 /* Files */ = {
+		OBJ_22 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_213 /* Cache+Error.swift */,
-				OBJ_214 /* CacheFile.swift */,
-				OBJ_215 /* CacheManager.swift */,
+				OBJ_23 /* Player+InlineQuery.swift */,
+				OBJ_24 /* Player.swift */,
+				OBJ_25 /* PlayerCharacter.swift */,
+				OBJ_26 /* PlayerSession+InlineQuery.swift */,
+				OBJ_27 /* PlayerSession.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		OBJ_221 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_222 /* Cache+Error.swift */,
+				OBJ_223 /* CacheFile.swift */,
+				OBJ_224 /* CacheManager.swift */,
 			);
 			path = Files;
 			sourceTree = "<group>";
 		};
-		OBJ_216 /* Log */ = {
+		OBJ_225 /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_217 /* Log+Debug.swift */,
-				OBJ_218 /* Log+Enum.swift */,
-				OBJ_219 /* Log+Prints.swift */,
-				OBJ_220 /* Log.swift */,
-				OBJ_221 /* LogLevel.swift */,
+				OBJ_226 /* Log+Debug.swift */,
+				OBJ_227 /* Log+Enum.swift */,
+				OBJ_228 /* Log+Prints.swift */,
+				OBJ_229 /* Log.swift */,
+				OBJ_230 /* LogLevel.swift */,
 			);
 			path = Log;
 			sourceTree = "<group>";
 		};
-		OBJ_222 /* Moderator */ = {
+		OBJ_231 /* Moderator */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_223 /* Moderator.swift */,
+				OBJ_232 /* Moderator.swift */,
 			);
 			path = Moderator;
 			sourceTree = "<group>";
 		};
-		OBJ_228 /* Queues */ = {
+		OBJ_237 /* Queues */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_229 /* LoopQueue.swift */,
+				OBJ_238 /* LoopQueue.swift */,
 			);
 			path = Queues;
 			sourceTree = "<group>";
 		};
-		OBJ_230 /* Schedule */ = {
+		OBJ_239 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_231 /* Duration.swift */,
-				OBJ_232 /* Schedule.swift */,
+				OBJ_240 /* Duration.swift */,
+				OBJ_241 /* Schedule.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
 		};
-		OBJ_233 /* Update */ = {
+		OBJ_242 /* Update */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_234 /* Update.swift */,
-				OBJ_235 /* UpdateType.swift */,
+				OBJ_243 /* Update.swift */,
+				OBJ_244 /* UpdateType.swift */,
 			);
 			path = Update;
 			sourceTree = "<group>";
 		};
-		OBJ_236 /* Session */ = {
+		OBJ_245 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_237 /* Core */,
-				OBJ_241 /* Modules */,
-				OBJ_278 /* Types */,
+				OBJ_246 /* Core */,
+				OBJ_250 /* Modules */,
+				OBJ_287 /* Types */,
 			);
 			path = Session;
 			sourceTree = "<group>";
 		};
-		OBJ_237 /* Core */ = {
+		OBJ_246 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_238 /* Session.swift */,
-				OBJ_239 /* SessionIDType.swift */,
-				OBJ_240 /* SessionTag.swift */,
+				OBJ_247 /* Session.swift */,
+				OBJ_248 /* SessionIDType.swift */,
+				OBJ_249 /* SessionTag.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		OBJ_241 /* Modules */ = {
+		OBJ_250 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_242 /* API Request */,
-				OBJ_258 /* DispatchQueue */,
-				OBJ_260 /* Event */,
-				OBJ_262 /* Filter */,
-				OBJ_264 /* Moderator */,
-				OBJ_266 /* Monitor */,
-				OBJ_269 /* Router */,
-				OBJ_276 /* ScheduleQueue */,
+				OBJ_251 /* API Request */,
+				OBJ_267 /* DispatchQueue */,
+				OBJ_269 /* Event */,
+				OBJ_271 /* Filter */,
+				OBJ_273 /* Moderator */,
+				OBJ_275 /* Monitor */,
+				OBJ_278 /* Router */,
+				OBJ_285 /* ScheduleQueue */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		OBJ_242 /* API Request */ = {
+		OBJ_251 /* API Request */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_243 /* Async */,
-				OBJ_249 /* SessionRequest.swift */,
-				OBJ_250 /* Sync */,
+				OBJ_252 /* Async */,
+				OBJ_258 /* SessionRequest.swift */,
+				OBJ_259 /* Sync */,
 			);
 			path = "API Request";
 			sourceTree = "<group>";
 		};
-		OBJ_243 /* Async */ = {
+		OBJ_252 /* Async */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_244 /* Async+Admin.swift */,
-				OBJ_245 /* Async+Answer.swift */,
-				OBJ_246 /* Async+Basic.swift */,
-				OBJ_247 /* Async+Stickers.swift */,
-				OBJ_248 /* SessionRequestAsync.swift */,
+				OBJ_253 /* Async+Admin.swift */,
+				OBJ_254 /* Async+Answer.swift */,
+				OBJ_255 /* Async+Basic.swift */,
+				OBJ_256 /* Async+Stickers.swift */,
+				OBJ_257 /* SessionRequestAsync.swift */,
 			);
 			path = Async;
 			sourceTree = "<group>";
 		};
-		OBJ_25 /* Statics */ = {
+		OBJ_259 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_26 /* KingpinDefault.swift */,
-				OBJ_27 /* KingpinRoles.swift */,
-				5058D465206F54E500A5AB61 /* KingpinFlair.swift */,
-			);
-			path = Statics;
-			sourceTree = "<group>";
-		};
-		OBJ_250 /* Sync */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_251 /* SessionRequestSync.swift */,
-				OBJ_252 /* Sync+Admin.swift */,
-				OBJ_253 /* Sync+Answer.swift */,
-				OBJ_254 /* Sync+Basic.swift */,
-				OBJ_255 /* Sync+Edit.swift */,
-				OBJ_256 /* Sync+Payments.swift */,
-				OBJ_257 /* Sync+Stickers.swift */,
+				OBJ_260 /* SessionRequestSync.swift */,
+				OBJ_261 /* Sync+Admin.swift */,
+				OBJ_262 /* Sync+Answer.swift */,
+				OBJ_263 /* Sync+Basic.swift */,
+				OBJ_264 /* Sync+Edit.swift */,
+				OBJ_265 /* Sync+Payments.swift */,
+				OBJ_266 /* Sync+Stickers.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
 		};
-		OBJ_258 /* DispatchQueue */ = {
+		OBJ_267 /* DispatchQueue */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_259 /* SessionDispatchQueue.swift */,
+				OBJ_268 /* SessionDispatchQueue.swift */,
 			);
 			path = DispatchQueue;
 			sourceTree = "<group>";
 		};
-		OBJ_260 /* Event */ = {
+		OBJ_269 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_261 /* SessionEvent.swift */,
+				OBJ_270 /* SessionEvent.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
 		};
-		OBJ_262 /* Filter */ = {
+		OBJ_271 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_263 /* UpdateFilter.swift */,
+				OBJ_272 /* UpdateFilter.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
 		};
-		OBJ_264 /* Moderator */ = {
+		OBJ_273 /* Moderator */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_265 /* SessionModerator.swift */,
+				OBJ_274 /* SessionModerator.swift */,
 			);
 			path = Moderator;
 			sourceTree = "<group>";
 		};
-		OBJ_266 /* Monitor */ = {
+		OBJ_275 /* Monitor */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_267 /* FloodMonitor.swift */,
-				OBJ_268 /* TimeoutMonitor.swift */,
+				OBJ_276 /* FloodMonitor.swift */,
+				OBJ_277 /* TimeoutMonitor.swift */,
 			);
 			path = Monitor;
 			sourceTree = "<group>";
 		};
-		OBJ_269 /* Router */ = {
+		OBJ_278 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_270 /* Route.swift */,
-				OBJ_271 /* Types */,
+				OBJ_279 /* Route.swift */,
+				OBJ_280 /* Types */,
 			);
 			path = Router;
 			sourceTree = "<group>";
 		};
-		OBJ_271 /* Types */ = {
+		OBJ_28 /* Roles */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_272 /* RouteCommand.swift */,
-				OBJ_273 /* RouteListen.swift */,
-				OBJ_274 /* RouteManual.swift */,
-				OBJ_275 /* RoutePass.swift */,
+				OBJ_29 /* KingpinRole.swift */,
+				OBJ_30 /* KingpinRoleType.swift */,
+			);
+			path = Roles;
+			sourceTree = "<group>";
+		};
+		OBJ_280 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_281 /* RouteCommand.swift */,
+				OBJ_282 /* RouteListen.swift */,
+				OBJ_283 /* RouteManual.swift */,
+				OBJ_284 /* RoutePass.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
 		};
-		OBJ_276 /* ScheduleQueue */ = {
+		OBJ_285 /* ScheduleQueue */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_277 /* Queue.swift */,
+				OBJ_286 /* Queue.swift */,
 			);
 			path = ScheduleQueue;
 			sourceTree = "<group>";
 		};
-		OBJ_278 /* Types */ = {
+		OBJ_287 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_279 /* ChatSession.swift */,
-				OBJ_280 /* UserSession.swift */,
+				OBJ_288 /* ChatSession.swift */,
+				OBJ_289 /* UserSession.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
 		};
-		OBJ_28 /* Utilities */ = {
+		OBJ_290 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_29 /* CasedEnum.swift */,
+				OBJ_291 /* CasedEnum.swift */,
+				OBJ_292 /* CwlRandom.swift */,
+				OBJ_293 /* SynchronisedArray.swift */,
+				OBJ_294 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		OBJ_281 /* Utilities */ = {
+		OBJ_296 /* SwiftyJSON 17.0.1 */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_282 /* CasedEnum.swift */,
-				OBJ_283 /* CwlRandom.swift */,
-				OBJ_284 /* SynchronisedArray.swift */,
-				OBJ_285 /* Utilities.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		OBJ_287 /* SwiftyJSON 17.0.1 */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_288 /* SwiftyJSON */,
-				OBJ_291 /* Package.swift */,
+				OBJ_297 /* SwiftyJSON */,
+				OBJ_300 /* Package.swift */,
 			);
 			name = "SwiftyJSON 17.0.1";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_288 /* SwiftyJSON */ = {
+		OBJ_297 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_289 /* LclJSONSerialization.swift */,
-				OBJ_290 /* SwiftyJSON.swift */,
+				OBJ_298 /* LclJSONSerialization.swift */,
+				OBJ_299 /* SwiftyJSON.swift */,
 			);
 			name = SwiftyJSON;
 			path = ".build/checkouts/SwiftyJSON.git--6955445084174387031/Sources/SwiftyJSON";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_292 /* Products */ = {
+		OBJ_301 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				"Kingpin::App::Product" /* App */,
@@ -1110,144 +1111,154 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_31 /* Tests */ = {
+		OBJ_31 /* Statics */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_32 /* KingpinDefault.swift */,
+				OBJ_33 /* KingpinFlair.swift */,
+				OBJ_34 /* KingpinRoles.swift */,
+			);
+			path = Statics;
+			sourceTree = "<group>";
+		};
+		OBJ_35 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_36 /* CasedEnum.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		OBJ_38 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_32 /* Dependencies */ = {
+		OBJ_41 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_33 /* TrashBoat */,
-				OBJ_88 /* Pelican */,
-				OBJ_287 /* SwiftyJSON 17.0.1 */,
+				OBJ_42 /* TrashBoat */,
+				OBJ_97 /* Pelican */,
+				OBJ_296 /* SwiftyJSON 17.0.1 */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		OBJ_33 /* TrashBoat */ = {
+		OBJ_42 /* TrashBoat */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_34 /* TrashBoat */,
-				OBJ_87 /* Package.swift */,
+				OBJ_43 /* TrashBoat */,
+				OBJ_96 /* Package.swift */,
 			);
 			name = TrashBoat;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_34 /* TrashBoat */ = {
+		OBJ_43 /* TrashBoat */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_35 /* Core */,
-				OBJ_82 /* Utilities */,
+				OBJ_44 /* Core */,
+				OBJ_91 /* Utilities */,
 			);
 			name = TrashBoat;
 			path = ".build/checkouts/TrashBoat.git--3955929466252045377/Sources/TrashBoat";
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_35 /* Core */ = {
+		OBJ_44 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_36 /* Dice */,
-				OBJ_40 /* Event */,
-				OBJ_46 /* Flair */,
-				OBJ_52 /* Generator */,
-				OBJ_56 /* Handle */,
-				OBJ_58 /* Items */,
-				OBJ_65 /* Player */,
-				OBJ_70 /* Points */,
-				OBJ_77 /* Reward */,
-				OBJ_79 /* Routes */,
+				OBJ_45 /* Dice */,
+				OBJ_49 /* Event */,
+				OBJ_55 /* Flair */,
+				OBJ_61 /* Generator */,
+				OBJ_65 /* Handle */,
+				OBJ_67 /* Items */,
+				OBJ_74 /* Player */,
+				OBJ_79 /* Points */,
+				OBJ_86 /* Reward */,
+				OBJ_88 /* Routes */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		OBJ_36 /* Dice */ = {
+		OBJ_45 /* Dice */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_37 /* Dice.swift */,
-				OBJ_38 /* DiceItem.swift */,
-				OBJ_39 /* DiceType.swift */,
+				OBJ_46 /* Dice.swift */,
+				OBJ_47 /* DiceItem.swift */,
+				OBJ_48 /* DiceType.swift */,
 			);
 			path = Dice;
 			sourceTree = "<group>";
 		};
-		OBJ_40 /* Event */ = {
+		OBJ_49 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_41 /* Event.swift */,
-				OBJ_42 /* EventContainer.swift */,
-				OBJ_43 /* EventRecord.swift */,
-				OBJ_44 /* EventRepresentible.swift */,
-				OBJ_45 /* EventType.swift */,
+				OBJ_50 /* Event.swift */,
+				OBJ_51 /* EventContainer.swift */,
+				OBJ_52 /* EventRecord.swift */,
+				OBJ_53 /* EventRepresentible.swift */,
+				OBJ_54 /* EventType.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
 		};
-		OBJ_46 /* Flair */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_47 /* Flair.swift */,
-				OBJ_48 /* FlairManager.swift */,
-				OBJ_49 /* FlairRepresentible.swift */,
-				OBJ_50 /* FlairResponse.swift */,
-				OBJ_51 /* FlairStack.swift */,
-			);
-			path = Flair;
-			sourceTree = "<group>";
-		};
-		OBJ_5 = {
+		OBJ_5 /*  */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_31 /* Tests */,
-				OBJ_32 /* Dependencies */,
-				OBJ_292 /* Products */,
+				OBJ_38 /* Tests */,
+				OBJ_39 /* Resources */,
+				OBJ_40 /* Scripts */,
+				OBJ_41 /* Dependencies */,
+				OBJ_301 /* Products */,
 			);
+			name = "";
 			sourceTree = "<group>";
 		};
-		OBJ_52 /* Generator */ = {
+		OBJ_55 /* Flair */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_53 /* GenBump.swift */,
-				OBJ_54 /* Generator.swift */,
-				OBJ_55 /* GeneratorOption.swift */,
+				OBJ_56 /* Flair.swift */,
+				OBJ_57 /* FlairManager.swift */,
+				OBJ_58 /* FlairRepresentible.swift */,
+				OBJ_59 /* FlairResponse.swift */,
+				OBJ_60 /* FlairStack.swift */,
+			);
+			path = Flair;
+			sourceTree = "<group>";
+		};
+		OBJ_61 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_62 /* GenBump.swift */,
+				OBJ_63 /* Generator.swift */,
+				OBJ_64 /* GeneratorOption.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
 		};
-		OBJ_56 /* Handle */ = {
+		OBJ_65 /* Handle */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_57 /* Handle.swift */,
+				OBJ_66 /* Handle.swift */,
 			);
 			path = Handle;
 			sourceTree = "<group>";
 		};
-		OBJ_58 /* Items */ = {
+		OBJ_67 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_59 /* Inventory+Stats.swift */,
-				OBJ_60 /* Inventory.swift */,
-				OBJ_61 /* InventoryStack.swift */,
-				OBJ_62 /* ItemInfoTag.swift */,
-				OBJ_63 /* ItemRepresentible.swift */,
-				OBJ_64 /* ItemTypeTag.swift */,
+				OBJ_68 /* Inventory+Stats.swift */,
+				OBJ_69 /* Inventory.swift */,
+				OBJ_70 /* InventoryStack.swift */,
+				OBJ_71 /* ItemInfoTag.swift */,
+				OBJ_72 /* ItemRepresentible.swift */,
+				OBJ_73 /* ItemTypeTag.swift */,
 			);
 			path = Items;
-			sourceTree = "<group>";
-		};
-		OBJ_65 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_66 /* Array+UserProxy.swift */,
-				OBJ_67 /* UserProxy+InlineQuery.swift */,
-				OBJ_68 /* UserProxy.swift */,
-				OBJ_69 /* UserProxyStatus.swift */,
-			);
-			path = Player;
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -1258,122 +1269,116 @@
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_70 /* Points */ = {
+		OBJ_74 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_71 /* PointInstance.swift */,
-				OBJ_72 /* PointManager.swift */,
-				OBJ_73 /* PointReceipt.swift */,
-				OBJ_74 /* PointType.swift */,
-				OBJ_75 /* PointUnit.swift */,
-				OBJ_76 /* PointValue.swift */,
+				OBJ_75 /* Array+UserProxy.swift */,
+				OBJ_76 /* UserProxy+InlineQuery.swift */,
+				OBJ_77 /* UserProxy.swift */,
+				OBJ_78 /* UserProxyStatus.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		OBJ_79 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_80 /* PointInstance.swift */,
+				OBJ_81 /* PointManager.swift */,
+				OBJ_82 /* PointReceipt.swift */,
+				OBJ_83 /* PointType.swift */,
+				OBJ_84 /* PointUnit.swift */,
+				OBJ_85 /* PointValue.swift */,
 			);
 			path = Points;
-			sourceTree = "<group>";
-		};
-		OBJ_77 /* Reward */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_78 /* Reward.swift */,
-			);
-			path = Reward;
-			sourceTree = "<group>";
-		};
-		OBJ_79 /* Routes */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_80 /* ItemRoute.swift */,
-				OBJ_81 /* PlayerRoute.swift */,
-			);
-			path = Routes;
 			sourceTree = "<group>";
 		};
 		OBJ_8 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				50A96EE8206CA1D100B7373C /* Player */,
 				OBJ_9 /* Events */,
-				OBJ_13 /* Items */,
-				OBJ_16 /* Roles */,
-				OBJ_19 /* Game */,
-				OBJ_25 /* Statics */,
-				OBJ_28 /* Utilities */,
-				OBJ_30 /* main.swift */,
+				OBJ_15 /* Game */,
+				OBJ_18 /* Items */,
+				OBJ_22 /* Player */,
+				OBJ_28 /* Roles */,
+				OBJ_31 /* Statics */,
+				OBJ_35 /* Utilities */,
+				OBJ_37 /* main.swift */,
 			);
 			name = App;
 			path = Sources/App;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_82 /* Utilities */ = {
+		OBJ_86 /* Reward */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_83 /* Array+Random.swift */,
-				OBJ_84 /* CasedEnum.swift */,
-				OBJ_85 /* CwlRandom.swift */,
-				OBJ_86 /* StringRepresentible.swift */,
+				OBJ_87 /* Reward.swift */,
 			);
-			path = Utilities;
+			path = Reward;
 			sourceTree = "<group>";
 		};
-		OBJ_88 /* Pelican */ = {
+		OBJ_88 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_89 /* Pelican */,
-				OBJ_286 /* Package.swift */,
+				OBJ_89 /* ItemRoute.swift */,
+				OBJ_90 /* PlayerRoute.swift */,
 			);
-			name = Pelican;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_89 /* Pelican */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_90 /* API */,
-				OBJ_198 /* HTTP */,
-				OBJ_201 /* Pelican */,
-				OBJ_236 /* Session */,
-				OBJ_281 /* Utilities */,
-			);
-			name = Pelican;
-			path = ".build/checkouts/Pelican.git-5255499054090348273/Sources/Pelican";
-			sourceTree = SOURCE_ROOT;
+			path = Routes;
+			sourceTree = "<group>";
 		};
 		OBJ_9 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_10 /* Event_Interrogate.swift */,
 				OBJ_11 /* Event_NewGame.swift */,
-				OBJ_12 /* Event_VaultVisit.swift */,
-				50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */,
-				5069647D206C92DA00F10C38 /* KingpinEvent.swift */,
+				OBJ_12 /* Event_PickKingpin.swift */,
+				OBJ_13 /* Event_VaultVisit.swift */,
+				OBJ_14 /* KingpinEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
 		};
-		OBJ_90 /* API */ = {
+		OBJ_91 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_91 /* Request */,
-				OBJ_102 /* Response */,
-				OBJ_105 /* Types */,
+				OBJ_92 /* Array+Random.swift */,
+				OBJ_93 /* CasedEnum.swift */,
+				OBJ_94 /* CwlRandom.swift */,
+				OBJ_95 /* StringRepresentible.swift */,
 			);
-			path = API;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
-		OBJ_91 /* Request */ = {
+		OBJ_97 /* Pelican */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_92 /* Codable+String.swift */,
-				OBJ_93 /* Request+Admin.swift */,
-				OBJ_94 /* Request+Answer.swift */,
-				OBJ_95 /* Request+Basic.swift */,
-				OBJ_96 /* Request+Chat.swift */,
-				OBJ_97 /* Request+EditMessage.swift */,
-				OBJ_98 /* Request+Game.swift */,
-				OBJ_99 /* Request+Payments.swift */,
-				OBJ_100 /* Request+Stickers.swift */,
-				OBJ_101 /* TelegramRequest.swift */,
+				OBJ_98 /* Pelican */,
+				OBJ_295 /* Package.swift */,
 			);
-			path = Request;
+			name = Pelican;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_98 /* Pelican */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_99 /* API */,
+				OBJ_207 /* HTTP */,
+				OBJ_210 /* Pelican */,
+				OBJ_245 /* Session */,
+				OBJ_290 /* Utilities */,
+			);
+			name = Pelican;
+			path = ".build/checkouts/Pelican.git-5255499054090348273/Sources/Pelican";
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_99 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_100 /* Request */,
+				OBJ_111 /* Response */,
+				OBJ_114 /* Types */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1381,17 +1386,17 @@
 /* Begin PBXNativeTarget section */
 		"Kingpin::App" /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_322 /* Build configuration list for PBXNativeTarget "App" */;
+			buildConfigurationList = OBJ_331 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				OBJ_325 /* Sources */,
-				OBJ_342 /* Frameworks */,
+				OBJ_334 /* Sources */,
+				OBJ_357 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_346 /* PBXTargetDependency */,
-				OBJ_348 /* PBXTargetDependency */,
-				OBJ_350 /* PBXTargetDependency */,
+				OBJ_361 /* PBXTargetDependency */,
+				OBJ_363 /* PBXTargetDependency */,
+				OBJ_365 /* PBXTargetDependency */,
 			);
 			name = App;
 			productName = App;
@@ -1400,9 +1405,9 @@
 		};
 		"Kingpin::SwiftPMPackageDescription" /* KingpinPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_298 /* Build configuration list for PBXNativeTarget "KingpinPackageDescription" */;
+			buildConfigurationList = OBJ_307 /* Build configuration list for PBXNativeTarget "KingpinPackageDescription" */;
 			buildPhases = (
-				OBJ_301 /* Sources */,
+				OBJ_310 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -1414,15 +1419,15 @@
 		};
 		"Pelican::Pelican" /* Pelican */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_401 /* Build configuration list for PBXNativeTarget "Pelican" */;
+			buildConfigurationList = OBJ_416 /* Build configuration list for PBXNativeTarget "Pelican" */;
 			buildPhases = (
-				OBJ_404 /* Sources */,
-				OBJ_556 /* Frameworks */,
+				OBJ_419 /* Sources */,
+				OBJ_571 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_558 /* PBXTargetDependency */,
+				OBJ_573 /* PBXTargetDependency */,
 			);
 			name = Pelican;
 			productName = Pelican;
@@ -1431,9 +1436,9 @@
 		};
 		"Pelican::SwiftPMPackageDescription" /* PelicanPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_310 /* Build configuration list for PBXNativeTarget "PelicanPackageDescription" */;
+			buildConfigurationList = OBJ_319 /* Build configuration list for PBXNativeTarget "PelicanPackageDescription" */;
 			buildPhases = (
-				OBJ_313 /* Sources */,
+				OBJ_322 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -1445,9 +1450,9 @@
 		};
 		"SwiftyJSON::SwiftPMPackageDescription" /* SwiftyJSONPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_316 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */;
+			buildConfigurationList = OBJ_325 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */;
 			buildPhases = (
-				OBJ_319 /* Sources */,
+				OBJ_328 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -1459,10 +1464,10 @@
 		};
 		"SwiftyJSON::SwiftyJSON" /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_559 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = OBJ_574 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				OBJ_562 /* Sources */,
-				OBJ_565 /* Frameworks */,
+				OBJ_577 /* Sources */,
+				OBJ_580 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1475,9 +1480,9 @@
 		};
 		"TrashBoat::SwiftPMPackageDescription" /* TrashBoatPackageDescription */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_304 /* Build configuration list for PBXNativeTarget "TrashBoatPackageDescription" */;
+			buildConfigurationList = OBJ_313 /* Build configuration list for PBXNativeTarget "TrashBoatPackageDescription" */;
 			buildPhases = (
-				OBJ_307 /* Sources */,
+				OBJ_316 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -1489,16 +1494,16 @@
 		};
 		"TrashBoat::TrashBoat" /* TrashBoat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_352 /* Build configuration list for PBXNativeTarget "TrashBoat" */;
+			buildConfigurationList = OBJ_367 /* Build configuration list for PBXNativeTarget "TrashBoat" */;
 			buildPhases = (
-				OBJ_355 /* Sources */,
-				OBJ_396 /* Frameworks */,
+				OBJ_370 /* Sources */,
+				OBJ_411 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_399 /* PBXTargetDependency */,
-				OBJ_400 /* PBXTargetDependency */,
+				OBJ_414 /* PBXTargetDependency */,
+				OBJ_415 /* PBXTargetDependency */,
 			);
 			name = TrashBoat;
 			productName = TrashBoat;
@@ -1520,8 +1525,8 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5;
-			productRefGroup = OBJ_292 /* Products */;
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_301 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1538,326 +1543,317 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_301 /* Sources */ = {
+		OBJ_310 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_302 /* Package.swift in Sources */,
+				OBJ_311 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_307 /* Sources */ = {
+		OBJ_316 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_308 /* Package.swift in Sources */,
+				OBJ_317 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_313 /* Sources */ = {
+		OBJ_322 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_314 /* Package.swift in Sources */,
+				OBJ_323 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_319 /* Sources */ = {
+		OBJ_328 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_320 /* Package.swift in Sources */,
+				OBJ_329 /* Package.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_325 /* Sources */ = {
+		OBJ_334 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_326 /* Event_Interrogate.swift in Sources */,
-				5058D466206F54E500A5AB61 /* KingpinFlair.swift in Sources */,
-				OBJ_327 /* Event_NewGame.swift in Sources */,
-				OBJ_328 /* Event_VaultVisit.swift in Sources */,
-				OBJ_329 /* Opal.swift in Sources */,
-				5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */,
-				OBJ_330 /* Vault.swift in Sources */,
-				OBJ_331 /* KingpinRole.swift in Sources */,
-				OBJ_332 /* KingpinRoleType.swift in Sources */,
-				OBJ_333 /* GameHandle.swift in Sources */,
-				5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */,
-				OBJ_334 /* GameSession.swift in Sources */,
-				OBJ_335 /* Player+InlineQuery.swift in Sources */,
-				50A96EEA206CA1EB00B7373C /* PlayerSession.swift in Sources */,
-				OBJ_336 /* Player.swift in Sources */,
-				OBJ_337 /* PlayerCharacter.swift in Sources */,
-				OBJ_338 /* KingpinDefault.swift in Sources */,
-				OBJ_339 /* KingpinRoles.swift in Sources */,
-				OBJ_340 /* CasedEnum.swift in Sources */,
-				50A96EEC206CA8A000B7373C /* Event_PickKingpin.swift in Sources */,
-				OBJ_341 /* main.swift in Sources */,
-				503FBE9F206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift in Sources */,
+				OBJ_335 /* Event_Interrogate.swift in Sources */,
+				OBJ_336 /* Event_NewGame.swift in Sources */,
+				OBJ_337 /* Event_PickKingpin.swift in Sources */,
+				OBJ_338 /* Event_VaultVisit.swift in Sources */,
+				OBJ_339 /* KingpinEvent.swift in Sources */,
+				OBJ_340 /* GameHandle.swift in Sources */,
+				OBJ_341 /* GameSession.swift in Sources */,
+				OBJ_342 /* Opal.swift in Sources */,
+				OBJ_343 /* OpalUnit.swift in Sources */,
+				OBJ_344 /* Vault.swift in Sources */,
+				OBJ_345 /* Player+InlineQuery.swift in Sources */,
+				OBJ_346 /* Player.swift in Sources */,
+				OBJ_347 /* PlayerCharacter.swift in Sources */,
+				OBJ_348 /* PlayerSession+InlineQuery.swift in Sources */,
+				OBJ_349 /* PlayerSession.swift in Sources */,
+				OBJ_350 /* KingpinRole.swift in Sources */,
+				OBJ_351 /* KingpinRoleType.swift in Sources */,
+				OBJ_352 /* KingpinDefault.swift in Sources */,
+				OBJ_353 /* KingpinFlair.swift in Sources */,
+				OBJ_354 /* KingpinRoles.swift in Sources */,
+				OBJ_355 /* CasedEnum.swift in Sources */,
+				OBJ_356 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_355 /* Sources */ = {
+		OBJ_370 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_356 /* Dice.swift in Sources */,
-				OBJ_357 /* DiceItem.swift in Sources */,
-				OBJ_358 /* DiceType.swift in Sources */,
-				OBJ_359 /* Event.swift in Sources */,
-				OBJ_360 /* EventContainer.swift in Sources */,
-				OBJ_361 /* EventRecord.swift in Sources */,
-				OBJ_362 /* EventRepresentible.swift in Sources */,
-				OBJ_363 /* EventType.swift in Sources */,
-				OBJ_364 /* Flair.swift in Sources */,
-				OBJ_365 /* FlairManager.swift in Sources */,
-				OBJ_366 /* FlairRepresentible.swift in Sources */,
-				OBJ_367 /* FlairResponse.swift in Sources */,
-				OBJ_368 /* FlairStack.swift in Sources */,
-				OBJ_369 /* GenBump.swift in Sources */,
-				OBJ_370 /* Generator.swift in Sources */,
-				OBJ_371 /* GeneratorOption.swift in Sources */,
-				OBJ_372 /* Handle.swift in Sources */,
-				OBJ_373 /* Inventory+Stats.swift in Sources */,
-				OBJ_374 /* Inventory.swift in Sources */,
-				OBJ_375 /* InventoryStack.swift in Sources */,
-				OBJ_376 /* ItemInfoTag.swift in Sources */,
-				OBJ_377 /* ItemRepresentible.swift in Sources */,
-				OBJ_378 /* ItemTypeTag.swift in Sources */,
-				OBJ_379 /* Array+UserProxy.swift in Sources */,
-				OBJ_380 /* UserProxy+InlineQuery.swift in Sources */,
-				OBJ_381 /* UserProxy.swift in Sources */,
-				OBJ_382 /* UserProxyStatus.swift in Sources */,
-				OBJ_383 /* PointInstance.swift in Sources */,
-				OBJ_384 /* PointManager.swift in Sources */,
-				OBJ_385 /* PointReceipt.swift in Sources */,
-				OBJ_386 /* PointType.swift in Sources */,
-				OBJ_387 /* PointUnit.swift in Sources */,
-				OBJ_388 /* PointValue.swift in Sources */,
-				OBJ_389 /* Reward.swift in Sources */,
-				OBJ_390 /* ItemRoute.swift in Sources */,
-				OBJ_391 /* PlayerRoute.swift in Sources */,
-				OBJ_392 /* Array+Random.swift in Sources */,
-				OBJ_393 /* CasedEnum.swift in Sources */,
-				OBJ_394 /* CwlRandom.swift in Sources */,
-				OBJ_395 /* StringRepresentible.swift in Sources */,
+				OBJ_371 /* Dice.swift in Sources */,
+				OBJ_372 /* DiceItem.swift in Sources */,
+				OBJ_373 /* DiceType.swift in Sources */,
+				OBJ_374 /* Event.swift in Sources */,
+				OBJ_375 /* EventContainer.swift in Sources */,
+				OBJ_376 /* EventRecord.swift in Sources */,
+				OBJ_377 /* EventRepresentible.swift in Sources */,
+				OBJ_378 /* EventType.swift in Sources */,
+				OBJ_379 /* Flair.swift in Sources */,
+				OBJ_380 /* FlairManager.swift in Sources */,
+				OBJ_381 /* FlairRepresentible.swift in Sources */,
+				OBJ_382 /* FlairResponse.swift in Sources */,
+				OBJ_383 /* FlairStack.swift in Sources */,
+				OBJ_384 /* GenBump.swift in Sources */,
+				OBJ_385 /* Generator.swift in Sources */,
+				OBJ_386 /* GeneratorOption.swift in Sources */,
+				OBJ_387 /* Handle.swift in Sources */,
+				OBJ_388 /* Inventory+Stats.swift in Sources */,
+				OBJ_389 /* Inventory.swift in Sources */,
+				OBJ_390 /* InventoryStack.swift in Sources */,
+				OBJ_391 /* ItemInfoTag.swift in Sources */,
+				OBJ_392 /* ItemRepresentible.swift in Sources */,
+				OBJ_393 /* ItemTypeTag.swift in Sources */,
+				OBJ_394 /* Array+UserProxy.swift in Sources */,
+				OBJ_395 /* UserProxy+InlineQuery.swift in Sources */,
+				OBJ_396 /* UserProxy.swift in Sources */,
+				OBJ_397 /* UserProxyStatus.swift in Sources */,
+				OBJ_398 /* PointInstance.swift in Sources */,
+				OBJ_399 /* PointManager.swift in Sources */,
+				OBJ_400 /* PointReceipt.swift in Sources */,
+				OBJ_401 /* PointType.swift in Sources */,
+				OBJ_402 /* PointUnit.swift in Sources */,
+				OBJ_403 /* PointValue.swift in Sources */,
+				OBJ_404 /* Reward.swift in Sources */,
+				OBJ_405 /* ItemRoute.swift in Sources */,
+				OBJ_406 /* PlayerRoute.swift in Sources */,
+				OBJ_407 /* Array+Random.swift in Sources */,
+				OBJ_408 /* CasedEnum.swift in Sources */,
+				OBJ_409 /* CwlRandom.swift in Sources */,
+				OBJ_410 /* StringRepresentible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_404 /* Sources */ = {
+		OBJ_419 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_405 /* Codable+String.swift in Sources */,
-				OBJ_406 /* Request+Admin.swift in Sources */,
-				OBJ_407 /* Request+Answer.swift in Sources */,
-				OBJ_408 /* Request+Basic.swift in Sources */,
-				OBJ_409 /* Request+Chat.swift in Sources */,
-				OBJ_410 /* Request+EditMessage.swift in Sources */,
-				OBJ_411 /* Request+Game.swift in Sources */,
-				OBJ_412 /* Request+Payments.swift in Sources */,
-				OBJ_413 /* Request+Stickers.swift in Sources */,
-				OBJ_414 /* TelegramRequest.swift in Sources */,
-				OBJ_415 /* TelegramResponse.swift in Sources */,
-				OBJ_416 /* TelegramResponseError.swift in Sources */,
-				OBJ_417 /* InputMedia.swift in Sources */,
-				OBJ_418 /* InputMediaPhoto.swift in Sources */,
-				OBJ_419 /* InputMediaVideo.swift in Sources */,
-				OBJ_420 /* CallbackQuery.swift in Sources */,
-				OBJ_421 /* Chat.swift in Sources */,
-				OBJ_422 /* ChatAction.swift in Sources */,
-				OBJ_423 /* ChatMember.swift in Sources */,
-				OBJ_424 /* ChatPhoto.swift in Sources */,
-				OBJ_425 /* FileDownload.swift in Sources */,
-				OBJ_426 /* Animation.swift in Sources */,
-				OBJ_427 /* Game.swift in Sources */,
-				OBJ_428 /* GameHighScore.swift in Sources */,
-				OBJ_429 /* ChosenInlineResult.swift in Sources */,
-				OBJ_430 /* InlineQuery.swift in Sources */,
-				OBJ_431 /* InlineResultArticle.swift in Sources */,
-				OBJ_432 /* InlineResultAudio.swift in Sources */,
-				OBJ_433 /* InlineResultContact.swift in Sources */,
-				OBJ_434 /* InlineResultDocument.swift in Sources */,
-				OBJ_435 /* InlineResultGame.swift in Sources */,
-				OBJ_436 /* InlineResultGif.swift in Sources */,
-				OBJ_437 /* InlineResultLocation.swift in Sources */,
-				OBJ_438 /* InlineResultMpeg4Gif.swift in Sources */,
-				OBJ_439 /* InlineResultPhoto.swift in Sources */,
-				OBJ_440 /* InlineResultSticker.swift in Sources */,
-				OBJ_441 /* InlineResultVenue.swift in Sources */,
-				OBJ_442 /* InlineResultVideo.swift in Sources */,
-				OBJ_443 /* InlineResultVoice.swift in Sources */,
-				OBJ_444 /* InlineResult.swift in Sources */,
-				OBJ_445 /* InlineResultAny.swift in Sources */,
-				OBJ_446 /* InlineResultType.swift in Sources */,
-				OBJ_447 /* InputMessageContent.swift in Sources */,
-				OBJ_448 /* InputMessageContentType.swift in Sources */,
-				OBJ_449 /* InputMessageContent_Any.swift in Sources */,
-				OBJ_450 /* InputMessageContent_Contact.swift in Sources */,
-				OBJ_451 /* InputMessageContent_Location.swift in Sources */,
-				OBJ_452 /* InputMessageContent_Text.swift in Sources */,
-				OBJ_453 /* InputMessageContent_Venue.swift in Sources */,
-				OBJ_454 /* ForceReply.swift in Sources */,
-				OBJ_455 /* InlineKey.swift in Sources */,
-				OBJ_456 /* InlineKeyType.swift in Sources */,
-				OBJ_457 /* InlineKeyboard.swift in Sources */,
-				OBJ_458 /* Keyboard.swift in Sources */,
-				OBJ_459 /* KeyboardKey.swift in Sources */,
-				OBJ_460 /* KeyboardRemove.swift in Sources */,
-				OBJ_461 /* MarkupType.swift in Sources */,
-				OBJ_462 /* Audio.swift in Sources */,
-				OBJ_463 /* Contact.swift in Sources */,
-				OBJ_464 /* Document.swift in Sources */,
-				OBJ_465 /* Location.swift in Sources */,
-				OBJ_466 /* Photo.swift in Sources */,
-				OBJ_467 /* Venue.swift in Sources */,
-				OBJ_468 /* Video.swift in Sources */,
-				OBJ_469 /* VideoNote.swift in Sources */,
-				OBJ_470 /* Voice.swift in Sources */,
-				OBJ_471 /* Message.swift in Sources */,
-				OBJ_472 /* MessageEntity.swift in Sources */,
-				OBJ_473 /* MessageParseMode.swift in Sources */,
-				OBJ_474 /* MessageType.swift in Sources */,
-				OBJ_475 /* Invoice.swift in Sources */,
-				OBJ_476 /* LabeledPrice.swift in Sources */,
-				OBJ_477 /* OrderInfo.swift in Sources */,
-				OBJ_478 /* PreCheckoutQuery.swift in Sources */,
-				OBJ_479 /* ShippingAddress.swift in Sources */,
-				OBJ_480 /* ShippingOption.swift in Sources */,
-				OBJ_481 /* ShippingQuery.swift in Sources */,
-				OBJ_482 /* SuccessfulPayment.swift in Sources */,
-				OBJ_483 /* MaskPosition.swift in Sources */,
-				OBJ_484 /* MaskPositionPoint.swift in Sources */,
-				OBJ_485 /* Sticker.swift in Sources */,
-				OBJ_486 /* StickerSet.swift in Sources */,
-				OBJ_487 /* Type+Custom.swift in Sources */,
-				OBJ_488 /* Type+Error.swift in Sources */,
-				OBJ_489 /* Type+Extensions.swift in Sources */,
-				OBJ_490 /* Type+Protocols.swift in Sources */,
-				OBJ_491 /* Type+Standard.swift in Sources */,
-				OBJ_492 /* User.swift in Sources */,
-				OBJ_493 /* UserProfilePhotos.swift in Sources */,
-				OBJ_494 /* Status.swift in Sources */,
-				OBJ_495 /* Version.swift in Sources */,
-				OBJ_496 /* Builder.swift in Sources */,
-				OBJ_497 /* BuilderCollision.swift in Sources */,
-				OBJ_498 /* Spawn.swift in Sources */,
-				OBJ_499 /* Client.swift in Sources */,
-				OBJ_500 /* ClientConnection+Error.swift in Sources */,
-				OBJ_501 /* ClientConnection.swift in Sources */,
-				OBJ_502 /* Portal.swift in Sources */,
-				OBJ_503 /* Result.swift in Sources */,
-				OBJ_504 /* Cache+Error.swift in Sources */,
-				OBJ_505 /* CacheFile.swift in Sources */,
-				OBJ_506 /* CacheManager.swift in Sources */,
-				OBJ_507 /* Log+Debug.swift in Sources */,
-				OBJ_508 /* Log+Enum.swift in Sources */,
-				OBJ_509 /* Log+Prints.swift in Sources */,
-				OBJ_510 /* Log.swift in Sources */,
-				OBJ_511 /* LogLevel.swift in Sources */,
-				OBJ_512 /* Moderator.swift in Sources */,
-				OBJ_513 /* Pelican+Delegates.swift in Sources */,
-				OBJ_514 /* Pelican+Errors.swift in Sources */,
-				OBJ_515 /* Pelican+Files.swift in Sources */,
-				OBJ_516 /* Pelican.swift in Sources */,
-				OBJ_517 /* LoopQueue.swift in Sources */,
-				OBJ_518 /* Duration.swift in Sources */,
-				OBJ_519 /* Schedule.swift in Sources */,
-				OBJ_520 /* Update.swift in Sources */,
-				OBJ_521 /* UpdateType.swift in Sources */,
-				OBJ_522 /* Session.swift in Sources */,
-				OBJ_523 /* SessionIDType.swift in Sources */,
-				OBJ_524 /* SessionTag.swift in Sources */,
-				OBJ_525 /* Async+Admin.swift in Sources */,
-				OBJ_526 /* Async+Answer.swift in Sources */,
-				OBJ_527 /* Async+Basic.swift in Sources */,
-				OBJ_528 /* Async+Stickers.swift in Sources */,
-				OBJ_529 /* SessionRequestAsync.swift in Sources */,
-				OBJ_530 /* SessionRequest.swift in Sources */,
-				OBJ_531 /* SessionRequestSync.swift in Sources */,
-				OBJ_532 /* Sync+Admin.swift in Sources */,
-				OBJ_533 /* Sync+Answer.swift in Sources */,
-				OBJ_534 /* Sync+Basic.swift in Sources */,
-				OBJ_535 /* Sync+Edit.swift in Sources */,
-				OBJ_536 /* Sync+Payments.swift in Sources */,
-				OBJ_537 /* Sync+Stickers.swift in Sources */,
-				OBJ_538 /* SessionDispatchQueue.swift in Sources */,
-				OBJ_539 /* SessionEvent.swift in Sources */,
-				OBJ_540 /* UpdateFilter.swift in Sources */,
-				OBJ_541 /* SessionModerator.swift in Sources */,
-				OBJ_542 /* FloodMonitor.swift in Sources */,
-				OBJ_543 /* TimeoutMonitor.swift in Sources */,
-				OBJ_544 /* Route.swift in Sources */,
-				OBJ_545 /* RouteCommand.swift in Sources */,
-				OBJ_546 /* RouteListen.swift in Sources */,
-				OBJ_547 /* RouteManual.swift in Sources */,
-				OBJ_548 /* RoutePass.swift in Sources */,
-				OBJ_549 /* Queue.swift in Sources */,
-				OBJ_550 /* ChatSession.swift in Sources */,
-				OBJ_551 /* UserSession.swift in Sources */,
-				OBJ_552 /* CasedEnum.swift in Sources */,
-				OBJ_553 /* CwlRandom.swift in Sources */,
-				OBJ_554 /* SynchronisedArray.swift in Sources */,
-				OBJ_555 /* Utilities.swift in Sources */,
+				OBJ_420 /* Codable+String.swift in Sources */,
+				OBJ_421 /* Request+Admin.swift in Sources */,
+				OBJ_422 /* Request+Answer.swift in Sources */,
+				OBJ_423 /* Request+Basic.swift in Sources */,
+				OBJ_424 /* Request+Chat.swift in Sources */,
+				OBJ_425 /* Request+EditMessage.swift in Sources */,
+				OBJ_426 /* Request+Game.swift in Sources */,
+				OBJ_427 /* Request+Payments.swift in Sources */,
+				OBJ_428 /* Request+Stickers.swift in Sources */,
+				OBJ_429 /* TelegramRequest.swift in Sources */,
+				OBJ_430 /* TelegramResponse.swift in Sources */,
+				OBJ_431 /* TelegramResponseError.swift in Sources */,
+				OBJ_432 /* InputMedia.swift in Sources */,
+				OBJ_433 /* InputMediaPhoto.swift in Sources */,
+				OBJ_434 /* InputMediaVideo.swift in Sources */,
+				OBJ_435 /* CallbackQuery.swift in Sources */,
+				OBJ_436 /* Chat.swift in Sources */,
+				OBJ_437 /* ChatAction.swift in Sources */,
+				OBJ_438 /* ChatMember.swift in Sources */,
+				OBJ_439 /* ChatPhoto.swift in Sources */,
+				OBJ_440 /* FileDownload.swift in Sources */,
+				OBJ_441 /* Animation.swift in Sources */,
+				OBJ_442 /* Game.swift in Sources */,
+				OBJ_443 /* GameHighScore.swift in Sources */,
+				OBJ_444 /* ChosenInlineResult.swift in Sources */,
+				OBJ_445 /* InlineQuery.swift in Sources */,
+				OBJ_446 /* InlineResultArticle.swift in Sources */,
+				OBJ_447 /* InlineResultAudio.swift in Sources */,
+				OBJ_448 /* InlineResultContact.swift in Sources */,
+				OBJ_449 /* InlineResultDocument.swift in Sources */,
+				OBJ_450 /* InlineResultGame.swift in Sources */,
+				OBJ_451 /* InlineResultGif.swift in Sources */,
+				OBJ_452 /* InlineResultLocation.swift in Sources */,
+				OBJ_453 /* InlineResultMpeg4Gif.swift in Sources */,
+				OBJ_454 /* InlineResultPhoto.swift in Sources */,
+				OBJ_455 /* InlineResultSticker.swift in Sources */,
+				OBJ_456 /* InlineResultVenue.swift in Sources */,
+				OBJ_457 /* InlineResultVideo.swift in Sources */,
+				OBJ_458 /* InlineResultVoice.swift in Sources */,
+				OBJ_459 /* InlineResult.swift in Sources */,
+				OBJ_460 /* InlineResultAny.swift in Sources */,
+				OBJ_461 /* InlineResultType.swift in Sources */,
+				OBJ_462 /* InputMessageContent.swift in Sources */,
+				OBJ_463 /* InputMessageContentType.swift in Sources */,
+				OBJ_464 /* InputMessageContent_Any.swift in Sources */,
+				OBJ_465 /* InputMessageContent_Contact.swift in Sources */,
+				OBJ_466 /* InputMessageContent_Location.swift in Sources */,
+				OBJ_467 /* InputMessageContent_Text.swift in Sources */,
+				OBJ_468 /* InputMessageContent_Venue.swift in Sources */,
+				OBJ_469 /* ForceReply.swift in Sources */,
+				OBJ_470 /* InlineKey.swift in Sources */,
+				OBJ_471 /* InlineKeyType.swift in Sources */,
+				OBJ_472 /* InlineKeyboard.swift in Sources */,
+				OBJ_473 /* Keyboard.swift in Sources */,
+				OBJ_474 /* KeyboardKey.swift in Sources */,
+				OBJ_475 /* KeyboardRemove.swift in Sources */,
+				OBJ_476 /* MarkupType.swift in Sources */,
+				OBJ_477 /* Audio.swift in Sources */,
+				OBJ_478 /* Contact.swift in Sources */,
+				OBJ_479 /* Document.swift in Sources */,
+				OBJ_480 /* Location.swift in Sources */,
+				OBJ_481 /* Photo.swift in Sources */,
+				OBJ_482 /* Venue.swift in Sources */,
+				OBJ_483 /* Video.swift in Sources */,
+				OBJ_484 /* VideoNote.swift in Sources */,
+				OBJ_485 /* Voice.swift in Sources */,
+				OBJ_486 /* Message.swift in Sources */,
+				OBJ_487 /* MessageEntity.swift in Sources */,
+				OBJ_488 /* MessageParseMode.swift in Sources */,
+				OBJ_489 /* MessageType.swift in Sources */,
+				OBJ_490 /* Invoice.swift in Sources */,
+				OBJ_491 /* LabeledPrice.swift in Sources */,
+				OBJ_492 /* OrderInfo.swift in Sources */,
+				OBJ_493 /* PreCheckoutQuery.swift in Sources */,
+				OBJ_494 /* ShippingAddress.swift in Sources */,
+				OBJ_495 /* ShippingOption.swift in Sources */,
+				OBJ_496 /* ShippingQuery.swift in Sources */,
+				OBJ_497 /* SuccessfulPayment.swift in Sources */,
+				OBJ_498 /* MaskPosition.swift in Sources */,
+				OBJ_499 /* MaskPositionPoint.swift in Sources */,
+				OBJ_500 /* Sticker.swift in Sources */,
+				OBJ_501 /* StickerSet.swift in Sources */,
+				OBJ_502 /* Type+Custom.swift in Sources */,
+				OBJ_503 /* Type+Error.swift in Sources */,
+				OBJ_504 /* Type+Extensions.swift in Sources */,
+				OBJ_505 /* Type+Protocols.swift in Sources */,
+				OBJ_506 /* Type+Standard.swift in Sources */,
+				OBJ_507 /* User.swift in Sources */,
+				OBJ_508 /* UserProfilePhotos.swift in Sources */,
+				OBJ_509 /* Status.swift in Sources */,
+				OBJ_510 /* Version.swift in Sources */,
+				OBJ_511 /* Builder.swift in Sources */,
+				OBJ_512 /* BuilderCollision.swift in Sources */,
+				OBJ_513 /* Spawn.swift in Sources */,
+				OBJ_514 /* Client.swift in Sources */,
+				OBJ_515 /* ClientConnection+Error.swift in Sources */,
+				OBJ_516 /* ClientConnection.swift in Sources */,
+				OBJ_517 /* Portal.swift in Sources */,
+				OBJ_518 /* Result.swift in Sources */,
+				OBJ_519 /* Cache+Error.swift in Sources */,
+				OBJ_520 /* CacheFile.swift in Sources */,
+				OBJ_521 /* CacheManager.swift in Sources */,
+				OBJ_522 /* Log+Debug.swift in Sources */,
+				OBJ_523 /* Log+Enum.swift in Sources */,
+				OBJ_524 /* Log+Prints.swift in Sources */,
+				OBJ_525 /* Log.swift in Sources */,
+				OBJ_526 /* LogLevel.swift in Sources */,
+				OBJ_527 /* Moderator.swift in Sources */,
+				OBJ_528 /* Pelican+Delegates.swift in Sources */,
+				OBJ_529 /* Pelican+Errors.swift in Sources */,
+				OBJ_530 /* Pelican+Files.swift in Sources */,
+				OBJ_531 /* Pelican.swift in Sources */,
+				OBJ_532 /* LoopQueue.swift in Sources */,
+				OBJ_533 /* Duration.swift in Sources */,
+				OBJ_534 /* Schedule.swift in Sources */,
+				OBJ_535 /* Update.swift in Sources */,
+				OBJ_536 /* UpdateType.swift in Sources */,
+				OBJ_537 /* Session.swift in Sources */,
+				OBJ_538 /* SessionIDType.swift in Sources */,
+				OBJ_539 /* SessionTag.swift in Sources */,
+				OBJ_540 /* Async+Admin.swift in Sources */,
+				OBJ_541 /* Async+Answer.swift in Sources */,
+				OBJ_542 /* Async+Basic.swift in Sources */,
+				OBJ_543 /* Async+Stickers.swift in Sources */,
+				OBJ_544 /* SessionRequestAsync.swift in Sources */,
+				OBJ_545 /* SessionRequest.swift in Sources */,
+				OBJ_546 /* SessionRequestSync.swift in Sources */,
+				OBJ_547 /* Sync+Admin.swift in Sources */,
+				OBJ_548 /* Sync+Answer.swift in Sources */,
+				OBJ_549 /* Sync+Basic.swift in Sources */,
+				OBJ_550 /* Sync+Edit.swift in Sources */,
+				OBJ_551 /* Sync+Payments.swift in Sources */,
+				OBJ_552 /* Sync+Stickers.swift in Sources */,
+				OBJ_553 /* SessionDispatchQueue.swift in Sources */,
+				OBJ_554 /* SessionEvent.swift in Sources */,
+				OBJ_555 /* UpdateFilter.swift in Sources */,
+				OBJ_556 /* SessionModerator.swift in Sources */,
+				OBJ_557 /* FloodMonitor.swift in Sources */,
+				OBJ_558 /* TimeoutMonitor.swift in Sources */,
+				OBJ_559 /* Route.swift in Sources */,
+				OBJ_560 /* RouteCommand.swift in Sources */,
+				OBJ_561 /* RouteListen.swift in Sources */,
+				OBJ_562 /* RouteManual.swift in Sources */,
+				OBJ_563 /* RoutePass.swift in Sources */,
+				OBJ_564 /* Queue.swift in Sources */,
+				OBJ_565 /* ChatSession.swift in Sources */,
+				OBJ_566 /* UserSession.swift in Sources */,
+				OBJ_567 /* CasedEnum.swift in Sources */,
+				OBJ_568 /* CwlRandom.swift in Sources */,
+				OBJ_569 /* SynchronisedArray.swift in Sources */,
+				OBJ_570 /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_562 /* Sources */ = {
+		OBJ_577 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_563 /* LclJSONSerialization.swift in Sources */,
-				OBJ_564 /* SwiftyJSON.swift in Sources */,
+				OBJ_578 /* LclJSONSerialization.swift in Sources */,
+				OBJ_579 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_346 /* PBXTargetDependency */ = {
+		OBJ_361 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "TrashBoat::TrashBoat" /* TrashBoat */;
-			targetProxy = 50AA26A6206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090D5207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
-		OBJ_348 /* PBXTargetDependency */ = {
+		OBJ_363 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Pelican::Pelican" /* Pelican */;
-			targetProxy = 50AA26AA206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090D9207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
-		OBJ_350 /* PBXTargetDependency */ = {
+		OBJ_365 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "SwiftyJSON::SwiftyJSON" /* SwiftyJSON */;
-			targetProxy = 50AA26AB206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090DA207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
-		OBJ_399 /* PBXTargetDependency */ = {
+		OBJ_414 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "Pelican::Pelican" /* Pelican */;
-			targetProxy = 50AA26A7206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090D6207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
-		OBJ_400 /* PBXTargetDependency */ = {
+		OBJ_415 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "SwiftyJSON::SwiftyJSON" /* SwiftyJSON */;
-			targetProxy = 50AA26A9206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090D8207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
-		OBJ_558 /* PBXTargetDependency */ = {
+		OBJ_573 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "SwiftyJSON::SwiftyJSON" /* SwiftyJSON */;
-			targetProxy = 50AA26A8206BFFEE00D3A218 /* PBXContainerItemProxy */;
+			targetProxy = 50D090D7207027D30013FEE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_299 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Library/Developer/CommandLineTools/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1880,16 +1876,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_300 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				LD = /usr/bin/true;
-				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Library/Developer/CommandLineTools/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		OBJ_305 /* Debug */ = {
+		OBJ_308 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1898,7 +1885,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_306 /* Release */ = {
+		OBJ_309 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1907,7 +1894,7 @@
 			};
 			name = Release;
 		};
-		OBJ_311 /* Debug */ = {
+		OBJ_314 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1916,7 +1903,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_312 /* Release */ = {
+		OBJ_315 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1925,7 +1912,7 @@
 			};
 			name = Release;
 		};
-		OBJ_317 /* Debug */ = {
+		OBJ_320 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1934,7 +1921,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_318 /* Release */ = {
+		OBJ_321 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				LD = /usr/bin/true;
@@ -1943,7 +1930,25 @@
 			};
 			name = Release;
 		};
-		OBJ_323 /* Debug */ = {
+		OBJ_326 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Library/Developer/CommandLineTools/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_327 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I /Library/Developer/CommandLineTools/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_332 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1962,7 +1967,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_324 /* Release */ = {
+		OBJ_333 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1981,7 +1986,7 @@
 			};
 			name = Release;
 		};
-		OBJ_353 /* Debug */ = {
+		OBJ_368 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2003,7 +2008,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_354 /* Release */ = {
+		OBJ_369 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2045,7 +2050,7 @@
 			};
 			name = Release;
 		};
-		OBJ_402 /* Debug */ = {
+		OBJ_417 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2067,7 +2072,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_403 /* Release */ = {
+		OBJ_418 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2089,7 +2094,7 @@
 			};
 			name = Release;
 		};
-		OBJ_560 /* Debug */ = {
+		OBJ_575 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2111,7 +2116,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_561 /* Release */ = {
+		OBJ_576 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -2145,74 +2150,74 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_298 /* Build configuration list for PBXNativeTarget "KingpinPackageDescription" */ = {
+		OBJ_307 /* Build configuration list for PBXNativeTarget "KingpinPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_299 /* Debug */,
-				OBJ_300 /* Release */,
+				OBJ_308 /* Debug */,
+				OBJ_309 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_304 /* Build configuration list for PBXNativeTarget "TrashBoatPackageDescription" */ = {
+		OBJ_313 /* Build configuration list for PBXNativeTarget "TrashBoatPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_305 /* Debug */,
-				OBJ_306 /* Release */,
+				OBJ_314 /* Debug */,
+				OBJ_315 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_310 /* Build configuration list for PBXNativeTarget "PelicanPackageDescription" */ = {
+		OBJ_319 /* Build configuration list for PBXNativeTarget "PelicanPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_311 /* Debug */,
-				OBJ_312 /* Release */,
+				OBJ_320 /* Debug */,
+				OBJ_321 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_316 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */ = {
+		OBJ_325 /* Build configuration list for PBXNativeTarget "SwiftyJSONPackageDescription" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_317 /* Debug */,
-				OBJ_318 /* Release */,
+				OBJ_326 /* Debug */,
+				OBJ_327 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_322 /* Build configuration list for PBXNativeTarget "App" */ = {
+		OBJ_331 /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_323 /* Debug */,
-				OBJ_324 /* Release */,
+				OBJ_332 /* Debug */,
+				OBJ_333 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_352 /* Build configuration list for PBXNativeTarget "TrashBoat" */ = {
+		OBJ_367 /* Build configuration list for PBXNativeTarget "TrashBoat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_353 /* Debug */,
-				OBJ_354 /* Release */,
+				OBJ_368 /* Debug */,
+				OBJ_369 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_401 /* Build configuration list for PBXNativeTarget "Pelican" */ = {
+		OBJ_416 /* Build configuration list for PBXNativeTarget "Pelican" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_402 /* Debug */,
-				OBJ_403 /* Release */,
+				OBJ_417 /* Debug */,
+				OBJ_418 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_559 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		OBJ_574 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_560 /* Debug */,
-				OBJ_561 /* Release */,
+				OBJ_575 /* Debug */,
+				OBJ_576 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -70,7 +70,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial3 = """
-			Unfortunately for them, almost half of you will choose a *role* that don't involve helping the Kingpin such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop.
+			Unfortunately for them, almost half of you will choose a role that will *act against the Kingpin, such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop*.
 			"""
 			
 			let tutorial4 = """
@@ -112,7 +112,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		"""
 		
 		for player in handle.players {
-			entrance1 += "\n>  \(player.name)"
+			entrance1 += "\n😇  \(player.name)"
 		}
 		
 		queue.message(delay: 1.sec,
@@ -307,18 +307,20 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	}
 	
 	func receiveRemovalSelection(item: ItemRepresentible) {
+		queue.clear()
 		
 		// Remove the item from the valuables or roles list.
-		if handle.vault.roles.removeItem(item) == nil {
+		if handle.vault.roles.removeItem(item) != nil {
 			queue.action(delay: 2.sec,
 									 viewTime: 0.sec,
 									 action: completeOtherVisit)
-		} else {
-			handle.circuitBreaker("Event_VaultVisit - Received a non-role item for a removal")
+			return
 		}
 		
-		
-		
+		else {
+			handle.circuitBreaker("Event_VaultVisit - Received a non-role item for a removal")
+			return
+		}
 	}
 	
 	
@@ -331,7 +333,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		handle.vault.resetRequest()
 		
 		let vaultFinish = """
-		The Kingpin finishes their inspection and passes on the responsibility to their most trusted allies.
+		The Kingpin finishes their inspection and passes on the responsibility to everyone else. while they take care of some important business.
 		"""
 		
 		request.async.sendMessage(vaultFinish,
@@ -357,7 +359,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	Complete another player's visit.
 	*/
 	func completeOtherVisit() {
-		self.queue.clear()
+		queue.clear()
 		handle.vault.resetRequest()
 		
 		let vaultFinish = """
@@ -379,6 +381,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	Conclude the visit and exit.
 	*/
 	func concludeVisit() {
+		queue.clear()
 		
 		// Remove the accomplice from the vault
 		handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: false)

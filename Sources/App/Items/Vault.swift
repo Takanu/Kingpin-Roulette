@@ -86,8 +86,10 @@ class Vault: Route {
 		self.vaultDisplay = vaultContents
 		self.next = next
 		
-		// Enable the route for operation.
-		self.enabled = true
+		// Enable the route for operation only if the kingpin isn't the one viewing it.
+		if newViewer.role?.definition != .kingpin {
+			self.enabled = true
+		}
 		
 	}
 	
