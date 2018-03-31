@@ -58,13 +58,12 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		////////////
 		// MESSAGE
 		
-		let message = """
+		var message = """
 		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and settle your differences through a deadly interrogation game.
-		
-		You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.
 		"""
 		
 		lastBaseMessage = message
+		message += "\n\n*You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.*"
 		
 		
 		////////////
@@ -176,21 +175,33 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	func getPlayerList() -> String {
 		
 		// Setup the new message
-		var playerList = "\n\nPlayer List:"
+		var playerList = "\n\n*====== Player List ======*"
 		
 		handle.players.forEach {
 			playerList += "\n\($0.name)"
 		}
 		
+		playerList += "\n"
+		
+		
 		// Let the player know how many players they need to or can add to the game.
 		if handle.players.count < KingpinDefault.minimumPlayers {
 			let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
-			playerList += "\n\n*You need \(playersNeeded) more players*"
+			playerList += "\n*You need \(playersNeeded) more players.*"
 		}
 			
 		else if handle.players.count < KingpinDefault.maximumPlayers {
 			let playersNeeded = KingpinDefault.maximumPlayers - handle.players.count
-			playerList += "\n\n*\(playersNeeded) more players can join*"
+			playerList += "\n*\(playersNeeded) more players can join.*"
+		}
+		
+		//playerList += "\n=====================\n"
+		
+		
+		// Get the time left
+		if let charSelectEnd = storedEvents["end_char_select"] {
+			let time = charSelectEnd.executeTime.timeIntervalSinceNow
+			playerList += "\n*You have \(Int(time)) seconds left to join.*"
 		}
 		
 		return playerList
@@ -382,9 +393,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		// Build the message
 		let message = """
-		You have 25 seconds left to join.
-		
 		\(getPlayerList())
+		*Use* /extend *if you need more time.*
 		"""
 		
 		lastBaseMessage = message
