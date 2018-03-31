@@ -279,7 +279,10 @@ class GameSession: ChatSession {
 				
 				// INTERROGATE
 				let interrogate = EventContainer<GameHandle>(event: Event_Interrogate.self)
-				interrogate.start(handle: handle, next: self.finishScenario)
+				interrogate.start(handle: handle) {
+					self.resolveHandle(handle)
+					self.finishScenario()
+				}
 				
 			}
 		}

@@ -662,9 +662,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 												 chatID: self.tag.id)
 		}
 		
-		
+		print("Thieves calculated")
 		
 		// Find any potential winning assistants and accomplices
+		
+		handle.winningPlayers += handle.players.filter({$0.role!.definition == .accomplice})
 		
 		var assistants = findWinningAssistants() ?? []
 		assistants += handle.players.filter({$0.role!.definition == .accomplice})
@@ -693,13 +695,18 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 		}
 		
+		print("Finishing winner stuff.")
 		
 		// Before we end it, ensure that all winners are removed from the normal player queue.
 		
 		for winner in handle.winningPlayers {
 			
-			let index = handle.players.index(of: winner)!
-			_ = handle.players.remove(at: index)
+			let index = handle.players.index(of: winner)
+			if index != nil {
+				_ = handle.players.remove(at: index!)
+			} else {
+				print("HEY, A WINNING PLAYER COULDN'T BE FOUND IN THE PLAYER LIST")
+			}
 		}
 		
 		
@@ -707,6 +714,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		handle.kingpin = nil
 		
+		print("Completing game")
 		
 		// Finish the game
 		
@@ -802,7 +810,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			let assistIndex = handle.players.index(of: assistant)!
 			
 			var playerBelow: Player
-			if assistIndex + 1 > handle.players.count {
+			if assistIndex + 1 == handle.players.count {
 				playerBelow = handle.kingpin!
 			} else {
 				playerBelow = handle.players[assistIndex]
@@ -814,6 +822,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		for assistant in assistants {
 			
+			print("Calculating assistant wins")
+			
 			var playerIn = assistant
 			var playerFound: Player? = nil
 			
@@ -824,6 +834,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 					playerIn = result
 				} else {
 					playerFound = result
+					break
 				}
 			}
 			
@@ -831,6 +842,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				winningAssistants.append(assistant)
 			}
 		}
+		
+		print("Assistants calculated.  \(winningAssistants)")
 		
 		if winningAssistants.count != 0 {
 			return winningAssistants

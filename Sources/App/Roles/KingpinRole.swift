@@ -53,7 +53,7 @@ struct KingpinRole: ItemRepresentible {
 	*/
 	func getInformationCard() -> InlineResultArticle {
 		return InlineResultArticle(id: "1",
-															 title: "Youre the \(name)",
+															 title: "You are the \(name)",
 			description: roleGoals,
 			contents: KingpinDefault.fakeInlineContentMsg,
 			markup: nil)

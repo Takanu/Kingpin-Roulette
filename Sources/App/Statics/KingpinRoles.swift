@@ -27,7 +27,7 @@ struct KingpinRoles {
 																 roleGoals: "Play dumb, pretend you're still working for the Kingpin.  DO NOT GET ACCUSED BY THE KINGPIN.")
 	
 	static let henchman = KingpinRole(role: .henchman,
-																		description: "A loyal servant of the Kingpin's criminal empire.  Convince the Kingpin you are on their side.",
+																		description: "Stay as the Kingpin's loyal henchman.  Convince the Kingpin you are on their side.",
 																		roleGoals: "You're still on the Kingpin's side, help them find the thieves.")
 	
 	static let spy = KingpinRole(role: .spy,
@@ -35,7 +35,7 @@ struct KingpinRoles {
 															 roleGoals: "Convince the Kingpin to accuse you, so you can extradite them.")
 	
 	static let police = KingpinRole(role: .police,
-																	description: "Become a local cop thats deep undercover, tracking illegal Opal trades.  Convince the Kingpin to accuse you.",
+																	description: "Become a local cop thats deep undercover, tracking illegal Opal stashes.  Convince the Kingpin to accuse you.",
 																	roleGoals: "Convince the Kingpin to accuse you, so you can arrest them.")
 	
 	static let assistant = KingpinRole(role: .assistant,

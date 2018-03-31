@@ -70,13 +70,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial3 = """
-			Much like the previous Kingpin however, they are about to find out that their trust was greatly misplaced.
-
-			Almost half of you will choose a *role* that don't involve helping the Kingpin such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop.
+			Unfortunately for them, almost half of you will choose a *role* that don't involve helping the Kingpin such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop.
 			"""
 			
 			let tutorial4 = """
-			The things you can take from the Vault will be shown when it's your turn to watch over it.
+			You will choose your role when you watch over the vault.
 			"""
 			
 			queue.message(delay: 1.sec,
@@ -85,18 +83,18 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 6.sec,
+										viewTime: 7.sec,
 										message: tutorial2,
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 9.sec,
+										viewTime: 10.sec,
 										message: tutorial3,
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 9.sec,
-										message: tutorial3,
+										viewTime: 6.sec,
+										message: tutorial4,
 										chatID: tag.id)
 			
 		}
@@ -106,7 +104,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		// INTRO
 		
 		var entrance1 = """
-		The new Kingpin gathers the elite circle and entrusts duties of watching over the Vault in a specific order.
+		The new Kingpin gathers everyone and entrusts you the duties of watching over the Vault in a specific order.
 
 		👑 \(handle.kingpin!.name) 👑
 		
@@ -159,13 +157,13 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			if handle.useTutorial == true {
 				kingpinVisit1 = """
-				Before leaving the Vault's protection to their elite circle, the Kingpin decides to personally make note of the valuables inside.
+				Before leaving the Vault's protection to everyone, the Kingpin decides to **personally make note of the valuables inside**.
 				"""
 				
 				kingpinVisit2 = """
-				The Kingpin studies this information and the Vault carefully.
+				The Kingpin studies the Vault carefully.
 
-				(you have 25 seconds to view the available roles and , remember it!).
+				(\(handle.kingpin!.name), you have 25 seconds to memorise the available roles and Opals)
 				"""
 				
 				queue.message(delay: 2.sec,
@@ -179,7 +177,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 				kingpinVisit2 = """
 				The Kingpin receives an anonymous tip that the elite circle has hidden agendas.  They study the information and the vault carefully.
 
-				(\(handle.kingpin!.name) has 25 seconds to view this information, remember it!).
+				(\(handle.kingpin!.name) has 25 seconds to view this information, remember it well)
 				"""
 				
 			}
@@ -258,31 +256,31 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		handle.vault.resetRequest()
 		queue.clear()
 		
-		
 		// If the first visitor is on patrol, they also need to remove an item.
 		
 		if visitorsLeft.count == handle.players.count - 1 {
 			queue.action(delay: 3.sec,
-								 viewTime: 0.sec,
-								 action: removeVaultItem)
+									 viewTime: 0.sec,
+									 action: removeVaultItem)
+			return
 		}
-			
+		
+		
 		// If there's no leftover items or opals OR the last person is taking their turn, add the associate role.
 		
-		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]?.intValue ?? 0 == 0)
+		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]!.intValue == 0)
 			|| visitorsLeft.count == 1 {
 			
 			handle.vault.roles.addItems([KingpinRoles.accomplice])
 			handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: true)
 		}
 		
-		// Complete the visit.
-			
-		else {
-			queue.action(delay: 3.sec,
-									 viewTime: 0.sec,
-									 action: completeOtherVisit)
-		}
+		
+		// Otherwise, complete the visit.
+		
+		queue.action(delay: 3.sec,
+								 viewTime: 0.sec,
+								 action: completeOtherVisit)
 	}
 	
 	
@@ -295,7 +293,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: false, next: receiveRemovalSelection)
 		
 		let otherVisit = """
-		To avoid being identified, \(vaultVisitor!.name) removes something else from the vault...
+		To avoid being identified, \(vaultVisitor!.name) takes something else from the vault and destroys it...
 		"""
 		
 		queue.message(delay: 2.sec,
@@ -310,15 +308,14 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// Remove the item from the valuables or roles list.
 		if handle.vault.roles.removeItem(item) == nil {
-			
-			let opalsStolen = item as! OpalUnit
-			let opalValue = opalsStolen.unit.value.intValue
-			handle.vault.valuables.changeCurrency(opalsStolen.unit.type, change: .int(opalValue * -1))
+			queue.action(delay: 2.sec,
+									 viewTime: 0.sec,
+									 action: completeOtherVisit)
+		} else {
+			handle.circuitBreaker("Event_VaultVisit - Received a non-role item for a removal")
 		}
 		
-		queue.action(delay: 2.sec,
-								 viewTime: 0.sec,
-								 action: completeOtherVisit)
+		
 		
 	}
 	
