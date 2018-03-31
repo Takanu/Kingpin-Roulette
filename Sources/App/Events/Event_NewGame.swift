@@ -40,7 +40,14 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/// The characters that have already been chosen by other players.
 	var usedCharacters: [PlayerCharacter] = []
 	
+	/// The last standard message sent, used for updating the active message.
 	var lastBaseMessage = ""
+	
+	/// The number of times the time has been extended.
+	var timeExtensionCount = 0
+	
+	/// If the warning has been given
+	var timeExtensionWarningSent = false
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -91,28 +98,16 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		if warningDelay > 40 {
 			storedEvents["last_warning"] = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
 				
-				// Build the message
-				let message = """
-				You have 25 seconds left to join.
-
-				\(self.getPlayerList())
-				"""
+				// Send the warning message
+				self.sendWarningMessage()
 				
-				// Clear the inline of the previous message.
-				self.clearPreviousInlineKeys()
-				
-				// Send the new message
-				self.storedMessages["current_msg"] = self.request.sync.sendMessage(message,
-																																					 markup: self.inlineMarkup,
-																																					 chatID: self.tag.id)
+				// Build an event to end character selection.
+				self.storedEvents["end_char_select"] = self.queue.action(delay: KingpinDefault.charSelectWarningTime,
+																																 viewTime: 0.sec) {
+																															
+																															self.endCharacterSelection(clearInline: true)
+				}
 			}
-			
-			_ = queue.action(delay: KingpinDefault.charSelectWarningTime,
-											 viewTime: 0.sec) {
-												
-				self.endCharacterSelection(clearInline: true)
-			}
-			
 		}
 		
 		// If not possible, just delay the ending of this event.
@@ -308,14 +303,97 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	*/
 	func extendCharacterSelection(_ update: Update) -> Bool {
 		
-		var newMessage = """
-		~ ~ T I M E   E X T E N S I O N ~ ~
-		You now have
-		"""
+		if timeExtensionCount >= KingpinDefault.maxTimeExtensions {
+			
+			if timeExtensionWarningSent == false {
+				timeExtensionWarningSent = true
+				let message = """
+				You can't extend the character selection length any further.
+				"""
+				
+				storedMessages["current_msg"] = request.sync.sendMessage(message
+																																 markup: inlineMarkup,
+																																 chatID: tag.id)
+			}
+			
+			return true
+		}
 		
+		if let charSelectEnd = storedEvents["end_char_select"] {
+			timeExtensionCount += 1
+			
+			// Remove the end timer and work out how long we had left.
+			queue.remove(charSelectEnd)
+			storedEvents.removeValue(forKey: "end_char_select")
+			
+			let time = charSelectEnd.executeTime
+			var queueTime = Int(time.timeIntervalSinceNow) + 30
+			
+			
+			// RE-QUEUE WARNING
+			
+			if storedEvents["last_warning"] != nil && queueTime > 45 {
+				let warningEvent = storedEvents["last_warning"]!
+				queue.remove(warningEvent)
+				
+				let warningDelay = queueTime - Int(KingpinDefault.charSelectWarningTime.rawValue)
+				queueTime = 30
+				
+				storedEvents["last_warning"] = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
+					self.sendWarningMessage()
+				}
+			}
+			
+			
+			// QUEUE END CHAR SELECT
+			
+			self.storedEvents["end_char_select"] = self.queue.action(delay: queueTime.sec,
+																															 viewTime: 0.sec) {
+																																
+																																self.endCharacterSelection(clearInline: true)
+			}
+			
+			
+			// NEW MESSAGE
+			
+			var newMessage = """
+			~ ~ T I M E   E X T E N D E D ! ~ ~
+			You now have \(queueTime) seconds left.
+			"""
+			
+			newMessage += getPlayerList()
+			clearPreviousInlineKeys()
+			
+			storedMessages["current_msg"] = request.sync.sendMessage(newMessage,
+																															 markup: inlineMarkup,
+																															 chatID: tag.id)
+		}
 		return true
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Sends a warning message when there's only 30 seconds left to choose.
+	*/
+	func sendWarningMessage() {
+		
+		// Build the message
+		let message = """
+		You have 25 seconds left to join.
+		
+		\(getPlayerList())
+		"""
+		
+		lastBaseMessage = message
+		
+		// Clear the inline of the previous message.
+		self.clearPreviousInlineKeys()
+		
+		// Send the new message
+		self.storedMessages["current_msg"] = self.request.sync.sendMessage(message,
+																																			 markup: self.inlineMarkup,
+																																			 chatID: self.tag.id)
+	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**

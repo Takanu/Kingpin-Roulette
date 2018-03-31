@@ -32,6 +32,11 @@ struct KingpinDefault {
 	/// The time left on the character select timer in order to trigger a reminder.
 	static var charSelectWarningTime = 25.sec
 	
+	/// The amount a time extension is worth.
+	static var timeExtensionLength = 30.sec
+	
+	/// The number of times you can extend the time
+	static var maxTimeExtensions = 4
 	
 	// KINGPIN SELECTION
 	/// The time available for deciding if players want to be the Kingpin.
