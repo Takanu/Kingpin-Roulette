@@ -22,9 +22,20 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 																			 description: "oh hey, it's an event.")
 	
 	
-	let characterKey = PlayerCharacter.inlineKey
-	let tutorialKeyOff = MarkupInlineKey(fromCallbackData: "tutorial", text: "Use Tutorial (Currently Off)")!
-	let tutorialKeyOn = MarkupInlineKey(fromCallbackData: "tutorial", text: "Use Tutorial (Currently On)")!
+	/// Returns a complete inline key set for a join message, including context-sensitive tutorial buttons.
+	var inlineMarkup: MarkupInline {
+		
+		let inline = MarkupInline()
+		inline.addRow(sequence: PlayerCharacter.inlineKey)
+		
+		if handle.useTutorial == false {
+			inline.addRow(sequence: MarkupInlineKey(fromCallbackData: "tutorial", text: "Use Tutorial (Currently Off)")!)
+		} else {
+			inline.addRow(sequence: MarkupInlineKey(fromCallbackData: "tutorial", text: "Use Tutorial (Currently On)")!)
+		}
+		
+		return inline
+	}
 	
 	/// The characters that have already been chosen by other players.
 	var usedCharacters: [PlayerCharacter] = []
@@ -37,10 +48,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	*/
 	override func execute() {
 		
-		// Set message contents
-		let inline = MarkupInline()
-		inline.addRow(sequence: characterKey)
-		inline.addRow(sequence: tutorialKeyOff)
+		////////////
+		// MESSAGE
 		
 		let message = """
 		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and settle your differences through a deadly interrogation game.
@@ -52,44 +61,49 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		lastBaseMessage = message
 		
 		
-		// Set routes
+		////////////
+		// ROUTING
+		
+		let extendRoute = RouteCommand(commands: "extend", action: extendCharacterSelection)
 		let tutorialToggle = RouteListen(pattern: "tutorial", type: .callbackQuery, action: tutorialSwitch)
 		let characterSelect = RoutePass(updateTypes: [.message], action: receiveCharacterSelection)
 		
-		baseRoute[["event"]]?.addRoutes(tutorialToggle, characterSelect)
+		baseRoute[["event"]]?.addRoutes(extendRoute, tutorialToggle, characterSelect)
 		
 		
 		// Send the message!
-		let startMsg = request.sync.sendMessage(message, markup: inline, chatID: tag.id)
+		let startMsg = request.sync.sendMessage(message,
+																						markup: inlineMarkup,
+																						chatID: tag.id)
+		
 		storedMessages["start_msg"] = startMsg
 		storedMessages["current_msg"] = startMsg
+		
+		
+		
+		////////////
+		// SCHEDULE
 		
 		
 		// Insert a warning message if possible
 		let warningDelay = Int(KingpinDefault.charSelectTime.unixTime - 25)
 		
 		if warningDelay > 40 {
-			_ = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
+			storedEvents["last_warning"] = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
 				
 				// Build the message
-				var message = "You have 25 seconds left to join.\n\nPlayer List:\n"
-				self.lastBaseMessage = "You have 25 seconds left to join."
-				for player in self.handle.players {
-					message += player.name + "\n"
-				}
+				let message = """
+				You have 25 seconds left to join.
+
+				\(self.getPlayerList())
+				"""
 				
-				self.clearInline()
-				
-				// Remove the inline prompt on the old message
-				let msg = self.storedMessages["current_msg"]!
-				self.request.sync.editCaption(messageID: msg.tgID,
-																			caption: msg.caption ?? "",
-																			markup: nil,
-																			chatID: self.tag.id)
+				// Clear the inline of the previous message.
+				self.clearPreviousInlineKeys()
 				
 				// Send the new message
 				self.storedMessages["current_msg"] = self.request.sync.sendMessage(message,
-																																					 markup: inline,
+																																					 markup: self.inlineMarkup,
 																																					 chatID: self.tag.id)
 			}
 			
@@ -169,6 +183,33 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		return true
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Builds and returns an elegant player list.
+	*/
+	func getPlayerList() -> String {
+		
+		// Setup the new message
+		var playerList = "Player List:"
+		
+		handle.players.forEach {
+			playerList += "\n\($0.name)"
+		}
+		
+		// Let the player know how many players they need to or can add to the game.
+		if handle.players.count < KingpinDefault.minimumPlayers {
+			let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
+			playerList += "\n\n**You need \(playersNeeded) more players**"
+		}
+			
+		else if handle.players.count < KingpinDefault.maximumPlayers {
+			let playersNeeded = KingpinDefault.maximumPlayers - handle.players.count
+			playerList += "\n\n**\(playersNeeded) more players can join**"
+		}
+		
+		return playerList
+	}
+	
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -182,13 +223,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			return
 		}
 		
-		// Setup the new message
-		var newMessage = lastBaseMessage
-		newMessage += "\n\nPlayer List:"
-		
-		handle.players.forEach {
-			newMessage += "\n\($0.name)"
-		}
+		let newMessage = getPlayerList()
 		
 		// If we've reached the maximum number of players early, change the configuration.
 		var reachedPlayerLimit = false
@@ -200,18 +235,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		var newInline: MarkupInline?
 		
 		if reachedPlayerLimit == false {
-			let tempInline = MarkupInline()
-			
-			if handle.useTutorial == true {
-				tempInline.addRow(sequence: characterKey)
-				tempInline.addRow(sequence: tutorialKeyOn)
-				
-			} else {
-				tempInline.addRow(sequence: characterKey)
-				tempInline.addRow(sequence: tutorialKeyOff)
-			}
-			
-			newInline = tempInline
+			newInline = inlineMarkup
 		}
 		
 		// Edit the message
@@ -251,21 +275,17 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			return true
 		}
 		
-		let newInline = MarkupInline()
+		// Toggle the tutorial boolean and select the answerer text.
 		var answerText = ""
 		
 		if handle.useTutorial == true {
-			newInline.addRow(sequence: characterKey)
-			newInline.addRow(sequence: tutorialKeyOff)
 			handle.useTutorial = false
 			answerText = "You've turned the tutorial off."
-			
 		} else {
-			newInline.addRow(sequence: characterKey)
-			newInline.addRow(sequence: tutorialKeyOn)
 			handle.useTutorial = true
 			answerText = "You've turned the tutorial on."
 		}
+		
 		
 		self.request.async.answerCallbackQuery(queryID: String(update.id),
 																					 text: answerText,
@@ -274,7 +294,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		self.request.sync.editMessage(currentMsg.text ?? "Errr",
 																	messageID: currentMsg.tgID,
 																	inlineMessageID: nil,
-																	markup: newInline,
+																	markup: inlineMarkup,
 																	chatID: tag.id)
 		
 		return true
@@ -282,13 +302,29 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	}
 	
 	
+	/////////////////////////////////////////////////////////////////////////////////
+	/**
+	Extends the character selection phase, up to a point.
+	*/
+	func extendCharacterSelection(_ update: Update) -> Bool {
+		
+		var newMessage = """
+		~ ~ T I M E   E X T E N S I O N ~ ~
+		You now have
+		"""
+		
+		return true
+	}
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Ends the character selection phase.
 	*/
 	func endCharacterSelection(clearInline: Bool) {
 		
 		if clearInline == true {
-			self.clearInline()
+			self.clearPreviousInlineKeys()
 		}
 		
 		storedMessages.removeAll()
@@ -298,7 +334,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/**
 	Clears the inline keys of the current message.
 	*/
-	func clearInline() {
+	func clearPreviousInlineKeys() {
 		
 		let currentMsg = storedMessages["current_msg"]!
 		self.request.sync.editMessage(currentMsg.text ?? "Errr",
