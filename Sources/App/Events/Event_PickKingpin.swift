@@ -249,7 +249,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			announcement1 = """
 			With no-one to turn to and no candidates to replace them, everyone turns to the Kingpin's bloodline to find the long lost heir to the empire.
 			
-			After a difficult search it is revealed that
+			After a difficult search it is revealed that...
 			"""
 			
 			announcement2 = """

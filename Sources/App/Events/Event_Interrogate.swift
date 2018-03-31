@@ -128,7 +128,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Build the inline response.
 		let inline = MarkupInline()
-		let vaultKey = MarkupInlineKey(fromInlineQueryCurrent: Vault.inlineKey.data, text: "Check Role/View Vauly")
+		let vaultKey = MarkupInlineKey(fromInlineQueryCurrent: Vault.inlineKey.data, text: "Check Role/View Vault")
 		inline.addRow(sequence: vaultKey)
 		inline.addRow(sequence: Player.inlineKey)
 		
@@ -544,7 +544,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.action(delay: 1.sec, viewTime: 0.sec) {
 			
 			let opalAmount = pick.points[KingpinDefault.opal]!
-			pick.points.clearAll()
 			self.handle.kingpin!.points.changeCurrency(KingpinDefault.opal, change: opalAmount)
 			
 			
@@ -672,6 +671,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		var assistants = findWinningAssistants() ?? []
 		assistants += accomplices
 		
+		assistants.forEach {
+			$0.flair.addFlair(KingpinFlair.winner)
+		}
+		
 		if assistants.count != 0 {
 			
 			let assistantWin1 = """
@@ -761,7 +764,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	}
 	
 	/**
-	Try and find some winning assistants.  Those found will be given the "Winner" flair and returned as an array.
+	Try and find some winning assistants.
 	*/
 	func findWinningAssistants() -> [Player]? {
 		
@@ -807,7 +810,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			if playerFound!.flair.findFlair(KingpinFlair.winner, compareContents: false) == true {
-				assistant.flair.addFlair(KingpinFlair.winner)
 				winningAssistants.append(assistant)
 			}
 		}

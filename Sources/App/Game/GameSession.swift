@@ -307,10 +307,7 @@ class GameSession: ChatSession {
 		
 		
 		// Build a final game list
-		var finalGameList = """
-		WINNERS!
-		===========
-		"""
+		var finalGameList = ""
 		
 		// Index every player including the kingpin, based on what their "Player Status" flair is.
 		// Those without a status should be placed in an "Other" category.
