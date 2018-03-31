@@ -157,7 +157,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			if handle.useTutorial == true {
 				kingpinVisit1 = """
-				Before leaving the Vault's protection to everyone, the Kingpin decides to **personally make note of the valuables inside**.
+				Before leaving the Vault's protection to everyone, the Kingpin decides to *personally make note of the valuables inside*.
 				"""
 				
 				kingpinVisit2 = """

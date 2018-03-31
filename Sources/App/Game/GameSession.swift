@@ -81,22 +81,24 @@ class GameSession: ChatSession {
 		playerRoute.enabled = false
 		
 		
-		// FILTER
-		// Add a filter to restrict commands to one per time window.
-		let commandFilter = UpdateFilterCondition(type: .message, timeRange: 3.sec) { condition in
-			
-			let commands = condition.records.filter( {
-				if $0.type != .message { return false }
-				if $0.content.count == 0 { return false }
-				if $0.content.first! == "/" { return true }
-				return false
-			})
-			
-			if commands.count > 0 { return false }
-			return true
-		}
+		// (this affects normal messages, don't use it)
 		
-		self.filter.addCondition(commandFilter)
+		// FILTER
+//		// Add a filter to restrict commands to one per time window.
+//		let commandFilter = UpdateFilterCondition(type: .message, timeRange: 3.sec) { condition in
+//
+//			let commands = condition.records.filter( {
+//				if $0.type != .message { return false }
+//				if $0.content.count == 0 { return false }
+//				if $0.content.first! == "/" { return true }
+//				return false
+//			})
+//
+//			if commands.count > 0 { return false }
+//			return true
+//		}
+//
+//		self.filter.addCondition(commandFilter)
 		
 		
 		// ANTI-FLOOD

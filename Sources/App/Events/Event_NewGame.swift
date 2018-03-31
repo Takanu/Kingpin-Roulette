@@ -62,7 +62,6 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		Secretly enter the criminal underworld as a friend, foe or the powerful Kingpin and settle your differences through a deadly interrogation game.
 		
 		You have \(Int(KingpinDefault.charSelectTime.rawValue)) seconds to join.
-		This game is for 6-12 players.
 		"""
 		
 		lastBaseMessage = message
@@ -94,31 +93,23 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		// Insert a warning message if possible
 		let warningDelay = Int(KingpinDefault.charSelectTime.unixTime - 25)
+		var charEndDelay = KingpinDefault.charSelectTime
 		
 		if warningDelay > 40 {
+			charEndDelay = KingpinDefault.charSelectWarningTime
 			storedEvents["last_warning"] = queue.action(delay: warningDelay.sec, viewTime: 0.sec) {
 				
 				// Send the warning message
 				self.sendWarningMessage()
-				
-				// Build an event to end character selection.
-				self.storedEvents["end_char_select"] = self.queue.action(delay: KingpinDefault.charSelectWarningTime,
-																																 viewTime: 0.sec) {
-																															
-																															self.endCharacterSelection(clearInline: true)
-				}
 			}
 		}
 		
-		// If not possible, just delay the ending of this event.
-		else {
-			_ = queue.action(delay: KingpinDefault.charSelectTime,
-											 viewTime: 0.sec) {
-												
-				self.endCharacterSelection(clearInline: true)
-			}
+		// Delay the character select end event
+		self.storedEvents["end_char_select"] = queue.action(delay: charEndDelay,
+										 viewTime: 0.sec) {
+											
+			self.endCharacterSelection(clearInline: true)
 		}
-		
 	}
 	
 	
@@ -185,7 +176,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	func getPlayerList() -> String {
 		
 		// Setup the new message
-		var playerList = "Player List:"
+		var playerList = "\n\nPlayer List:"
 		
 		handle.players.forEach {
 			playerList += "\n\($0.name)"
@@ -194,12 +185,12 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		// Let the player know how many players they need to or can add to the game.
 		if handle.players.count < KingpinDefault.minimumPlayers {
 			let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
-			playerList += "\n\n**You need \(playersNeeded) more players**"
+			playerList += "\n\n*You need \(playersNeeded) more players*"
 		}
 			
 		else if handle.players.count < KingpinDefault.maximumPlayers {
 			let playersNeeded = KingpinDefault.maximumPlayers - handle.players.count
-			playerList += "\n\n**\(playersNeeded) more players can join**"
+			playerList += "\n\n*\(playersNeeded) more players can join*"
 		}
 		
 		return playerList
@@ -218,7 +209,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			return
 		}
 		
-		let newMessage = getPlayerList()
+		var newMessage = lastBaseMessage
+		newMessage += getPlayerList()
 		
 		// If we've reached the maximum number of players early, change the configuration.
 		var reachedPlayerLimit = false
@@ -303,6 +295,13 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	*/
 	func extendCharacterSelection(_ update: Update) -> Bool {
 		
+		// VALIDATE USER
+		
+		if handle.players.contains(where: {$0.id == update.from?.tgID ?? 0}) == false { return true }
+		
+		
+		// TIME EXTENSION LIMIT
+		
 		if timeExtensionCount >= KingpinDefault.maxTimeExtensions {
 			
 			if timeExtensionWarningSent == false {
@@ -312,14 +311,17 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				"""
 				
 				storedMessages["current_msg"] = request.sync.sendMessage(message,
-																																 markup: inlineMarkup,
+																																 markup: nil,
 																																 chatID: tag.id)
 			}
 			
 			return true
 		}
 		
+		// TIME EXTENSION
+		
 		if let charSelectEnd = storedEvents["end_char_select"] {
+			queue.clear()
 			timeExtensionCount += 1
 			
 			// Remove the end timer and work out how long we had left.
@@ -327,7 +329,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			storedEvents.removeValue(forKey: "end_char_select")
 			
 			let time = charSelectEnd.executeTime
-			var queueTime = Int(time.timeIntervalSinceNow) + 30
+			let timeLeft = Int(time.timeIntervalSinceNow) + Int(KingpinDefault.timeExtensionLength.rawValue)
+			var queueTime = timeLeft
 			
 			
 			// RE-QUEUE WARNING
@@ -358,7 +361,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			
 			var newMessage = """
 			~ ~ T I M E   E X T E N D E D ! ~ ~
-			You now have \(queueTime) seconds left.
+			You now have \(timeLeft) seconds left.
 			"""
 			
 			newMessage += getPlayerList()

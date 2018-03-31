@@ -54,11 +54,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial3 = """
-			First, that not everyone here is loyal, and that some of you will eventually **steal from the Kingpin's immense fortune** or **bring them to justice as undercover police**.
+			First, that not everyone here is loyal, and that some of you will eventually *steal from the Kingpin's immense fortune* or *bring them to justice as undercover police*.
 			"""
 			
 			let tutorial4 = """
-			Secondly, that the Kingpin themselves would meet an untimely death and that **one of you must now replace them**.
+			Secondly, that the Kingpin themselves would meet an untimely death and that *one of you must now replace them*.
 			"""
 			
 			kingpinRequestMsg = """
