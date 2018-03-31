@@ -26,12 +26,6 @@ class GameHandle: Handle {
 	/// The kingpin.
 	var kingpin: Player?
 	
-	/// The number of players that are out.  The key is their current status, so use proper english plz.
-	var eliminatedPlayers: [Player: String] = [:]
-	
-	/// The players that have won the game (obviously wont contain anything until the end).
-	var winningPlayers: [Player] = []
-	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault
@@ -73,8 +67,6 @@ class GameHandle: Handle {
 		
 		self.players = session.players
 		self.kingpin = session.kingpin
-		self.eliminatedPlayers = session.eliminatedPlayers
-		self.winningPlayers	= session.winningPlayers
 		self.vault = session.vault
 		
 		self.playerRoute = session.playerRoute

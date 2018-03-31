@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5024F64A206C1C9A008D1BE3 /* OpalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5024F649206C1C9A008D1BE3 /* OpalUnit.swift */; };
 		503FBE9F206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */; };
+		5058D466206F54E500A5AB61 /* KingpinFlair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058D465206F54E500A5AB61 /* KingpinFlair.swift */; };
 		5069647E206C92DA00F10C38 /* KingpinEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5069647D206C92DA00F10C38 /* KingpinEvent.swift */; };
 		50A96EEA206CA1EB00B7373C /* PlayerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EE9206CA1EB00B7373C /* PlayerSession.swift */; };
 		50A96EEC206CA8A000B7373C /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */; };
@@ -281,6 +282,7 @@
 /* Begin PBXFileReference section */
 		5024F649206C1C9A008D1BE3 /* OpalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpalUnit.swift; sourceTree = "<group>"; };
 		503FBE9E206D74E5009CC3B3 /* PlayerSession+InlineQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerSession+InlineQuery.swift"; sourceTree = "<group>"; };
+		5058D465206F54E500A5AB61 /* KingpinFlair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinFlair.swift; sourceTree = "<group>"; };
 		5069647D206C92DA00F10C38 /* KingpinEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinEvent.swift; sourceTree = "<group>"; };
 		50A96EE9206CA1EB00B7373C /* PlayerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSession.swift; sourceTree = "<group>"; };
 		50A96EEB206CA8A000B7373C /* Event_PickKingpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_PickKingpin.swift; sourceTree = "<group>"; };
@@ -962,6 +964,7 @@
 			children = (
 				OBJ_26 /* KingpinDefault.swift */,
 				OBJ_27 /* KingpinRoles.swift */,
+				5058D465206F54E500A5AB61 /* KingpinFlair.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
@@ -1572,6 +1575,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_326 /* Event_Interrogate.swift in Sources */,
+				5058D466206F54E500A5AB61 /* KingpinFlair.swift in Sources */,
 				OBJ_327 /* Event_NewGame.swift in Sources */,
 				OBJ_328 /* Event_VaultVisit.swift in Sources */,
 				OBJ_329 /* Opal.swift in Sources */,

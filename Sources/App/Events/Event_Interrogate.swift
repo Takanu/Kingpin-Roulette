@@ -91,9 +91,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// Build text based on lives
 		var livesText = ""
 		if handle.kingpinLives > 0 {
-			"(You can afford to make \(handle.kingpinLives) wrong accusation)"
+			livesText = "(You can afford to make \(handle.kingpinLives) wrong accusation)"
 		} else {
-			"(You have no additional chances, choose carefully...)"
+			livesText = "(You have no additional chances, choose carefully...)"
 		}
 		
 		// Set the messages
@@ -274,7 +274,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.eliminatedPlayers[handle.kingpin!] = "Ran Away"
+				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -313,7 +313,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.eliminatedPlayers[handle.kingpin!] = "Arrested"
+			handle.kingpin!.flair.addFlair(withName: "Arrested", category: KingpinFlair.category)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -333,7 +333,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.eliminatedPlayers[handle.kingpin!] = "In A Far Away Land"
+			handle.kingpin!.flair.addFlair(withName: "In A Far Away Land", category: KingpinFlair.category)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -355,7 +355,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.eliminatedPlayers[handle.kingpin!] = "Ran Away"
+				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -397,7 +397,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.eliminatedPlayers[handle.kingpin!] = "Ran Away"
+				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -439,7 +439,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.eliminatedPlayers[handle.kingpin!] = "Ran Away"
+				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -480,7 +480,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 			// Declare them as dead and remove them from the players left.
-			handle.eliminatedPlayers[kingpinChoice] = "Dead"
+			kingpinChoice.flair.addFlair(KingpinFlair.dead)
 			let index = playersLeft.index(of: kingpinChoice)!
 			playersLeft.remove(at: index)
 			
@@ -489,7 +489,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		/////////
 		// WHOOPS
 		case .kingpin:
-			handle.circuitBreaker("Event_Interrogate - The kingpin somehow picked themselves.")
+			handle.circuitBreaker("Event_Interrogate - The kingpin somehow picked themselves.  The hell?")
 		}
 		
 	}
@@ -551,7 +551,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			// If the Kingpin has all the opals back, end the game immediately.
 			if thieves.count == 0 {
 				let allThievesDead = """
-				The Kingpin has recovered all the Opals, securing the future of the criminal empire.
+				The Kingpin has recovered all the Opals, securing the future of the empire.
 				"""
 				
 				self.queue.message(delay: 3.sec,
@@ -593,20 +593,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		let pickRole = pick.role!.definition
 		
 		
-		// Ensure any dead players are removed and added to the status list
-		
-		for deadPerson in handle.players.filter({ playersLeft.contains($0) == false }) {
-			let index = handle.players.index(of: deadPerson)!
-			handle.players.remove(at: index)
-			handle.eliminatedPlayers[deadPerson] = "Dead"
-		}
-		
-		
-		
 		// If the picked player was the spy or police, they immediately win.
 		
 		if pickRole == .police || pickRole == .spy {
-			handle.winningPlayers.append(pick)
+			pick.flair.addFlair(KingpinFlair.winner)
 			
 			let copsWin = """
 			! ! ! ! \(pick.name) wins! ! ! ! !
@@ -630,7 +620,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			let bestThieves = handle.players.filter( { $0.points[KingpinDefault.opal]?.intValue ?? 0 == mostOpalsStolen } )
-			handle.winningPlayers.append(contentsOf: bestThieves)
+			bestThieves.forEach {
+				$0.flair.addFlair(KingpinFlair.winner)
+			}
 			
 			var thiefWin1 = ""
 			if bestThieves.count == 1 {
@@ -666,14 +658,15 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Find any potential winning assistants and accomplices
 		
-		handle.winningPlayers += handle.players.filter({$0.role!.definition == .accomplice})
+		let accomplices = handle.players.filter({$0.role!.definition == .accomplice})
+		accomplices.forEach {
+			$0.flair.addFlair(KingpinFlair.winner)
+		}
 		
 		var assistants = findWinningAssistants() ?? []
-		assistants += handle.players.filter({$0.role!.definition == .accomplice})
+		assistants += accomplices
 		
 		if assistants.count != 0 {
-			
-			handle.winningPlayers.append(contentsOf: assistants)
 			
 			let assistantWin1 = """
 			Someone was secretly helping them!  They were...
@@ -697,24 +690,13 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		print("Finishing winner stuff.")
 		
-		// Before we end it, ensure that all winners are removed from the normal player queue.
-		
-		for winner in handle.winningPlayers {
-			
-			let index = handle.players.index(of: winner)
-			if index != nil {
-				_ = handle.players.remove(at: index!)
-			} else {
-				print("HEY, A WINNING PLAYER COULDN'T BE FOUND IN THE PLAYER LIST")
-			}
-		}
-		
 		
 		// Remove the Kingpin
 		
 		handle.kingpin = nil
 		
 		print("Completing game")
+		
 		
 		// Finish the game
 		
@@ -732,27 +714,20 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.clear()
 		handle.playerRoute.resetRequest()
 		
-		handle.winningPlayers.append(handle.kingpin!)
-		
-		// Ensure any dead players are removed and added to the status list
-		
-		for deadPerson in handle.players.filter({ playersLeft.contains($0) == false }) {
-			let index = handle.players.index(of: deadPerson)!
-			handle.players.remove(at: index)
-			handle.eliminatedPlayers[deadPerson] = "Dead"
-		}
+		handle.kingpin!.flair.addFlair(KingpinFlair.winner)
 		
 		
 		// Get a list of the minions and add them to the winning players list.
 		
 		let minions = handle.players.filter({$0.role!.definition == .henchman})
-		handle.winningPlayers.append(contentsOf: minions)
+		minions.forEach {
+			$0.flair.addFlair(KingpinFlair.winner)
+		}
 		
 		
 		// Get a list of the assistants that also won.
 		
 		let assistants = findWinningAssistants() ?? []
-		handle.winningPlayers.append(contentsOf: assistants)
 		
 		
 		// Announce the big win.
@@ -773,21 +748,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											 chatID: self.tag.id)
 		
 		
-		// Remove the Kingpin from his position now that he's won <3
-		
-		handle.kingpin = nil
-		
-		
-		// Before we end it, ensure that all winners are removed from the normal player queue.
-		
-		for winner in handle.winningPlayers {
-			
-			let index = handle.players.index(of: winner)!
-			_ = handle.players.remove(at: index)
-		}
-		
-		
-		
 		// Finish the game
 		
 		self.queue.action(delay: 3.sec, viewTime: 0.sec) {
@@ -797,7 +757,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	}
 	
 	/**
-	Try and find some winning assistants.
+	Try and find some winning assistants.  Those found will be given the "Winner" flair and returned as an array.
 	*/
 	func findWinningAssistants() -> [Player]? {
 		
@@ -838,7 +798,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				}
 			}
 			
-			if handle.winningPlayers.contains(playerFound!) {
+			if playerFound!.flair.findFlair(KingpinFlair.winner, compareContents: false) == true {
+				assistant.flair.addFlair(KingpinFlair.winner)
 				winningAssistants.append(assistant)
 			}
 		}

@@ -19,12 +19,6 @@ class GameSession: ChatSession {
 	/// The kingpin.
 	var kingpin: Player?
 	
-	/// The number of players that are out.  The key is their current status, so use proper english plz.
-	var eliminatedPlayers: [Player: String] = [:]
-	
-	/// The players that have won the game (obviously wont contain anything until the end).
-	var winningPlayers: [Player] = []
-	
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault!
@@ -294,12 +288,6 @@ class GameSession: ChatSession {
 	func finishScenario() {
 		queue.clear()
 		
-		// If we have no winners, just reset.
-		if winningPlayers.count == 0 {
-			reset()
-			return
-		}
-		
 		
 		// Build a final game list
 		var finalGameList = """
@@ -307,29 +295,41 @@ class GameSession: ChatSession {
 		===========
 		"""
 		
-		for winner in winningPlayers {
-			finalGameList += "\(winner.name) - \(winner.role!.name)\n"
-		}
-		finalGameList += "\n\n"
-		
-		
-		// Collect all those that got a status
+		// Index every player including the kingpin, based on what their "Player Status" flair is.
+		// Those without a status should be placed in an "Other" category.
 		var statusCollection: [String: [Player]] = [:]
+		var allPlayers = players
+		allPlayers.append(kingpin!)
 		
-		for mysteryPlayer in eliminatedPlayers {
+		for player in allPlayers {
 			
-			if statusCollection[mysteryPlayer.value] != nil {
-				statusCollection[mysteryPlayer.value]!.append(mysteryPlayer.key)
+			// If it has a type, use that to add it to the status collection/
+			if let type = player.flair[KingpinFlair.category] {
+				let typeName = type[0]
+				if statusCollection[typeName] != nil {
+					statusCollection[typeName]!.append(player)
+				}
+					
+				else {
+					statusCollection[typeName] = [player]
+				}
 			}
 			
+				
+			// If not, add it to the "Other" category.
 			else {
-				statusCollection[mysteryPlayer.value] = [mysteryPlayer.key]
+				if statusCollection["The Others"] != nil {
+					statusCollection["The Others"]!.append(player)
+				}
+					
+				else {
+					statusCollection["The Others"] = [player]
+				}
 			}
 		}
 		
 		for status in statusCollection {
 			finalGameList += """
-			
 			\(status.key.uppercased())
 			===========
 			
@@ -338,19 +338,10 @@ class GameSession: ChatSession {
 			for player in status.value {
 				finalGameList += "\(player.name) - \(player.role!.name)\n"
 			}
+			
+			finalGameList += "\n"
 		}
 		
-		// Add all those that are... fine here
-		finalGameList += """
-		
-		THE OTHERS
-		===========
-		
-		"""
-		
-		for player in players {
-			finalGameList += "\(player.name) - \(player.role!.name)\n"
-		}
 		
 		queue.message(delay: 1.sec,
 									viewTime: 5.sec,
@@ -369,8 +360,6 @@ class GameSession: ChatSession {
 		
 		self.players = handle.players
 		self.kingpin = handle.kingpin
-		self.eliminatedPlayers = handle.eliminatedPlayers
-		self.winningPlayers	= handle.winningPlayers
 		
 		self.vault = handle.vault
 		self.storedMessages.removeAll()
@@ -398,8 +387,6 @@ class GameSession: ChatSession {
 		
 		self.players = []
 		self.kingpin = nil
-		self.eliminatedPlayers = [:]
-		self.winningPlayers = []
 		
 		self.vault.resetRequest()
 		self.storedMessages.removeAll()
