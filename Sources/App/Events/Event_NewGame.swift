@@ -311,7 +311,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				You can't extend the character selection length any further.
 				"""
 				
-				storedMessages["current_msg"] = request.sync.sendMessage(message
+				storedMessages["current_msg"] = request.sync.sendMessage(message,
 																																 markup: inlineMarkup,
 																																 chatID: tag.id)
 			}
