@@ -271,8 +271,10 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]!.intValue == 0)
 			|| visitorsLeft.count == 1 {
 			
-			handle.vault.roles.addItems([KingpinRoles.accomplice])
-			handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: true)
+			if handle.vault.roles.hasItem(KingpinRoles.accomplice) == false {
+				handle.vault.roles.addItems([KingpinRoles.accomplice])
+				handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: true)
+			}
 		}
 		
 		
@@ -378,6 +380,13 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	*/
 	func concludeVisit() {
 		
+		// Remove the accomplice from the vault
+		handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: false)
+		if handle.vault.roles.removeItem(KingpinRoles.accomplice) == nil {
+			handle.circuitBreaker("Event_VaultVisit - Accomplice role was never removed at the end of the visit.")
+		}
+		
+		// Exit
 		queue.action(delay: 5.sec,
 								 viewTime: 0.sec) {
 			
