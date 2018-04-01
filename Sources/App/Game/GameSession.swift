@@ -365,15 +365,14 @@ class GameSession: ChatSession {
 		
 		
 		let creditsMsg = """
-		**Kingpin Roulette**
+		*Kingpin Roulette*
 		Version \(KingpinDefault.versionNumber)
 		
-		**Designed and developed by @takanu.**
-		**Based on the game Mafia De Cuba, designed by Philippe des Pallières and Loïc Lamy.**
+		*Designed and developed by @takanu.*
+		*Based on the game Mafia De Cuba, designed by Philippe des Pallières and Loïc Lamy.*
 		
-		Thanks for trying out the game!
-		For feedback and further updates check out @takanubox or the @KingpinRoulette group.
-		You can also send me a private message at @takanu.
+		*Updates* - @takanubox
+        *Chat* - @KingpinRoulette
 		"""
 		
 		

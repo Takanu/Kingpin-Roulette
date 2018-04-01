@@ -18,6 +18,6 @@ struct KingpinFlair {
 
 	static var dead = Flair(withName: "Dead", category: category)
 	
-	static var winner = Flair(withName: "Winner", category: category)
+	static var winner = Flair(withName: "Winners", category: category)
 
 }

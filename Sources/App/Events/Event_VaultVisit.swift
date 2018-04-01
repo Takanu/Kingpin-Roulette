@@ -175,7 +175,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			else {
 				kingpinVisit2 = """
-				The Kingpin receives an anonymous tip that the elite circle has hidden agendas.  They study the information and the vault carefully.
+				Before leaving the Vault's protection to everyone, the Kingpin decides to *personally make note of the valuables inside*.
 
 				(\(handle.kingpin!.name) has 25 seconds to view this information, remember it well)
 				"""
@@ -277,6 +277,20 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			}
 		}
 		
+		// If one person is left and the tutorial is on, explain what they can have access to.
+		
+		if visitorsLeft.count == 1 && handle.useTutorial == true {
+			
+			let accompliceNotice = """
+			If you ever has no opals or roles left to take, or if you are the last person to watch the Vault, *you will have access to the Accomplice role, whose task is to help the Thieves succeed*.
+			"""
+			
+			queue.message(delay: 0.sec,
+										viewTime: 7.sec,
+										message: accompliceNotice,
+										chatID: tag.id)
+		}
+		
 		
 		// Otherwise, complete the visit.
 		
@@ -336,16 +350,31 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		The Kingpin finishes their inspection and passes on the responsibility to everyone else. while they take care of some important business.
 		"""
 		
-		request.async.sendMessage(vaultFinish,
-															markup: nil,
-															chatID: tag.id)
-		
+		queue.message(delay: 0.sec,
+									viewTime: 5.sec,
+									message: vaultFinish,
+									chatID: tag.id)
 		
 		
 		//////////////////////
 		// TUTORIAL
 		// If the tutorial is on, build up the scenario so people know what to expect.
 		if handle.useTutorial == true {
+			
+			let observePointer = """
+			As it becomes your turn to watch the vault, it's important to make note of what's inside.
+
+			*Knowing whats left in the Vault can give you hints as to what the role of other players is, making it easier to achieve the goals of your role.*
+			"""
+			
+			queue.message(delay: 0.sec,
+										viewTime: 7.sec,
+										message: observePointer,
+										chatID: tag.id)
+			
+			request.async.sendMessage(vaultFinish,
+																markup: nil,
+																chatID: tag.id)
 			
 		}
 		

@@ -152,4 +152,33 @@ class Player: UserProxy, Hashable, Equatable {
 	static func == (lhs: Player, rhs: Player) -> Bool {
 		return lhs.isEqualTo(rhs)
 	}
+	
+	/**
+	Calculates a grammatically correct list of players as a string message, for use in declaring
+	collections of players elegantly.
+	*/
+	public static func getListTextSUB(_ players: [Player]) -> String {
+		
+		var string = ""
+		
+		for (index, player) in players.enumerated() {
+			if players.count == 1 {
+				string += "\(player.name)"
+			}
+				
+			else if index == players.count - 1 {
+				string += "and \(player.name)"
+			}
+				
+			else if index == players.count - 2 {
+				string += "\(player.name) "
+			}
+				
+			else {
+				string += "\(player.name), "
+			}
+		}
+		
+		return string
+	}
 }

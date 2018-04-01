@@ -37,6 +37,53 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		///////////////////////////
 		// TUTORIAL
 		if handle.useTutorial {
+			let interrogateTut1 = """
+			In this meeting, the Kingpin's goal is to *recover all their Opals back*, by accusing players they think stole them.  Once accussed, that person's role will be revealed to all.
+
+			(\(handle.kingpin!.name), grill your partners in crime and figure out who's who).
+			"""
+			
+			var interrogateTut2 = """
+			If the Kingpin ever accuse someone who didn't steal Opals, a gift will be given to apologise.
+
+			If the Kingpin runs out of gifts, they *will lose the confidence of the Vault watchers and will immediately lose*.
+			"""
+			
+			var interrogateTut3 = ""
+			
+			if handle.players.count < 8 {
+				interrogateTut3 = """
+				For 6 or 7 player games the Kingpin won't normally receive a present, but for this game the Kingpin will have *one gift* this game, allowing them to make a single mistake.
+				"""
+			} else {
+				interrogateTut2 = """
+				In this game, the Kingpin has *\(handle.kingpinLives) gifts* to use when making mistakes.
+				"""
+			}
+			
+			let interrogateTut4 = """
+			If the Kingpin ever loses (and didn't accuse a *Spy* or *Police Officer*) the watcher who stole the most diamonds wins.
+			"""
+			
+			queue.message(delay: 1.sec,
+										viewTime: 10.sec,
+										message: interrogateTut1,
+										chatID: tag.id)
+			
+			queue.message(delay: 1.sec,
+										viewTime: 8.sec,
+										message: interrogateTut2,
+										chatID: tag.id)
+			
+			queue.message(delay: 1.sec,
+										viewTime: 8.sec,
+										message: interrogateTut3,
+										chatID: tag.id)
+			
+			queue.message(delay: 1.sec,
+										viewTime: 6.sec,
+										message: interrogateTut4,
+										chatID: tag.id)
 			
 		}
 		
@@ -645,7 +692,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			let thiefWin2 = """
-			\(Player.getListText(bestThieves)) ! ! ! !
+			\(Player.getListTextSUB(bestThieves)) ! ! ! !
 			"""
 			
 			self.queue.message(delay: 2.sec,
@@ -742,11 +789,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		var crimeWin1 = """
 		While the rest fall silent, the Kingpin and their most loyal followers rejoyce!
 		
-		The minions were \(Player.getListText(minions))! ! ! !
+		The minions were \(Player.getListTextSUB(minions))! ! ! !
 		"""
 		
 		if assistants.count != 0 {
-			crimeWin1 += "\n\nThey were assisted by \(Player.getListText(assistants))! ! ! ! "
+			crimeWin1 += "\n\nThey were assisted by \(Player.getListTextSUB(assistants))! ! ! ! "
 		}
 		
 		self.queue.message(delay: 2.sec,
