@@ -76,7 +76,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			let tutorial4 = """
 			You will choose your role when you watch over the vault.
 
-			Select the button below to view all the possible roles that someone can be.
+			Tap the button below to view all the possible roles that someone can choose.
 			"""
 			
 			queue.message(delay: 1.sec,
@@ -208,7 +208,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			let otherVisit = """
 			It is \(vaultVisitor!.name)'s turn to watch over the Vault.
 			
-			(Take an item from the Vault)
+			(Take an item from the Vault for your new role)
 			"""
 			
 			queue.message(delay: 2.sec,
@@ -285,7 +285,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		if visitorsLeft.count == 1 && handle.useTutorial == true {
 			
 			let accompliceNotice = """
-			If you ever has no opals or roles left to take, or if you are the last person to watch the Vault, *you will have access to the Accomplice role, whose task is to help the Thieves succeed*.
+			If you ever has no Opals or roles left to take, or if you are the last person to watch the Vault, *you will have access to the Accomplice role, whose task is to help the Thieves succeed*.
 			"""
 			
 			queue.message(delay: 0.sec,
@@ -313,6 +313,8 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		let otherVisit = """
 		To avoid being identified, \(vaultVisitor!.name) takes something else from the vault and destroys it...
+		
+		(Take an item from the Vault to be removed from the game)
 		"""
 		
 		queue.message(delay: 2.sec,
@@ -349,13 +351,13 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		self.queue.clear()
 		handle.vault.resetRequest()
 		
-		let vaultFinish = """
+		let vaultFinishMsg = """
 		The Kingpin finishes their inspection and passes on the responsibility to everyone else. while they take care of some important business.
 		"""
 		
 		queue.message(delay: 0.sec,
 									viewTime: 5.sec,
-									message: vaultFinish,
+									message: vaultFinishMsg,
 									chatID: tag.id)
 		
 		
@@ -364,7 +366,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		// If the tutorial is on, build up the scenario so people know what to expect.
 		if handle.useTutorial == true {
 			
-			let observePointer = """
+			let observePointerMsg = """
 			As it becomes your turn to watch the vault, it's important to make note of what's inside.
 
 			*Knowing whats left in the Vault can give you hints as to what the role of other players is, making it easier to achieve the goals of your role.*
@@ -372,14 +374,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			queue.message(delay: 0.sec,
 										viewTime: 7.sec,
-										message: observePointer,
+										message: observePointerMsg,
 										chatID: tag.id)
 			
-			request.async.sendMessage(vaultFinish,
-																markup: nil,
-																chatID: tag.id)
-			
 		}
+		
 		
 		queue.action(delay: 3.sec,
 								 viewTime: 0.sec,
@@ -394,11 +393,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		queue.clear()
 		handle.vault.resetRequest()
 		
-		let vaultFinish = """
+		let vaultFinishMsg = """
 		\(vaultVisitor!.name)'s time to watch the vault is now over.
 		"""
 		
-		request.async.sendMessage(vaultFinish,
+		request.async.sendMessage(vaultFinishMsg,
 															markup: nil,
 															chatID: tag.id)
 		
