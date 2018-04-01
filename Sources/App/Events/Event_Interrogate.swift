@@ -34,26 +34,54 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		playersLeft = handle.players
 		
+		
+		///////////////////////////
+		// INTRO
+		
+		// Pass vault control entirely to the Kingpin
+		let interrogate1 = """
+		Everyone has finished their first watch, and the Kingpin returns to see that the Vault is not as they left it.
+		"""
+		
+		let interrogate2 = """
+		Furious, the Kingpin gathers their Vault watchers in an attempt to work out who stole their precious Opals.
+
+		Everyone gathers at the Kingpin's headquarters for the most serious meeting of their lives.
+		"""
+		
+		
+		// Send a message to announce the state and give the Kingpin generous time to choose...
+		queue.message(delay: 1.sec,
+									viewTime: 6.sec,
+									message: interrogate1,
+									chatID: tag.id)
+		
+		queue.message(delay: 1.sec,
+									viewTime: 9.sec,
+									message: interrogate2,
+									chatID: tag.id)
+		
+		
 		///////////////////////////
 		// TUTORIAL
 		if handle.useTutorial {
 			let interrogateTut1 = """
-			In this meeting, the Kingpin's goal is to *recover all their Opals back*, by accusing players they think stole them.  Once accussed, that person's role will be revealed to all.
+			In this meeting, the Kingpin's goal is to *recover all their Opals back* by accusing players they think stole them.  Once accussed, that person's role will be revealed to all.
 
 			(\(handle.kingpin!.name), grill your partners in crime and figure out who's who).
 			"""
 			
 			var interrogateTut2 = """
-			If the Kingpin ever accuse someone who didn't steal Opals, a gift will be given to apologise.
+			If the Kingpin ever accuses someone who didn't steal any Opals, a gift will be given to them as an apology.
 
-			If the Kingpin runs out of gifts, they *will lose the confidence of the Vault watchers and will immediately lose*.
+			If the Kingpin runs out of gifts, they *will lose the confidence of the Vault watchers and will immediately lose, ending the game.*
 			"""
 			
 			var interrogateTut3 = ""
 			
 			if handle.players.count < 8 {
 				interrogateTut3 = """
-				For 6 or 7 player games the Kingpin won't normally receive a present, but for this game the Kingpin will have *one gift* this game, allowing them to make a single mistake.
+				For 6 or 7 player games the Kingpin won't normally receive a present, but for this game the Kingpin will have *one gift*, allowing them to make a single mistake.
 				"""
 			} else {
 				interrogateTut2 = """
@@ -86,29 +114,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 		}
-		
-		// Pass vault control entirely to the Kingpin
-		let interrogate1 = """
-		Everyone has finished their first watch, and the Kingpin returns to see that the Vault is not as they left it.
-		"""
-		
-		let interrogate2 = """
-		Furious, the Kingpin gathers their Vault watchers in an attempt to work out who stole their precious Opals.
-
-		Everyone gathers at the Kingpin's headquarters for the most serious meeting of their lives.
-		"""
-		
-		
-		// Send a message to announce the state and give the Kingpin generous time to choose...
-		queue.message(delay: 1.sec,
-									viewTime: 6.sec,
-									message: interrogate1,
-									chatID: tag.id)
-		
-		queue.message(delay: 1.sec,
-									viewTime: 9.sec,
-									message: interrogate2,
-									chatID: tag.id)
 		
 		// Build the vault once more for the Kingpin.
 		handle.vault.newRequest(newViewer: handle.kingpin!, includeOpals: true, next: nil)
