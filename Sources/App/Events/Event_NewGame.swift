@@ -49,6 +49,16 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/// If the warning has been given
 	var timeExtensionWarningSent = false
 	
+	/// The length of time since the last message was sent.  Used to decide what extend message to send.
+	var timeSinceLastFullMessage = Date()
+	
+	/** Uses a specific length of time that must have passed between the previous message and a requested extend message.\
+	If true, the full message can be sent again. */
+	var useFullExtentMessage: Bool {
+		if Int(timeSinceLastFullMessage.timeIntervalSinceNow) > 15 { return true }
+		return false
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	Send the initial message and set timers.
@@ -80,7 +90,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		let startMsg = request.sync.sendMessage(message,
 																						markup: inlineMarkup,
 																						chatID: tag.id)
-		
+		timeSinceLastFullMessage = Date()
 		storedMessages["start_msg"] = startMsg
 		storedMessages["current_msg"] = startMsg
 		
@@ -369,9 +379,28 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			
 			// NEW MESSAGE
 			
-			var newMessage = """
-			*~T I M E   E X T E N D E D !~*
-			"""
+			var newMessage = ""
+			
+			if useFullExtentMessage == false {
+				newMessage = """
+				*~T I M E   E X T E N D E D !~*
+				You now have \(timeLeft) seconds left to join.
+				"""
+				
+				// Update the join message instead of sending a new one.
+				updateJoinMessage()
+				
+			} else {
+				newMessage = """
+				*~T I M E   E X T E N D E D !~*
+				
+				"""
+				
+				newMessage += getPlayerList()
+				
+				// Set a new time since, as we're sending a large message
+				timeSinceLastFullMessage = Date()
+			}
 			
 			newMessage += getPlayerList()
 			clearPreviousInlineKeys()
@@ -379,6 +408,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			storedMessages["current_msg"] = request.sync.sendMessage(newMessage,
 																															 markup: inlineMarkup,
 																															 chatID: tag.id)
+			
 		}
 		return true
 	}
@@ -404,6 +434,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		self.storedMessages["current_msg"] = self.request.sync.sendMessage(message,
 																																			 markup: self.inlineMarkup,
 																																			 chatID: self.tag.id)
+		timeSinceLastFullMessage = Date()
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
