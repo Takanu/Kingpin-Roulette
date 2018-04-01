@@ -488,6 +488,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	Ends the character selection phase.
 	*/
 	func endCharacterSelection(clearInline: Bool) {
+		queue.clear()
 		
 		if clearInline == true {
 			self.clearPreviousInlineKeys()
