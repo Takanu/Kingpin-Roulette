@@ -102,6 +102,29 @@ class GameSession: ChatSession {
 		
 		
 		// ANTI-FLOOD
+		// Add anti-flood measures
+		flood.add(type: [.message], hits: 20, duration: 40.sec) {
+			
+			let floodMsg = """
+			(Oi, please don't spam me with messages.)
+			"""
+			
+			_ = self.requests.sync.sendMessage(floodMsg,
+																				 markup: nil,
+																				 chatID: self.tag.id)
+		}
+		
+		flood.add(type: [.message], hits: 40, duration: 120.sec) {
+			
+			let floodMsg = """
+			(I warned you.  *pulls plug*)
+			"""
+			
+			_ = self.requests.sync.sendMessage(floodMsg,
+																				 markup: nil,
+																				 chatID: self.tag.id)
+			self.mod.blacklist()
+		}
 		
 	}
 	
@@ -445,7 +468,7 @@ class GameSession: ChatSession {
 	}
 	
 	/**
-	Resets all game states and removes all proxies from each session.
+	Resets all game states and removes all proxies from each session, then closes the session.
 	*/
 	func reset() {
 		
@@ -469,7 +492,7 @@ class GameSession: ChatSession {
 		self.useTutorial = false
 		self.testMode = false
 		
-		
+		self.close()
 	}
 	
 	

@@ -154,7 +154,6 @@ class Player: UserProxy, Hashable, Equatable {
 	func close() {
 		self.baseRoute.removeRoutes(vaultRoute, playerRoute, roleSheetRoute)
 		session_closeProxy()
-		
 	}
 	
 	static func == (lhs: Player, rhs: Player) -> Bool {

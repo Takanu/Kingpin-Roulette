@@ -187,8 +187,14 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		// Setup the new message
 		var playerList = "\n\n*====== Player List ======*"
 		
-		handle.players.forEach {
-			playerList += "\n\($0.name)"
+		if handle.players.count == 0 {
+			playerList += "\n_* it's empty *_"
+		}
+		
+		else {
+			handle.players.forEach {
+				playerList += "\n\($0.name)"
+			}
 		}
 		
 		playerList += "\n"
