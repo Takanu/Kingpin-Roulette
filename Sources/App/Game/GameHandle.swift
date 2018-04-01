@@ -40,6 +40,9 @@ class GameHandle: Handle {
 	/// The number of lives/chances the kingpin has.  If they have no lives left, choosing anyone who isnt the player will cause them to lose the game.
 	var kingpinLives = 0
 	
+	/// The number of opals in the vault from the start.
+	var startOpals = 0
+	
 	
 	// STORAGE
 	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
@@ -76,6 +79,7 @@ class GameHandle: Handle {
 		self.kingpin = session.kingpin
 		self.vault = session.vault
 		self.kingpinLives = session.kingpinLives
+		self.startOpals = session.startOpals
 		
 		self.playerRoute = session.playerRoute
 		

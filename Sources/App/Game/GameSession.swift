@@ -34,6 +34,9 @@ class GameSession: ChatSession {
 	/// The number of lives/chances the kingpin has.  If they have no lives left, choosing anyone who isnt the player will cause them to lose the game.
 	var kingpinLives = 0
 	
+	/// The number of opals in the vault from the start.
+	var startOpals = 0
+	
 	
 	// STORAGE
 	/// Stored messages, used to implicitly store and fetch messages for editing or deletion.
@@ -225,8 +228,7 @@ class GameSession: ChatSession {
 			itemCollection.append(KingpinRoles.thief)
 			itemCollection.append(KingpinRoles.assistant)
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
+			startOpals = randomiseOpals(12...15)
 		}
 		
 		
@@ -235,8 +237,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
+			startOpals = randomiseOpals(12...15)
 		}
 		
 		
@@ -245,8 +246,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
+			startOpals = randomiseOpals(12...15)
 		}
 		
 		
@@ -255,9 +255,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
-			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(12...15)) )
+			startOpals = randomiseOpals(12...15)
 		}
 		
 		
@@ -266,8 +264,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(13...17)) )
+			startOpals = randomiseOpals(13...17)
 		}
 		
 		
@@ -276,8 +273,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(13...17)) )
+			startOpals = randomiseOpals(13...17)
 		}
 		
 		
@@ -286,8 +282,7 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(14...17)) )
+			startOpals = randomiseOpals(15...18)
 		}
 		
 		
@@ -296,12 +291,12 @@ class GameSession: ChatSession {
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
-			vault.roles.addItems(itemCollection)
-			vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(randomiseOpals(15...18)) )
+			startOpals = randomiseOpals(15...18)
+			
 		}
 		
-		
-		
+		vault.roles.addItems(itemCollection)
+		vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(startOpals))
 	}
 	
 	/**

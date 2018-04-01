@@ -603,12 +603,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			let opalAmount = pick.points[KingpinDefault.opal]!
 			self.handle.kingpin!.points.changeCurrency(KingpinDefault.opal, change: opalAmount)
 			
-			
-			let thieves = self.handle.players.filter({$0.role?.definition == .thief})
+			let vaultOpals = self.handle.kingpin!.points[KingpinDefault.opal]!
 			
 			
 			// If the Kingpin has all the opals back, end the game immediately.
-			if thieves.count == 0 {
+			if vaultOpals.intValue == self.handle.startOpals {
 				let allThievesDead = """
 				The Kingpin has recovered all the Opals, securing the future of the empire.
 				"""
