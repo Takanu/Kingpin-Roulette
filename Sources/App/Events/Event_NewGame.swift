@@ -388,10 +388,10 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				"""
 				
 				// Update the join message instead of sending a new one.
-				updateJoinMessage()
 				request.sync.sendMessage(newMessage,
 																 markup: nil,
 																 chatID: tag.id)
+				updateJoinMessage()
 				
 			} else {
 				newMessage = """
