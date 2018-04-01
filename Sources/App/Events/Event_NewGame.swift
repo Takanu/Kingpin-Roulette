@@ -49,6 +49,9 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	/// If the warning has been given
 	var timeExtensionWarningSent = false
 	
+	/// If a warning has been sent that the player cannot force start the game.
+	var forceStartWarningSent = false
+	
 	/// The length of time since the last message was sent.  Used to decide what extend message to send.
 	var timeSinceLastFullMessage = Date()
 	
@@ -80,10 +83,11 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		// ROUTING
 		
 		let extendRoute = RouteCommand(commands: "extend", action: extendCharacterSelection)
+		let forceStartRoute = RouteCommand(commands: "forcestart", action: forceStart)
 		let tutorialToggle = RouteListen(pattern: "tutorial", type: .callbackQuery, action: tutorialSwitch)
 		let characterSelect = RoutePass(updateTypes: [.message], action: receiveCharacterSelection)
 		
-		baseRoute[["event"]]?.addRoutes(extendRoute, tutorialToggle, characterSelect)
+		baseRoute[["event"]]?.addRoutes(extendRoute, forceStartRoute, tutorialToggle, characterSelect)
 		
 		
 		// Send the message!
@@ -216,8 +220,16 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		// Get the time left
 		if let charSelectEnd = storedEvents["end_char_select"] {
-			let time = charSelectEnd.executeTime.timeIntervalSinceNow
-			playerList += "\n*You have \(Int(time)) seconds left to join.*"
+			let time = Int(charSelectEnd.executeTime.timeIntervalSinceNow)
+			playerList += "\n*You have \(time) seconds left to join.*"
+			
+			if time < Int(KingpinDefault.charSelectWarningTime.rawValue) {
+				playerList += "\n*Use* /extend *if you need more time.*"
+			}
+			
+			else if handle.players.count >= KingpinDefault.minimumPlayers {
+				playerList += "\n*Use* /forcestart *to start the game.*"
+			}
 		}
 		
 		return playerList
@@ -440,6 +452,33 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 																																			 markup: self.inlineMarkup,
 																																			 chatID: self.tag.id)
 		timeSinceLastFullMessage = Date()
+	}
+	
+	/**
+	Attempts to force start the game.
+	*/
+	func forceStart(_ update: Update) -> Bool {
+		
+		if handle.players.count < KingpinDefault.minimumPlayers {
+			if forceStartWarningSent == false {
+				
+				let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
+				let forceStartWarnMsg = """
+				You can't force start the game, you need \(playersNeeded) more players.
+				"""
+				
+				self.request.sync.sendMessage(forceStartWarnMsg,
+																			markup: self.inlineMarkup,
+																			chatID: self.tag.id)
+				forceStartWarningSent = true
+			}
+		}
+		
+		else {
+			endCharacterSelection(clearInline: true)
+		}
+		
+		return true
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

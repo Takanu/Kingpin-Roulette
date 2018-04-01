@@ -51,12 +51,12 @@ class Player: UserProxy, Hashable, Equatable {
 	// DESCRIPTION
 	/// Returns the full name that a player is called in the game with full ID embedding.
 	var name: String {
-		return "[\(firstName)](tg://user?id=\(tag.id)) the \(char.rawValue ?? "UNNAMED")"
+		return "[\(firstName)](tg://user?id=\(tag.id)) the \(char.rawValue)"
 	}
 	
 	/// Returns the full name of a player without inline embedding.
 	var plainName: String {
-		return "\(firstName) the \(char.rawValue ?? "UNNAMED")"
+		return "\(firstName) the \(char.rawValue)"
 	}
 	
 	/// Returns the user as a secret inline symbol, used for group or stealth mentions.
