@@ -342,27 +342,14 @@ class GameSession: ChatSession {
 			}
 		}
 		
-		for status in statusCollection {
-			finalGameList += """
-			\(status.key.uppercased())
-			===========
-			
-			"""
-			
-			for player in status.value {
-				finalGameList += "\(player.name) - \(player.role!.name)"
-				
-				if player.role?.definition == .thief {
-					let stolenOpals = player.points[KingpinDefault.opal]?.intValue ?? 0
-					finalGameList += " (Stole \(stolenOpals))"
-				}
-				
-				finalGameList += "\n"
-			}
-			
-			finalGameList += "\n"
-		}
+		// Take out the winner status collection first, we want that to be on top.
+		let winners = statusCollection.removeValue(forKey: KingpinFlair.winner.name) ?? []
+		finalGameList += listEndgameStateCategory(name: KingpinFlair.winner.name, players: winners)
 		
+		// Process the rest
+		for status in statusCollection {
+			finalGameList += listEndgameStateCategory(name: status.key, players: status.value)
+		}
 		
 		let creditsMsg = """
 		*Kingpin Roulette*
@@ -372,7 +359,7 @@ class GameSession: ChatSession {
 		*Based on the game Mafia De Cuba, designed by Philippe des Pallières and Loïc Lamy.*
 		
 		*Updates* - @takanubox
-        *Chat* - @KingpinRoulette
+		*Chat* - @KingpinRoulette
 		"""
 		
 		
@@ -389,6 +376,37 @@ class GameSession: ChatSession {
 		queue.action(delay: 2.sec, viewTime: 0.sec, action: reset)
 		
 	}
+	
+	
+	/**
+	A supporting function for the scenario end, that helps format categories for
+	players based on their end-game status.
+	*/
+	func listEndgameStateCategory(name: String, players: [Player]) -> String {
+		
+		if players.count == 0 { return "" }
+		
+		var result = """
+		\(name.uppercased())
+		===========
+		
+		"""
+		
+		for player in players {
+			result += "\(player.name) - \(player.role!.name)"
+			
+			if player.role?.definition == .thief {
+				let stolenOpals = player.points[KingpinDefault.opal]?.intValue ?? 0
+				result += " (Stole \(stolenOpals))"
+			}
+			
+			result += "\n"
+		}
+		
+		result += "\n"
+		return result
+	}
+	
 	
 	
 	/**
