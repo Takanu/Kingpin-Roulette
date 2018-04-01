@@ -27,9 +27,8 @@ enum PlayerCharacter: String, CasedEnum {
 	case coffee = "Coffee"
 	case dingo = "Dingo"
 	case blueJay = "Blue Jay"
-	case penguin = "Penguin"
+	case penguin = "Starfish"
 	case donut = "Donut"
-	case abe = "Abe"
 	
 	var description: String {
 		return rawValue
