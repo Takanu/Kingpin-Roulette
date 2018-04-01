@@ -75,6 +75,7 @@ class GameHandle: Handle {
 		self.players = session.players
 		self.kingpin = session.kingpin
 		self.vault = session.vault
+		self.kingpinLives = session.kingpinLives
 		
 		self.playerRoute = session.playerRoute
 		

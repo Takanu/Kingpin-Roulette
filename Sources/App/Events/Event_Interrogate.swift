@@ -44,7 +44,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		"""
 		
 		let interrogate2 = """
-		Furious, the Kingpin gathers their Vault watchers in an attempt to work out who stole their precious Opals.
+		Furious, the Kingpin gathers their Vault watchers in an attempt to work out who stole the Kingpin's precious Opals.
 
 		Everyone gathers at the Kingpin's headquarters for the most serious meeting of their lives.
 		"""
@@ -532,7 +532,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			let resultMsg = """
 			\(kingpinChoice.name) starts to sweat, but before they can move a muscle the Kingpin shoots them in place.
 			
-			\(kingpinChoice.name) collapses into their chair.
+			\(kingpinChoice.name) collapses.
 			"""
 			queue.message(delay: 3.sec,
 										viewTime: 4.sec,
@@ -659,7 +659,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			pick.flair.addFlair(KingpinFlair.winner)
 			
 			let copsWin = """
-			! ! ! ! \(pick.name) wins! ! ! ! !
+			\(pick.name) *wins!*
 			"""
 			self.queue.message(delay: 2.sec,
 												 viewTime: 5.sec,
@@ -705,7 +705,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			let thiefWin2 = """
-			\(Player.getListTextSUB(bestThieves)) ! ! ! !
+			\(Player.getListTextSUB(bestThieves)) !
 			"""
 			
 			self.queue.message(delay: 2.sec,
