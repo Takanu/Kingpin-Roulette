@@ -17,7 +17,7 @@ Is also a route, and allows players who are in front of it to view its contents 
 class Vault: Route {
 	
 	/// Defines a generated card and an item that it represents.
-	typealias VaultResult = (item: ItemRepresentible, card: InlineResultArticle)
+	typealias VaultResult = (item: ItemRepresentible?, card: InlineResultArticle)
 	
 	// STATE
 	/// The roles currently available.
@@ -124,7 +124,10 @@ class Vault: Route {
 			// Find entity that matches generated card signature
 			if update.content == content.text {
 				
-				next?(option.item)
+				if item != nil {
+					next?(option.item!)
+				}
+				
 				return true
 			}
 		}
@@ -144,20 +147,23 @@ class Vault: Route {
 		var id = 1
 		var cardSet: [VaultResult] = []
 		
-		// Get the list of items available from the inventory.
-		guard let roleCards = roles.getInlineCards(forType: KingpinRoles.type) else {
-			circuitBreaker("Vault - Role Cards Couldnt Be Found! D:")
-			return []
+		
+		///////////////////
+		// INVENTORY ITEMS
+		
+		if let roleCards = roles.getInlineCards(forType: KingpinRoles.type) {
+			
+			var roleItems = roles.getItemCopies(forType: KingpinRoles.type.name)!
+			for (i, card) in roleCards.enumerated() {
+				card.tgID = "\(id)"
+				id += 1
+				cardSet.append((roleItems[i], card))
+			}
 		}
 		
-		// Get the item info and link it to the results
-		var roleItems = roles.getItemCopies(forType: KingpinRoles.type.name)!
-		for (i, card) in roleCards.enumerated() {
-			card.tgID = "\(id)"
-			id += 1
-			cardSet.append((roleItems[i], card))
-		}
 		
+		////////////////////
+		// OPALS
 		
 		// Generate a list of choices when taking opals.
 		if includeOpals == true {
@@ -197,9 +203,15 @@ class Vault: Route {
 			}
 		}
 		
+		// If no cards are in the set, we need to report an issue.
+		if cardSet.count == 0 {
+			circuitBreaker("Event_VaultVisit - No cards could be made for the player requesting them.")
+		}
+		
 		
 		// Replace the contents with a series of unique characters to keep the choice a secret.
 		let anonymisedCardSet = anonymiser(options: cardSet)
+		
 		return anonymisedCardSet
 		
 	}
@@ -213,23 +225,35 @@ class Vault: Route {
 		var id = 1
 		var cardSet: [VaultResult] = []
 		
-		// Get the list of items available from the inventory.
-		guard let roleCards = roles.getInlineCards(forType: KingpinRoles.type) else {
-			circuitBreaker("Vault - Role Cards Couldnt Be Found! D:")
-			return []
+		////////////////////
+		// INVENTORY ITEMS
+		
+		if let roleCards = roles.getInlineCards(forType: KingpinRoles.type) {
+			
+			// Get the item info and link it to the results
+			var itemInfo = roles.getItemCopies(forType: KingpinRoles.type.name)!
+			for (i, card) in roleCards.enumerated() {
+				card.tgID = "\(id)"
+				id += 1
+				cardSet.append((itemInfo[i], card))
+			}
 		}
 		
-		// Get the item info and link it to the results
-		var itemInfo = roles.getItemCopies(forType: KingpinRoles.type.name)!
-		for (i, card) in roleCards.enumerated() {
-			card.tgID = "\(id)"
+		else {
+			let noItemCard = InlineResultArticle(id: "\(id)",
+																					 title: "No roles are left in the vault.",
+																					 description: "(｡•́︿•̀｡)",
+																					 contents: KingpinDefault.fakeInlineContentMsg,
+																					 markup: nil)
+			cardSet.append((nil, noItemCard))
 			id += 1
-			cardSet.append((itemInfo[i], card))
 		}
+			
 		
 		
+		////////////////////
+		// OPALS
 		
-		// Generate the total number of opals left as a card.
 		if includeOpals == true {
 			
 			guard let opalCount = valuables[KingpinDefault.opal] else {
@@ -251,13 +275,24 @@ class Vault: Route {
 															unitValue: .int(opalCount.intValue))
 			
 			let newOpalCard = InlineResultArticle(id: "\(id)",
-				title: "\(opalCount.intValue) 💎 Opals.",
-				description: "A rare and highly sought after item.",
-				contents: KingpinDefault.fakeInlineContentMsg,
-				markup: nil)
+																						title: "\(opalCount.intValue) 💎 Opals.",
+																						description: "A rare and highly sought after item.",
+																						contents: KingpinDefault.fakeInlineContentMsg,
+																						markup: nil)
 			
 			// Return the new set.
 			cardSet.append((opalUnit, newOpalCard))
+		}
+		
+			
+		else {
+			let noOpalCard = InlineResultArticle(id: "\(id)",
+																					 title: "No Opals are left in the vault.",
+																					 description: "┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻",
+																					 contents: KingpinDefault.fakeInlineContentMsg,
+																					 markup: nil)
+			cardSet.append((nil, noOpalCard))
+			id += 1
 		}
 		
 		

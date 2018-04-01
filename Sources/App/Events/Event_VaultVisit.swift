@@ -97,7 +97,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			queue.message(delay: 5.sec,
 										viewTime: 13.sec,
 										message: tutorial4,
-										markup: MarkupInline(withButtons: KingpinRoles.inlineKey)
+										markup: MarkupInline(withButtons: KingpinRoles.inlineKey),
 										chatID: tag.id)
 			
 		}
