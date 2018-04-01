@@ -141,9 +141,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// Build text based on lives
 		var livesText = ""
 		if handle.kingpinLives > 0 {
-			livesText = "(You can afford to make \(handle.kingpinLives) wrong accusation)"
+			livesText = "(You have \(handle.kingpinLives) gifts)"
 		} else {
-			livesText = "(You have no additional chances, choose carefully...)"
+			livesText = "(You have no gifts, choose carefully...)"
 		}
 		
 		// Set the messages
