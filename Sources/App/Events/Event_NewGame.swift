@@ -389,6 +389,9 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				
 				// Update the join message instead of sending a new one.
 				updateJoinMessage()
+				request.sync.sendMessage(newMessage,
+																 markup: nil,
+																 chatID: tag.id)
 				
 			} else {
 				newMessage = """
@@ -401,12 +404,10 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				
 				// Set a new time since, as we're sending a large message
 				timeSinceLastFullMessage = Date()
+				storedMessages["current_msg"] = request.sync.sendMessage(newMessage,
+																																 markup: inlineMarkup,
+																																 chatID: tag.id)
 			}
-			
-			storedMessages["current_msg"] = request.sync.sendMessage(newMessage,
-																															 markup: inlineMarkup,
-																															 chatID: tag.id)
-			
 		}
 		return true
 	}
