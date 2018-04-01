@@ -124,7 +124,7 @@ class Vault: Route {
 			// Find entity that matches generated card signature
 			if update.content == content.text {
 				
-				if item != nil {
+				if option.item != nil {
 					next?(option.item!)
 				}
 				
