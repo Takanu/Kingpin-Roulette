@@ -208,7 +208,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			let otherVisit = """
 			It is \(vaultVisitor!.name)'s turn to watch over the Vault.
 			
-			(Take an item from the Vault for your new role)
+			(Take an item from the Vault to be your role)
 			"""
 			
 			queue.message(delay: 2.sec,
@@ -285,7 +285,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		if visitorsLeft.count == 1 && handle.useTutorial == true {
 			
 			let accompliceNotice = """
-			If you ever has no Opals or roles left to take, or if you are the last person to watch the Vault, *you will have access to the Accomplice role, whose task is to help the Thieves succeed*.
+			If you ever find the Vault with no Opals or roles left to take, or if you are the last person to watch the Vault, *you will have access to the Accomplice role, whose task is to help the Thieves succeed*.
 			"""
 			
 			queue.message(delay: 0.sec,
@@ -369,7 +369,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			let observePointerMsg = """
 			As it becomes your turn to watch the vault, it's important to make note of what's inside.
 
-			*Knowing whats left in the Vault can give you hints as to what the role of other players is, making it easier to achieve the goals of your role.*
+			*Knowing whats left in the Vault can give you hints as to what the role of other players is, making it easier to achieve your own goals.*
 			"""
 			
 			queue.message(delay: 0.sec,

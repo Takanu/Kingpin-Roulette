@@ -437,11 +437,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	func sendWarningMessage() {
 		
 		// Build the message
-		let message = """
-		\(getPlayerList())
-		*Use* /extend *if you need more time.*
-		"""
-		
+		let message = getPlayerList()
 		lastBaseMessage = ""
 		
 		// Clear the inline of the previous message.

@@ -126,6 +126,11 @@ class GameSession: ChatSession {
 			self.mod.blacklist()
 		}
 		
+		// TIMEOUT
+		self.timeout.set(updateTypes: [.message, .callbackQuery], duration: 15.min) {
+			self.close()
+		}
+		
 	}
 	
 	/**

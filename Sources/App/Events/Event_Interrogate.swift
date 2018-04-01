@@ -651,7 +651,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		let pickRole = pick.role!.definition
 		
-		
+		////////////
+		// SPY
 		// If the picked player was the spy or police, they immediately win.
 		
 		if pickRole == .police || pickRole == .spy {
@@ -666,7 +667,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 												 chatID: self.tag.id)
 		}
 		
-			
+		
+		////////////
+		// THIEVES
 		// If not, find all the thieves and see who got the most Opals, then set them as the winner
 			
 		else {
@@ -716,8 +719,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 												 chatID: self.tag.id)
 		}
 		
-		print("Thieves calculated")
 		
+		////////////
+		// ASSISTANTS
 		// Find any potential winning assistants and accomplices
 		
 		let accomplices = handle.players.filter( {
@@ -753,9 +757,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 												 chatID: self.tag.id)
 			
 		}
-		
-		
-		print("Completing game")
 		
 		
 		// Finish the game

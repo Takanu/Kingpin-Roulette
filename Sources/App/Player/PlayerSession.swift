@@ -63,6 +63,12 @@ class PlayerSession: UserSession {
 		
 		/// ANTI-FLOOD
 		
+		
+		/// TIMEOUT
+		self.timeout.set(updateTypes: [.message, .callbackQuery, .inlineQuery], duration: 15.min) {
+			self.close()
+		}
+		
 	}
 	
 	/**
