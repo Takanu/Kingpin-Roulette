@@ -79,7 +79,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			var interrogateTut3 = ""
 			
-			if handle.players.count < 8 {
+			if handle.playerCount < 8 {
 				interrogateTut3 = """
 				For 6 or 7 player games the Kingpin won't normally receive a present, but for this game the Kingpin will have *one gift*, allowing them to make a single mistake.
 				"""
@@ -90,7 +90,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			let interrogateTut4 = """
-			If the Kingpin ever loses (and didn't accuse a *Spy* or *Police Officer*) the watcher who stole the most diamonds wins.
+			If the Kingpin ever loses (and didn't accuse a *Spy* or *Police Officer*) the watcher who stole the most Opals wins.
 			"""
 			
 			queue.message(delay: 1.sec,
@@ -836,10 +836,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		// Used to search for Assistants if a tree-like pattern emerges
 		func searchCompanion(forAssistant assistant: Player) -> Player {
-			let assistIndex = handle.players.index(of: assistant)!
+			let assistIndex = handle.players.index(of: assistant)! + 1
 			
 			var playerBelow: Player
-			if assistIndex + 1 == handle.players.count {
+			if assistIndex == handle.playerCount {
 				playerBelow = handle.kingpin!
 			} else {
 				playerBelow = handle.players[assistIndex]

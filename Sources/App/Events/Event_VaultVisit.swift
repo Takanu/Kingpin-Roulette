@@ -261,7 +261,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// If the first visitor is on patrol, they also need to remove an item.
 		
-		if visitorsLeft.count == handle.players.count - 1 {
+		if visitorsLeft.count == handle.playerCount - 1 {
 			queue.action(delay: 3.sec,
 									 viewTime: 0.sec,
 									 action: removeVaultItem)

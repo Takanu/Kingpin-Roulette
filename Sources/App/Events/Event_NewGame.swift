@@ -191,7 +191,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		// Setup the new message
 		var playerList = "\n\n*====== Player List ======*"
 		
-		if handle.players.count == 0 {
+		if handle.playerCount == 0 {
 			playerList += "\n_* it's empty *_"
 		}
 		
@@ -205,13 +205,13 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		
 		// Let the player know how many players they need to or can add to the game.
-		if handle.players.count < KingpinDefault.minimumPlayers {
-			let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
+		if handle.playerCount < KingpinDefault.minimumPlayers {
+			let playersNeeded = KingpinDefault.minimumPlayers - handle.playerCount
 			playerList += "\n*You need \(playersNeeded) more players.*"
 		}
 			
-		else if handle.players.count < KingpinDefault.maximumPlayers {
-			let playersNeeded = KingpinDefault.maximumPlayers - handle.players.count
+		else if handle.playerCount < KingpinDefault.maximumPlayers {
+			let playersNeeded = KingpinDefault.maximumPlayers - handle.playerCount
 			playerList += "\n*\(playersNeeded) more players can join.*"
 		}
 		
@@ -227,7 +227,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				playerList += "\n*Use* /extend *if you need more time.*"
 			}
 			
-			else if handle.players.count >= KingpinDefault.minimumPlayers {
+			else if handle.playerCount >= KingpinDefault.minimumPlayers {
 				playerList += "\n*Use* /forcestart *to start the game.*"
 			}
 		}
@@ -253,7 +253,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		// If we've reached the maximum number of players early, change the configuration.
 		var reachedPlayerLimit = false
-		if handle.players.count >= KingpinDefault.maximumPlayers {
+		if handle.playerCount >= KingpinDefault.maximumPlayers {
 			reachedPlayerLimit = true
 		}
 		
@@ -460,10 +460,10 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		
 		
 		// WARNING IF PLAYER COUNT NOT ACCEPTABLE
-		if handle.players.count < KingpinDefault.minimumPlayers {
+		if handle.playerCount < KingpinDefault.minimumPlayers {
 			if forceStartWarningSent == false {
 				
-				let playersNeeded = KingpinDefault.minimumPlayers - handle.players.count
+				let playersNeeded = KingpinDefault.minimumPlayers - handle.playerCount
 				let forceStartWarnMsg = """
 				You can't force start the game, you need \(playersNeeded) more players.
 				"""

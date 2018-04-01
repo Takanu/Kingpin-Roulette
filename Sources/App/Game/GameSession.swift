@@ -16,6 +16,14 @@ class GameSession: ChatSession {
 	/// The players currently participating in the game.
 	var players: [Player] = []
 	
+	
+	/// The number of players actively playing.
+	var playerCount: Int {
+		var result = players.count
+		if kingpin != nil { result += 1 }
+		return result
+	}
+	
 	/// The kingpin.
 	var kingpin: Player?
 	
@@ -150,7 +158,7 @@ class GameSession: ChatSession {
 			self.resolveHandle(handle)
 			
 			// If not, send a message, reset and quit out.
-			if self.players.count < KingpinDefault.minimumPlayers {
+			if self.playerCount < KingpinDefault.minimumPlayers {
 				
 				self.requests.sync.sendMessage("Not enough players, cancelling!",
 																			 chatID: self.tag.id)
@@ -198,10 +206,10 @@ class GameSession: ChatSession {
 		
 		// SET LIVES
 		
-		if players.count >= 11 {
+		if playerCount >= 11 {
 			kingpinLives = 2
 			
-		} else if players.count >= 8 || useTutorial == true {
+		} else if playerCount >= 8 || useTutorial == true {
 			kingpinLives = 1
 		}
 	
@@ -209,7 +217,7 @@ class GameSession: ChatSession {
 		
 		// BUILD VAULT
 		
-		if players.count < 6 {
+		if playerCount < 6 {
 			itemCollection.append(KingpinRoles.rogue)
 			itemCollection.append(KingpinRoles.henchman)
 			itemCollection.append(KingpinRoles.police)
@@ -222,7 +230,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 6 {
+		if playerCount == 6 {
 			itemCollection += [KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
@@ -232,7 +240,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 7 {
+		if playerCount == 7 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
@@ -242,7 +250,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 8 {
+		if playerCount == 8 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
@@ -253,7 +261,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 9 {
+		if playerCount == 9 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
@@ -263,7 +271,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 10 {
+		if playerCount == 10 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
@@ -273,7 +281,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 11 {
+		if playerCount == 11 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
@@ -283,7 +291,7 @@ class GameSession: ChatSession {
 		}
 		
 		
-		if players.count == 12 {
+		if playerCount == 12 {
 			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
@@ -430,7 +438,7 @@ class GameSession: ChatSession {
 	*/
 	func listEndgameStateCategory(name: String, players: [Player]) -> String {
 		
-		if players.count == 0 { return "" }
+		if playerCount == 0 { return "" }
 		
 		var result = """
 		\(name.uppercased())

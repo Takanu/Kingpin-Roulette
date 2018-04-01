@@ -23,6 +23,13 @@ class GameHandle: Handle {
 	/// The players currently participating in the game.
 	var players: [Player]
 	
+	/// The number of players actively playing.
+	var playerCount: Int {
+		var result = players.count
+		if kingpin != nil { result += 1 }
+		return result
+	}
+	
 	/// The kingpin.
 	var kingpin: Player?
 	
