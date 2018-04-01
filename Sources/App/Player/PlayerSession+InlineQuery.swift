@@ -56,8 +56,6 @@ extension PlayerSession {
 			return true
 		}
 		
-		return false
-		
 	}
 	
 }

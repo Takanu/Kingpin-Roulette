@@ -459,6 +459,11 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	*/
 	func forceStart(_ update: Update) -> Bool {
 		
+		// VALIDATE USER
+		if handle.players.contains(where: {$0.id == update.from?.tgID ?? 0}) == false { return true }
+		
+		
+		// WARNING IF PLAYER COUNT NOT ACCEPTABLE
 		if handle.players.count < KingpinDefault.minimumPlayers {
 			if forceStartWarningSent == false {
 				
@@ -474,6 +479,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			}
 		}
 		
+		// END IF POSSIBLE
 		else {
 			endCharacterSelection(clearInline: true)
 		}
