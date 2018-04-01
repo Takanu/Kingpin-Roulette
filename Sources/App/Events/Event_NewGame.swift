@@ -397,13 +397,11 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				"""
 				
 				newMessage += getPlayerList()
+				clearPreviousInlineKeys()
 				
 				// Set a new time since, as we're sending a large message
 				timeSinceLastFullMessage = Date()
 			}
-			
-			newMessage += getPlayerList()
-			clearPreviousInlineKeys()
 			
 			storedMessages["current_msg"] = request.sync.sendMessage(newMessage,
 																															 markup: inlineMarkup,
