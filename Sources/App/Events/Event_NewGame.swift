@@ -389,10 +389,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			
 			// QUEUE END CHAR SELECT
 			
-			self.storedEvents["end_char_select"] = self.queue.action(delay: queueTime.sec,
-																															 viewTime: 0.sec) {
-																																
-																																self.endCharacterSelection(clearInline: true)
+			self.storedEvents["end_char_select"] = self.queue.action(delay: queueTime.sec, viewTime: 0.sec) {
+				self.endCharacterSelection(clearInline: true)
 			}
 			
 			// NEW MESSAGE
