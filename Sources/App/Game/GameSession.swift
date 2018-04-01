@@ -168,6 +168,17 @@ class GameSession: ChatSession {
 		}
 		
 		
+		// SET LIVES
+		
+		if players.count >= 11 {
+			kingpinLives = 2
+			
+		} else if players.count >= 8 || useTutorial == true {
+			kingpinLives = 1
+		}
+	
+		
+		
 		// BUILD VAULT
 		
 		if players.count < 6 {
