@@ -739,7 +739,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			"""
 			
 			let assistantWin2 = """
-			\(Player.getListText(assistants)) ! ! ! !
+			\(Player.getListTextSUB(assistants)) ! ! ! !
 			"""
 			
 			self.queue.message(delay: 2.sec,
