@@ -37,7 +37,7 @@ struct KingpinRoles {
 															 roleGoals: "To win, convince the Kingpin to accuse you so you can extradite them for crimes committed against your nation.")
 	
 	static let police = KingpinRole(role: .police,
-																	description: "Become a undercover Police Officer. Win by convincing the Kingpin to arrest you.",
+																	description: "Become an undercover Police Officer. Win by convincing the Kingpin to arrest you.",
 																	roleGoals: "To win, convince the Kingpin to accuse you so you can arrest them for the many crimes they've committed.")
 	
 	static let assistant = KingpinRole(role: .assistant,
