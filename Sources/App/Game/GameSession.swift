@@ -219,7 +219,7 @@ class GameSession: ChatSession {
 		
 		if playerCount < 6 {
 			itemCollection.append(KingpinRoles.rogue)
-			itemCollection.append(KingpinRoles.henchman)
+			itemCollection.append(KingpinRoles.elite)
 			itemCollection.append(KingpinRoles.police)
 			itemCollection.append(KingpinRoles.spy)
 			itemCollection.append(KingpinRoles.thief)
@@ -231,7 +231,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 6 {
-			itemCollection += [KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
@@ -241,7 +241,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 7 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
@@ -251,7 +251,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 8 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
@@ -262,7 +262,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 9 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [randomArrestRole.getRandom!]
 			
@@ -272,7 +272,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 10 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
@@ -282,7 +282,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 11 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			
@@ -292,7 +292,7 @@ class GameSession: ChatSession {
 		
 		
 		if playerCount == 12 {
-			itemCollection += [KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman, KingpinRoles.henchman]
+			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
 			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
 			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
 			

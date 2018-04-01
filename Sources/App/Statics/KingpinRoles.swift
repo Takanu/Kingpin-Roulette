@@ -28,8 +28,8 @@ struct KingpinRoles {
 																 description: "Steal some precious Opals and become a thief.  Avoid being accused by the Kingpin.",
 																 roleGoals: "Make sure the Kingpin doesn't accuse you.  To win, make the Kingpin lose while having stolen the most Opals.")
 	
-	static let henchman = KingpinRole(role: .henchman,
-																		description: "Stay as the Kingpin's loyal henchman.  Convince the Kingpin you are on their side and help them win.",
+	static let elite = KingpinRole(role: .elite,
+																		description: "Stay as a Kingpin's loyal agent.  Convince the Kingpin you are on their side and help them win.",
 																		roleGoals: "To win, help the Kingpin find the thieves.")
 	
 	static let spy = KingpinRole(role: .spy,
@@ -54,7 +54,7 @@ struct KingpinRoles {
 	
 	static let allRoles = [KingpinRoles.kingpin,
 												 KingpinRoles.thief,
-												 KingpinRoles.henchman,
+												 KingpinRoles.elite,
 												 KingpinRoles.spy,
 												 KingpinRoles.police,
 												 KingpinRoles.assistant,

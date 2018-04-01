@@ -10,7 +10,7 @@ import Foundation
 enum KingpinRoleType: String {
 	case kingpin = "Kingpin"
 	case thief = "Thief"
-	case henchman = "Henchman"
+	case elite = "Elite"
 	case spy = "Foreign Spy"
 	case police = "Police Officer"
 	case assistant = "Assistant"

@@ -20,7 +20,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	
 	
 	let revealMsg = """
-	The Henchman stands up in front of the elites and makes a DECLARATION!
+	The Kingpin stands up in front of the elites and makes a DECLARATION!
 	"""
 	
 	var playersLeft: [Player] = []
@@ -319,7 +319,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		/////////
 		// LOSE
 		// If they chose the Henchman, they lose a life.
-		case .henchman:
+		case .elite:
 			
 			// NO LIVES
 			if handle.kingpinLives <= 0 {
@@ -778,14 +778,14 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		handle.kingpin!.flair.addFlair(KingpinFlair.winner)
 		
 		
-		// Get a list of the minions and add them to the winning players list.
+		// Get a list of the elites and add them to the winning players list.
 		
-		let minions = handle.players.filter({
-			$0.role!.definition == .henchman &&
+		let elites = handle.players.filter({
+			$0.role!.definition == .elite &&
 				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
 		})
 		
-		minions.forEach {
+		elites.forEach {
 			$0.flair.addFlair(KingpinFlair.winner)
 		}
 		
@@ -800,7 +800,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		var crimeWin1 = """
 		While the rest fall silent, the Kingpin and their most loyal followers rejoyce!
 		
-		The minions were \(Player.getListTextSUB(minions))! ! ! !
+		The elites were \(Player.getListTextSUB(elites))! ! ! !
 		"""
 		
 		if assistants.count != 0 {

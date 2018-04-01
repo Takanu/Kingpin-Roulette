@@ -493,8 +493,21 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			self.clearPreviousInlineKeys()
 		}
 		
+		if handle.useTutorial == true {
+			let suggestionMsg = """
+			(As a suggestion you should play this as if you were at a table together, so don't private message other players 😇)
+			"""
+			
+			queue.message(delay: 0.sec,
+										viewTime: 5.sec,
+										message: suggestionMsg,
+										chatID: tag.id)
+		}
+		
 		storedMessages.removeAll()
-		self.end(playerTrigger: nil, participants: nil)
+		queue.action(delay: 0.sec, viewTime: 3.sec) {
+			self.end(playerTrigger: nil, participants: nil)
+		}
 	}
 	
 	/**
