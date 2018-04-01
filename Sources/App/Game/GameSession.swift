@@ -316,6 +316,8 @@ class GameSession: ChatSession {
 	func finishScenario() {
 		queue.clear()
 		
+		/////////////
+		// FINAL STANDINGS
 		
 		// Build a final game list
 		var finalGameList = ""
@@ -328,7 +330,7 @@ class GameSession: ChatSession {
 		
 		for player in allPlayers {
 			
-			// If it has a type, use that to add it to the status collection/
+			// If it has a type, use that to add it to the status collection
 			if let type = player.flair[KingpinFlair.category] {
 				let typeName = type[0]
 				if statusCollection[typeName] != nil {
@@ -357,10 +359,15 @@ class GameSession: ChatSession {
 		let winners = statusCollection.removeValue(forKey: KingpinFlair.winner.name) ?? []
 		finalGameList += listEndgameStateCategory(name: KingpinFlair.winner.name, players: winners)
 		
+		
 		// Process the rest
 		for status in statusCollection {
 			finalGameList += listEndgameStateCategory(name: status.key, players: status.value)
 		}
+		
+		
+		/////////////
+		// CREDITS
 		
 		let creditsMsg = """
 		*Kingpin Roulette*
