@@ -473,7 +473,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 				"""
 				
 				self.request.sync.sendMessage(forceStartWarnMsg,
-																			markup: self.inlineMarkup,
+																			markup: nil,
 																			chatID: self.tag.id)
 				forceStartWarningSent = true
 			}
