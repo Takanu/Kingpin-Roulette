@@ -61,4 +61,26 @@ extension Player {
 		return true
 	}
 	
+	/**
+	Used to allow the player to see all the potential roles in the game.
+	*/
+	func inlineRoles(update: Update) -> Bool {
+		
+		let cards = KingpinRoles.allRoles.map { $0.getInlineCard()  }
+		
+		var i = 1
+		cards.forEach {
+			$0.tgID = "\(i)"
+			i += 1
+		}
+		
+		request.async.answerInlineQuery(queryID: String(update.id),
+																		results: cards,
+																		nextOffset: nil,
+																		switchPM: nil,
+																		switchPMParam: nil)
+		
+		return true
+	}
+	
 }

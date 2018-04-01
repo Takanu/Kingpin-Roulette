@@ -176,8 +176,13 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// Build the inline response.
 		let inline = MarkupInline()
 		let vaultKey = MarkupInlineKey(fromInlineQueryCurrent: Vault.inlineKey.data, text: "Check Role/View Vault")
+		if handle.useTutorial == true {
+			inline.addRow(sequence: KingpinRoles.inlineKey)
+		}
 		inline.addRow(sequence: vaultKey)
 		inline.addRow(sequence: Player.inlineKey)
+		
+		
 		
 		
 		// Setup the timers

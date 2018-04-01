@@ -78,6 +78,9 @@ class Player: UserProxy, Hashable, Equatable {
 	/** The player route, that lets a player select another player.  This is reserved for the Kingpin */
 	var playerRoute: RouteListen!
 	
+	/// Allows the player to view a cheat-sheet of all available in-game roles.
+	var roleSheetRoute: RouteListen!
+	
 	/// The cards routed to the player for viewing when they click on the vault inline key.
 	var inlineVaultCards: [InlineResultArticle] = []
 	
@@ -111,9 +114,14 @@ class Player: UserProxy, Hashable, Equatable {
 																	 type: .inlineQuery,
 																	 action: self.inlinePlayerChoices)
 		
+		self.roleSheetRoute = RouteListen(name: "roleroute_inline",
+																			pattern: KingpinRoles.inlineKey.data,
+																			type: .inlineQuery,
+																			action: self.inlineRoles)
+		
 		self.playerRoute.enabled = false
 		
-		self.baseRoute.addRoutes(vaultRoute, playerRoute)
+		self.baseRoute.addRoutes(vaultRoute, playerRoute, roleSheetRoute)
 		self.baseRoute[["char_inline"]]?.enabled = false
 		
 		
@@ -144,7 +152,7 @@ class Player: UserProxy, Hashable, Equatable {
 	Resets all states relating to the owning session's properties and orders the session to drop the proxy.
 	*/
 	func close() {
-		self.baseRoute.removeRoutes(vaultRoute, playerRoute)
+		self.baseRoute.removeRoutes(vaultRoute, playerRoute, roleSheetRoute)
 		session_closeProxy()
 		
 	}

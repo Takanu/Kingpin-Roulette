@@ -75,6 +75,8 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			
 			let tutorial4 = """
 			You will choose your role when you watch over the vault.
+
+			Select the button below to view all the possible roles that someone can be.
 			"""
 			
 			queue.message(delay: 1.sec,
@@ -93,8 +95,9 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 			queue.message(delay: 5.sec,
-										viewTime: 6.sec,
+										viewTime: 13.sec,
 										message: tutorial4,
+										markup: MarkupInline(withButtons: KingpinRoles.inlineKey)
 										chatID: tag.id)
 			
 		}
