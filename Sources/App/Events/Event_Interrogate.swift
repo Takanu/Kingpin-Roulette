@@ -710,8 +710,21 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				"""
 			}
 			
+			// Find accomplices
+			
+			let accomplices = handle.players.filter( {
+				$0.role!.definition == .accomplice &&
+					$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+			} )
+			var accompliceText = ""
+			if accomplices.count != 0 {
+				accompliceText = "Their partners in crime were \(Player.getListTextSUB(accomplices))!"
+			}
+			
 			let thiefWin2 = """
 			\(Player.getListTextSUB(bestThieves)) !
+			
+			\(accompliceText)
 			"""
 			
 			self.queue.message(delay: 2.sec,
@@ -730,14 +743,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// ASSISTANTS
 		// Find any potential winning assistants and accomplices
 		
-		let accomplices = handle.players.filter( {
-			$0.role!.definition == .accomplice &&
-				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
-		} )
-		
-		var assistants = findWinningAssistants() ?? []
-		assistants += accomplices
-		
+		let assistants = findWinningAssistants() ?? []
 		assistants.forEach {
 			$0.flair.addFlair(KingpinFlair.winner)
 		}
