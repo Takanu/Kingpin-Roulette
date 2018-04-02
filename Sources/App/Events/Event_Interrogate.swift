@@ -600,10 +600,15 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// Schedule the Opal retrieval.
 		queue.action(delay: 1.sec, viewTime: 0.sec) {
 			
-			let opalAmount = pick.points[KingpinDefault.opal]!
-			self.handle.kingpin!.points.changeCurrency(KingpinDefault.opal, change: opalAmount)
+			let opalAmount = self.handle.vault.valuables[KingpinDefault.opal] ?? .int(0)
 			
-			let vaultOpals = self.handle.kingpin!.points[KingpinDefault.opal]!
+			// If the kingpin doesn't have any opals assigned to him,
+			if self.handle.vault.valuables[KingpinDefault.opal] == nil {
+				self.handle.vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(0))
+			}
+			
+			self.handle.vault.valuables.changeCurrency(KingpinDefault.opal, change: opalAmount)
+			let vaultOpals = self.handle.vault.valuables[KingpinDefault.opal]!
 			
 			
 			// If the Kingpin has all the opals back, end the game immediately.

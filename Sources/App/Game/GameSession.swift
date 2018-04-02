@@ -486,6 +486,7 @@ class GameSession: ChatSession {
 		
 		self.queue.clear()
 		
+		self.kingpin?.close()
 		players.forEach {
 			$0.close()
 		}
