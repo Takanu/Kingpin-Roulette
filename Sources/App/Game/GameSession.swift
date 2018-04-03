@@ -138,7 +138,7 @@ class GameSession: ChatSession {
 		}
 		
 		// TIMEOUT
-		self.timeout.set(updateTypes: [.message, .callbackQuery], duration: 15.min) {
+		self.timeout.set(updateTypes: [.message, .callbackQuery], duration: 30.min) {
 			self.close()
 		}
 		

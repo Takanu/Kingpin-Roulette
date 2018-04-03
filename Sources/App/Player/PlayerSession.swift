@@ -65,7 +65,7 @@ class PlayerSession: UserSession {
 		
 		
 		/// TIMEOUT
-		self.timeout.set(updateTypes: [.message, .callbackQuery, .inlineQuery], duration: 15.min) {
+		self.timeout.set(updateTypes: [.message, .callbackQuery, .inlineQuery], duration: 30.min) {
 			self.close()
 		}
 		
