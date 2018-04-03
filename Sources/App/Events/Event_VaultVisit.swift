@@ -70,7 +70,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			"""
 			
 			let tutorial3 = """
-			Unfortunately for them, almost half of you will choose a role that will *act against the Kingpin, such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop*.
+			Unfortunately for the Kingpin, almost half of you will choose a role that will *act against the Kingpin, such as stealing \(KingpinDefault.opal.pluralisedName) or being an undercover cop*.
 			"""
 			
 			let tutorial4 = """
