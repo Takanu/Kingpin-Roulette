@@ -14,9 +14,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	var eventName: String = "Interrogate"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
-																			 symbol: "👑",
-																			 pluralisedName: "Kingpin Event",
-																			 description: "oh hey, it's an event.")
+                                       symbol: "👑",
+                                       pluralisedName: "Kingpin Event",
+                                       description: "oh hey, it's an event.")
+    
+    var eventInfo: String = "Allows the Kingpin to interrogate and choose suspects in the Opal theft."
 	
 	
 	let revealMsg = """
@@ -334,7 +336,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -373,7 +375,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.kingpin!.flair.addFlair(withName: "Arrested", category: KingpinFlair.category)
+			handle.kingpin!.flair.add(withName: "Arrested", category: KingpinFlair.category)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -393,7 +395,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.kingpin!.flair.addFlair(withName: "In A Far Away Land", category: KingpinFlair.category)
+			handle.kingpin!.flair.add(withName: "In A Far Away Land", category: KingpinFlair.category)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -415,7 +417,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -457,7 +459,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -499,7 +501,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.addFlair(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -540,7 +542,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										chatID: tag.id)
 			
 			// Declare them as dead and remove them from the players left.
-			kingpinChoice.flair.addFlair(KingpinFlair.dead)
+			kingpinChoice.flair.add(KingpinFlair.dead)
 			let index = playersLeft.index(of: kingpinChoice)!
 			playersLeft.remove(at: index)
 			
@@ -584,7 +586,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		let retrieveMsg1 = """
 		The Kingpin approaches \(pick.name)'s lifeless corpse and searches it carefully.
 		
-		The Kingpin finds \(pick.points[KingpinDefault.opal]!.intValue) Opals.
+		The Kingpin finds \(pick.points[KingpinDefault.opal]!.int) Opals.
 		"""
 		
 		// Schedule them.
@@ -601,20 +603,20 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.action(delay: 1.sec, viewTime: 0.sec) {
 			
 			// Retrieve the opals from the dead thief.
-			let opalsRetrieved = pick.points[KingpinDefault.opal] ?? .int(0)
+			let opalsRetrieved = pick.points[KingpinDefault.opal] ?? OpalUnit(value: .int(0))
 			
 			// If the vault doesn't have any opals as points, assign it (I really need the points system to be nicer).
 			if self.handle.vault.valuables[KingpinDefault.opal] == nil {
-				self.handle.vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(0))
+                self.handle.vault.valuables.add(type: KingpinDefault.opal, amount: .int(0))
 			}
 			
 			// Assign the stolen opals back to the vault and see how many we now have.
-			self.handle.vault.valuables.changeCurrency(KingpinDefault.opal, change: opalsRetrieved)
+      self.handle.vault.valuables.add(type: KingpinDefault.opal, amount: opalsRetrieved.value)
 			let vaultOpals = self.handle.vault.valuables[KingpinDefault.opal]!
 			
 			
 			// If the Kingpin has all the opals back, end the game immediately.
-			if vaultOpals.intValue == self.handle.startOpals {
+			if vaultOpals.int == self.handle.startOpals {
 				let allThievesDead = """
 				The Kingpin has recovered all the Opals, securing the future of the empire.
 				"""
@@ -662,7 +664,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// If the picked player was the spy or police, they immediately win.
 		
 		if pickRole == .police || pickRole == .spy {
-			pick.flair.addFlair(KingpinFlair.winner)
+			pick.flair.add(KingpinFlair.winner)
 			
 			let copsWin = """
 			\(pick.name) *wins!*
@@ -681,18 +683,18 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		else {
 			let thieves = handle.players.filter( {
 				$0.role!.definition == .thief &&
-					$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+					$0.flair.find(KingpinFlair.dead, compareContents: false) == false
 			} )
 			
 			var mostOpalsStolen = 0
 			thieves.forEach { thief in
-				let opals = thief.points[KingpinDefault.opal]?.intValue ?? 0
+				let opals = thief.points[KingpinDefault.opal]?.int ?? 0
 				if mostOpalsStolen < opals { mostOpalsStolen = opals }
 			}
 			
-			let bestThieves = thieves.filter( { $0.points[KingpinDefault.opal]?.intValue ?? 0 == mostOpalsStolen } )
+			let bestThieves = thieves.filter( { $0.points[KingpinDefault.opal]?.int ?? 0 == mostOpalsStolen } )
 			bestThieves.forEach {
-				$0.flair.addFlair(KingpinFlair.winner)
+				$0.flair.add(KingpinFlair.winner)
 			}
 			
 			var thiefWin1 = ""
@@ -714,7 +716,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			let accomplices = handle.players.filter( {
 				$0.role!.definition == .accomplice &&
-					$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+					$0.flair.find(KingpinFlair.dead, compareContents: false) == false
 			} )
 			var accompliceText = ""
 			if accomplices.count != 0 {
@@ -745,7 +747,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		
 		let assistants = findWinningAssistants() ?? []
 		assistants.forEach {
-			$0.flair.addFlair(KingpinFlair.winner)
+			$0.flair.add(KingpinFlair.winner)
 		}
 		
 		if assistants.count != 0 {
@@ -787,18 +789,18 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.clear()
 		handle.playerRoute.resetRequest()
 		
-		handle.kingpin!.flair.addFlair(KingpinFlair.winner)
+		handle.kingpin!.flair.add(KingpinFlair.winner)
 		
 		
 		// Get a list of the elites and add them to the winning players list.
 		
 		let elites = handle.players.filter({
 			$0.role!.definition == .elite &&
-				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+				$0.flair.find(KingpinFlair.dead, compareContents: false) == false
 		})
 		
 		elites.forEach {
-			$0.flair.addFlair(KingpinFlair.winner)
+			$0.flair.add(KingpinFlair.winner)
 		}
 		
 		
@@ -841,7 +843,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// If any assistants are in the game, work out if the player below them won.
 		let assistants = handle.players.filter( {
 			$0.role!.definition == .assistant &&
-				$0.flair.findFlair(KingpinFlair.dead, compareContents: false) == false
+				$0.flair.find(KingpinFlair.dead, compareContents: false) == false
 		} )
 		
 		var winningAssistants: [Player] = []
@@ -879,7 +881,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				}
 			}
 			
-			if playerFound!.flair.findFlair(KingpinFlair.winner, compareContents: false) == true {
+			if playerFound!.flair.find(KingpinFlair.winner, compareContents: false) == true {
 				winningAssistants.append(assistant)
 			}
 		}

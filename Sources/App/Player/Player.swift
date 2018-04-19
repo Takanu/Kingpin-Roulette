@@ -20,10 +20,10 @@ class Player: UserProxy, Hashable, Equatable {
 	
 	// SESSION TYPES
 	var baseRoute: Route
-	var request: SessionRequest
+	var request: MethodRequest
 	
 	// CONVENIENCES
-	var id: Int
+	var id: String
 	var firstName: String
 	var lastName: String?
 	var username: String?

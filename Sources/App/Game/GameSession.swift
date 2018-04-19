@@ -63,9 +63,9 @@ class GameSession: ChatSession {
 	private(set) var testMode: Bool = false
 	
 	
-	required init(bot: PelicanBot, tag: SessionTag, update: Update) {
+	required init?(bot: PelicanBot, tag: SessionTag) {
 		
-		super.init(bot: bot, tag: tag, update: update)
+		super.init(bot: bot, tag: tag)
 		
 		self.vault = Vault(circuitBreaker: self.circuitBreaker)
 		self.eventRoute = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
@@ -154,8 +154,8 @@ class GameSession: ChatSession {
 		
 		// Request players.
 		let handle = GameHandle(session: self)
-		let newGameEvent = EventContainer<GameHandle>(event: Event_NewGame.self)
-		newGameEvent.start(handle: handle) {
+		let newGameEvent = EventContainer<GameHandle>(Event_NewGame.self)
+		newGameEvent.start(handle: handle) { error in
 			
 			// See if the game state changes allow us to start the game.
 			self.resolveHandle(handle)
@@ -295,8 +295,8 @@ class GameSession: ChatSession {
 			
 		}
 		
-		vault.roles.addItems(itemCollection)
-		vault.valuables.addCurrency(KingpinDefault.opal, initialAmount: .int(startOpals))
+		vault.roles.add(itemCollection)
+    vault.valuables.add(type: KingpinDefault.opal, amount: .int(startOpals))
 	}
 	
 	/**
@@ -306,8 +306,8 @@ class GameSession: ChatSession {
 		
 		// Ask for a kingpin pick
 		let handle = GameHandle(session: self)
-		let pickKingpin = EventContainer<GameHandle>(event: Event_PickKingpin.self)
-		pickKingpin.start(handle: handle) {
+		let pickKingpin = EventContainer<GameHandle>(Event_PickKingpin.self)
+		pickKingpin.start(handle: handle) { error in
 			
 			self.resolveHandle(handle)
 			
@@ -318,8 +318,8 @@ class GameSession: ChatSession {
 			
 			
 			// Pass the vault around
-			let vaultVisit = EventContainer<GameHandle>(event: Event_VaultVisit.self)
-			vaultVisit.start(handle: handle) {
+			let vaultVisit = EventContainer<GameHandle>(Event_VaultVisit.self)
+			vaultVisit.start(handle: handle) { error in
 				
 				self.resolveHandle(handle)
 				
@@ -331,8 +331,8 @@ class GameSession: ChatSession {
 				
 				
 				// INTERROGATE
-				let interrogate = EventContainer<GameHandle>(event: Event_Interrogate.self)
-				interrogate.start(handle: handle) {
+				let interrogate = EventContainer<GameHandle>(Event_Interrogate.self)
+				interrogate.start(handle: handle) { error in
 					self.resolveHandle(handle)
 					self.finishScenario()
 				}
@@ -445,7 +445,7 @@ class GameSession: ChatSession {
 			result += "\(player.name) - \(player.role!.name)"
 			
 			if player.role?.definition == .thief {
-				let stolenOpals = player.points[KingpinDefault.opal]?.intValue ?? 0
+				let stolenOpals = player.points[KingpinDefault.opal]?.int ?? 0
 				result += " (Stole \(stolenOpals))"
 			}
 			

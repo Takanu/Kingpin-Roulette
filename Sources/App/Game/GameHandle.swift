@@ -10,10 +10,12 @@ import TrashBoat
 import Pelican
 
 class GameHandle: Handle {
-	
+    
+    
 	// INHERITANCE
 	var tag: SessionTag
-	var request: SessionRequest
+	var request: MethodRequest
+  var sessions: SessionRequest
 	var queue: ChatSessionQueue
 	var baseRoute: Route
 	var records: [EventRecord]
@@ -71,6 +73,7 @@ class GameHandle: Handle {
 	init(session: GameSession) {
 		self.tag = session.tag
 		self.request = session.requests
+    self.sessions = session.sessions
 		self.queue = session.queue
 		self.baseRoute = session.baseRoute
 		self.records = []

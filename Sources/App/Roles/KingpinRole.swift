@@ -10,15 +10,16 @@ import TrashBoat
 import Pelican
 
 struct KingpinRole: ItemRepresentible {
+  
 	
 	/// The specific type definition of the role.
 	var definition: KingpinRoleType
 	
-	/// The name of the role/
+	/// The name of the role.
 	var name: String
 	
 	/// The item type it belongs to.
-	var type: ItemTypeTag = KingpinRoles.type
+	var itemType: ItemTypeTag = KingpinRoles.type
 	
 	/// The basic vanilla description for the role, assumes it is being browsed or potentially selected.
 	var description: String

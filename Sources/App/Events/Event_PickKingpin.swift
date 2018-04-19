@@ -14,9 +14,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	var eventName: String = "Pick Kingpin"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
-																			 symbol: "👑",
-																			 pluralisedName: "Kingpin Event",
-																			 description: "oh hey, it's an event.")
+                                         symbol: "👑",
+                                         pluralisedName: "Kingpin Event",
+										 description: "oh hey, it's an event.")
+    
+    var eventInfo: String = "Select the new Kingpin"
 	
 	
 	/// The key used to ask players if they want to be the kingpin

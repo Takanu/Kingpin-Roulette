@@ -10,7 +10,7 @@ import TrashBoat
 import Pelican
 
 class Opal: PointInstance {
-	
+    
 	// INHERITANCE
 	var value: PointValue
 	var type: PointType
@@ -18,16 +18,22 @@ class Opal: PointInstance {
 	var description: String {
 		return "???"
 	}
+    
+  var transactions: [PointReceipt] = []
 	
-	required init(initialAmount: PointValue) {
-		self.value = initialAmount
+	required init(startAmount: PointValue) {
+		self.value = startAmount
 		self.type = KingpinDefault.opal
 	}
+    
+  func getValue() -> PointUnit {
+    return OpalUnit(value: value)
+  }
 	
-	func changeAmount(_ change: PointValue) -> PointReceipt? {
+	func add(_ change: PointValue) -> PointReceipt? {
 		
 		let oldValue = value
-		let newValue = value.intValue + change.intValue
+		let newValue = value.int + change.int
 		self.value = .int(max(0, newValue))
 		
 		return PointReceipt(type: type,
@@ -36,21 +42,21 @@ class Opal: PointInstance {
 												change: change)
 	}
 	
-	func changeAmount(_ units: PointUnit...) -> PointReceipt? {
+	func add(units: PointUnit...) -> PointReceipt? {
 	
 		let oldValue = value
-		var newValue = value.intValue
+		var newValue = value.int
 		
 		for unit in units {
-			newValue += unit.value.intValue
+			newValue += unit.value.int
 		}
 		
 		self.value = .int(max(0, newValue))
 		
 		return PointReceipt(type: type,
-												amountBefore: oldValue,
-												amountAfter: self.value,
-												change: .int(newValue - oldValue.intValue))
+							amountBefore: oldValue,
+							amountAfter: self.value,
+							change: .int(newValue - oldValue.int))
 	}
 	
 	

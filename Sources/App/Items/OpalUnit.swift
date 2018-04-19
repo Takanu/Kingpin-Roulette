@@ -12,30 +12,21 @@ import Pelican
 /**
 Defines an Opal unit that can be stored as an item as well as a point modifier.
 */
-struct OpalUnit: ItemRepresentible {
-	
+struct OpalUnit: PointUnit, ItemRepresentible {
+  
 	// CONFORMANCE
-	var name: String
-	var type: ItemTypeTag
-	var description: String
+	var name: String = "Opal"
+  var pointType: PointType = KingpinDefault.opal
+	var itemType: ItemTypeTag = KingpinDefault.opalItemTag
+	var description: String = "A rare stone with enormous financial value."
 	
 	// EXTRAS
-	var pluralisedName: String
-	var unit: PointUnit
+	var pluralisedName: String = "Opals"
+  var value: PointValue
 	
 	
-	init(name: String, pluralisedName: String, type: ItemTypeTag, description: String, unitValue: PointValue) {
-		self.name = name
-		self.type = type
-		self.description = description
-		
-		self.pluralisedName = pluralisedName
-		self.unit = PointUnit(name: name,
-													pluralisedName: pluralisedName,
-													description: description,
-													type: KingpinDefault.opal,
-													value: unitValue)
-		
+  init(value: PointValue) {
+    self.value = value
 	}
 	
 	
@@ -44,19 +35,21 @@ struct OpalUnit: ItemRepresentible {
 	}
 	
 	func getInlineCard() -> InlineResultArticle {
+    
+    var tempName = name
+    if value.int > 1 {
+      tempName = pluralisedName
+    }
+    
 		return InlineResultArticle(id: "1",
-															 title: "\(unit.value.intValue) 💎 Opals",
-															 description: "A rare stone with enormous financial value.",
+															 title: "\(value.int) 💎 \(tempName)",
+															 description: description,
 															 contents: KingpinDefault.fakeInlineContentMsg,
 															 markup: nil)
 	}
 	
 	func clone() -> ItemRepresentible {
-		return OpalUnit(name: self.name,
-										pluralisedName: self.pluralisedName,
-										type: self.type,
-										description: self.description,
-										unitValue: unit.value)
+    return OpalUnit(value: value)
 	}
 	
 	

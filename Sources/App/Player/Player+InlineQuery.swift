@@ -67,15 +67,18 @@ extension Player {
 	func inlineRoles(update: Update) -> Bool {
 		
 		let cards = KingpinRoles.allRoles.map { $0.getInlineCard()  }
-		
+    var newCards: [InlineResultArticle] = []
 		var i = 1
+    
 		cards.forEach {
-			$0.tgID = "\(i)"
+      var newCard = $0
+			newCard.tgID = "\(i)"
 			i += 1
+      newCards.append(newCard)
 		}
 		
 		request.async.answerInlineQuery(queryID: String(update.id),
-																		results: cards,
+																		results: newCards,
 																		nextOffset: nil,
 																		switchPM: nil,
 																		switchPMParam: nil)

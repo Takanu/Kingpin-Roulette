@@ -16,7 +16,7 @@ Contains statics on game pacing, text prompts, item types and more.
 struct KingpinDefault {
 	
 	/// The version number of the App
-	static var versionNumber = 1
+	static var versionNumber = "2"
 	
 	
 	// GAME START
@@ -72,9 +72,10 @@ struct KingpinDefault {
 	
 	/// The valuable that can be stolen and that the Kingpin needs to retrieve.
 	static var opal = PointType(name: "Opal",
-															pluralisedName: "Opals",
-															symbol: "💎",
-															instance: Opal.self)
+                                pluralisedName: "Opals",
+                                symbol: "💎",
+                                instance: Opal.self,
+                                unit: OpalUnit.self)
 	
 	static var fakeInlineContentMsg = "*something secret* (⌐■_■)"
 }

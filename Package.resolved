@@ -5,9 +5,9 @@
         "package": "Pelican",
         "repositoryURL": "https://github.com/Takanu/Pelican.git",
         "state": {
-          "branch": "master",
-          "revision": "7e3866ea047aa6564f6299baf9dac7401b1e88cd",
-          "version": null
+          "branch": null,
+          "revision": "9b3c3111b243c26242b91972ca17081f6ae1229c",
+          "version": "0.8.0"
         }
       },
       {
@@ -23,9 +23,9 @@
         "package": "TrashBoat",
         "repositoryURL": "https://github.com/Takanu/TrashBoat.git",
         "state": {
-          "branch": "master",
-          "revision": "4cb23284ed434ef5236398db04057125a919e895",
-          "version": null
+          "branch": null,
+          "revision": "29c20ef4e7d53c0187f7907430518b4ca643b7df",
+          "version": "2.1.0"
         }
       }
     ]

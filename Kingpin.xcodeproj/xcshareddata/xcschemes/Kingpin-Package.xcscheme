@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Kingpin::App"
-               BuildableName = "App"
-               BlueprintName = "App"
+               BlueprintIdentifier = "TrashBoat::TrashBoat"
+               BuildableName = "TrashBoat.framework"
+               BlueprintName = "TrashBoat"
                ReferencedContainer = "container:Kingpin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "TrashBoat::TrashBoat"
-               BuildableName = "TrashBoat.framework"
-               BlueprintName = "TrashBoat"
+               BlueprintIdentifier = "Kingpin::App"
+               BuildableName = "App"
+               BlueprintName = "App"
                ReferencedContainer = "container:Kingpin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -87,9 +87,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Kingpin::App"
-            BuildableName = "App"
-            BlueprintName = "App"
+            BlueprintIdentifier = "TrashBoat::TrashBoat"
+            BuildableName = "TrashBoat.framework"
+            BlueprintName = "TrashBoat"
             ReferencedContainer = "container:Kingpin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

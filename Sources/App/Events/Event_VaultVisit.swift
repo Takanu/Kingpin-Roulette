@@ -14,9 +14,11 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	var eventName: String = "Vault Visit"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
-																			 symbol: "👑",
-																			 pluralisedName: "Kingpin Event",
-																			 description: "oh hey, it's an event.")
+                                         symbol: "👑",
+                                         pluralisedName: "Kingpin Event",
+                                         description: "oh hey, it's an event.")
+    
+    var eventInfo: String = "Allows each player including the Kingpin to visit the Vault."
 	
 	/// The number of players that haven't yet visited the vault.
 	var visitorsLeft: [Player] = []
@@ -241,13 +243,13 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		}
 		
 		// If it's not a role, convert it to an opal and deduct the amount from the valuables.
-		else if item.type == KingpinDefault.opalItemTag {
+		else if item.itemType == KingpinDefault.opalItemTag {
 			
 			let opalsStolen = item as! OpalUnit
-			let opalValue = opalsStolen.unit.value.intValue
-			handle.vault.valuables.changeCurrency(opalsStolen.unit.type, change: .int(opalValue * -1))
+			let opalValue = opalsStolen.value.int
+      handle.vault.valuables.deduct(type: opalsStolen.pointType, amount: .int(opalValue))
 			
-			vaultVisitor!.points.addCurrency(KingpinDefault.opal, initialAmount: opalsStolen.unit.value)
+      vaultVisitor!.points.add(type: KingpinDefault.opal, amount: opalsStolen.value)
 			vaultVisitor!.role = KingpinRoles.thief
 		}
 		
@@ -271,12 +273,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// If there's no leftover items or opals OR the last person is taking their turn, add the associate role.
 		
-		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]!.intValue == 0)
+		if (handle.vault.roles.getItemCount(forType: KingpinRoles.type) == 0 && handle.vault.valuables[KingpinDefault.opal]!.int == 0)
 			|| visitorsLeft.count == 1 {
 			
 			if handle.vault.roles.hasItem(KingpinRoles.accomplice) == false {
-				handle.vault.roles.addItems([KingpinRoles.accomplice])
-				handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: true)
+				handle.vault.roles.add([KingpinRoles.accomplice])
+        handle.vault.roles.editStack(ofItem: KingpinRoles.accomplice, makeStackUnlimited: true)
 			}
 		}
 		
@@ -415,7 +417,9 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		queue.clear()
 		
 		// Remove the accomplice from the vault
-		handle.vault.roles.modifyStack(ofItem: KingpinRoles.accomplice, useUnlimitedStack: false)
+    handle.vault.roles.editStack(ofItem: KingpinRoles.accomplice, makeStackUnlimited: false)
+    handle.vault.roles.removeItem(KingpinRoles.accomplice)
+    
 		if handle.vault.roles.removeItem(KingpinRoles.accomplice) == nil {
 			handle.circuitBreaker("Event_VaultVisit - Accomplice role was never removed at the end of the visit.")
 		}

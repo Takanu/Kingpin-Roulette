@@ -155,9 +155,10 @@ class Vault: Route {
 			
 			var roleItems = roles.getItemCopies(forType: KingpinRoles.type.name)!
 			for (i, card) in roleCards.enumerated() {
-				card.tgID = "\(id)"
+        var newCard = card
+				newCard.tgID = "\(id)"
 				id += 1
-				cardSet.append((roleItems[i], card))
+				cardSet.append((roleItems[i], newCard))
 			}
 		}
 		
@@ -174,29 +175,16 @@ class Vault: Route {
 			}
 			
 			// Work out what the maximum number of opals the player can pick is.
-			let opalMax = max(min(KingpinDefault.maxOpalTheft, opalCount.intValue), 0)
+			let opalMax = max(min(KingpinDefault.maxOpalTheft, opalCount.int), 0)
 			
 			if opalMax > 0 {
 				for i in 1...opalMax {
 					
-					var name = ""
-					if i > 1 {
-						name = "\(i) Opal"
-					} else {
-						name = "\(i) Opals"
-					}
-					
-					let opalUnit = OpalUnit(name: name,
-																	pluralisedName: name,
-																	type: KingpinDefault.opalItemTag,
-																	description: name,
-																	unitValue: .int(i))
-					
-					let newOpalCard = InlineResultArticle(id: "\(id)",
-						title: "Steal \(i) 💎 Opals (\(opalCount.intValue) left)",
-						description: KingpinRoles.thief.description,
-						contents: "*something secret* (⌐■_■)",
-						markup: nil)
+          let opalUnit = OpalUnit(value: .int(i))
+          var newOpalCard = opalUnit.getInlineCard()
+          newOpalCard.title = "Steal \(i) 💎 Opals (\(opalCount.int) left)"
+          newOpalCard.description = KingpinRoles.thief.description
+          
 					cardSet.append((opalUnit, newOpalCard))
 					id += 1
 				}
@@ -233,9 +221,10 @@ class Vault: Route {
 			// Get the item info and link it to the results
 			var itemInfo = roles.getItemCopies(forType: KingpinRoles.type.name)!
 			for (i, card) in roleCards.enumerated() {
-				card.tgID = "\(id)"
+        var newCard = card
+				newCard.tgID = "\(id)"
 				id += 1
-				cardSet.append((itemInfo[i], card))
+				cardSet.append((itemInfo[i], newCard))
 			}
 		}
 		
@@ -261,24 +250,8 @@ class Vault: Route {
 				return []
 			}
 			
-			var opalItemName = ""
-			if opalCount.intValue > 1 {
-				opalItemName = "\(opalCount) Opal"
-			} else {
-				opalItemName = "\(opalCount) Opals"
-			}
-			
-			let opalUnit = OpalUnit(name: opalItemName,
-															pluralisedName: opalItemName,
-															type: KingpinDefault.opalItemTag,
-															description: opalItemName,
-															unitValue: .int(opalCount.intValue))
-			
-			let newOpalCard = InlineResultArticle(id: "\(id)",
-																						title: "\(opalCount.intValue) 💎 Opals.",
-																						description: "A rare and highly sought after item.",
-																						contents: KingpinDefault.fakeInlineContentMsg,
-																						markup: nil)
+			let opalUnit = OpalUnit(value: .int(opalCount.int))
+      let newOpalCard = opalUnit.getInlineCard()
 			
 			// Return the new set.
 			cardSet.append((opalUnit, newOpalCard))

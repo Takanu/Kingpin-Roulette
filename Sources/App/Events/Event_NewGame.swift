@@ -17,10 +17,11 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	var eventName: String = "New Game"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
-																			 symbol: "👑",
-																			 pluralisedName: "Kingpin Event",
-																			 description: "oh hey, it's an event.")
-	
+                                         symbol: "👑",
+                                         pluralisedName: "Kingpin Event",
+                                         description: "oh hey, it's an event.")
+    
+	var eventInfo: String = "Ask for players to participate in a new game."
 	
 	/// Returns a complete inline key set for a join message, including context-sensitive tutorial buttons.
 	var inlineMarkup: MarkupInline {
@@ -137,7 +138,11 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 		if usableChar.first(where: {update.content == $0}) == nil { return false }
 		
 		// Assert the linked session as a Player type and see if they have any proxies (and that this isn't a test).
-		let session = update.linkedSessions[0] as! PlayerSession
+    let playerSessions = sessions.getSessions(builderName: "Player", telegramID: update.from!.tgID)
+    if playerSessions == nil { return false }
+    if playerSessions!.count == 0 { return false }
+    
+		let session = playerSessions![0] as! PlayerSession
 		
 		// If the player has already chosen and we're not in a test, dont accept another choice.
 		if handle.testMode == false {
@@ -335,8 +340,8 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	func extendCharacterSelection(_ update: Update) -> Bool {
 		
 		// VALIDATE USER
-		
-		if handle.players.contains(where: {$0.id == update.from?.tgID ?? 0}) == false { return true }
+    
+    if handle.players.contains(where: {$0.id == update.from?.tgID}) == false { return true }
 		
 		
 		// TIME EXTENSION LIMIT
@@ -454,7 +459,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	func forceStart(_ update: Update) -> Bool {
 		
 		// VALIDATE USER
-		if handle.players.contains(where: {$0.id == update.from?.tgID ?? 0}) == false { return true }
+    if handle.players.contains(where: {$0.id == update.from?.tgID}) == false { return true }
 		
 		
 		// WARNING IF PLAYER COUNT NOT ACCEPTABLE
