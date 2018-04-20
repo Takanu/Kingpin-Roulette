@@ -252,7 +252,7 @@ class GameSession: ChatSession {
 		for player in allPlayers {
 			
 			// If it has a type, use that to add it to the status collection
-			if let type = player.flair[KingpinFlair.category] {
+			if let type = player.flair[KingpinFlair.statusCategory] {
 				let typeName = type[0]
 				if statusCollection[typeName] != nil {
 					statusCollection[typeName]!.append(player)

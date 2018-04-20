@@ -26,6 +26,9 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	/// The Vault inline key, nicely wrapped into an InlineMarkup type.
 	var inlineVault = MarkupInline(withButtons: Vault.inlineKey)
   
+  /// Defines whether or not the first player either in order or by proxy of other players who timed out ahead, has selected and discarded a Vault item.
+  var firstPlayerFinished = false
+  
   
   /////////////////////////////////////////////////////////////////////////////////
   /**
@@ -232,16 +235,24 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			(Take an item from the Vault to be your role)
 			"""
 			
+      let visitWarning = """
+      \(vaultVisitor!.name), you have 20 seconds left to take an item from the Vault.
+      """
+      
 			queue.message(delay: 2.sec,
 										viewTime: 9.sec,
 										message: otherVisit,
 										markup: inlineVault,
 										chatID: tag.id)
+      
+      queue.message(delay: 30.sec,
+                    viewTime: 0.sec,
+                    message: visitWarning,
+                    chatID: tag.id)
 			
-			/// The player has to make a move, do not move on until they have chosen.
-//			queue.action(delay: 30.sec,
-//									 viewTime: 0.sec,
-//									 action: completeOtherVisit)
+      queue.action(delay: 20.sec,
+                   viewTime: 0.sec,
+                   action: watcherTimeout)
 		}
 		
 		
@@ -282,7 +293,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// If the first visitor is on patrol, they also need to remove an item.
 		
-		if visitorsLeft.count == handle.players.count - 1 {
+    if firstPlayerFinished == false {
 			queue.action(delay: 3.sec,
 									 viewTime: 0.sec,
 									 action: removeVaultItem)
@@ -337,12 +348,25 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		(Take an item from the Vault to be removed from the game)
 		"""
+    
+    let removalWarning = """
+    \(vaultVisitor!.name), you have 20 seconds left to *destroy* an item from the Vault.
+    """
 		
 		queue.message(delay: 2.sec,
 									viewTime: 7.sec,
 									message: otherVisit,
 									markup: inlineVault,
 									chatID: tag.id)
+    
+    queue.message(delay: 30.sec,
+                  viewTime: 0.sec,
+                  message: removalWarning,
+                  chatID: tag.id)
+    
+    queue.action(delay: 20.sec,
+                 viewTime: 0.sec,
+                 action: watcherTimeout)
 		
 	}
 	
@@ -351,6 +375,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// Remove the item from the valuables or roles list.
 		if handle.vault.roles.removeItem(item) != nil {
+      firstPlayerFinished = true
 			queue.action(delay: 2.sec,
 									 viewTime: 0.sec,
 									 action: completeOtherVisit)
@@ -427,6 +452,32 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 								 action: visitVault)
 		
 	}
+  
+  /**
+  Mark the currently active vault watcher as being killed in an accident, removing them from the game and
+  immediately passing watch to the next player.
+  */
+  func watcherTimeout() {
+    queue.clear()
+    handle.vault.resetRequest()
+    
+    let vaultTimeoutMsg = """
+    Before \(vaultVisitor!.name) could look inside the vault, they experience an "accident" while on watch.
+    
+    \(vaultVisitor!.name) is never seen again...
+    """
+    
+    vaultVisitor!.flair.add(KingpinFlair.accident)
+    request.async.sendMessage(vaultTimeoutMsg,
+                              markup: nil,
+                              chatID: tag.id)
+    
+    queue.action(delay: 3.sec,
+                 viewTime: 0.sec,
+                 action: visitVault)
+    
+    
+  }
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**

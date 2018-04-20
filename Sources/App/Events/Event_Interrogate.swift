@@ -22,6 +22,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	The Kingpin stands up in front of the elites and makes a DECLARATION!
 	"""
 	
+  var selectablePlayers: [Player] = []
 	var playersLeft: [Player] = []
   
   
@@ -58,8 +59,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	Start the interrogation proceedings!
 	*/
 	override func execute() {
-		
-		playersLeft = handle.players
+    
+		playersLeft = handle.players.filter({ $0.flair.find(KingpinFlair.accident, compareContents: false) == false })
 		
 		
 		///////////////////////////
@@ -164,7 +165,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		// SETUP
 		// Give the kingpin the ability to accuse a player
 		handle.playerRoute.newRequest(selectors: [handle.kingpin!],
-																	targets: playersLeft,
+																	targets: selectablePlayers,
 																	includeSelf: false,
 																	includeNone: false,
 																	next: receivePlayerSelection,
@@ -372,7 +373,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.statusCategory)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -412,7 +413,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.kingpin!.flair.add(withName: "Arrested", category: KingpinFlair.category)
+			handle.kingpin!.flair.add(withName: "Arrested", category: KingpinFlair.statusCategory)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -432,7 +433,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 										message: resultMsg,
 										chatID: tag.id)
 			
-			handle.kingpin!.flair.add(withName: "In A Far Away Land", category: KingpinFlair.category)
+			handle.kingpin!.flair.add(withName: "In A Far Away Land", category: KingpinFlair.statusCategory)
 			
 			queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			
@@ -454,7 +455,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.statusCategory)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -497,7 +498,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.statusCategory)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
@@ -540,7 +541,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 											message: resultMsg,
 											chatID: tag.id)
 				
-				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.category)
+				handle.kingpin!.flair.add(withName: "Ran Away", category: KingpinFlair.statusCategory)
 				
 				queue.action(delay: 3.sec, viewTime: 0.sec) { self.kingpinLoses(pick: kingpinChoice) }
 			}
