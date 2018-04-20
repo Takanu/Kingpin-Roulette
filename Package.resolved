@@ -23,9 +23,9 @@
         "package": "TrashBoat",
         "repositoryURL": "https://github.com/Takanu/TrashBoat.git",
         "state": {
-          "branch": null,
-          "revision": "29c20ef4e7d53c0187f7907430518b4ca643b7df",
-          "version": "2.1.0"
+          "branch": "master",
+          "revision": "5b37d837c209a962600b31a5d76e47a3e2ac8bce",
+          "version": null
         }
       }
     ]

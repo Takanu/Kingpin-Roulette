@@ -461,7 +461,7 @@ class GameSession: ChatSession {
     Well shit, Kingpin encountered an error!
 
     ============================
-    Error Code = \(errorCode)
+    Error Code = \(errorCode.debugDescription)
     ============================
     Hassle @takanu about it to get it fixed 🙏
     
