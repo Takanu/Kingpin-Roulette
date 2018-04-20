@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50603D312089626000D8E912 /* KingpinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50603D302089626000D8E912 /* KingpinError.swift */; };
 		OBJ_316 /* Event_Interrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Event_Interrogate.swift */; };
 		OBJ_317 /* Event_NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Event_NewGame.swift */; };
 		OBJ_318 /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_PickKingpin.swift */; };
@@ -284,6 +285,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50603D302089626000D8E912 /* KingpinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinError.swift; sourceTree = "<group>"; };
 		"Kingpin::App::Product" /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Event_Interrogate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_Interrogate.swift; sourceTree = "<group>"; };
 		OBJ_102 /* Codable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+String.swift"; sourceTree = "<group>"; };
@@ -1146,6 +1148,7 @@
 				OBJ_32 /* KingpinDefault.swift */,
 				OBJ_33 /* KingpinFlair.swift */,
 				OBJ_34 /* KingpinRoles.swift */,
+				50603D302089626000D8E912 /* KingpinError.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
@@ -1234,7 +1237,7 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -1245,7 +1248,6 @@
 				OBJ_41 /* Dependencies */,
 				OBJ_306 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_56 /* Flair */ = {
@@ -1545,7 +1547,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_306 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1589,6 +1591,7 @@
 				OBJ_335 /* KingpinRoles.swift in Sources */,
 				OBJ_336 /* CasedEnum.swift in Sources */,
 				OBJ_337 /* main.swift in Sources */,
+				50603D312089626000D8E912 /* KingpinError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

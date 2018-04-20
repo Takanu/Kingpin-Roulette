@@ -26,6 +26,34 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	"""
 	
 	var playersLeft: [Player] = []
+  
+  
+  /////////////////////////////////////////////////////////////////////////////////
+  /**
+   Verify that we have the required game state.
+   */
+  override func verify(handle: GameHandle) -> Error? {
+    
+    // Make sure we have the correct number of players
+    if handle.players.count < KingpinDefault.minimumPlayers ||
+      handle.players.count > KingpinDefault.maximumPlayers {
+      return KingpinError.wrongPlayerCount
+    }
+    
+    // Make sure we have a Kingpin
+    if handle.kingpin == nil { return KingpinError.noKingpinFound }
+    
+    // Make sure the Vault isn't empty
+    if handle.vault.roles.getItemCopies(forType: KingpinRoles.type.name) == nil { return KingpinError.noRoles }
+    if handle.vault.valuables[KingpinDefault.opal] == nil { return KingpinError.noOpals }
+    
+    // Make sure each player has a role
+    for player in handle.players {
+      if player.role == nil { return KingpinError.missingPlayerRoles }
+    }
+    
+    return nil
+  }
 	
 	
 	/////////////////////////////////////////////////////////////////////////////////

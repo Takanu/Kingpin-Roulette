@@ -310,30 +310,21 @@ class GameSession: ChatSession {
 		pickKingpin.start(handle: handle) { error in
 			
 			self.resolveHandle(handle)
-			
-			// FIXME - Ensure the kingpin was chosen.
-			if self.kingpin == nil {
-				self.circuitBreaker(message: "GameSession - A kingpin wasn't selected during the Kingpin phase.")
-			}
-			
+			self.resolveError(event: Event_PickKingpin.self, errorCode: error)
 			
 			// Pass the vault around
 			let vaultVisit = EventContainer<GameHandle>(Event_VaultVisit.self)
 			vaultVisit.start(handle: handle) { error in
 				
 				self.resolveHandle(handle)
-				
-				
-				// FIXME - Ensure everyone has a role, or otherwise exit early.
-				if self.players.contains(where: {$0.role == nil }) == true {
-					self.circuitBreaker(message: "GameSession - Not everyone got a role to use")
-				}
-				
+        self.resolveError(event: Event_VaultVisit.self, errorCode: error)
 				
 				// INTERROGATE
 				let interrogate = EventContainer<GameHandle>(Event_Interrogate.self)
 				interrogate.start(handle: handle) { error in
+          
 					self.resolveHandle(handle)
+          self.resolveError(event: Event_Interrogate.self, errorCode: error)
 					self.finishScenario()
 				}
 				
@@ -456,6 +447,35 @@ class GameSession: ChatSession {
 		return result
 	}
 	
+  /**
+  Resolves any errors received as part of an event.
+  */
+  func resolveError(event: KingpinEvent.Type, errorCode: Error?) {
+    
+    if errorCode == nil { return }
+    
+    queue.clear()
+    baseRoute.clearAll()
+    
+    let message = """
+    Well shit, Kingpin encountered an error!
+
+    ============================
+    Error Code = \(errorCode)
+    ============================
+    Hassle @takanu about it to get it fixed 🙏
+    
+    The game will now be reset...
+    """
+    
+    queue.message(delay: 3.sec,
+                  viewTime: 0.sec,
+                  message: message,
+                  chatID: tag.id)
+    
+    queue.action(delay: 3.sec, viewTime: 0.sec, action: self.reset)
+    
+  }
 	
 	
 	/**

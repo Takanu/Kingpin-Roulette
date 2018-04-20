@@ -14,12 +14,11 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	var eventName: String = "Pick Kingpin"
 	
 	var eventType: EventType = EventType(name: "Kingpin Event",
-                                         symbol: "👑",
-                                         pluralisedName: "Kingpin Event",
-										 description: "oh hey, it's an event.")
+                                       symbol: "👑",
+                                       pluralisedName: "Kingpin Event",
+                                       description: "oh hey, it's an event.")
     
-    var eventInfo: String = "Select the new Kingpin"
-	
+  var eventInfo: String = "Select the new Kingpin"
 	
 	/// The key used to ask players if they want to be the kingpin
 	let kingpinRequestKey = MarkupInlineKey(fromCallbackData: "kingpin_req", text: "Nominate Yourself")!
@@ -32,6 +31,23 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
 	/// The players that want to be the Kingpin.
 	var suitors: [Player] = []
+  
+  
+  /////////////////////////////////////////////////////////////////////////////////
+  /**
+  Verify that we have the required game state.
+  */
+  override func verify(handle: GameHandle) -> Error? {
+    
+    // Make sure we have the correct number of players
+    if handle.players.count < KingpinDefault.minimumPlayers ||
+      handle.players.count > KingpinDefault.maximumPlayers {
+      return KingpinError.wrongPlayerCount
+    }
+    
+    return nil
+  }
+  
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
