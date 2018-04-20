@@ -236,7 +236,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			"""
 			
       let visitWarning = """
-      \(vaultVisitor!.name), you have 20 seconds left to take an item from the Vault.
+      \(vaultVisitor!.name), you have \(Int(KingpinDefault.watchWarningTime.rawValue)) seconds left to take an item from the Vault.
       """
       
 			queue.message(delay: 2.sec,
@@ -245,12 +245,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 										markup: inlineVault,
 										chatID: tag.id)
       
-      queue.message(delay: 30.sec,
+      queue.message(delay: KingpinDefault.watchLengthTime,
                     viewTime: 0.sec,
                     message: visitWarning,
                     chatID: tag.id)
 			
-      queue.action(delay: 20.sec,
+      queue.action(delay: KingpinDefault.watchWarningTime,
                    viewTime: 0.sec,
                    action: watcherTimeout)
 		}
@@ -350,7 +350,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		"""
     
     let removalWarning = """
-    \(vaultVisitor!.name), you have 20 seconds left to *destroy* an item from the Vault.
+    \(vaultVisitor!.name), you have \(Int(KingpinDefault.watchWarningTime.rawValue)) seconds left to *destroy* an item from the Vault.
     """
 		
 		queue.message(delay: 2.sec,
@@ -359,12 +359,12 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 									markup: inlineVault,
 									chatID: tag.id)
     
-    queue.message(delay: 30.sec,
+    queue.message(delay: KingpinDefault.watchLengthTime,
                   viewTime: 0.sec,
                   message: removalWarning,
                   chatID: tag.id)
     
-    queue.action(delay: 20.sec,
+    queue.action(delay: KingpinDefault.watchWarningTime,
                  viewTime: 0.sec,
                  action: watcherTimeout)
 		

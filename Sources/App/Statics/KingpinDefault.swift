@@ -52,7 +52,12 @@ struct KingpinDefault {
 	// VAULT VISIT
 	/// The maximum number of opals anyone can steal when visiting the vault.
 	static var maxOpalTheft = 15
-	
+  
+  /// The length of time the player can decide on an item before a warning appears.
+  static var watchLengthTime = 40.sec
+  
+  /// The length of time a warning lasts for before they are timed out.
+	static var watchWarningTime = 20.sec
 	
 	// INTERROGATION TIME
 	/// The time alloted for interrogations
