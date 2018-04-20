@@ -12,7 +12,7 @@ import Pelican
 /// The modes that can be selected after you start a Kingpin game.
 enum KingpinGameMode: String, CasedEnum {
   case standard = "Standard"
-  case assasin = "Assasin"
+  case rogue = "Rogue"
   //case chaotic = "Chaotic"
   
   var description: String {

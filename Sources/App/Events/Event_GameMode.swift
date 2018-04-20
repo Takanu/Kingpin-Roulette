@@ -66,7 +66,7 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
     
     *Standard Game* - The best option for new players, start out here!
     
-    *Assasin Game* - Adds the Assasin role and mixes up role balances for a more challenging game.
+    *Rogue Game* - Adds the Rogue role and mixes up role balances for a more challenging game.
     """
     
     let warning = """
@@ -162,12 +162,14 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
     
     
     if mode == KingpinGameMode.standard.rawValue {
+      handle.gameMode = .standard
       buildStandardGame()
       end(playerTrigger: nil, participants: nil)
     }
     
-    else if mode == KingpinGameMode.assasin.rawValue {
-      buildAssasinGame()
+    else if mode == KingpinGameMode.rogue.rawValue {
+      handle.gameMode = .rogue
+      buildRogueGame()
       end(playerTrigger: nil, participants: nil)
     }
     
@@ -298,8 +300,123 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
   /**
    Setup the game to be designed for first-time players.
    */
-  func buildAssasinGame() {
-    buildStandardGame()
+  func buildRogueGame() {
+    var itemCollection: [ItemRepresentible] = []
+    let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy]
+    
+    
+    // RANDOMISE OPALS
+    
+    func randomiseOpals(_ range: ClosedRange<Int>) -> Int {
+      
+      var possibilities: [Int] = []
+      let start = range.lowerBound
+      let diff = range.upperBound - start
+      for i in 0...diff {
+        possibilities.append(start + i)
+      }
+      
+      return possibilities.getRandom!
+    }
+    
+    
+    // SET LIVES
+    
+    if handle.playerCount >= 11 {
+      handle.kingpinLives = 2
+      
+    } else if handle.playerCount >= 8 || handle.useTutorial == true {
+      handle.kingpinLives = 1
+    }
+    
+    
+    
+    // BUILD VAULT
+    
+    if handle.playerCount < 6 {
+      itemCollection.append(KingpinRoles.rogue)
+      itemCollection.append(KingpinRoles.elite)
+      itemCollection.append(KingpinRoles.police)
+      itemCollection.append(KingpinRoles.spy)
+      itemCollection.append(KingpinRoles.thief)
+      itemCollection.append(KingpinRoles.assistant)
+      
+      handle.startOpals = randomiseOpals(12...15)
+    }
+    
+    
+    if handle.playerCount == 6 {
+      itemCollection += [KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant]
+      itemCollection += [randomArrestRole.getRandom!]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(12...15)
+    }
+    
+    
+    if handle.playerCount == 7 {
+      itemCollection += [KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant]
+      itemCollection += [randomArrestRole.getRandom!]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(12...15)
+    }
+    
+    
+    if handle.playerCount == 8 {
+      itemCollection += [KingpinRoles.elite, KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant]
+      itemCollection += [randomArrestRole.getRandom!]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(12...15)
+    }
+    
+    
+    if handle.playerCount == 9 {
+      itemCollection += [KingpinRoles.elite, KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant]
+      itemCollection += [randomArrestRole.getRandom!]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(13...17)
+    }
+    
+    
+    if handle.playerCount == 10 {
+      itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant]
+      itemCollection += [KingpinRoles.police, KingpinRoles.spy]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(13...17)
+    }
+    
+    
+    if handle.playerCount == 11 {
+      itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
+      itemCollection += [KingpinRoles.police, KingpinRoles.spy]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(15...18)
+    }
+    
+    
+    if handle.playerCount == 12 {
+      itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
+      itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
+      itemCollection += [KingpinRoles.police, KingpinRoles.spy]
+      itemCollection += [KingpinRoles.rogue]
+      
+      handle.startOpals = randomiseOpals(15...18)
+      
+    }
+    
+    handle.vault.roles.add(itemCollection)
+    handle.vault.valuables.add(type: KingpinDefault.opal, amount: .int(handle.startOpals))
   }
   
   

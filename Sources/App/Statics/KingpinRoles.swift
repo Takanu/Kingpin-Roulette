@@ -45,8 +45,8 @@ struct KingpinRoles {
 																		 roleGoals: "To win, work out the role of the player who went on Vault watch after you and help them win.")
 	
 	static let rogue = KingpinRole(role: .rogue,
-																 description: "Become a rogue with a thirst for the blood of law enforcement. Win by killing a Spy or Police Officer as the Kingpin is about to accuse them.",
-																 roleGoals: "To win, figure out who the Spy or Police Officer is, then shoot them as the Kingpin is about to accuse them.")
+																 description: "Become a reckless rogue with a thirst for the blood of law enforcement. Win by killing a Spy or Police Officer as the Kingpin is about to accuse them.",
+																 roleGoals: "To win, figure out who the Spy or Police Officer is, then shoot them when the Kingpin accuses them.")
 	
 	static let accomplice = KingpinRole(role: .accomplice,
 																			description: "Become an accomplice.  You don't want to ACTUALLY steal Opals, but don't mind helping...",
@@ -59,5 +59,6 @@ struct KingpinRoles {
 												 KingpinRoles.police,
 												 KingpinRoles.assistant,
 												 KingpinRoles.accomplice,
+                         KingpinRoles.rogue
 												 ]
 }

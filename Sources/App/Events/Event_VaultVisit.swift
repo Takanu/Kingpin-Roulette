@@ -100,7 +100,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 			let tutorial4 = """
 			You will choose your role when you watch over the vault.
 
-			Tap the button below to view all the possible roles that someone can choose.
+			Tap the button below to view all the possible roles that someone can choose.  (The Rogue is not available in a Standard Game).
 			"""
 			
 			queue.message(delay: 1.sec,

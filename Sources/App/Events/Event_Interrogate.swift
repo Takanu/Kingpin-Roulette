@@ -21,9 +21,15 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	let revealMsg = """
 	The Kingpin stands up in front of the elites and makes a DECLARATION!
 	"""
+  
+  var chosenPlayer: Player?
 	
-  var selectablePlayers: [Player] = []
 	var playersLeft: [Player] = []
+  
+  let rogueKey = MarkupInlineKey(fromCallbackData: "rogue_shot", text: "(Rogue) Shoot Suspect")!
+  var rogueInline: MarkupInline {
+    return MarkupInline(withButtons: rogueKey)
+  }
   
   
   /////////////////////////////////////////////////////////////////////////////////
@@ -160,12 +166,13 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	func requestPlayer() {
 		queue.clear()
 		handle.kingpin?.playerRoute.enabled = true
+    chosenPlayer = nil
 		
 		///////////////////////////
 		// SETUP
 		// Give the kingpin the ability to accuse a player
 		handle.playerRoute.newRequest(selectors: [handle.kingpin!],
-																	targets: selectablePlayers,
+																	targets: playersLeft,
 																	includeSelf: false,
 																	includeNone: false,
 																	next: receivePlayerSelection,
@@ -315,6 +322,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		}
 		
 		let kingpinChoice = result[0].choice! as! Player
+    chosenPlayer = kingpinChoice
 		
 		// Buffer padding for consistency
 		queue.action(delay: 1.sec, viewTime: 0.sec, action: { })
@@ -334,23 +342,76 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		let roleMsg = """
 		\(kingpinChoice.name) was the \(kingpinChoice.role!.name)!
 		"""
+    
+    ///////////////////////////
+    // ROGUE REVEAL
+    
+    if playersLeft.contains(where: {$0.role?.definition == .rogue} ) == true {
+      let rogueChosenMsg = """
+      \(kingpinChoice.name) name is declared.  They rise from their seat...
+      """
+      
+      queue.message(delay: 1.sec,
+                    viewTime: 5.sec,
+                    message: revealMsg,
+                    chatID: tag.id)
+      
+      // SHOOT WINDOW
+      queue.action(delay: 3.sec, viewTime: 4.sec) {
+        let shootRoute = RouteListen(name: "rouge_shoot",
+                                     pattern: self.rogueKey.data,
+                                     type: .callbackQuery,
+                                     action: self.rogueShot)
+        
+        self.baseRoute[["event"]]?.addRoutes(shootRoute)
+        
+        let sentMessage = self.request.sync.sendMessage(rogueChosenMsg,
+                                                        chatID: self.tag.id)
+        
+        self.storedMessages[self.rogueKey.data] = sentMessage
+      }
+      
+      // WINDOW MISSED
+      queue.action(delay: KingpinDefault.rogueHoldTime, viewTime: 4.sec) {
+        self.baseRoute[["event"]]?.clearAll()
+        
+        if let lastMsg = self.storedMessages[self.rogueKey.data] {
+          self.request.sync.editMessage(lastMsg.text!,
+                                        messageID: lastMsg.tgID,
+                                        inlineMessageID: nil,
+                                        markup: nil,
+                                        chatID: self.tag.id)
+        }
+        
+        self.revealRole(kingpinChoice)
+      }
+    }
+    
+    ///////////////////////////
+    // NO ROGUE REVEAL
+    else {
+      queue.message(delay: 1.sec,
+                    viewTime: 5.sec,
+                    message: revealMsg,
+                    chatID: tag.id)
+      
+      queue.message(delay: 3.sec,
+                    viewTime: 4.sec,
+                    message: chosenMsg,
+                    chatID: tag.id)
+      
+      queue.action(delay: 3.sec, viewTime: 4.sec) {
+        self.revealRole(kingpinChoice)
+      }
+    }
+  }
 		
-		queue.message(delay: 1.sec,
-									viewTime: 5.sec,
-									message: revealMsg,
-									chatID: tag.id)
 		
-		queue.message(delay: 3.sec,
-									viewTime: 4.sec,
-									message: chosenMsg,
-									chatID: tag.id)
-		
-		queue.message(delay: 3.sec,
-									viewTime: 4.sec,
-									message: roleMsg,
-									chatID: tag.id)
-		
-		
+  /////////////////////////////////////////////////////////////////////////////////
+  /**
+  Receive the Kingpin's selection and decide what to do with it.
+  */
+  func revealRole(_ kingpinChoice: Player) {
 		
 		switch kingpinChoice.role!.definition {
 		
@@ -687,7 +748,300 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 		}
 	}
+  
+  
+  /////////////////////////////////////////////////////////////////////////////////
+  /**
+  This route is used to allow the Rogue to make a shot and see if they succeeded or not.
+  */
+  func rogueShot(_ update: Update) -> Bool {
+    
+    // VALIDATE TO PLAYERS
+    if playersLeft.contains(where: {$0.id == update.from!.tgID}) == false { return false }
+    
+    let rogues = playersLeft.filter( { $0.role?.definition == .rogue } )
+    if rogues.contains(where: {$0.id == update.from!.tgID}) == false { return false }
+    
+    
+    // CLEAR QUEUES AND EVENTS
+    baseRoute[["event"]]?.clearAll()
+    queue.clear()
+    
+    if let lastMsg = self.storedMessages[self.rogueKey.data] {
+      self.request.sync.editMessage(lastMsg.text!,
+                                    messageID: lastMsg.tgID,
+                                    inlineMessageID: nil,
+                                    markup: nil,
+                                    chatID: self.tag.id)
+    }
+    
+    // GET THE SHOOTER
+    let shooter = rogues.first(where: {$0.id == update.from!.tgID})!
+    
+    // ANSWER QUERY
+    request.async.answerCallbackQuery(queryID: update.id,
+                                      text: "You take the shot...",
+                                      showAlert: true)
+    
+    // CHECK CHOSEN
+    if chosenPlayer == nil {
+      abort(KingpinError.rogue_noChosenPlayer)
+    }
+    chosenPlayer!.flair.add(KingpinFlair.dead)
+    
+    // ENJOY THE SHOW
+    let shootMsg1 = """
+    \(shooter.name) immediately pulls out their gun and pulls the trigger several times.
+    
+    \(chosenPlayer!.name) collapses back into their seat as their blood soaks into the ornate chair.
+    """
+    
+    let shootMsg2 = """
+    As \(chosenPlayer!.name)'s body settles, something falls out of their pocket...
+    """
+    
+    queue.message(delay: 3.sec,
+                  viewTime: 7.sec,
+                  message: shootMsg1,
+                  chatID: tag.id)
+    
+    queue.message(delay: 3.sec,
+                  viewTime: 5.sec,
+                  message: shootMsg2,
+                  chatID: tag.id)
+    
+    var success = false
+    var failMsg1 = ""
+    var failMsg2 = ""
+    
+    switch chosenPlayer!.role!.definition {
+      
+    case .elite:
+      failMsg1 = """
+      ... it's a *special Elite Badge!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+    case .thief:
+      failMsg1 = """
+      ... it's some *Opals!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+    case .spy:
+      success = true
+      failMsg1 = """
+      ... it's a *Foreign Passport*!  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) is impressed with \(shooter.name)'s instincts.
+      
+      Placing their hope in fate, \(handle.kingpin!.name) asks \(shooter.name) to shoot all the Thieves in the room.
+      """
+      
+    case .police:
+      success = true
+      failMsg1 = """
+      ... it's a *Police Badge*!  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) is impressed with \(shooter.name)'s instincts.
+      
+      Placing their hope in fate, \(handle.kingpin!.name) asks \(shooter.name) to shoot all the Thieves in the room.
+      """
+      
+    case .assistant:
+      failMsg1 = """
+      ... it's an *Unusual Note!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+    case .rogue:
+      failMsg1 = """
+      ... it's an *Identical Pistol!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+    case .accomplice:
+      failMsg1 = """
+      ... it's a *Currency Chip!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      """
+      
+      failMsg2 = """
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+    case .kingpin:
+      failMsg1 = """
+      ... it's a *EEEEEEEEEEE*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
+      
+      Yes, thats right, for some reason \(chosenPlayer!.name) fired on the Kingpin.
+      """
+      
+      failMsg2 = """
+      The bullets disappear before they can touch the Kingpin.
+      
+      Outraged, \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      
+      Their bodies are slowly dragged out of the room and the meeting continues.
+      """
+      
+      
+    }
+    
+    
+    queue.message(delay: 3.sec,
+                  viewTime: 5.sec,
+                  message: failMsg1,
+                  chatID: tag.id)
+    
+    queue.message(delay: 3.sec,
+                  viewTime: 7.sec,
+                  message: failMsg2,
+                  chatID: tag.id)
+    
+    
+    ////////////////
+    // SUCCESS
+      
+    if success == true {
+      
+      var shootMsg1 = ""
+      var shootMsg2 = ""
+      var shootMsg3 = ""
+      
+      // KILL THIEVES
+      
+      let thieves = playersLeft.filter({$0.role?.definition == .thief})
+      thieves.forEach {
+        $0.flair.add(KingpinFlair.dead)
+      }
+      
+      // CROWN SHOOTER
+      
+      shooter.flair.add(KingpinFlair.winner)
+      
+      
+      // ASSISTANTS
+      
+      let assistants = findWinningAssistants() ?? []
+      assistants.forEach {
+        $0.flair.add(KingpinFlair.winner)
+      }
+      
+      // FINAL MESSAGES
+      
+      if assistants.count > 0 {
+        var assistNoun = "assistant"
+        if assistants.count > 1 {
+          assistNoun = "assistants"
+        }
+        
+        shootMsg1 = """
+        \(shooter.name)'s eyes dart across the room.  Thanks to their \(assistNoun), they know exactly who to take out.
+        
+        \(shooter.name) takes out \(Player.getListTextSUB(thieves))!
+        """
+        
+        shootMsg2 = """
+        Opals dance across the floor as the thieves collapse into their chairs.
+        
+        Everyone left is in awe of \(shooter.name)'s raw talent.
+        """
+        
+        shootMsg3 = """
+        With no equal, \(shooter.name) becomes the new Kingpin.
+        
+        \(shooter.name) wins!  (\(Player.getListTextSUB(assistants)) helped out!)
+        """
+      }
+      
+      else {
+        shootMsg1 = """
+        \(shooter.name)'s eyes dart across the room, making no hesitation.
+        
+        \(shooter.name) takes out \(Player.getListTextSUB(thieves))!
+        """
+        
+        shootMsg2 = """
+        Opals dance across the floor as the thieves collapse into their chairs.
+        
+        Everyone left is in awe of \(shooter.name)'s raw talent.
+        """
+        
+        shootMsg3 = """
+        With no equal, \(shooter.name) becomes the new Kingpin.
+        
+        \(shooter.name) wins!
+        """
+      }
+      
+      
+      queue.message(delay: 3.sec,
+                    viewTime: 8.sec,
+                    message: shootMsg1,
+                    chatID: tag.id)
+      
+      queue.message(delay: 3.sec,
+                    viewTime: 8.sec,
+                    message: shootMsg2,
+                    chatID: tag.id)
+      
+      queue.message(delay: 3.sec,
+                    viewTime: 7.sec,
+                    message: shootMsg3,
+                    chatID: tag.id)
+      
+      self.queue.action(delay: 3.sec, viewTime: 0.sec) {
+        self.end(playerTrigger: nil, participants: nil)
+      }
+        
+    }
+      
+    ///////////////
+    // FAILURE
+    
+    else {
+      shooter.flair.add(KingpinFlair.dead)
+      var index = playersLeft.index(of: shooter)!
+      playersLeft.remove(at: index)
+      
+      chosenPlayer!.flair.add(KingpinFlair.dead)
+      index = playersLeft.index(of: chosenPlayer!)!
+      playersLeft.remove(at: index)
+    }
+    
+    queue.action(delay: 2.sec, viewTime: 0.sec, action: requestPlayer)
+    
+    return true
+  }
 	
+  
+  
 	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	One way or another, the meeting is over but the Kingpin hasn't won.
@@ -827,7 +1181,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		}
 	}
 	
-	
+	/////////////////////////////////////////////////////////////////////////////////
 	/**
 	If the kingpin wins, process celebrations \o/
 	*/

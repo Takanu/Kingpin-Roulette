@@ -59,6 +59,7 @@ struct KingpinDefault {
   /// The length of time a warning lasts for before they are timed out.
 	static var watchWarningTime = 20.sec
 	
+  
 	// INTERROGATION TIME
 	/// The time alloted for interrogations
 	static var kingpinInterrogationTime = 300.sec
@@ -71,6 +72,9 @@ struct KingpinDefault {
 	
 	/// The time where the last warning will be triggered.
 	static var kingpinInterrogationLastWarning = 30.sec
+  
+  /// The length of time the interrogation reveal will be held for while a Rogue is in the game.
+  static var rogueHoldTime = 10.sec
 	
 	
 	// ITEMS

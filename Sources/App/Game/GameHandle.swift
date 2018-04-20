@@ -38,6 +38,9 @@ class GameHandle: Handle {
 	/** The "game inventory", containing the currently available roles and valuables.
 	Only the player currently at the vault can see what's inside it. */
 	var vault: Vault
+  
+  /// The game mode selected.
+  var gameMode: KingpinGameMode = .standard
 	
 	/// The number of lives/chances the kingpin has.  If they have no lives left, choosing anyone who isnt the player will cause them to lose the game.
 	var kingpinLives = 0
@@ -79,6 +82,7 @@ class GameHandle: Handle {
 		self.players = session.players
 		self.kingpin = session.kingpin
 		self.vault = session.vault
+    self.gameMode = session.gameMode
 		self.kingpinLives = session.kingpinLives
 		self.startOpals = session.startOpals
 		

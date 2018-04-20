@@ -35,4 +35,5 @@ enum KingpinError: String, Error {
   case noPlayerSelectionTargets
   case noPlayerReceived
   case kingpinPickedThemselves
+  case rogue_noChosenPlayer
 }
