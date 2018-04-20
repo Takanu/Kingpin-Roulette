@@ -68,8 +68,6 @@ class GameHandle: Handle {
 	
 	
 	// ERROR EXIT
-	private(set) var circuitBreaker: (String) -> ()
-	
 	init(session: GameSession) {
 		self.tag = session.tag
 		self.request = session.requests
@@ -88,8 +86,6 @@ class GameHandle: Handle {
 		
 		self.useTutorial = session.useTutorial
 		self.testMode = session.testMode
-		
-		self.circuitBreaker = session.circuitBreaker
 	}
 	
 	

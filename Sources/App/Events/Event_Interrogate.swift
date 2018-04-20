@@ -296,12 +296,12 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		handle.playerRoute.resetRequest()
 		
 		if result.count == 0 {
-			handle.circuitBreaker("Event_Interrogate - Expected to receive a player selection, but got nothing")
+			abort(KingpinError.noPlayerSelectionTargets)
 			return
 		}
 		
 		if result[0].choice == nil {
-			handle.circuitBreaker("Event_Interrogate - Vault route set, but no options available.")
+			abort(KingpinError.noPlayerReceived)
 			return
 		}
 		
@@ -579,7 +579,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		/////////
 		// WHOOPS
 		case .kingpin:
-			handle.circuitBreaker("Event_Interrogate - The kingpin somehow picked themselves.  The hell?")
+      abort(KingpinError.kingpinPickedThemselves)
 		}
 		
 	}

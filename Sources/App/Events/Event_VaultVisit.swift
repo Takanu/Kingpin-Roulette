@@ -276,7 +276,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		}
 		
 		else {
-			handle.circuitBreaker("Event_VaultVisit - Item was found, but couldn't be given to the player.")
+      abort(KingpinError.vaultFoundIncorrectItem)
 			return
 		}
 		
@@ -361,7 +361,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		}
 		
 		else {
-			handle.circuitBreaker("Event_VaultVisit - Received a non-role item for a removal")
+      abort(KingpinError.watcherRemovedNonRoleItem)
 			return
 		}
 	}
@@ -441,10 +441,6 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		// Remove the accomplice from the vault
     handle.vault.roles.editStack(ofItem: KingpinRoles.accomplice, makeStackUnlimited: false)
     handle.vault.roles.removeItem(KingpinRoles.accomplice)
-    
-		if handle.vault.roles.removeItem(KingpinRoles.accomplice) == nil {
-			handle.circuitBreaker("Event_VaultVisit - Accomplice role was never removed at the end of the visit.")
-		}
 		
 		// Exit
 		queue.action(delay: 5.sec,

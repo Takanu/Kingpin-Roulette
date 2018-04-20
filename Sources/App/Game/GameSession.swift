@@ -67,7 +67,10 @@ class GameSession: ChatSession {
 		
 		super.init(bot: bot, tag: tag)
 		
-		self.vault = Vault(circuitBreaker: self.circuitBreaker)
+    self.vault = Vault() { error in
+      self.resolveError(event: nil, errorCode: error)
+    }
+
 		self.eventRoute = RoutePass(name: "event", updateTypes: [.message, .editedMessage, .callbackQuery, .chosenInlineResult, .inlineQuery])
 		self.startRoute = RouteCommand(name: "start_command", commands: "start", action: self.startGame)
 	}
@@ -450,7 +453,7 @@ class GameSession: ChatSession {
   /**
   Resolves any errors received as part of an event.
   */
-  func resolveError(event: KingpinEvent.Type, errorCode: Error?) {
+  func resolveError(event: KingpinEvent.Type?, errorCode: Error?) {
     
     if errorCode == nil { return }
     
@@ -522,32 +525,5 @@ class GameSession: ChatSession {
 		self.testMode = false
 		
 		self.close()
-	}
-	
-	
-	/**
-	CIRCUIT BREAKER - Ends the game immediately and reports a problem.
-	*/
-	func circuitBreaker(message: String) {
-		
-		baseRoute[["event"]]?.clearAll()
-		queue.clear()
-		
-		let errorMessage = """
-		`OH CRAP AN ERROR OCCURRED`
-		`=========================`
-		\(message)
-		`=========================`
-		
-		`RESETTING GAME`
-		"""
-		
-		queue.message(delay: 2.sec,
-									viewTime: 5.sec,
-									message: errorMessage,
-									chatID: tag.id)
-		
-		queue.action(delay: 3.sec, viewTime: 0.sec, action: reset)
-		
 	}
 }

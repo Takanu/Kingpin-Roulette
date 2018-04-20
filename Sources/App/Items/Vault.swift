@@ -44,12 +44,12 @@ class Vault: Route {
 	
 	
 	// ERROR HANDLING
-	var circuitBreaker: (String) -> ()
+	var errorHandler: (Error) -> ()
 	
 	
-	init(circuitBreaker: @escaping (String) -> ()) {
+	init(errorHandler: @escaping (Error) -> ()) {
 		
-		self.circuitBreaker = circuitBreaker
+		self.errorHandler = errorHandler
 		
 		super.init(name: "vault_message", action: {P in return true})
 		self.roles.inlineCardTitle = "$name ($count left)"
@@ -117,7 +117,7 @@ class Vault: Route {
 			let card = option.card
 			
 			guard let content = card.content?.base as? InputMessageContent_Text else {
-				circuitBreaker("Vault - Card content downcast failed during Vault handling.")
+				errorHandler(KingpinError.cardContentDowncastFailed)
 				return false
 			}
 			
@@ -170,7 +170,7 @@ class Vault: Route {
 		if includeOpals == true {
 			
 			guard let opalCount = valuables[KingpinDefault.opal] else {
-				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
+				errorHandler(KingpinError.noOpals)
 				return []
 			}
 			
@@ -193,7 +193,7 @@ class Vault: Route {
 		
 		// If no cards are in the set, we need to report an issue.
 		if cardSet.count == 0 {
-			circuitBreaker("Event_VaultVisit - No cards could be made for the player requesting them.")
+			errorHandler(KingpinError.noCards)
 		}
 		
 		
@@ -246,7 +246,7 @@ class Vault: Route {
 		if includeOpals == true {
 			
 			guard let opalCount = valuables[KingpinDefault.opal] else {
-				circuitBreaker("Vault - Opals Couldnt Be Found! D:")
+				errorHandler(KingpinError.noOpals)
 				return []
 			}
 			

@@ -10,11 +10,25 @@ import TrashBoat
 import Pelican
 
 enum KingpinError: String, Error {
+  
+  // Basic verification
   case wrongPlayerCount
   case noKingpinFound
   case noRoles
   case noOpals
   case missingPlayerRoles
-  
   case verifyFailed
+  
+  // Vault Errors
+  case cardContentDowncastFailed
+  case noCards
+  
+  // Vault Watch errors
+  case vaultFoundIncorrectItem
+  case watcherRemovedNonRoleItem
+  
+  // Interrogate Errors
+  case noPlayerSelectionTargets
+  case noPlayerReceived
+  case kingpinPickedThemselves
 }
