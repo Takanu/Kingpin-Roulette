@@ -13,12 +13,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	
 	var eventName: String = "Interrogate"
 	
-	var eventType: EventType = EventType(name: "Kingpin Event",
-                                       symbol: "👑",
-                                       pluralisedName: "Kingpin Event",
-                                       description: "oh hey, it's an event.")
+	var eventType: EventType = KingpinDefault.eventType
     
-    var eventInfo: String = "Allows the Kingpin to interrogate and choose suspects in the Opal theft."
+  var eventInfo: String = "Allows the Kingpin to interrogate and choose suspects in the Opal theft."
 	
 	
 	let revealMsg = """
@@ -35,8 +32,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
   override func verify(handle: GameHandle) -> Error? {
     
     // Make sure we have the correct number of players
-    if handle.players.count < KingpinDefault.minimumPlayers ||
-      handle.players.count > KingpinDefault.maximumPlayers {
+    if handle.players.count < KingpinDefault.minimumPlayers - 1 ||
+      handle.players.count > KingpinDefault.maximumPlayers - 1 {
       return KingpinError.wrongPlayerCount
     }
     
@@ -268,14 +265,25 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		"""
 		
 		for player in handle.players {
+      var icon = ""
+      
+      if player.flair.find(KingpinFlair.accident, compareContents: false) {
+        icon = "💥"
+      }
+      
+      else if player.flair.find(KingpinFlair.dead, compareContents: false) {
+        icon = "☠️"
+      }
+        
+      else if player.flair.find(KingpinFlair.giftReceived, compareContents: false) {
+        icon = "🎁"
+      }
+      
+      else {
+        icon = "😇"
+      }
 			
-			if playersLeft.contains(player) == true {
-				result += "\n😇  \(player.name)"
-			}
-			
-			else {
-				result += "\n☠️  \(player.name)"
-			}
+			result += "\n\(icon)  \(player.name)"
 		}
 		
 		return result
@@ -373,6 +381,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			else {
 				
 				let status = useLife()
+        kingpinChoice.flair.add(KingpinFlair.giftReceived)
 				
 				let resultMsg = """
 				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
@@ -454,6 +463,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			else {
 				
 				let status = useLife()
+        kingpinChoice.flair.add(KingpinFlair.giftReceived)
 				
 				let resultMsg = """
 				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
@@ -496,6 +506,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			else {
 				
 				let status = useLife()
+        kingpinChoice.flair.add(KingpinFlair.giftReceived)
 				
 				let resultMsg = """
 				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.
@@ -538,6 +549,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			else {
 				
 				let status = useLife()
+        kingpinChoice.flair.add(KingpinFlair.giftReceived)
 				
 				let resultMsg = """
 				The Kingpin looks pretty stupid in front of their fellow crime lords and offers \(kingpinChoice.name) an extravagant gift to apologise.

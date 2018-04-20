@@ -16,10 +16,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 	
 	var eventName: String = "New Game"
 	
-	var eventType: EventType = EventType(name: "Kingpin Event",
-                                         symbol: "👑",
-                                         pluralisedName: "Kingpin Event",
-                                         description: "oh hey, it's an event.")
+	var eventType: EventType = KingpinDefault.eventType
     
 	var eventInfo: String = "Ask for players to participate in a new game."
 	

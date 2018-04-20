@@ -13,12 +13,9 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	
 	var eventName: String = "Vault Visit"
 	
-	var eventType: EventType = EventType(name: "Kingpin Event",
-                                         symbol: "👑",
-                                         pluralisedName: "Kingpin Event",
-                                         description: "oh hey, it's an event.")
+	var eventType: EventType = KingpinDefault.eventType
     
-    var eventInfo: String = "Allows each player including the Kingpin to visit the Vault."
+  var eventInfo: String = "Allows each player including the Kingpin to visit the Vault."
 	
 	/// The number of players that haven't yet visited the vault.
 	var visitorsLeft: [Player] = []
@@ -37,8 +34,8 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
   override func verify(handle: GameHandle) -> Error? {
     
     // Make sure we have the correct number of players
-    if handle.players.count < KingpinDefault.minimumPlayers ||
-      handle.players.count > KingpinDefault.maximumPlayers {
+    if handle.players.count < KingpinDefault.minimumPlayers - 1 ||
+      handle.players.count > KingpinDefault.maximumPlayers - 1 {
       return KingpinError.wrongPlayerCount
     }
     

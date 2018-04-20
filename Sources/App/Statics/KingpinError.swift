@@ -19,6 +19,10 @@ enum KingpinError: String, Error {
   case missingPlayerRoles
   case verifyFailed
   
+  // Game mode selection
+  case noGameModeSelected
+  case gameModeNotFound
+  
   // Vault Errors
   case cardContentDowncastFailed
   case noCards

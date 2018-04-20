@@ -175,7 +175,6 @@ class GameSession: ChatSession {
 			
 			// If yes, start the scenario.
 			self.queue.action(delay: 2.sec, viewTime: 0.sec) {
-				self.populateVault()
 				self.startScenario()
 			}
 			
@@ -186,154 +185,51 @@ class GameSession: ChatSession {
 	}
 	
 	/**
-	Depending on the number of players and game options selected, this will populate the vault with items.
-	*/
-	func populateVault() {
-		
-		
-		var itemCollection: [ItemRepresentible] = []
-		let randomArrestRole = [KingpinRoles.police, KingpinRoles.spy]
-		
-		
-		// RANDOMISE OPALS
-		
-		func randomiseOpals(_ range: ClosedRange<Int>) -> Int {
-			
-			var possibilities: [Int] = []
-			let start = range.lowerBound
-			let diff = range.upperBound - start
-			for i in 0...diff {
-				possibilities.append(start + i)
-			}
-			
-			return possibilities.getRandom!
-		}
-		
-		
-		// SET LIVES
-		
-		if playerCount >= 11 {
-			kingpinLives = 2
-			
-		} else if playerCount >= 8 || useTutorial == true {
-			kingpinLives = 1
-		}
-	
-		
-		
-		// BUILD VAULT
-		
-		if playerCount < 6 {
-			itemCollection.append(KingpinRoles.rogue)
-			itemCollection.append(KingpinRoles.elite)
-			itemCollection.append(KingpinRoles.police)
-			itemCollection.append(KingpinRoles.spy)
-			itemCollection.append(KingpinRoles.thief)
-			itemCollection.append(KingpinRoles.assistant)
-			
-			startOpals = randomiseOpals(12...15)
-		}
-		
-		
-		if playerCount == 6 {
-			itemCollection += [KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant]
-			itemCollection += [randomArrestRole.getRandom!]
-			
-			startOpals = randomiseOpals(12...15)
-		}
-		
-		
-		if playerCount == 7 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant]
-			itemCollection += [randomArrestRole.getRandom!]
-			
-			startOpals = randomiseOpals(12...15)
-		}
-		
-		
-		if playerCount == 8 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant]
-			itemCollection += [randomArrestRole.getRandom!]
-			
-			startOpals = randomiseOpals(12...15)
-		}
-		
-		
-		if playerCount == 9 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant]
-			itemCollection += [randomArrestRole.getRandom!]
-			
-			startOpals = randomiseOpals(13...17)
-		}
-		
-		
-		if playerCount == 10 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant]
-			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
-			
-			startOpals = randomiseOpals(13...17)
-		}
-		
-		
-		if playerCount == 11 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
-			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
-			
-			startOpals = randomiseOpals(15...18)
-		}
-		
-		
-		if playerCount == 12 {
-			itemCollection += [KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite, KingpinRoles.elite]
-			itemCollection += [KingpinRoles.assistant, KingpinRoles.assistant]
-			itemCollection += [KingpinRoles.police, KingpinRoles.spy]
-			
-			startOpals = randomiseOpals(15...18)
-			
-		}
-		
-		vault.roles.add(itemCollection)
-    vault.valuables.add(type: KingpinDefault.opal, amount: .int(startOpals))
-	}
-	
-	/**
 	Starts the scenario (after characters have been selected).
 	*/
 	func startScenario() {
+    
+    // Ask for the game mode
+    let handle = GameHandle(session: self)
+    let gameMode = EventContainer<GameHandle>(Event_GameMode.self)
+    gameMode.start(handle: handle) { error in
+      
+      self.resolveHandle(handle)
+      self.resolveError(event: Event_PickKingpin.self, errorCode: error)
 		
-		// Ask for a kingpin pick
-		let handle = GameHandle(session: self)
-		let pickKingpin = EventContainer<GameHandle>(Event_PickKingpin.self)
-		pickKingpin.start(handle: handle) { error in
-			
-			self.resolveHandle(handle)
-			self.resolveError(event: Event_PickKingpin.self, errorCode: error)
-			
-			// Pass the vault around
-			let vaultVisit = EventContainer<GameHandle>(Event_VaultVisit.self)
-			vaultVisit.start(handle: handle) { error in
-				
-				self.resolveHandle(handle)
-        self.resolveError(event: Event_VaultVisit.self, errorCode: error)
-				
-				// INTERROGATE
-				let interrogate = EventContainer<GameHandle>(Event_Interrogate.self)
-				interrogate.start(handle: handle) { error in
+      
+      // Ask for a kingpin pick
+      let handle = GameHandle(session: self)
+      let pickKingpin = EventContainer<GameHandle>(Event_PickKingpin.self)
+      pickKingpin.start(handle: handle) { error in
+        
+        self.resolveHandle(handle)
+        self.resolveError(event: Event_PickKingpin.self, errorCode: error)
+        
+        
+        // Pass the vault around
+        let vaultVisit = EventContainer<GameHandle>(Event_VaultVisit.self)
+        vaultVisit.start(handle: handle) { error in
           
-					self.resolveHandle(handle)
-          self.resolveError(event: Event_Interrogate.self, errorCode: error)
-					self.finishScenario()
-				}
-				
-			}
-		}
-	}
+          self.resolveHandle(handle)
+          self.resolveError(event: Event_VaultVisit.self, errorCode: error)
+          
+          
+          // INTERROGATE
+          let interrogate = EventContainer<GameHandle>(Event_Interrogate.self)
+          interrogate.start(handle: handle) { error in
+            
+            self.resolveHandle(handle)
+            self.resolveError(event: Event_Interrogate.self, errorCode: error)
+            
+            if error == nil {
+              self.finishScenario()
+            }
+          }
+        }
+      }
+    }
+  }
 	
 	/**
 	Announces the game results, everyone's roles and resets the game state.
@@ -460,24 +356,30 @@ class GameSession: ChatSession {
     queue.clear()
     baseRoute.clearAll()
     
+    // If we just have a game mode selection error, send no error message and just leave.
+    
+    if errorCode is KingpinError {
+      let kpError = errorCode as! KingpinError
+      
+      if kpError == .noGameModeSelected {
+        self.reset()
+        return
+      }
+    }
+    
     let message = """
     Well shit, Kingpin encountered an error!
 
     ============================
-    Error Code = \(errorCode.debugDescription)
+    Error Code = \(errorCode!)
     ============================
     Hassle @takanu about it to get it fixed 🙏
     
     The game will now be reset...
     """
     
-    queue.message(delay: 3.sec,
-                  viewTime: 0.sec,
-                  message: message,
-                  chatID: tag.id)
-    
-    queue.action(delay: 3.sec, viewTime: 0.sec, action: self.reset)
-    
+    requests.sync.sendMessage(message, chatID: tag.id)
+    self.reset()
   }
 	
 	

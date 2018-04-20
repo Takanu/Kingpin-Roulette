@@ -182,6 +182,7 @@ class Vault: Route {
 					
           let opalUnit = OpalUnit(value: .int(i))
           var newOpalCard = opalUnit.getInlineCard()
+          newOpalCard.tgID = String(id)
           newOpalCard.title = "Steal \(i) 💎 Opals (\(opalCount.int) left)"
           newOpalCard.description = KingpinRoles.thief.description
           
@@ -251,7 +252,9 @@ class Vault: Route {
 			}
 			
 			let opalUnit = OpalUnit(value: .int(opalCount.int))
-      let newOpalCard = opalUnit.getInlineCard()
+      var newOpalCard = opalUnit.getInlineCard()
+      newOpalCard.tgID = String(id)
+      id += 1
 			
 			// Return the new set.
 			cardSet.append((opalUnit, newOpalCard))

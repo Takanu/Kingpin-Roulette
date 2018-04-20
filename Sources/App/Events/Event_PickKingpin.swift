@@ -13,10 +13,7 @@ class Event_PickKingpin: KingpinEvent, EventRepresentible {
 	
 	var eventName: String = "Pick Kingpin"
 	
-	var eventType: EventType = EventType(name: "Kingpin Event",
-                                       symbol: "👑",
-                                       pluralisedName: "Kingpin Event",
-                                       description: "oh hey, it's an event.")
+	var eventType: EventType = KingpinDefault.eventType
     
   var eventInfo: String = "Select the new Kingpin"
 	

@@ -18,6 +18,11 @@ struct KingpinDefault {
 	/// The version number of the App
 	static var versionNumber = "2"
 	
+  /// The type for defining a KingpinEvent
+  static var eventType: EventType = EventType(name: "Kingpin Event",
+                                              symbol: "👑",
+                                              pluralisedName: "Kingpin Event",
+                                              description: "oh hey, it's an event.")
 	
 	// GAME START
 	/// The minimum number of players required to start the game.
@@ -38,6 +43,7 @@ struct KingpinDefault {
 	/// The number of times you can extend the time
 	static var maxTimeExtensions = 4
 	
+  
 	// KINGPIN SELECTION
 	/// The time available for deciding if players want to be the Kingpin.
 	static var kingpinSelectTime = 25.sec

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50603D312089626000D8E912 /* KingpinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50603D302089626000D8E912 /* KingpinError.swift */; };
+		50603D33208979A500D8E912 /* Event_GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50603D32208979A500D8E912 /* Event_GameMode.swift */; };
+		50603D352089828900D8E912 /* KingpinGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50603D342089828900D8E912 /* KingpinGameMode.swift */; };
 		OBJ_316 /* Event_Interrogate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Event_Interrogate.swift */; };
 		OBJ_317 /* Event_NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Event_NewGame.swift */; };
 		OBJ_318 /* Event_PickKingpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Event_PickKingpin.swift */; };
@@ -286,6 +288,8 @@
 
 /* Begin PBXFileReference section */
 		50603D302089626000D8E912 /* KingpinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinError.swift; sourceTree = "<group>"; };
+		50603D32208979A500D8E912 /* Event_GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_GameMode.swift; sourceTree = "<group>"; };
+		50603D342089828900D8E912 /* KingpinGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingpinGameMode.swift; sourceTree = "<group>"; };
 		"Kingpin::App::Product" /* App */ = {isa = PBXFileReference; lastKnownFileType = text; path = App; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Event_Interrogate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event_Interrogate.swift; sourceTree = "<group>"; };
 		OBJ_102 /* Codable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+String.swift"; sourceTree = "<group>"; };
@@ -1149,6 +1153,7 @@
 				OBJ_33 /* KingpinFlair.swift */,
 				OBJ_34 /* KingpinRoles.swift */,
 				50603D302089626000D8E912 /* KingpinError.swift */,
+				50603D342089828900D8E912 /* KingpinGameMode.swift */,
 			);
 			path = Statics;
 			sourceTree = "<group>";
@@ -1361,6 +1366,7 @@
 		OBJ_9 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				50603D32208979A500D8E912 /* Event_GameMode.swift */,
 				OBJ_10 /* Event_Interrogate.swift */,
 				OBJ_11 /* Event_NewGame.swift */,
 				OBJ_12 /* Event_PickKingpin.swift */,
@@ -1588,9 +1594,11 @@
 				OBJ_332 /* KingpinRoleType.swift in Sources */,
 				OBJ_333 /* KingpinDefault.swift in Sources */,
 				OBJ_334 /* KingpinFlair.swift in Sources */,
+				50603D352089828900D8E912 /* KingpinGameMode.swift in Sources */,
 				OBJ_335 /* KingpinRoles.swift in Sources */,
 				OBJ_336 /* CasedEnum.swift in Sources */,
 				OBJ_337 /* main.swift in Sources */,
+				50603D33208979A500D8E912 /* Event_GameMode.swift in Sources */,
 				50603D312089626000D8E912 /* KingpinError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

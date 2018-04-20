@@ -18,7 +18,7 @@ let gameBuilder = SessionBuilder(name: "Game",
                                  sessionType: GameSession.self,
                                  setup: nil)
 
-let playerBuilder = SessionBuilder(name: "User",
+let playerBuilder = SessionBuilder(name: "Player",
                                    spawner: Spawn.perUserID(updateType: [.message, .inlineQuery, .callbackQuery]),
 																	 idType: .user,
                                    sessionType: PlayerSession.self,
