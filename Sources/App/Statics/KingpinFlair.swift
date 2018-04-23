@@ -19,9 +19,12 @@ struct KingpinFlair {
 
 	static var dead = Flair(withName: "Dead", category: statusCategory)
 	
-	static var winner = Flair(withName: "Winners", category: statusCategory)
-  
   static var accident = Flair(withName: "Accidental Death", category: statusCategory)
 
   static var giftReceived = Flair(withName: "Got a Present", category: presentCategory)
+  
+  static var winner = Flair(withName: "Winners", category: statusCategory)
+  
+  static var chump = Flair(withName: "Losers", category: statusCategory)
+  
 }

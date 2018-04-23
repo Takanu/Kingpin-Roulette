@@ -395,7 +395,10 @@ class GameSession: ChatSession {
 		self.kingpin = handle.kingpin
 		
 		self.vault = handle.vault
-    self.gameMode = handle.gameMode 
+    self.gameMode = handle.gameMode
+    self.kingpinLives = handle.kingpinLives
+    self.startOpals = handle.startOpals
+    
 		self.storedMessages.removeAll()
 		self.storedEvents.removeAll()
 		

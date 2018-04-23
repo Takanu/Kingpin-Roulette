@@ -110,8 +110,8 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
   */
   func receivePlayerSelection(update: Update) -> Bool {
     
-    // VALIDATE TO PLAYERS
-    if handle.players.contains(where: {$0.id == update.from!.tgID}) == false { return false }
+    // VALIDATE TO PLAYER
+    if handle.players[0].id != update.from!.tgID { return false }
     
     // VALIDATE TO INLINE KEYS
     let options = inline.getCallbackData()!
@@ -124,7 +124,12 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
     
     // REMOVE INLINE BUTTONS
     if let oldMessage = self.storedMessages["game_mode_select"] {
-      self.request.sync.editMessage(oldMessage.text!,
+      let newText = """
+      \(oldMessage.text!)
+      
+      \(handle.players[0].name) selected *\(update.content) Game*.
+      """
+      self.request.sync.editMessage(newText,
                                     messageID: oldMessage.tgID,
                                     inlineMessageID: nil,
                                     markup: nil,

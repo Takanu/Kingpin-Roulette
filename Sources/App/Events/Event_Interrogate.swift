@@ -52,9 +52,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
     if handle.vault.valuables[KingpinDefault.opal] == nil { return KingpinError.noOpals }
     
     // Make sure each player has a role
-    for player in handle.players {
-      if player.role == nil { return KingpinError.missingPlayerRoles }
-    }
+    // ... or not, players might timeout.
+//    for player in handle.players {
+//      if player.role == nil { return KingpinError.missingPlayerRoles }
+//    }
     
     return nil
   }
@@ -66,7 +67,50 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 	*/
 	override func execute() {
     
-		playersLeft = handle.players.filter({ $0.flair.find(KingpinFlair.accident, compareContents: false) == false })
+		playersLeft = handle.players.filter({
+      $0.flair.find(KingpinFlair.accident, compareContents: false) == false &&
+      $0.flair.find(KingpinFlair.dead, compareContents: false) == false
+    })
+    
+    ///////////////////////////
+    // NO THIEVES FOUND
+    let thieves = handle.players.filter( { $0.role?.definition == .thief &&
+      $0.flair.flairs[KingpinFlair.statusCategory] == nil
+    } )
+    
+    if thieves.count == 0 {
+      
+      let noThieves1 = """
+      Everyone has finished their first watch, and the Kingpin returns to see that the Vault is... exactly as they left it?
+      """
+      
+      let noThieves2 = """
+      Satisfied, the Kingpin continues running the criminal underworld in confidence.
+
+      With nothing to fight over, the Elites wonder what they were even supposed to do.
+
+      (Nobody stole any opals!)
+      """
+      
+      handle.kingpin!.flair.add(KingpinFlair.winner)
+      
+      // Send a message to announce the state and give the Kingpin generous time to choose...
+      queue.message(delay: 1.sec,
+                    viewTime: 6.sec,
+                    message: noThieves1,
+                    chatID: tag.id)
+      
+      queue.message(delay: 1.sec,
+                    viewTime: 9.sec,
+                    message: noThieves2,
+                    chatID: tag.id)
+      
+      self.queue.action(delay: 3.sec, viewTime: 0.sec) {
+        self.end(playerTrigger: nil, participants: nil)
+      }
+      
+      return
+    }
 		
 		
 		///////////////////////////
@@ -167,6 +211,12 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.clear()
 		handle.kingpin?.playerRoute.enabled = true
     chosenPlayer = nil
+    
+    playersLeft = handle.players.filter({
+      $0.flair.find(KingpinFlair.accident, compareContents: false) == false &&
+        $0.flair.find(KingpinFlair.dead, compareContents: false) == false &&
+        $0.flair.find(KingpinFlair.giftReceived, compareContents: false) == false
+    })
 		
 		///////////////////////////
 		// SETUP
@@ -321,10 +371,14 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			return
 		}
 		
+    // ASSIGN CHOICE
+    
 		let kingpinChoice = result[0].choice! as! Player
     chosenPlayer = kingpinChoice
 		
+    
 		// Buffer padding for consistency
+    
 		queue.action(delay: 1.sec, viewTime: 0.sec, action: { })
 		
 		
@@ -346,7 +400,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
     ///////////////////////////
     // ROGUE REVEAL
     
-    if playersLeft.contains(where: {$0.role?.definition == .rogue} ) == true {
+    if handle.gameMode == .rogue {
       let rogueChosenMsg = """
       \(kingpinChoice.name) name is declared.  They rise from their seat...
       """
@@ -366,10 +420,16 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
         self.baseRoute[["event"]]?.addRoutes(shootRoute)
         
         let sentMessage = self.request.sync.sendMessage(rogueChosenMsg,
+                                                        markup: self.rogueInline,
                                                         chatID: self.tag.id)
         
         self.storedMessages[self.rogueKey.data] = sentMessage
       }
+      
+      queue.message(delay: 1.sec,
+                    viewTime: 5.sec,
+                    message: roleMsg,
+                    chatID: tag.id)
       
       // WINDOW MISSED
       queue.action(delay: KingpinDefault.rogueHoldTime, viewTime: 4.sec) {
@@ -398,6 +458,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       queue.message(delay: 3.sec,
                     viewTime: 4.sec,
                     message: chosenMsg,
+                    chatID: tag.id)
+      
+      queue.message(delay: 1.sec,
+                    viewTime: 5.sec,
+                    message: roleMsg,
                     chatID: tag.id)
       
       queue.action(delay: 3.sec, viewTime: 4.sec) {
@@ -645,8 +710,6 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			// Declare them as dead and remove them from the players left.
 			kingpinChoice.flair.add(KingpinFlair.dead)
-			let index = playersLeft.index(of: kingpinChoice)!
-			playersLeft.remove(at: index)
 			
 			queue.action(delay: 1.sec, viewTime: 0.sec) { self.retrieveOpals(pick: kingpinChoice) }
 		
@@ -705,12 +768,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		queue.action(delay: 1.sec, viewTime: 0.sec) {
 			
 			// Retrieve the opals from the dead thief.
-			let opalsRetrieved = pick.points[KingpinDefault.opal] ?? OpalUnit(value: .int(0))
-			
-			// If the vault doesn't have any opals as points, assign it (I really need the points system to be nicer).
-			if self.handle.vault.valuables[KingpinDefault.opal] == nil {
-                self.handle.vault.valuables.add(type: KingpinDefault.opal, amount: .int(0))
-			}
+			let opalsRetrieved = pick.points[KingpinDefault.opal]!
 			
 			// Assign the stolen opals back to the vault and see how many we now have.
       self.handle.vault.valuables.add(type: KingpinDefault.opal, amount: opalsRetrieved.value)
@@ -732,7 +790,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			}
 			
 			// Otherwise continue investigating.
-			else {
+			else if vaultOpals.int < self.handle.startOpals {
 				let thievesRemain = """
 				The Vault is still missing Opals.
 				
@@ -746,6 +804,10 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				
 				self.queue.action(delay: 2.sec, viewTime: 0.sec, action: self.requestPlayer)
 			}
+      
+      else {
+        self.abort(KingpinError.wrongOpalCount)
+      }
 		}
 	}
   
@@ -787,6 +849,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
     if chosenPlayer == nil {
       abort(KingpinError.rogue_noChosenPlayer)
     }
+    
+    // SHOOT CHOSEN
     chosenPlayer!.flair.add(KingpinFlair.dead)
     
     // ENJOY THE SHOW
@@ -824,10 +888,14 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      The bodies are slowly dragged out of the room and the meeting continues.
       """
       
+      
     case .thief:
+      let retrievedOpals = chosenPlayer!.points[KingpinDefault.opal]!
+      self.handle.vault.valuables.add(type: KingpinDefault.opal, amount: retrievedOpals.value)
+      
       failMsg1 = """
       ... it's some *Opals!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
       """
@@ -835,8 +903,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      \(handle.kingpin!.name) picks up *\(retrievedOpals) Opals.*  The bodies are slowly dragged out of the room and the meeting continues.
       """
+      
       
     case .spy:
       success = true
@@ -850,6 +919,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       Placing their hope in fate, \(handle.kingpin!.name) asks \(shooter.name) to shoot all the Thieves in the room.
       """
       
+      
     case .police:
       success = true
       failMsg1 = """
@@ -862,6 +932,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       Placing their hope in fate, \(handle.kingpin!.name) asks \(shooter.name) to shoot all the Thieves in the room.
       """
       
+      
     case .assistant:
       failMsg1 = """
       ... it's an *Unusual Note!*  (\(chosenPlayer!.name) was the \(chosenPlayer!.role!.name)!)
@@ -870,8 +941,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      The bodies are slowly dragged out of the room and the meeting continues.
       """
+      
       
     case .rogue:
       failMsg1 = """
@@ -881,8 +953,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      The bodies are slowly dragged out of the room and the meeting continues.
       """
+      
       
     case .accomplice:
       failMsg1 = """
@@ -892,8 +965,9 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      The bodies are slowly dragged out of the room and the meeting continues.
       """
+      
       
     case .kingpin:
       failMsg1 = """
@@ -907,7 +981,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       
       Outraged, \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
       
-      Their bodies are slowly dragged out of the room and the meeting continues.
+      The body is slowly dragged out of the room and the meeting continues.
       """
       
       
@@ -923,6 +997,27 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
                   viewTime: 7.sec,
                   message: failMsg2,
                   chatID: tag.id)
+    
+    
+    ////////////////
+    // OPALS RECOVERED
+    
+    let opalsRecovered = self.handle.vault.valuables[KingpinDefault.opal]!
+    
+    if opalsRecovered.value.int == handle.startOpals {
+      
+      let allThievesDead = """
+      Despite the bloody mess, the Kingpin has recovered all the Opals, securing the future of the empire.
+      """
+      queue.message(delay: 3.sec,
+                    viewTime: 6.sec,
+                    message: allThievesDead,
+                    chatID: tag.id)
+      
+      self.queue.action(delay: 3.sec, viewTime: 0.sec, action: kingpinWins)
+      
+      return true
+    }
     
     
     ////////////////
@@ -1019,7 +1114,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       self.queue.action(delay: 3.sec, viewTime: 0.sec) {
         self.end(playerTrigger: nil, participants: nil)
       }
-        
+      
+      return true
     }
       
     ///////////////
@@ -1027,15 +1123,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
     
     else {
       shooter.flair.add(KingpinFlair.dead)
-      var index = playersLeft.index(of: shooter)!
-      playersLeft.remove(at: index)
       
-      chosenPlayer!.flair.add(KingpinFlair.dead)
-      index = playersLeft.index(of: chosenPlayer!)!
-      playersLeft.remove(at: index)
+      queue.action(delay: 2.sec, viewTime: 0.sec, action: requestPlayer)
     }
     
-    queue.action(delay: 2.sec, viewTime: 0.sec, action: requestPlayer)
+    
     
     return true
   }
@@ -1238,6 +1330,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 		}
 		
 	}
+  
 	
 	/**
 	Try and find some winning assistants.

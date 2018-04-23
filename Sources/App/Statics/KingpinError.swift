@@ -36,4 +36,5 @@ enum KingpinError: String, Error {
   case noPlayerReceived
   case kingpinPickedThemselves
   case rogue_noChosenPlayer
+  case wrongOpalCount
 }

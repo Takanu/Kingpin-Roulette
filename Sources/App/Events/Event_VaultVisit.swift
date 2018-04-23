@@ -48,6 +48,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
     // Make sure the Vault isn't empty
     if handle.vault.roles.getItemCopies(forType: KingpinRoles.type.name) == nil { return KingpinError.noRoles }
     if handle.vault.valuables[KingpinDefault.opal] == nil { return KingpinError.noOpals }
+    if handle.vault.valuables[KingpinDefault.opal]!.int != handle.startOpals { return KingpinError.wrongOpalCount }
     
     return nil
   }
@@ -248,6 +249,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
       queue.message(delay: KingpinDefault.watchLengthTime,
                     viewTime: 0.sec,
                     message: visitWarning,
+                    markup: inlineVault,
                     chatID: tag.id)
 			
       queue.action(delay: KingpinDefault.watchWarningTime,
@@ -342,6 +344,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 	func removeVaultItem() {
 		queue.clear()
 		handle.vault.newRequest(newViewer: vaultVisitor!, includeOpals: false, next: receiveRemovalSelection)
+    firstPlayerFinished = true
 		
 		let otherVisit = """
 		To avoid being identified, \(vaultVisitor!.name) takes something else from the vault and destroys it...
@@ -362,6 +365,7 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
     queue.message(delay: KingpinDefault.watchLengthTime,
                   viewTime: 0.sec,
                   message: removalWarning,
+                  markup: inlineVault,
                   chatID: tag.id)
     
     queue.action(delay: KingpinDefault.watchWarningTime,
@@ -375,7 +379,6 @@ class Event_VaultVisit: KingpinEvent, EventRepresentible {
 		
 		// Remove the item from the valuables or roles list.
 		if handle.vault.roles.removeItem(item) != nil {
-      firstPlayerFinished = true
 			queue.action(delay: 2.sec,
 									 viewTime: 0.sec,
 									 action: completeOtherVisit)
