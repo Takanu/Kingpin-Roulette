@@ -163,6 +163,8 @@ class Event_GameMode: KingpinEvent, EventRepresentible {
       queue.action(delay: 3.sec, viewTime: 0.sec) {
         self.abort(KingpinError.noGameModeSelected)
       }
+			
+			return
     }
     
     
