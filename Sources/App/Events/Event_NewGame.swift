@@ -494,7 +494,7 @@ class Event_NewGame: KingpinEvent, EventRepresentible {
 			self.clearPreviousInlineKeys()
 		}
 		
-		if handle.useTutorial == true {
+		if handle.useTutorial == true && KingpinDefault.minimumPlayers <= handle.playerCount {
 			let suggestionMsg = """
 			(As a suggestion you should play this as if you were at a table together, so don't private message other players 😇)
 			"""

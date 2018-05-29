@@ -15,7 +15,7 @@ extension PlayerSession {
 	Used to pick a character for themselves at the beginning.  Only works when they haven't been registered in a game.
 	*/
 	func inlineCharacter(update: Update) -> Bool {
-			
+		
 		if proxy == nil {
 			
 			let availableCharacters = PlayerCharacter.cases().filter({_ in return true})
@@ -25,8 +25,8 @@ extension PlayerSession {
 				let newCard = InlineResultArticle(id: String(i + 1),
 																					title: char.rawValue,
 																					description: "Choose the \(char.rawValue)",
-																					contents: "\(char.rawValue)",
-																					markup: nil)
+					contents: "\(char.rawValue)",
+					markup: nil)
 				
 				availableCharacterInline.append(newCard)
 			}

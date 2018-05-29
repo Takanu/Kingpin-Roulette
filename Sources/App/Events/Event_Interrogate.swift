@@ -426,14 +426,15 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
         self.storedMessages[self.rogueKey.data] = sentMessage
       }
       
-      queue.message(delay: 1.sec,
-                    viewTime: 5.sec,
-                    message: roleMsg,
-                    chatID: tag.id)
-      
+			
       // WINDOW MISSED
       queue.action(delay: KingpinDefault.rogueHoldTime, viewTime: 4.sec) {
         self.baseRoute[["event"]]?.clearAll()
+				
+				self.queue.message(delay: 0.sec,
+											viewTime: 5.sec,
+											message: roleMsg,
+											chatID: self.tag.id)
         
         if let lastMsg = self.storedMessages[self.rogueKey.data] {
           self.request.sync.editMessage(lastMsg.text!,
@@ -445,6 +446,8 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
         
         self.revealRole(kingpinChoice)
       }
+			
+			
     }
     
     ///////////////////////////
@@ -461,11 +464,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
                     chatID: tag.id)
       
       queue.message(delay: 1.sec,
-                    viewTime: 5.sec,
+                    viewTime: 4.sec,
                     message: roleMsg,
                     chatID: tag.id)
       
-      queue.action(delay: 3.sec, viewTime: 4.sec) {
+      queue.action(delay: 1.sec, viewTime: 4.sec) {
         self.revealRole(kingpinChoice)
       }
     }
@@ -494,7 +497,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin falls and the empire is in ruin.
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -516,7 +519,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -534,7 +537,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			The Kingpin is dragged out of the room in cuffs by \(kingpinChoice.name).
 			"""
-			queue.message(delay: 3.sec,
+			queue.message(delay: 2.sec,
 										viewTime: 4.sec,
 										message: resultMsg,
 										chatID: tag.id)
@@ -554,7 +557,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			\(kingpinChoice.name) drags the Kingpin out of the room in a black bag, ready to be extradited for unknown crimes.
 			"""
 			
-			queue.message(delay: 3.sec,
+			queue.message(delay: 2.sec,
 										viewTime: 4.sec,
 										message: resultMsg,
 										chatID: tag.id)
@@ -576,7 +579,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin falls and the empire is in ruin.
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -598,7 +601,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -619,7 +622,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin falls and the empire is in ruin.
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -641,7 +644,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -662,7 +665,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin falls and the empire is in ruin.
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -684,7 +687,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 				The Kingpin remains in control for now and the meeting continues.  \(status)
 				"""
 				
-				queue.message(delay: 3.sec,
+				queue.message(delay: 2.sec,
 											viewTime: 4.sec,
 											message: resultMsg,
 											chatID: tag.id)
@@ -703,7 +706,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
 			
 			\(kingpinChoice.name) collapses.
 			"""
-			queue.message(delay: 3.sec,
+			queue.message(delay: 2.sec,
 										viewTime: 4.sec,
 										message: resultMsg,
 										chatID: tag.id)
@@ -886,7 +889,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
       The bodies are slowly dragged out of the room and the meeting continues.
       """
@@ -901,9 +904,11 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
-      \(handle.kingpin!.name) picks up *\(retrievedOpals) Opals.*  The bodies are slowly dragged out of the room and the meeting continues.
+      \(handle.kingpin!.name) picks up *\(retrievedOpals.int) Opals.*  Turns out they werent so incompetent after all.
+			
+			The bodies are slowly dragged out of the room and the meeting continues.
       """
       
       
@@ -939,7 +944,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
       The bodies are slowly dragged out of the room and the meeting continues.
       """
@@ -951,7 +956,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
       The bodies are slowly dragged out of the room and the meeting continues.
       """
@@ -963,7 +968,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
       The bodies are slowly dragged out of the room and the meeting continues.
       """
@@ -979,7 +984,7 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       failMsg2 = """
       The bullets disappear before they can touch the Kingpin.
       
-      Outraged, \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name).
+      Outraged, \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
       
       The body is slowly dragged out of the room and the meeting continues.
       """
