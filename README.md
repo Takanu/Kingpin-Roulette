@@ -7,4 +7,5 @@ You can play the bot using @KingpinRouletteBot, and i've open-sourced this bot t
 ALSO feel free to submit any enhancements or bugs and i'll make sure those fixes get pushed to the bot.
 
 **Pelican** - https://github.com/Takanu/Pelican
+
 **TrashBoat** - https://github.com/Takanu/TrashBoat
