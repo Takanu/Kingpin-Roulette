@@ -904,12 +904,12 @@ class Event_Interrogate: KingpinEvent, EventRepresentible {
       """
       
       failMsg2 = """
-      \(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
-      
-      \(handle.kingpin!.name) picks up *\(retrievedOpals.int) Opals.*  Turns out they werent so incompetent after all.
+			\(handle.kingpin!.name) immediately pulls out their own gilded pistol and takes out \(shooter.name) for their incompetence.
+			
+			\(handle.kingpin!.name) picks up *\(retrievedOpals.int) Opals.*  Turns out they werent so incompetent after all.
 			
 			The bodies are slowly dragged out of the room and the meeting continues.
-      """
+			"""
       
       
     case .spy:
